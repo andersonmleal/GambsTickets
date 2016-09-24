@@ -14,59 +14,7 @@
     </h:head>
     <h:body>
 
-
-        <!-- Menu -->
-        <nav class="navbar navbar-default" margin-bottom="0" role="navigation">
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Menu</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">GambsTickets</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav"> <!-- menu esquerda -->
-                    <li><a href="eventos.xhtml">Eventos</a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Parceiros</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administração <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Novo Evento</a></li>
-                            <li><a href="#">Alterar Evento</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Gráficos e Estatísticas</a></li>
-                        </ul>
-                    </li>
-                </ul> <!-- fim menu esquerda -->
-                <div class="col-sm-3 col-md-3"> <!-- pesquisa -->
-                    <form class="navbar-form" role="search">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Pesquisar" name="q"/>
-                            <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </div> <!-- fim pesquisa -->
-                <ul class="nav navbar-nav navbar-right"> <!-- menu direita -->
-                    <li><a href="#">Login</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Meu Nome <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Carrinho</a></li>
-                            <li><a href="#">Meus Dados</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Sair</a></li>
-                        </ul>
-                    </li>
-                </ul> <!-- fim menu direita -->
-            </div>
-        </nav> <!-- fim menu -->
+        <ui:include src="menu.xhtml"></ui:include>
 
         <!-- carroucel -->
         <header id="myCarousel" class="carousel slide">
@@ -139,18 +87,7 @@
 
             </div> 
 
-            <!-- Linha divisoria -->
-            <hr style="align: center"/>
-
-                <!-- rodape --> 
-                <footer>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <!-- Texto rodape -->
-                            <p style="text-align: center">Copyright &copy; Tickets 720</p>
-                        </div>
-                    </div>
-                </footer>
+        <ui:include src="rodape.xhtml"></ui:include>
 
         </div> <!-- fim container -->
 

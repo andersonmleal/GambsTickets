@@ -97,6 +97,13 @@ public class EventoBean {
 
             eventos.add(ev3);
         
+            EventoBean ev4 = new EventoBean();
+            
+            ev4.setNomeEvento("NovoNome4");
+            ev4.setCaminhoImagem("img\\03.png");
+            ev4.setDescricao("descricao_4");
+
+            eventos.add(ev4);
 
         return eventos;
     }
