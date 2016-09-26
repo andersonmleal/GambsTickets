@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>GambsTickets</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link href="css/full-slider.css" rel="stylesheet"/>
+        <link href="css/bootstrap.css" rel="stylesheet"/> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </h:head>
+    <h:body style="
+            background-image: url(img/01.jpg);
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            -webkit-background-size: cover;
+            
+            -moz-background-size: cover;
+            background-size: cover;
+            -o-background-size: cover
+            ">
+        <ui:include src="menu.xhtml"></ui:include>
+
+
+            <div class="container">
+                <h2 style="text-align: center">Eventos</h2>
+
+
+
+                <div class="row panel panel-primary" style="padding: 1%">
+                    <div class="col-lg-8 ">
+
+                    </div>
+
+                    <div class="col-lg-4 panel panel-primary" style="background-color: rgba(0, 0, 0, 0); padding: 1%">
+                        <p>
+
+                            Em linguística, a noção de texto é ampla e ainda aberta a uma definição mais precisa. Grosso modo, pode ser entendido como manifestação linguística das ideias de um autor, que serão interpretadas pelo leitor de acordo com seus conhecimentos linguísticos e culturais. Seu tamanho é variável.
+
+                            “Conjunto de palavras e frases articuladas, escritas sobre qualquer suporte”[1].
+
+                            “Obra escrita 
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Comprar!</button>
+
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+
+                                <h4 class="modal-title" style="text-align: center" id="exampleModalLabel">Selecione seus Ingressos</h4>
+                            </div>
+                            <div class="modal-body">
+
+
+                                <form id="productForm" method="post" class="form-horizontal">
+
+                                    <div class="form-group">
+                                        <h4 style="text-align: center">Setor (R$ 150,00)</h4>
+
+                                        <div class="row" style="align-items: center">
+                                            <div class="col-xs-4 selectContainer" style="margin-left: 16.66666667%">
+                                                <select class="form-control" name="size">
+                                                    <option value="">Inteira</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-xs-4  selectContainer">
+                                                <select class="form-control" name="color">
+                                                    <option value="">Meia Entrada</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="checkbox" style="margin-left: 16.66666667%">
+                                            <label><input type="checkbox" value=""/>Li e aceito os termos de uso</label>
+                                        </div>
+
+
+                                    </div>
+
+                                </form>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                <button type="button" class="btn btn-primary">Adicionar ao Carrinho</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <ui:include src="rodape.xhtml"></ui:include>
+
+
+            </div> <!-- fim container -->
+
+    </h:body>
+</html>
+
