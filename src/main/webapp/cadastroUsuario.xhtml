@@ -17,104 +17,86 @@
     <h:body>
         <ui:include src="menu.xhtml"></ui:include>
         <div class="page">
-            
-            
-            <div class="row">
-                <div class="col-md-6 form-group">
-                    <label for="example-text-input" class="control-label">Email*</label>
-                    <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"/>
-                   
-                </div>
-                <div class="col-md-6 form-group">
-                    <label for="example-text-input" class="control-label">Confirme o Email</label>
-                    <input class="form-control" type="search" value="How do I shoot web" id="example-search-input"/>
-                   
-                </div>
-            </div>
-            
-            
-              <div class="row">
-                <div class="col-md-6 form-group">
-                    <label for="example-text-input" class="control-label">Senha*</label>
-                    <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"/>
-                   
-                </div>
-                <div class="col-md-6 form-group">
-                    <label for="example-text-input" class="control-label">Confirme a Senha</label>
-                    <input class="form-control" type="search" value="How do I shoot web" id="example-search-input"/>
-                   
-                </div>
-            </div>
-            
-            
-            
 
-            <div class="row">
-                <div class="col-md-3 form-group">
-                    <label for="example-text-input" class="control-label">Nome</label>
-                    <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"/>
-                   
+            <form id="form_cadastro" action="teste">
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="cli_email" class="control-label">E-mail:</label>
+                        <input type="text" id="cli_email" name="cli_email" value="" class="form-control" maxlength="60"/>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="cli_confirmaEmail" class="control-label">Confirme o e-mail:</label>
+                        <input type="text" id="cli_confirmaEmail" name="cli_confirmaEmail" class="form-control" maxlength="60"/>
+                    </div>
                 </div>
-                 <div class="col-md-3 form-group">
-                    <label for="example-text-input" class="control-label">Senha*</label>
-                    <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"/>
-                </div>
-                
-                <div class="col-md-6 form-group">
-                    <label for="example-text-input" class="control-label">Confirme Email</label>
-                    <input class="form-control" type="search" value="How do I shoot web" id="example-search-input"/>
-                   
-                </div>
-            </div>
 
-            
-            
-              <div class="row">
-                <div class="col-md-6 form-group">
-                    <label for="example-text-input" class="control-label">Email*</label>
-                    <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"/>
-                   
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="cli_senha" class="control-label">Senha:</label>
+                        <input type="password" id="cli_senha" name="cli_senha" class="form-control" maxlength="15"/>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="cli_senhaConfirma" class="control-label">Confirmação da senha:</label>
+                        <input type="password" id="cli_senhaConfirma" name="cli_senhaConfirma" class="form-control" maxlength="15"/>
+                    </div>
                 </div>
-                <div class="col-md-6 form-group">
-                    <label for="example-text-input" class="control-label">Confirme Email</label>
-                    <input class="form-control" type="search" value="How do I shoot web" id="example-search-input"/>
-                   
+
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        <label for="cli_nacionalidade" class="control-label">Nacionalidade:</label>
+                        <select id="cli_nacionalidade" name="cli_nacionalidade" class="form-control" onchange="validaNacionalidade();" >
+                            <option selected="selected" value="B">Brasileira</option>
+                            <option  value="E">Estrangeira</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="cli_nome" class="control-label">Nome:</label>
+                        <input type="text" id="cli_nome" name="cli_nome" value="" class="form-control" maxlength="80"/>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="cli_sobrenome" class="control-label">Sobrenome:</label>
+                        <input type="text" id="cli_sobrenome" name="cli_sobrenome" value="" class="form-control" maxlength="80" />
+                    </div>
                 </div>
-            </div>
-            
-            
-            
-              <div class="row">
-                <div class="col-md-6 form-group">
-                    <label for="example-text-input" class="control-label">Email*</label>
-                    <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"/>
-                   
+
+                <div class="row">
+                    <div id="labelCPF" class="col-md-3 form-group">
+                        <label for="cli_cpfcnpj" class="control-label">CPF:</label>
+                        <input type="text" id="cli_cpfcnpj" name="cli_cpfcnpj" value="" class="form-control" maxlength="14"/>
+                    </div>
+                    <div id="labelRG" class="col-md-3 form-group">
+                        <label for="cli_rgie" class="control-label">RG:</label>
+                        <input type="text" id="cli_rgie" name="cli_rgie" value="" class="form-control" maxlength="20"/>
+                    </div>
                 </div>
-                <div class="col-md-6 form-group">
-                    <label for="example-text-input" class="control-label">Confirme Email</label>
-                    <input class="form-control" type="search" value="How do I shoot web" id="example-search-input"/>
-                   
-                </div>
-            </div>
 
-
-
-          
-
-
-      
-        
-
-            <div class="row">
-                <div class="col-md-12 form-group text-right">
-                    <button type="reset" class="btn btn-default">Limpar</button>
-                    <button type="submit" class="btn btn-default">Salvar</button>
-                </div>
-            </div>
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        <label for="cli_nascimento" class="control-label">Data de Nascimento:</label>
+                        <input type="text" id="cli_nascimento" name="cli_nascimento" value="" class="form-control" maxlength="10"/>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="cli_sexo" class="control-label">Sexo:</label>
+                        <select id="cli_sexo" name="cli_sexo" class="form-control">
+                            <option value="M" selected="selected">Masculino</option>
+                            <option value="F" >Feminino</option>
+                        </select>
+                    </div>
 
 
 
 
+
+                    <div class="row">
+                        <div class="col-md-12 form-group text-right">
+                            <button type="reset" class="btn btn-default">Limpar</button>
+                            <button type="submit" class="btn btn-default">Salvar</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
         </div>
 
 
