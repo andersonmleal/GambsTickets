@@ -1,29 +1,38 @@
-
 package entidade;
 
+import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Usuario")
 public class Usuario {
-    
- private String nome;
- private String senha;
- private String email;
- private String nacionalidade;
- private String rg;
- private String cpf;
- private String estadoCivil;
- private String telResidencial;
- private String telComercial;
- private String celular;
- private String cep;
- private String logadouro;
- private String complemento;
- private String numero;
- private String bairro;
- private String cidade;
- private String estado;
- 
+
+    @Id
+    private long cpf;
+    private String nome;
+    private String sobreNome;
+    private String email;
+    private String senha;
+    private char sexo;
+    private long rg;
+    private String nacionalidade;
+    private int tipo_usuario;
+    private boolean status;
+    private Date dtCadastro;
+
     public Usuario() {
     }
-     
+
+    public long getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(long cpf) {
+        this.cpf = cpf;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -32,12 +41,12 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getSobreNome() {
+        return sobreNome;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setSobreNome(String sobreNome) {
+        this.sobreNome = sobreNome;
     }
 
     public String getEmail() {
@@ -48,6 +57,30 @@ public class Usuario {
         this.email = email;
     }
 
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public char getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(char sexo) {
+        this.sexo = sexo;
+    }
+
+    public long getRg() {
+        return rg;
+    }
+
+    public void setRg(long rg) {
+        this.rg = rg;
+    }
+
     public String getNacionalidade() {
         return nacionalidade;
     }
@@ -56,107 +89,28 @@ public class Usuario {
         this.nacionalidade = nacionalidade;
     }
 
-    public String getRg() {
-        return rg;
+    public int getTipo_usuario() {
+        return tipo_usuario;
     }
 
-    public void setRg(String rg) {
-        this.rg = rg;
+    public void setTipo_usuario(int tipo_usuario) {
+        this.tipo_usuario = tipo_usuario;
     }
 
-    public String getCpf() {
-        return cpf;
+    public boolean getStatus() {
+        return status;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
-    public String getEstadoCivil() {
-        return estadoCivil;
+    public Date getDtCadastro() {
+        return dtCadastro;
     }
 
-    public void setEstadoCivil(String estadoCivil) {
-        this.estadoCivil = estadoCivil;
+    public void setDtCadastro(Date dtCadastro) {
+        this.dtCadastro = dtCadastro;
     }
 
-    public String getTelResidencial() {
-        return telResidencial;
-    }
-
-    public void setTelResidencial(String telResidencial) {
-        this.telResidencial = telResidencial;
-    }
-
-    public String getTelComercial() {
-        return telComercial;
-    }
-
-    public void setTelComercial(String telComercial) {
-        this.telComercial = telComercial;
-    }
-
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public String getLogadouro() {
-        return logadouro;
-    }
-
-    public void setLogadouro(String logadouro) {
-        this.logadouro = logadouro;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
 }
