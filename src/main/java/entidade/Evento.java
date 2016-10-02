@@ -16,7 +16,28 @@ public class Evento {
     private Date dt_evento;
     private Date dt_cadastro_evento;
     private boolean status;
+    private String caminhoImagem;
+    private String descricao;
 
+    public String getCaminhoImagem() {
+        return caminhoImagem;
+    }
+
+    public void setCaminhoImagem(String caminhoImagem) {
+        this.caminhoImagem = caminhoImagem;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    
+    
+    
     public long getId_evento() {
         return id_evento;
     }
