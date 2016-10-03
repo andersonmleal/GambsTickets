@@ -10,7 +10,7 @@ package entidade;
  * @author anderson.leal
  */
 public class Setor {
-    
+
     private String nomeSetor;
     private double preco;
     private int quantidade;
@@ -38,6 +38,12 @@ public class Setor {
     public int getQuantidadeDisponivel() {
         return quantidadeDisponivel;
     }
-    
-    
+
+    public String getPrecoComVirgula() {
+
+        String resultado = String.format("%,2f", this.preco);
+
+        return resultado;
+    }
+
 }
