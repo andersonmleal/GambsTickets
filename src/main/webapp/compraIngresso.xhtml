@@ -14,7 +14,7 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </h:head>
     <h:body 
-        style="background: url(img/01_back.jpg) no-repeat center top fixed;
+        style="background: url(#{detalheManagedBean.evento.caminhoImagemBack}) no-repeat center top fixed;
         "> 
 
 
@@ -67,36 +67,18 @@
         <div class="container" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 5px;">
             <h2 style="text-align: center; color: #fff"><h:outputText value="#{detalheManagedBean.evento.nome_evento}"/></h2>
 
-            <img src="img/01.jpg" class="img-responsive" alt="Imagem Responsiva"/> 
+            <img src="#{detalheManagedBean.evento.caminhoImagem}" class="img-responsive" alt="Imagem Responsiva"/> 
 
 
 
             <div class="row">
                 <p style="color: #fff; padding: 2%">
 
-                    Em linguística, a noção de texto é ampla e ainda aberta a uma definição mais precisa. Grosso modo, pode ser entendido como manifestação linguística das ideias de um autor, que serão interpretadas pelo leitor de acordo com seus conhecimentos linguísticos e culturais. Seu tamanho é variável.
-
-                    “Conjunto de palavras e frases articuladas, escritas sobre qualquer suporte”[1].
-
-                    “Obra escrita 
+                    <h:outputText value="#{detalheManagedBean.evento.descricao}"/>
+                    
                 </p>
-
-                <p style="color: #fff; padding: 2%">
-
-                    Em linguística, a noção de texto é ampla e ainda aberta a uma definição mais precisa. Grosso modo, pode ser entendido como manifestação linguística das ideias de um autor, que serão interpretadas pelo leitor de acordo com seus conhecimentos linguísticos e culturais. Seu tamanho é variável.
-
-                    “Conjunto de palavras e frases articuladas, escritas sobre qualquer suporte”[1].
-
-                    “Obra escrita 
-                </p>
-
-
 
             </div>
-
-
-
-
 
             <button type="button" class="btn btn-primary" style="width: 40%; margin-left: 28%" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Comprar!</button>
 
@@ -116,7 +98,10 @@
                             <form id="productForm" method="post" class="form-horizontal">
 
                                 <div class="form-group">
-                                    <h4 style="text-align: center">Setor (R$ 150,00)</h4>
+                                    
+                                    <ui:repeat var="setor" value="#{detalheManagedBean.evento.setores}">
+                                    
+                                        <h4 style="text-align: center"><h:outputText value="#{setor.nomeSetor}"/> (R$ <h:outputText value="#{setor.preco}"/>)</h4>
 
                                     <div class="row" style="align-items: center">
                                         <div class="col-xs-4 selectContainer" style="margin-left: 16.66666667%">
@@ -139,6 +124,8 @@
                                             </select>
                                         </div>
                                     </div>
+                                    
+                                    </ui:repeat>
 
                                     <div class="checkbox" style="margin-left: 16.66666667%">
                                         <label><input type="checkbox" value=""/>Li e aceito os termos de uso</label>
@@ -146,6 +133,8 @@
 
 
                                 </div>
+                                
+                                
 
                             </form>
 

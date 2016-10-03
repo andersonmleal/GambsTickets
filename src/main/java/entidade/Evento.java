@@ -1,5 +1,7 @@
 package entidade;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Evento")
-public class Evento {
+public class Evento implements Serializable {
 
     @Id
     private long id_evento;
@@ -17,12 +19,42 @@ public class Evento {
     private Date dt_cadastro_evento;
     private boolean status;
     private String caminhoImagem;
+    private String caminhoImagemBack;
     private String descricao;
+    private ArrayList <Setor> setores;
+
+    public Evento() {
+        setores = new ArrayList<>();
+    }
 
     public String getCaminhoImagem() {
         return caminhoImagem;
     }
 
+    public void setSetores(ArrayList<Setor> setores) {
+        this.setores = setores;
+    }
+    
+    
+
+    public ArrayList<Setor> getSetores() {
+        return setores;
+    }
+
+    public void addSetores(Setor setor) {
+        
+        setores.add(setor);
+    }
+
+    public String getCaminhoImagemBack() {
+        return caminhoImagemBack;
+    }
+
+    public void setCaminhoImagemBack(String caminhoImagemBack) {
+        this.caminhoImagemBack = caminhoImagemBack;
+    }
+
+    
     public void setCaminhoImagem(String caminhoImagem) {
         this.caminhoImagem = caminhoImagem;
     }
