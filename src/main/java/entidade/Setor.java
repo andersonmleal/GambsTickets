@@ -39,11 +39,5 @@ public class Setor {
         return quantidadeDisponivel;
     }
 
-    public String getPrecoComVirgula() {
-
-        String resultado = String.format("%,2f", this.preco);
-
-        return resultado;
-    }
 
 }
