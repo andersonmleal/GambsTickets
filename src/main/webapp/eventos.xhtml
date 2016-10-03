@@ -25,7 +25,7 @@
 
             <div class="row">
 
-                <ui:repeat var="evento" value="#{eventoBean.eventos}">
+                <ui:repeat var="evento" value="#{eventoManagedBean.eventos}">
                     <div class="col-md-4">
                         <div class = "panel panel-primary">
                             <div class = "panel-heading">
@@ -36,10 +36,11 @@
                                 <p class="panel-text"><h:outputText value="#{evento.descricao}"/></p>
 
 
-                                <h:outputLink value="compraIngresso.xhtml" styleClass="btn btn-primary btn-block" pt:role="button">
-                                    <h:inputHidden value="#{detalheManagedBean.setEvento(evento)}"/>
-                                        Ver detalhes
-                                    </h:outputLink>
+                                <h:form>
+                                    <h:commandLink value="Editar" action="compraIngresso.xhtml" class="btn btn-primary">
+                                        <f:setPropertyActionListener target="#{detalheManagedBean.evento}" value="#{evento}"/>
+                                    </h:commandLink>
+                                </h:form>
 
                             </div>
                         </div>
