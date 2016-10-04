@@ -1,7 +1,24 @@
-.etapasCompra{
-    width: 10%;
-    height: 20%;
-    background-color: rgba(0, 0, 0, 0.5);
+.container{
+    margin-top: 10%;
+}
+.glyphicon{
+    position: relative;
     border-radius: 10px;
+    font-size: 60px;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 16%;
+    height: 50%;
+    padding-left: 45px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    
+}
+.glyphicon-arrow-right{
+    position: relative;
+    font-size: 60px;
+    background-color: rgba(0, 0, 0, 0);
+    padding-left: 20px;
+    width: 11%;
+    height: 50%;
     
 }
