@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>GambsTickets - Compra ingresso</title>
         <meta charset="utf-8"/>
@@ -62,8 +63,8 @@
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
-        
-        
+
+
         <div class="container" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 5px;">
             <h2 style="text-align: center; color: #fff"><h:outputText value="#{detalheManagedBean.evento.nome_evento}"/></h2>
 
@@ -75,7 +76,7 @@
                 <p style="color: #fff; padding: 2%">
 
                     <h:outputText value="#{detalheManagedBean.evento.descricao}"/>
-                    
+
                 </p>
 
             </div>
@@ -98,74 +99,86 @@
                             <form id="productForm" method="post" class="form-horizontal">
 
                                 <div class="form-group">
-                                    
-                                    <ui:repeat var="setor" value="#{detalheManagedBean.evento.setores}">
-                                    
-                                        <h4 style="text-align: center"><h:outputText value="#{setor.nomeSetor}"/> (R$ <h:outputText value="#{setor.preco}"/>)</h4>
 
-                                    <div class="row" style="align-items: center">
-                                        <div class="col-xs-4 selectContainer" style="margin-left: 16.66666667%">
-                                            <select class="form-control" name="size">
-                                                <option value="">Inteira</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                        </div>
+                                    <h:form>
+                                        <ui:repeat var="setor" value="#{detalheManagedBean.evento.setores}">
 
-                                        <div class="col-xs-4  selectContainer">
-                                            <select class="form-control" name="color">
-                                                <option value="">Meia Entrada</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    
-                                    </ui:repeat>
+                                            <h4 style="text-align: center"><h:outputText value="#{setor.nomeSetor}"/> (R$ <h:outputText value="#{setor.preco}"/>)</h4>
 
-                                    <div class="checkbox" style="margin-left: 16.66666667%">
-                                        <label><input type="checkbox" value=""/>Li e aceito os termos de uso</label>
-                                    </div>
+                                            <div class="row" style="align-items: center">
+                                                <div class="col-xs-4 selectContainer" style="margin-left: 16.66666667%">
+                                                    <h:selectOneMenu value = "# {} userData.data" class="form-control">
+                                                        <f:selectItem itemValue = "0" itemLabel = "Inteira" />
+                                                        <f:selectItem itemValue = "1" itemLabel = "1" />
+                                                        <f:selectItem itemValue = "2" itemLabel = "2" />  
+                                                        <f:selectItem itemValue = "3" itemLabel = "3" />  
+                                                        <f:selectItem itemValue = "4" itemLabel = "4" />  
+                                                        <f:selectItem itemValue = "5" itemLabel = "5" />  
+                                                    </h:selectOneMenu>
+                                                </div>
 
 
-                                </div>
-                                
-                                
+                                                <div class="col-xs-4 selectContainer">
+                                                    <h:selectOneMenu value = "# {} userData.data" class="form-control">
+                                                        <f:selectItem itemValue = "0" itemLabel = "Meia Entrada" />
+                                                        <f:selectItem itemValue = "1" itemLabel = "1" />
+                                                        <f:selectItem itemValue = "2" itemLabel = "2" />  
+                                                        <f:selectItem itemValue = "3" itemLabel = "3" />  
+                                                    </h:selectOneMenu>
 
-                            </form>
+                                                </div>
 
+                                            </div>
 
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                            <button type="button" class="btn btn-primary" >Adicionar ao Carrinho</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                        </ui:repeat>
+                                        </h:form>
 
-
-            <!-- Linha divisoria -->
-            <hr style="align: center"/>
-
-            <!-- rodape --> 
-            <footer>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <!-- Texto rodape -->
-                        <p style="text-align: center; color: #fff">Copyright &copy; GambsTickets</p>
-                    </div>
-                </div>
-            </footer> 
+                                            <div class="checkbox" style="margin-left: 16.66666667%">
+                                                <label><input type="checkbox" value=""/>Li e aceito os termos de uso</label>
+                                            </div>
 
 
-        </div> <!-- fim container -->
+                                            </div>
+
+                                            </form>
 
 
-    </h:body>
-</html>
+                                            </div>
+                                            <div class="modal-footer">
+
+
+                                                <h:form>
+
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+
+                                                    <h:commandLink value="Adicionar ao Carrinho" action="compraIngresso.xhtml" class="btn btn-primary">
+                                                        <f:setPropertyActionListener target="#{CarrinhoManagedBean.addCarrinho(ev)}" value="#{evento}"/>
+                                                    </h:commandLink>
+                                                </h:form>
+
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+
+
+                                            <!-- Linha divisoria -->
+                                            <hr style="align: center"/>
+
+                                            <!-- rodape --> 
+                                            <footer>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <!-- Texto rodape -->
+                                                        <p style="text-align: center; color: #fff">Copyright &copy; GambsTickets</p>
+                                                    </div>
+                                                </div>
+                                            </footer> 
+
+
+                                            </div> <!-- fim container -->
+
+
+                                            </h:body>
+                                            </html>
 
