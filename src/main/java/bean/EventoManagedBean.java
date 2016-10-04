@@ -33,9 +33,9 @@ public class EventoManagedBean implements Serializable {
 
         ev.setId_evento(0);
         ev.setNome_evento("NovoNome1");
-        ev.setCaminhoImagem("img\\01.jpg");
-        ev.setCaminhoImagemBack("img\\01_back.jpg");
-        ev.setDescricao("descricao_1");
+        ev.setCaminhoImagem("img/01.jpg");
+        ev.setCaminhoImagemBack("img/01_back.jpg");
+        ev.setDescricao("Em linguística, a noção de texto é ampla e ainda aberta a uma definição mais precisa. Grosso modo, pode ser entendido como manifestação linguística das ideias de um autor, que serão interpretadas pelo leitor de acordo com seus conhecimentos linguísticos e culturais. Seu tamanho é variável.");
         
         Setor set = new Setor("Pista", 150.00, 5000);
         ev.addSetores(set);
@@ -51,8 +51,8 @@ public class EventoManagedBean implements Serializable {
 
         ev2.setId_evento(2);
         ev2.setNome_evento("NovoNome2");
-        ev2.setCaminhoImagem("img\\02.png");
-        ev2.setCaminhoImagemBack("img\\02_back.jpg");
+        ev2.setCaminhoImagem("img/02.png");
+        ev2.setCaminhoImagemBack("img/02_back.jpg");
         ev2.setDescricao("descricao_2");
         
         Setor set4 = new Setor("Pista Premium", 300.00, 5000);
@@ -68,8 +68,8 @@ public class EventoManagedBean implements Serializable {
 
         ev3.setId_evento(3);
         ev3.setNome_evento("NovoNome3");
-        ev3.setCaminhoImagem("img\\03.png");
-        ev3.setCaminhoImagemBack("img\\03_back.jpg");
+        ev3.setCaminhoImagem("img/03.png");
+        ev3.setCaminhoImagemBack("img/03_back.jpg");
         ev3.setDescricao("descricao_3");
         
         Setor set7 = new Setor("Pista", 220.00, 5000);
@@ -83,8 +83,8 @@ public class EventoManagedBean implements Serializable {
 
         ev4.setId_evento(4);
         ev4.setNome_evento("NovoNome4");
-        ev4.setCaminhoImagem("img\\03.png");
-        ev4.setCaminhoImagemBack("img\\03_back.jpg");
+        ev4.setCaminhoImagem("img/03.png");
+        ev4.setCaminhoImagemBack("img/03_back.jpg");
         ev4.setDescricao("descricao_4");
 
         Setor set9 = new Setor("Cadeira", 180.00, 5000);

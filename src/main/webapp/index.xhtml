@@ -78,10 +78,8 @@
                             </div>
                             <img src="#{evento.caminhoImagem}" class="img-responsive" alt="Imagem Responsiva"/>   
                             <div class = "panel-body">
-                                <p class="panel-text"><h:outputText value="#{evento.descricao}"/></p>
-
                                 <h:form>
-                                    <h:commandLink value="Editar" action="compraIngresso.xhtml" class="btn btn-primary">
+                                    <h:commandLink value="Ver Evento!" action="compraIngresso.xhtml" class="btn btn-primary" style="width: 100%">
                                         <f:setPropertyActionListener target="#{detalheManagedBean.evento}" value="#{evento}"/>
                                     </h:commandLink>
                                 </h:form>
