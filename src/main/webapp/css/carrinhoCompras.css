@@ -4,21 +4,54 @@
 .glyphicon{
     position: relative;
     border-radius: 10px;
-    font-size: 60px;
     background-color: rgba(0, 0, 0, 0.2);
     width: 16%;
     height: 50%;
-    padding-left: 45px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-left: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    float: left;
     
 }
 .glyphicon-arrow-right{
     position: relative;
-    font-size: 60px;
     background-color: rgb(255, 255, 255);
-    padding-left: 20px;
+    padding-left: 3%;
     width: 11%;
     height: 50%;
     
+}
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 2000px) {
+    .glyphicon, .glyphicon-arrow-right{
+        font-size: 50px;
+    }
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 1000px) and (max-width: 1200px) {
+    .glyphicon, .glyphicon-arrow-right{
+        font-size: 50px;
+    }
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+    .glyphicon, .glyphicon-arrow-right{
+        font-size: 20px;
+    }
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .glyphicon, .glyphicon-arrow-right{
+        font-size: 20px;
+    }
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+    p{
+        font-size: 20px;
+    }
 }
