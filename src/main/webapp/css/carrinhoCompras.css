@@ -1,3 +1,6 @@
+body{
+    background-image: url("../img/");
+}
 .container{
     margin-top: 10%;
 }
@@ -12,6 +15,10 @@
     padding-bottom: 5%;
     float: left;
     
+}
+.glyphiconSelecionado{
+       background-color: aqua;
+       color: white;
 }
 .glyphicon-arrow-right{
     position: relative;

@@ -11,6 +11,8 @@
         <link href="css/full-slider.css" rel="stylesheet"/>
         <link href="css/bootstrap.css" rel="stylesheet"/> 
         <link href="css/carrinhoCompras.css" rel="stylesheet"/> 
+
+        <script src="js/carrinhoCompras.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </h:head>
@@ -67,52 +69,48 @@
 
 
         <div class="container">
-
-            <div class="icones">
-            <span class="glyphicon glyphicon-shopping-cart"></span>
-            <span class="glyphicon glyphicon-arrow-right"></span>
-            <span class="glyphicon glyphicon-envelope"></span>
-            <span class="glyphicon glyphicon-arrow-right"></span>
-            <span class="glyphicon glyphicon-usd"></span>
-            <span class="glyphicon glyphicon-arrow-right"></span>
-            <span class="glyphicon glyphicon-thumbs-up"></span>
-            </div>
-            <p></p>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Evento</th>
-                        <th>Quantidade</th>
-                        <th>Unitário</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                        <td>Doe</td>
-                    </tr>
-                    <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>mary@example.com</td>
-                        <td>Moe</td>
-                    </tr>
-                    <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>july@example.com</td>
-                        <td>Moe</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h:form>
+                <div class="icones">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                    <span class="glyphicon glyphicon-arrow-right"></span>
+                    <span class="glyphicon glyphicon-envelope"></span>
+                    <span class="glyphicon glyphicon-arrow-right"></span>
+                    <span class="glyphicon glyphicon-usd"></span>
+                    <span class="glyphicon glyphicon-arrow-right"></span>
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                </div>
+                <p></p>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Evento</th>
+                            <th>Quantidade</th>
+                            <th>Unitário</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John</td>
+                            <td>
+                                <h:selectOneMenu>
+                                    <f:selectItem itemValue="1" itemLabel="1"/>
+                                    <f:selectItem itemValue="2" itemLabel="2"/>
+                                    <f:selectItem itemValue="3" itemLabel="3"/>
+                                    <f:selectItem itemValue="4" itemLabel="4"/>
+                                    <f:selectItem itemValue="5" itemLabel="5"/>
+                                </h:selectOneMenu>
+                            </td>
+                            <td>4</td>
+                            <td>Doe</td>
+                        </tr>
+                    </tbody>
+                </table>
 
 
 
-            <ui:include src="rodape.xhtml"></ui:include>
-
+                <ui:include src="rodape.xhtml"></ui:include>
+            </h:form>
         </div> <!-- fim container -->
 
 
