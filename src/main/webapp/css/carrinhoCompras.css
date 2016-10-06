@@ -1,6 +1,4 @@
-body{
-    background-image: url("../img/");
-}
+
 .container{
     margin-top: 10%;
 }
@@ -27,6 +25,10 @@ body{
     width: 11%;
     height: 50%;
     
+}
+#avancar{
+    position: relative;
+    float: right;
 }
 /* Smaller than standard 960 (devices and browsers) */
 @media only screen and (max-width: 2000px) {
