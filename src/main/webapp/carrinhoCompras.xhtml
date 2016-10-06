@@ -10,12 +10,10 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>   
         <link href="css/full-slider.css" rel="stylesheet"/>
-        <link href="css/bootstrap.css" rel="stylesheet"/> 
-        <link href="css/carrinhoCompras.css" rel="stylesheet"/> 
-
-        <script src="js/carrinhoCompras.js"></script>
+        <link href="css/bootstrap.css" rel="stylesheet"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="css/carrinhoCompras.css" rel="stylesheet"/> 
     </h:head>
     <h:body>
 
@@ -70,7 +68,7 @@
 
 
         <div class="container">
-            <h:form>
+            <h:form class="form-group">
                 <div class="icones">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                     <span class="glyphicon glyphicon-arrow-right"></span>
@@ -107,7 +105,11 @@
                         </tr>
                     </tbody>
                 </table>
-                <p id="avancar"><p:commandButton value="Avançar"></p:commandButton></p>
+
+                <h:form class="form-group" style="padding-left: 10%;">
+                    <h:commandLink value="Concluir" action="#" class="btn btn-primary" style="width: 80%; margin-left: 10%">
+                    </h:commandLink>
+                </h:form>
 
                 <ui:include src="rodape.xhtml"></ui:include>
             </h:form>
