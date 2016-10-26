@@ -2,7 +2,10 @@ package entidade;
 
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -10,7 +13,9 @@ import javax.persistence.Table;
 public class Tipo_Setor {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id_tipo_setor;
+    @ManyToOne
     private long id_evento;
     private String nome_setor;
     private int capacidade;

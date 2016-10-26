@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>GambsTickets - Eventos</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link href="css/full-slider.css" rel="stylesheet"/>
+        <link href="css/bootstrap.css" rel="stylesheet"/> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </h:head>
+    <h:body>
+
+
+        <ui:include src="menuPesquisa.xhtml"></ui:include>
+
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Nome do evento:"/>
+                <p:inputText value="#{EventoManagedBean.evento.nome_evento}"/>
+
+                <h:outputLabel value="Local do evento:"/>
+                <p:inputText value="#{EventoManagedBean.evento.local_evento}"/>
+
+                <h:outputLabel value="Data do Evento:"/>
+                <p:calendar value="#{EventoManagedBean.evento.dt_evento}"
+                            navigator="true" yearRange="c-100:c+10"/>
+
+                <h:outputLabel value="Selecione a imagem do evento:"/>
+                <p:inputText value="#{EventoManagedBean.evento.caminhoImagem}"/>
+
+                <h:outputLabel value="Imagem de fundo do evento:"/>
+                <p:inputText value="#{EventoManagedBean.evento.caminhoImagemBack}"/>
+
+                <h:outputLabel value="Descrição:"/>
+                <p:inputText value="#{EventoManagedBean.evento.descricao}"/>
+
+
+                <p:commandButton value="Cadastrar" action="#{clienteBean.cadastrar()}"
+                                 ajax="false" />
+            </h:panelGrid>
+        </h:form>
+
+        <hr style="align: center"/>
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p style="text-align: center">Copyright &copy; GambsTickets</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </h:body>
+</html>
+

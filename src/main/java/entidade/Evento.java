@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -12,6 +15,7 @@ import javax.persistence.Table;
 public class Evento implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id_evento;
     private String nome_evento;
     private String local_evento;
@@ -21,7 +25,7 @@ public class Evento implements Serializable {
     private String caminhoImagem;
     private String caminhoImagemBack;
     private String descricao;
-    private ArrayList <Setor> setores;
+    private ArrayList<Setor> setores;
 
     public Evento() {
         setores = new ArrayList<>();
@@ -34,15 +38,13 @@ public class Evento implements Serializable {
     public void setSetores(ArrayList<Setor> setores) {
         this.setores = setores;
     }
-    
-    
 
     public ArrayList<Setor> getSetores() {
         return setores;
     }
 
     public void addSetores(Setor setor) {
-        
+
         setores.add(setor);
     }
 
@@ -54,7 +56,6 @@ public class Evento implements Serializable {
         this.caminhoImagemBack = caminhoImagemBack;
     }
 
-    
     public void setCaminhoImagem(String caminhoImagem) {
         this.caminhoImagem = caminhoImagem;
     }
@@ -67,9 +68,6 @@ public class Evento implements Serializable {
         this.descricao = descricao;
     }
 
-    
-    
-    
     public long getId_evento() {
         return id_evento;
     }
