@@ -2,9 +2,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>GambsTickets - Eventos</title>
@@ -18,7 +15,6 @@
     <h:body>
 
 
-        <ui:include src="menuPesquisa.xhtml"></ui:include>
 
         <h:form>
             <h:panelGrid columns="2">
@@ -42,8 +38,7 @@
                 <p:inputText value="#{EventoManagedBean.evento.descricao}"/>
 
 
-                <p:commandButton value="Cadastrar" action="#{clienteBean.cadastrar()}"
-                                 ajax="false" />
+                <p:commandButton value="Cadastrar" action="#{EventoManagedBean.cadastrar()}"/>
             </h:panelGrid>
         </h:form>
 

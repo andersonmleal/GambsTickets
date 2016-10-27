@@ -19,7 +19,7 @@ public class EventoDAO {
     private Session sessao;
     private Transaction trans;
 
-    public void addEndereco(Evento event) {
+    public void addEvento(Evento event) {
         try {
             sessao = Conexao.getSessionFactory().openSession();
             trans = sessao.beginTransaction();
@@ -41,7 +41,7 @@ public class EventoDAO {
         }
     }
 
-    public void removeUsuario(Evento evento) {
+    public void removeEvento(Evento evento) {
         try {
             sessao = Conexao.getSessionFactory().openSession();
             trans = sessao.beginTransaction();

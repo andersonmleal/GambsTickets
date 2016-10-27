@@ -121,7 +121,7 @@ public class EventoManagedBean implements Serializable {
     }
 
     public String cadastrar() {
-        eventoDAO.addEndereco(evento);
+        eventoDAO.addEvento(evento);
         return "menu";
     }
 
