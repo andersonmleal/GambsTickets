@@ -22,12 +22,32 @@ public class DetalheManagedBean implements Serializable {
      * Creates a new instance of DetalheManagedBean
      */
     private Evento evento;
+    private String ingressoIntSelecionado;
+    private String ingressoMeiaSelecionado;
 
     public DetalheManagedBean() {
 
 
     }
 
+    public String getIngressoIntSelecionado() {
+        return ingressoIntSelecionado;
+    }
+
+    public void setIngressoIntSelecionado(String ingressoIntSelecionado) {
+        this.ingressoIntSelecionado = ingressoIntSelecionado;
+    }
+
+    public String getIngressoMeiaSelecionado() {
+        return ingressoMeiaSelecionado;
+    }
+
+    public void setIngressoMeiaSelecionado(String ingressoMeiaSelecionado) {
+        this.ingressoMeiaSelecionado = ingressoMeiaSelecionado;
+    }
+
+    
+    
     public Evento getEvento() {
         return evento;
     }
@@ -36,6 +56,8 @@ public class DetalheManagedBean implements Serializable {
         this.evento = evento;
     }
 
+    
+    
     
     
 }
