@@ -44,11 +44,11 @@ public class EventoManagedBean implements Serializable {
         ev.setCaminhoImagemBack("img/01_back.jpg");
         ev.setDescricao("Metallica é uma banda norte-americana de heavy metal originaria de Los Angeles, mas com base em San Francisco. Os seus lançamentos incluem tempos rápidos, instrumentais, e musicalidade agressiva, a qual os colocou no lugar de uma das bandas fundadoras do Big Four of Thrash, conjuntamente com Slayer, Megadeth e Anthrax. O Metallica foi formado em 1981, após James Hetfield responder a um anúncio que Lars Ulrich colocou no jornal local. A sua formação atual apresenta os fundadores Ulrich (bateria) e Hetfield (vocal e guitarra base), o guitarrista Kirk Hammett (que se juntou à banda em 1983), e o baixista Robert Trujillo (membro desde 2003). Antes de chegarem à sua formação atual, a banda teve outros integrantes, sendo eles: Dave Mustaine (guitarra), Ron McGovney, Cliff Burton e Jason Newsted (baixo).");
 
-        Setor set = new Setor("Pista", 150.00, 5000);
+        Setor set = new Setor(1, "Pista", 150.00, 5000);
         ev.addSetores(set);
-        Setor set1 = new Setor("Cadeira Inferior", 200.00, 5000);
+        Setor set1 = new Setor(2, "Cadeira Inferior", 200.00, 5000);
         ev.addSetores(set1);
-        Setor set2 = new Setor("Cadeira Superior", 100.00, 5000);
+        Setor set2 = new Setor(3, "Cadeira Superior", 100.00, 5000);
         ev.addSetores(set2);
 
         eventos.add(ev);
@@ -61,11 +61,11 @@ public class EventoManagedBean implements Serializable {
         ev2.setCaminhoImagemBack("img/02_back.jpg");
         ev2.setDescricao("CPM 22 é uma banda brasileira de hardcore melódico formada em 1995 na cidade de Barueri, São Paulo. Os membros, Badauí (vocal), Japinha (bateria), Luciano (guitarra), Fernando (baixo) e Phil (guitarra) já abriram shows de bandas internacionais como Lagwagon, No Fun at All, Down by Law e System of a Down (Rock in Rio 6, onde comemoravam 20 anos da banda). Foi uma das poucas bandas brasileiras de hardcore a ganhar um disco de ouro e fazer sucesso no mainstream, e com isso, abriu as portas para uma nova geração de bandas brasileiras de rock. Em 2008 ganharam um Grammy Latino de melhor álbum de rock brasileiro.");
 
-        Setor set4 = new Setor("Pista Premium", 300.00, 5000);
+        Setor set4 = new Setor(1, "Pista Premium", 300.00, 5000);
         ev2.addSetores(set4);
-        Setor set5 = new Setor("Pista", 120.00, 5000);
+        Setor set5 = new Setor(2, "Pista", 120.00, 5000);
         ev2.addSetores(set5);
-        Setor set6 = new Setor("Cadeira", 200.00, 5000);
+        Setor set6 = new Setor(3, "Cadeira", 200.00, 5000);
         ev2.addSetores(set6);
 
         eventos.add(ev2);
@@ -78,9 +78,9 @@ public class EventoManagedBean implements Serializable {
         ev3.setCaminhoImagemBack("img/03_back.jpg");
         ev3.setDescricao("Natiruts é uma banda brasileira de reggae pop formada em Brasília em 1996. Chamada inicialmente Nativus, a banda de reggae foi rebatizada de Natiruts devido a um grupo catarinense de música regional, Os Nativos, que entrou com um processo. A banda brasíliense defende o reggae de raiz mas incorporou ao som uma grande influência brasileira. Quando ainda chamava-se Nativus, o grupo vendeu 40 mil discos independentes com o sucesso \"Presente de um beija-flor\", até ser contratada pela EMI. A nova edição do disco, Nativus, vendeu 450 mil cópias. O segundo disco, Povo Brasileiro, foi produzido por Liminha e, como o reggae de Bob Marley, tem músicas com mensagens de alto teor político, como \"Proteja-se e lute\" e \"Povo brasileiro\".");
 
-        Setor set7 = new Setor("Pista", 220.00, 5000);
+        Setor set7 = new Setor(1, "Pista", 220.00, 5000);
         ev3.addSetores(set7);
-        Setor set8 = new Setor("Cadeira", 180.00, 5000);
+        Setor set8 = new Setor(2, "Cadeira", 180.00, 5000);
         ev3.addSetores(set8);
 
         eventos.add(ev3);
@@ -93,7 +93,7 @@ public class EventoManagedBean implements Serializable {
         ev4.setCaminhoImagemBack("img/03_back.jpg");
         ev4.setDescricao("descricao_4");
 
-        Setor set9 = new Setor("Cadeira", 180.00, 5000);
+        Setor set9 = new Setor(1, "Cadeira", 180.00, 5000);
         ev4.addSetores(set9);
 
         eventos.add(ev4);

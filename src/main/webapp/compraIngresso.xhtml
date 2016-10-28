@@ -103,28 +103,28 @@
                                 <div class="form-group form-horizontal">
 
 
-                                    <h:panelGrid columns="2">
+                                    <h:panelGrid columns="1">
                                         <ui:repeat var="setor" value="#{detalheManagedBean.evento.setores}">
                                             <h4 style="text-align: center">
                                                 <h:outputText value="#{setor.nomeSetor}"/> (R$ <h:outputText value="#{setor.preco}"/>)
                                             </h4>
 
 
+
                                             <div class="row" style="align-items: center">
                                                 <div class="col-xs-4 selectContainer" style="margin-left: 16.66666667%">
-                                                    <h:selectOneMenu value = "#{detalheManagedBean.ingressoIntSelecionado}" class="form-control">
+                                                    <h:selectOneMenu value = "#{detalheManagedBean.inteira}" class="form-control" >
                                                         <f:selectItem itemValue = "0" itemLabel = "Inteira" />
-                                                        <f:selectItem itemValue = "1" itemLabel = "1" />
-                                                        <f:selectItem itemValue = "2" itemLabel = "2" />  
-                                                        <f:selectItem itemValue = "3" itemLabel = "3" />  
-                                                        <f:selectItem itemValue = "4" itemLabel = "4" />  
-                                                        <f:selectItem itemValue = "5" itemLabel = "5" />  
+
+                                                        <f:selectItems value="#{detalheManagedBean.getIngressoInt(setor)}" 
+                                                                       var="int" itemLabel="#{int}" itemValue="#{int.quantidade}"/>
+
                                                     </h:selectOneMenu>
                                                 </div>
 
 
                                                 <div class="col-xs-4 selectContainer">
-                                                    <h:selectOneMenu value = "#{detalheManagedBean.ingressoMeiaSelecionado}" class="form-control">
+                                                    <h:selectOneMenu value = "#{detalheManagedBean.meia}" class="form-control">
                                                         <f:selectItem itemValue = "0" itemLabel = "Meia Entrada" />
                                                         <f:selectItem itemValue = "1" itemLabel = "1" />
                                                         <f:selectItem itemValue = "2" itemLabel = "2" />  

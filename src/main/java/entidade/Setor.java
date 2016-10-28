@@ -5,22 +5,34 @@
  */
 package entidade;
 
+import java.util.List;
+
 /**
  *
  * @author anderson.leal
  */
 public class Setor {
 
+    private int idSetor;
     private String nomeSetor;
     private double preco;
     private int quantidade;
     private int quantidadeDisponivel;
+    private String quantidadeSelecionada;
 
-    public Setor(String nomeSetor, double preco, int quantidade) {
+    public Setor(int id, String nomeSetor, double preco, int quantidade) {
         this.nomeSetor = nomeSetor;
         this.preco = preco;
         this.quantidade = quantidade;
         this.quantidade = quantidadeDisponivel;
+        this.idSetor = id;
+    }
+
+    public Setor() {
+    }
+
+    public int getIdSetor() {
+        return idSetor;
     }
 
     public String getNomeSetor() {
@@ -39,5 +51,18 @@ public class Setor {
         return quantidadeDisponivel;
     }
 
+    public String getQuantidadeSelecionada() {
+        return quantidadeSelecionada;
+    }
+
+    public void setQuantidadeSelecionada(String quantidadeSelecionada) {
+        this.quantidadeSelecionada = quantidadeSelecionada;
+    }
+    
+    public List<String> ingressos(){
+        return null;
+    
+    
+    }
 
 }
