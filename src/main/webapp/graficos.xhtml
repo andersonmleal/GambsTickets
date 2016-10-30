@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>GambsTickets - Eventos</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link href="css/full-slider.css" rel="stylesheet"/>
+        <link href="css/bootstrap.css" rel="stylesheet"/> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="demos.css" type="text/css" media="screen" />
+
+        <script src="js/RGraph.common.core.js" ></script>
+        <script src="js/RGraph.common.dynamic.js" ></script>
+        <script src="js/RGraph.common.tooltips.js" ></script>
+        <script src="js/RGraph.line.js" ></script>
+        <script src="js/RGraph.bar.js"></script>
+    </h:head>
+    <h:body>
+        <ui:include src="menuPesquisa.xhtml"></ui:include>
+
+        
+        <div id="canvas">
+            
+            <canvas id="cvs" width="600" heigth="250"></canvas>
+            
+            
+        </div>
+        
+        
+        <script>
+            window.onload = function ()
+            {
+                var line = new RGraph.Line({
+                    id: 'cvs',
+                    data: [4, 5, 5, 8, 8, 7, 8, 9, 8, 11, 13, 13, 12, 14, 15, 15, 17, 18, 18, 17, 17],
+                    options: {
+                        tooltips: function () {
+                            return "\0";
+                        },
+                        tooltipsHotspotXonly: true,
+                        numxticks: 6,
+                        gutterLeft: 30,
+                        gutterRight: 30,
+                        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                        textAccessible: true
+                    }
+                }).draw();
+            };
+        </script>
+    </h:body>
+</html>
+
