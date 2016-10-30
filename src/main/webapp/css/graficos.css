@@ -1,0 +1,18 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29/10/2016, 22:16:42
+    Author     : gustavo.oliveira
+*/
+
+#canvas{
+    position: relative;
+    left: 20%;
+}
+h3{
+   position: relative;
+   left: 22%;
+}
