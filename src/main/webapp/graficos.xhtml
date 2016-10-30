@@ -34,16 +34,27 @@
             {
                 var line = new RGraph.Line({
                     id: 'cvs',
-                    data: [5000, 5000, 5000, 8000, 8000, 7000, 8000, 9000, 8000, 11000, 13000, 13000, 12000, 14000, 15000, 15000, 17000, 18000, 18000, 17000, 17000],
+                    data: [#{GraficosManagedBean.fatJaneiro},
+                           #{GraficosManagedBean.fatFevereiro},
+                           #{GraficosManagedBean.fatMarço},
+                           #{GraficosManagedBean.fatAbril},
+                           #{GraficosManagedBean.fatMaio},
+                           #{GraficosManagedBean.fatJunho},
+                           #{GraficosManagedBean.fatJulho},
+                           #{GraficosManagedBean.fatAgosto},
+                           #{GraficosManagedBean.fatSetembro},
+                           #{GraficosManagedBean.fatOutubro},
+                           #{GraficosManagedBean.fatNovembro},
+                           #{GraficosManagedBean.fatDezembro}],
                     options: {
                         tooltips: function () {
                             return "\0";
                         },
-                        tooltipsHotspotXonly: true,
-                        numxticks: 6,
-                        gutterLeft: 30,
-                        gutterRight: 30,
-                        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                        tooltipsHotspotXonly: false,
+                        numxticks: 12,
+                        gutterLeft: 20,
+                        gutterRight: 25,
+                        labels: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
                         textAccessible: true
                     }
                 }).draw();
