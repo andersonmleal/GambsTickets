@@ -10,9 +10,9 @@ and open the template in the editor.
 
 #canvas{
     position: relative;
-    left: 20%;
+    left: 18%;
 }
-h3{
+#canvas h3{
    position: relative;
-   left: 22%;
+   left: 25%;
 }
