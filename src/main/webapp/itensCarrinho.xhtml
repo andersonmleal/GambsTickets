@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Eventos no carrinho</title>
+    </h:head>
+    <h:body>
+        <h:outputText value="#{detalheManagedBean.ingressoIntSelecionado}"/>
+        <p></p>
+        <h:outputText value="#{detalheManagedBean.ingressoMeiaSelecionado}"/>
+        <input type="hidden" id="etapaCompra" value="itensCarrinho"></input>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Evento</th>
+                    <th>Quantidade</th>
+                    <th>Unitário(R$)</th>
+                    <th>Total(R$)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CPM 22</td>
+                    <td>2</td>
+                    <td>R$ 40,00</td>
+                    <td>RS 80,00</td>
+                </tr>
+                <tr>
+                    <td>Metallica</td>
+                    <td>1</td>
+                    <td>R$ 100,00</td>
+                    <td>RS 100,00</td>
+                </tr>
+                <tr>
+                    <td>Natiruts</td>
+                    <td>3</td>
+                    <td>R$ 40,00</td>
+                    <td>RS 120,00</td>
+                </tr>
+                <p:commandButton value="Avançar" action="#{carrinhoManagedBean.proximaEtapa()}"
+                                 ajax="false" />
+            </tbody>
+        </table>
+    </h:body>
+</html>
+

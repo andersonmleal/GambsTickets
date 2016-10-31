@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class CarrinhoManagedBean implements Serializable {
 
     private ArrayList<Evento> eventos;
+    private String etapaCompra;
 
     public CarrinhoManagedBean() {
 
@@ -58,5 +59,14 @@ public class CarrinhoManagedBean implements Serializable {
         return eventos.size();
     }
 
+    public String getEtapaCompra() {
+        etapaCompra = "enderecoEntrega.xhtml";
+        return etapaCompra;
+    }
+
+    public void setEtapaCompra(String etapaCompra) {
+        this.etapaCompra = etapaCompra;
+    }
+    
 
 }

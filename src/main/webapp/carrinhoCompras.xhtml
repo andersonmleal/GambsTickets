@@ -12,80 +12,43 @@
         <link href="css/compraIngresso.css" rel="stylesheet"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="${pathResources}js/carrinhoCompras.js"></script>
         <link href="css/bootstrap.css" rel="stylesheet"/>
         <link href="css/carrinhoCompras.css" rel="stylesheet"/> 
 
     </h:head>
     <h:body>
-
-
-        <ui:include src="menu.xhtml"></ui:include>
-
-
-        <div class="container">
-            <div class="row">
-                <h:form class="form-group">
-                    <div class="icones">
-                        <span class="glyphicon glyphicon-shopping-cart"></span>
-                        <span class="glyphicon glyphicon-arrow-right"></span>
-                        <span class="glyphicon glyphicon-envelope"></span>
-                        <span class="glyphicon glyphicon-arrow-right"></span>
-                        <span class="glyphicon glyphicon-usd"></span>
-                        <span class="glyphicon glyphicon-arrow-right"></span>
-                        <span class="glyphicon glyphicon-thumbs-up"></span>
-                    </div>
-                </h:form>
-            </div>
-            <p></p>
-            <div class="row">
-                
-                <h:outputText value="#{detalheManagedBean.ingressoIntSelecionado}"/>
+        <ui:insert name="menu">            
+            <ui:include src="menu.xhtml"></ui:include>
+        </ui:insert>
+            
+            <div class="container">
+                <div class="row">
+                    <h:form class="form-group">
+                        <div class="icones">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            <span class="glyphicon glyphicon-arrow-right"></span>
+                            <span class="glyphicon glyphicon-envelope"></span>
+                            <span class="glyphicon glyphicon-arrow-right"></span>
+                            <span class="glyphicon glyphicon-usd"></span>
+                            <span class="glyphicon glyphicon-arrow-right"></span>
+                            <span class="glyphicon glyphicon-thumbs-up"></span>
+                        </div>
+                    </h:form>
+                </div>
                 <p></p>
-                <h:outputText value="#{detalheManagedBean.ingressoMeiaSelecionado}"/>
-                
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Evento</th>
-                            <th>Quantidade</th>
-                            <th>Unitário(R$)</th>
-                            <th>Total(R$)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>CPM 22</td>
-                            <td>2</td>
-                            <td>R$ 40,00</td>
-                            <td>RS 80,00</td>
-                        </tr>
-                        <tr>
-                            <td>Metallica</td>
-                            <td>1</td>
-                            <td>R$ 100,00</td>
-                            <td>RS 100,00</td>
-                        </tr>
-                        <tr>
-                            <td>Natiruts</td>
-                            <td>3</td>
-                            <td>R$ 40,00</td>
-                            <td>RS 120,00</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                <div class="row">
+                    <ui:include class="etapaCompra" src="${CarrinhoManagedBean.etapaCompra}"></ui:include>
+                </div>
 
-            <h:form class="form-group">
-                <h:commandLink value="Concluir" action="#" class="btn btn-primary" style="width: 80%; margin-left: 10%">
-                </h:commandLink>
-            </h:form>
+                <h:form class="form-group">
+                    <h:commandLink value="Concluir" action="#" class="btn btn-primary" style="width: 80%; margin-left: 10%">
+                    </h:commandLink>
+                </h:form>
 
-            <ui:include src="rodape.xhtml"></ui:include>
+                <ui:include src="rodape.xhtml"></ui:include>
 
-        </div> <!-- fim container -->
-
-
-
+            </div> <!-- fim container -->
     </h:body>
 </html>
 
