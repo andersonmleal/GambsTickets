@@ -124,9 +124,9 @@ public class GraficosManagedBean {
 
     public Object getFatDezembro() {
         fatDezembro = 0;
-         if(fatDezembro == 0){
+         /*if(fatDezembro == 0){
             return null;
-        }
+        }*/
         return (float)fatDezembro;
     }
 
