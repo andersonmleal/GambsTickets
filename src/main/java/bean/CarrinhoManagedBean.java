@@ -60,13 +60,48 @@ public class CarrinhoManagedBean implements Serializable {
     }
 
     public String getEtapaCompra() {
-        etapaCompra = "enderecoEntrega.xhtml";
+        if (etapaCompra == null) {
+            etapaCompra = "etapaCompra-enderecoEntrega.xhtml";
+        }
         return etapaCompra;
     }
 
     public void setEtapaCompra(String etapaCompra) {
         this.etapaCompra = etapaCompra;
     }
-    
+
+    public void proximaEtapa(int etapaAtual) {
+        switch (etapaAtual) {
+            case 1:
+                etapaCompra = "etapaCompra-enderecoEntrega.xhtml";
+                break;
+
+            case 2:
+                etapaCompra = "etapaCompra-formaPagamento.xhtml";
+                break;
+
+            case 3:
+                etapaCompra = "etapaCompra-resumoCompra.xhtml";
+                break;
+
+        }
+    }
+
+    public void voltarEtapa(int etapaAtual) {
+        switch (etapaAtual) {
+            case 2:
+                etapaCompra = "etapaCompra-itensCarrinho.xhtml";
+                break;
+
+            case 3:
+                etapaCompra = "etapaCompra-enderecoEntrega.xhtml";
+                break;
+
+            case 4:
+                etapaCompra = "etapaCompra-formaPagamento.xhtml";
+                break;
+
+        }
+    }
 
 }

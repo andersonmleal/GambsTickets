@@ -41,8 +41,9 @@
                 <h:outputLabel value="Complemento:"/>
                 <p:inputText value="#{enderecoManagedBean.endereco.complemento}"/>
 
+                <p:commandButton ajax="false" value="Voltar" action="#{CarrinhoManagedBean.voltarEtapa(2)}"/>
                 <p:commandButton ajax="false" value="Cadastrar" action="#{enderecoManagedBean.cadastrar()}"/>
-                <p:commandButton value="Avançar" action="#{carrinhoManagedBean.proximaEtapa()}"
+                <p:commandButton value="Avançar" action="#{CarrinhoManagedBean.proximaEtapa(2)}"
                                  ajax="false" />
             </h:panelGrid>
         </h:form>

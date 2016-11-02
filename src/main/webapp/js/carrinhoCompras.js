@@ -1,7 +1,6 @@
 window.addEventListener("load", iniciar);
 var etapa;
 function iniciar() {
-    $(".glyphicon-shopping-cart").addClass("glyphiconSelecionado");
     var etapaCompra = document.getElementById("etapaCompra").value;
     if (etapaCompra === "itensCarrinho") {
         $(".glyphicon-shopping-cart").addClass("glyphiconSelecionado");
