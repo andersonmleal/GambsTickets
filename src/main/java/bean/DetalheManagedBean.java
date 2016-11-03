@@ -40,6 +40,7 @@ public class DetalheManagedBean implements Serializable {
         ingressoMeia = new ArrayList<>();
         ingressoIntSelecionado = new ArrayList<>();
         ingressoMeiaSelecionado = new ArrayList<>();
+        setores = new ArrayList<>();
     }
 
     public List<Setor> getIngressoInt(int id) {
@@ -95,6 +96,18 @@ public class DetalheManagedBean implements Serializable {
 
     public void setEvento(Evento evento) {
         this.evento = evento;
+    }
+
+    public List<Setor> getSetores() {
+        Setor camarote = new Setor(1, "Camarote", 1598.00, 1000);
+        Setor pista = new Setor(2, "Pista", 2.00, 5000);
+        setores.add(pista);
+        setores.add(camarote);
+        return setores;
+    }
+
+    public void setSetores(List<Setor> setores) {
+        this.setores = setores;
     }
 
 }

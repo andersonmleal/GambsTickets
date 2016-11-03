@@ -104,7 +104,7 @@
 
 
                                     <h:panelGrid columns="1">
-                                        <ui:repeat var="setor" value="#{detalheManagedBean.evento.setores}">
+                                        <ui:repeat var="setor" value="#{detalheManagedBean.setores}">
                                             <h4 style="text-align: center">
                                                 <h:outputText value="#{setor.nomeSetor}"/> (R$ <h:outputText value="#{setor.preco}"/>)
                                             </h4>
@@ -116,7 +116,7 @@
                                                     <h:selectOneMenu value = "#{detalheManagedBean.inteira}" class="form-control" >
                                                         <f:selectItem itemValue = "0" itemLabel = "Inteira" />
 
-                                                        <f:selectItems value="#{detalheManagedBean.getIngressoInt(setor)}" 
+                                                        <f:selectItems value="#{detalheManagedBean.getIngressoInt(setor.idSetor)}" 
                                                                        var="int" itemLabel="#{int}" itemValue="#{int.quantidade}"/>
 
                                                     </h:selectOneMenu>

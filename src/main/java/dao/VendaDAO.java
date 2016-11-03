@@ -19,7 +19,7 @@ public class VendaDAO {
     private Session sessao;
     private Transaction trans;
 
-    public void addEndereco(Venda vend) {
+    public void addVenda(Venda vend) {
         try {
             sessao = Conexao.getSessionFactory().openSession();
             trans = sessao.beginTransaction();
@@ -27,6 +27,7 @@ public class VendaDAO {
             Venda venda = new Venda();
             venda.setId_venda(vend.getId_venda());
             venda.setId_tipo_setor(vend.getId_tipo_setor());
+            venda.setId_endereco(vend.getId_endereco());
             venda.setUsuario(vend.getUsuario());
             venda.setQuantidade(vend.getQuantidade());
             venda.setDt_cadastro(vend.getDt_cadastro());
@@ -41,7 +42,7 @@ public class VendaDAO {
         }
     }
 
-    public void removeUsuario(Venda venda) {
+    public void removeVenda(Venda venda) {
         try {
             sessao = Conexao.getSessionFactory().openSession();
             trans = sessao.beginTransaction();

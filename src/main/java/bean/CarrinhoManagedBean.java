@@ -61,7 +61,7 @@ public class CarrinhoManagedBean implements Serializable {
 
     public String getEtapaCompra() {
         if (etapaCompra == null) {
-            etapaCompra = "etapaCompra-enderecoEntrega.xhtml";
+            etapaCompra = "etapaCompra-itensCarrinho.xhtml";
         }
         return etapaCompra;
     }

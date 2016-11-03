@@ -2,14 +2,21 @@ package entidade;
 
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Endereco")
 public class Endereco {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id_endereco;
     private String logradouro;
     private String numero;
@@ -18,7 +25,10 @@ public class Endereco {
     private String cidade;
     private String estado;
     private long cep;
+    @ManyToOne
+    @JoinColumn(name = "cpf")
     private long usuario_evento;
+    @Temporal(TemporalType.DATE)
     private Date dt_cadastro;
     private boolean status;
 

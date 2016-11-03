@@ -13,6 +13,7 @@ public class Venda {
     private long id_venda;
     private long id_tipo_setor;
     private long usuario;
+    private long id_endereco;
     private int quantidade;
     private Date dt_cadastro;
     private boolean status;
@@ -23,6 +24,14 @@ public class Venda {
 
     public void setId_venda(long id_venda) {
         this.id_venda = id_venda;
+    }
+
+    public long getId_endereco() {
+        return id_endereco;
+    }
+
+    public void setId_endereco(long id_endereco) {
+        this.id_endereco = id_endereco;
     }
 
     public long getId_tipo_setor() {

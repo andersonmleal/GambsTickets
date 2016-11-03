@@ -11,6 +11,7 @@
         <link href="css/bootstrap.css" rel="stylesheet"/> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="css/carrinhoCompras.css" rel="stylesheet"/> 
     </h:head>
     <h:body>
 
@@ -28,7 +29,7 @@
                 <p:inputText value="#{enderecoManagedBean.endereco.numero}"/>
 
                 <p:commandButton ajax="false" value="Voltar" action="#{CarrinhoManagedBean.voltarEtapa(3)}"/>
-                <p:commandButton value="Avançar" action="#{CarrinhoManagedBean.proximaEtapa(3)}"
+                <p:commandButton styleClass="avancar" value="Avançar" action="#{CarrinhoManagedBean.proximaEtapa(3)}"
                                  ajax="false" />
             </h:panelGrid>
         </h:form>

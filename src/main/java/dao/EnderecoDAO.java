@@ -25,7 +25,6 @@ public class EnderecoDAO {
             trans = sessao.beginTransaction();
 
             Endereco endereco = new Endereco();
-            endereco.setId_endereco(end.getId_endereco());
             endereco.setLogradouro(end.getLogradouro());
             endereco.setNumero(end.getNumero());
             endereco.setComplemento(end.getComplemento());
