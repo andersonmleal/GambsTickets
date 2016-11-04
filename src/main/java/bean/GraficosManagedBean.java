@@ -17,117 +17,70 @@ import javax.enterprise.context.RequestScoped;
 @RequestScoped
 public class GraficosManagedBean {
 
-    float fatJaneiro;
-    float fatFevereiro;
-    float fatMarço;
-    float fatAbril;
-    float fatMaio;
-    float fatJunho;
-    float fatJulho;
-    float fatAgosto;
-    float fatSetembro;
-    float fatOutubro;
-    float fatNovembro;
+    float fatJaneiro = 1000;
+    float fatFevereiro = 5000;
+    float fatMarço = 5000;
+    float fatAbril = 8000;
+    float fatMaio = 8000;
+    float fatJunho = 7000;
+    float fatJulho = 9000;
+    float fatAgosto = 11000;
+    float fatSetembro = 13000;
+    float fatOutubro = 12000;
+    float fatNovembro = 14000;
     float fatDezembro;
 
     public GraficosManagedBean() {
     }
     //0, 5000, 5000, 8000, 8000, 7000, 8000, 9000, 8000, 11000, 13000, 13000, 12000, 14000, 15000, 15000, 17000, 18000, , , 
 
-    public Object getFatJaneiro() {
-        fatJaneiro = 1;
-        if(fatJaneiro == 0){
-            return null;
-        }
-        return (float)fatJaneiro;
+    public float getFatJaneiro() {
+        return fatJaneiro;
     }
 
-    public Object getFatFevereiro() {
-        fatFevereiro = 5000;
-         if(fatFevereiro == 0){
-            return null;
-        }
-        return (float)fatFevereiro;
+    public float getFatFevereiro() {
+        return fatFevereiro;
     }
 
-    public Object getFatMarço() {
-        fatMarço = 5000;
-         if(fatMarço == 0){
-            return null;
-        }
-        return (float)fatMarço;
+    public float getFatMarço() {
+        return fatMarço;
     }
 
-    public Object getFatAbril() {
-        fatAbril = 8000;
-         if(fatAbril == 0){
-            return null;
-        }
-        return (float)fatAbril;
+    public float getFatAbril() {
+        return fatAbril;
     }
 
-    public Object getFatMaio() {
-        fatMaio = 8000;
-         if(fatMaio == 0){
-            return null;
-        }
-        return (float)fatMaio;
+    public float getFatMaio() {
+        return fatMaio;
     }
 
-    public Object getFatJunho() {
-        fatJunho = 7000;
-         if(fatJunho == 0){
-            return null;
-        }
-        return (float)fatJunho;
+    public float getFatJunho() {
+        return fatJunho;
     }
 
-    public Object getFatJulho() {
-        fatJulho = 8000;
-         if(fatJulho == 0){
-            return null;
-        }
-        return (float)fatJulho;
+    public float getFatJulho() {
+        return fatJulho;
     }
 
-    public Object getFatAgosto() {
-        fatAgosto = 9000;
-         if(fatAgosto == 0){
-            return null;
-        }
-        return (float)fatAgosto;
+    public float getFatAgosto() {
+        return fatAgosto;
     }
 
-    public Object getFatSetembro() {
-        fatSetembro = 11000;
-         if(fatSetembro == 0){
-            return null;
-        }
-        return (float)fatSetembro;
+    public float getFatSetembro() {
+        return fatSetembro;
     }
 
-    public Object getFatOutubro() {
-        fatOutubro = 10000;
-         if(fatOutubro == 0){
-            return null;
-        }
-        return (float)fatOutubro;
+    public float getFatOutubro() {
+        return fatOutubro;
     }
 
-    public Object getFatNovembro() {
-        fatNovembro = 8000;
-         if(fatNovembro == 0){
-            return null;
-        }
-        return (float)fatNovembro;
+    public float getFatNovembro() {
+        return fatNovembro;
     }
 
-    public Object getFatDezembro() {
-        fatDezembro = 0;
-         /*if(fatDezembro == 0){
-            return null;
-        }*/
-        return (float)fatDezembro;
+    public float getFatDezembro() {
+        return fatDezembro;
     }
 
+  
 }
