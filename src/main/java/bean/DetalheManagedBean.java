@@ -9,7 +9,7 @@ import entidade.Evento;
 import entidade.EventoIngressos;
 import entidade.Setor;
 import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
  * @author Leal
  */
 @Named(value = "detalheManagedBean")
-@SessionScoped
+@ViewScoped
 public class DetalheManagedBean implements Serializable {
 
     /**
@@ -53,10 +53,11 @@ public class DetalheManagedBean implements Serializable {
     }
 
     public Evento getEvento() {
-        return evento;
+        return evento;  
     }
 
     public void setEvento(Evento evento) {
+        this.evento = null;
         this.evento = evento;
 
         for (int i = 0; i < evento.getSetores().size(); i++) {
