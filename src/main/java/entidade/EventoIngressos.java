@@ -5,6 +5,7 @@
  */
 package entidade;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author anderson.mleal
  */
-public class EventoIngressos {
+public class EventoIngressos implements Serializable{
 
     private Setor setor;
     private int inteira;

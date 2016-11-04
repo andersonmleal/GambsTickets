@@ -31,6 +31,7 @@ public class DetalheManagedBean implements Serializable {
     private List<EventoIngressos> evIngressos;
 
     public DetalheManagedBean() {
+        evIngressos = null;
         evIngressos = new ArrayList<>();
 
     }
