@@ -29,7 +29,6 @@ public class EventoIngressos {
 
             Setor set = new Setor(setor.getIdSetor(), setor.getNomeSetor(), setor.getPreco(), setor.getQuantidade());
             set.setQuantidadeSelecionada(i);
-            //this.setor.setQuantidadeSelecionada(i);
             setores.add(set);
 
         }
