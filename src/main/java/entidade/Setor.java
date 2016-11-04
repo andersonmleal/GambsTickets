@@ -18,7 +18,7 @@ public class Setor {
     private double preco;
     private int quantidade;
     private int quantidadeDisponivel;
-    private String quantidadeSelecionada;
+    private int quantidadeSelecionada;
 
     public Setor(int id, String nomeSetor, double preco, int quantidade) {
         this.nomeSetor = nomeSetor;
@@ -51,13 +51,15 @@ public class Setor {
         return quantidadeDisponivel;
     }
 
-    public String getQuantidadeSelecionada() {
+    public int getQuantidadeSelecionada() {
         return quantidadeSelecionada;
     }
 
-    public void setQuantidadeSelecionada(String quantidadeSelecionada) {
+    public void setQuantidadeSelecionada(int quantidadeSelecionada) {
         this.quantidadeSelecionada = quantidadeSelecionada;
     }
+
+    
     
     public List<String> ingressos(){
         return null;

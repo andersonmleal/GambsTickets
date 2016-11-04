@@ -6,6 +6,7 @@
 package bean;
 
 import entidade.Evento;
+import entidade.EventoIngressos;
 import entidade.Setor;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -25,69 +26,29 @@ public class DetalheManagedBean implements Serializable {
      * Creates a new instance of DetalheManagedBean
      */
     private Evento evento;
-    private List<Setor> setores;
-    private List<Setor> ingressoInt;
-    private List<Setor> ingressoMeia;
-
-    private List<String> ingressoIntSelecionado;
-    private ArrayList<String> ingressoMeiaSelecionado;
-    private String inteira;
-    private String meia;
+    private String ingressoIntSelecionado;
+    private String ingressoMeiaSelecionado;
+    private List<EventoIngressos> evIngressos;
 
     public DetalheManagedBean() {
+        evIngressos = new ArrayList<>();
 
-        ingressoInt = new ArrayList<>();
-        ingressoMeia = new ArrayList<>();
-        ingressoIntSelecionado = new ArrayList<>();
-        ingressoMeiaSelecionado = new ArrayList<>();
-        setores = new ArrayList<>();
     }
 
-    public List<Setor> getIngressoInt(int id) {
-
-        for (int i = 0; i < 5; i++) {
-
-            Setor set = new Setor(
-                    id,
-                    evento.getSetores().get(id).getNomeSetor(),
-                    evento.getSetores().get(id).getPreco(),
-                    evento.getSetores().get(id).getQuantidade());
-            set.setQuantidadeSelecionada(String.valueOf(i));
-
-            ingressoInt.add(set);
-        }
-
-        return ingressoInt;
-    }
-
-    public List<Setor> getIngressoMeia() {
-        return ingressoMeia;
-    }
-
-    public String getInteira() {
-        return inteira;
-    }
-
-    public void setInteira(String inteira) {
-        this.inteira = inteira;
-        this.ingressoIntSelecionado.add(inteira);
-    }
-
-    public String getMeia() {
-        return meia;
-    }
-
-    public void setMeia(String meia) {
-        this.meia = meia;
-        this.ingressoMeiaSelecionado.add(meia);
-    }
-
-    public List<String> getIngressoIntSelecionado() {
+    public String getIngressoIntSelecionado() {
         return ingressoIntSelecionado;
     }
 
-    public List<String> getIngressoMeiaSelecionado() {
+    public void setIngressoIntSelecionado(String ingressoIntSelecionado) {
+        this.ingressoIntSelecionado = ingressoIntSelecionado;
+    }
+
+    public String getIngressoMeiaSelecionado() {
         return ingressoMeiaSelecionado;
+    }
+
+    public void setIngressoMeiaSelecionado(String ingressoMeiaSelecionado) {
+        this.ingressoMeiaSelecionado = ingressoMeiaSelecionado;
     }
 
     public Evento getEvento() {
@@ -96,18 +57,23 @@ public class DetalheManagedBean implements Serializable {
 
     public void setEvento(Evento evento) {
         this.evento = evento;
+
+        for (int i = 0; i < evento.getSetores().size(); i++) {
+
+            Setor setor;
+            setor = evento.getSetores().get(i);
+            EventoIngressos ev = new EventoIngressos(setor);
+            evIngressos.add(ev);
+        }
+
     }
 
-    public List<Setor> getSetores() {
-        Setor camarote = new Setor(1, "Camarote", 1598.00, 1000);
-        Setor pista = new Setor(2, "Pista", 2.00, 5000);
-        setores.add(pista);
-        setores.add(camarote);
-        return setores;
+    public List<EventoIngressos> getEvIngressos() {
+        return evIngressos;
     }
 
-    public void setSetores(List<Setor> setores) {
-        this.setores = setores;
+    public void setEvIngressos(List<EventoIngressos> evIngressos) {
+        this.evIngressos = evIngressos;
     }
 
 }

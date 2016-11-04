@@ -44,7 +44,6 @@ public class Evento implements Serializable {
     }
 
     public void addSetores(Setor setor) {
-
         setores.add(setor);
     }
 
@@ -116,4 +115,6 @@ public class Evento implements Serializable {
         this.status = status;
     }
 
+    
+    
 }
