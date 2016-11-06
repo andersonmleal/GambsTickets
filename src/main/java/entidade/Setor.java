@@ -6,14 +6,22 @@
 package entidade;
 
 import java.util.List;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author anderson.leal
  */
 public class Setor {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int idSetor;
+    @ManyToOne
+    private Evento id_evento;
     private String nomeSetor;
     private double preco;
     private int quantidade;

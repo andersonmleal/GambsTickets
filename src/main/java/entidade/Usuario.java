@@ -1,13 +1,17 @@
 package entidade;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "Usuario")
-public class Usuario {
+public class Usuario implements Serializable {
 
     @Id
     private long cpf;
@@ -20,7 +24,10 @@ public class Usuario {
     private String nacionalidade;
     private int tipo_usuario;
     private boolean status;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dtCadastro;
+    @OneToMany(mappedBy = "usuario_evento")
+    private List<Endereco> endereco;
 
     public Usuario() {
     }

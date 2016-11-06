@@ -1,6 +1,5 @@
 package bean;
 
-import dao.UsuarioDAO;
 import entidade.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -13,19 +12,18 @@ public class UsuarioBean {
      * Creates a new instance of CadastroUsuarioBean
      */
     private Usuario usuario = new Usuario();
-    private UsuarioDAO usuarioDao = new UsuarioDAO();
 
     public UsuarioBean() {
     }
 
     public String adicionarUsuario() {
-        usuarioDao.addUsuario(usuario);
+        //usuarioDao.addUsuario(usuario);
         return "sucesso";
 
     }
 
     public String removeUsuario() {
-        usuarioDao.removeUsuario(usuario);
+        //usuarioDao.removeUsuario(usuario);
         return "sucesso";
 
     }

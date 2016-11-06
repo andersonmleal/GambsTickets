@@ -5,7 +5,6 @@
  */
 package bean;
 
-import dao.EventoDAO;
 import entidade.Evento;
 import entidade.Setor;
 import javax.inject.Named;
@@ -23,7 +22,6 @@ public class EventoManagedBean implements Serializable {
 
     private ArrayList<Evento> eventos;
     private Evento evento;
-    private EventoDAO eventoDAO;
 
     /**
      * @return the eventos
@@ -121,7 +119,7 @@ public class EventoManagedBean implements Serializable {
     }
 
     public String cadastrar() {
-        eventoDAO.addEvento(evento);
+        //eventoDAO.addEvento(evento);
         return "menu";
     }
 

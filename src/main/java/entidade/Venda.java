@@ -1,20 +1,33 @@
 package entidade;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "Venda")
-public class Venda {
+public class Venda implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id_venda;
-    private long id_tipo_setor;
-    private long usuario;
-    private long id_endereco;
+    @ManyToOne
+    private Setor id_setor;
+    @ManyToOne
+    private Usuario usuario;
+    @ManyToOne
+    private Endereco id_endereco;
+    @OneToOne(mappedBy = "id_formaP")
+    private long id_formaPagamento;
     private int quantidade;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dt_cadastro;
     private boolean status;
 
@@ -26,28 +39,36 @@ public class Venda {
         this.id_venda = id_venda;
     }
 
-    public long getId_endereco() {
-        return id_endereco;
+    public Setor getId_setor() {
+        return id_setor;
     }
 
-    public void setId_endereco(long id_endereco) {
-        this.id_endereco = id_endereco;
+    public void setId_setor(Setor id_setor) {
+        this.id_setor = id_setor;
     }
 
-    public long getId_tipo_setor() {
-        return id_tipo_setor;
-    }
-
-    public void setId_tipo_setor(long id_tipo_setor) {
-        this.id_tipo_setor = id_tipo_setor;
-    }
-
-    public long getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(long usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Endereco getId_endereco() {
+        return id_endereco;
+    }
+
+    public void setId_endereco(Endereco id_endereco) {
+        this.id_endereco = id_endereco;
+    }
+
+    public long getId_formaPagamento() {
+        return id_formaPagamento;
+    }
+
+    public void setId_formaPagamento(long id_formaPagamento) {
+        this.id_formaPagamento = id_formaPagamento;
     }
 
     public int getQuantidade() {

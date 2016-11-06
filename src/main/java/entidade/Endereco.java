@@ -1,11 +1,11 @@
 package entidade;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -13,21 +13,20 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Endereco")
-public class Endereco {
+public class Endereco implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id_endereco;
     private String logradouro;
-    private String numero;
+    private int numero;
     private String complemento;
     private String bairro;
     private String cidade;
     private String estado;
     private long cep;
     @ManyToOne
-    @JoinColumn(name = "cpf")
-    private long usuario_evento;
+    private Usuario usuario_evento;
     @Temporal(TemporalType.DATE)
     private Date dt_cadastro;
     private boolean status;
@@ -48,11 +47,11 @@ public class Endereco {
         this.logradouro = logradouro;
     }
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
@@ -96,11 +95,11 @@ public class Endereco {
         this.cep = cep;
     }
 
-    public long getUsuario_evento() {
+    public Usuario getUsuario_evento() {
         return usuario_evento;
     }
 
-    public void setUsuario_evento(long usuario_evento) {
+    public void setUsuario_evento(Usuario usuario_evento) {
         this.usuario_evento = usuario_evento;
     }
 

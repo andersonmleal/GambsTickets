@@ -5,12 +5,12 @@
  */
 package bean;
 
-import dao.EnderecoDAO;
-import dao.EventoDAO;
 import entidade.Endereco;
+import java.util.Calendar;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Named;
+import jpa.EnderecoJPA;
 
 /**
  *
@@ -22,21 +22,27 @@ import javax.inject.Named;
 public class EnderecoManagedBean {
     
     private Endereco endereco;
-    private EnderecoDAO enderecoDAO;
-
+    private EnderecoJPA enderecoJPA;
+    
     public EnderecoManagedBean() {
         endereco = new Endereco();
-    }
 
+    }
+    
     public Endereco getEndereco() {
         return endereco;
     }
-
+    
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+
     public String cadastrar() {
-        enderecoDAO.addEndereco(endereco);
+        Calendar c = Calendar.getInstance();
+        endereco.setDt_cadastro(c.getTime());
+
+        enderecoJPA = new EnderecoJPA();
+        enderecoJPA.incluir(endereco);
         return "menu";
     }
 }

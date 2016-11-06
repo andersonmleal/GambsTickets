@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author anderson.mleal
  */
-public class EventoIngressos implements Serializable{
+public class EventoIngressos{
 
     private Setor setor;
     private int inteira;

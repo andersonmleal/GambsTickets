@@ -3,12 +3,14 @@ package entidade;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "Evento")
@@ -19,13 +21,16 @@ public class Evento implements Serializable {
     private long id_evento;
     private String nome_evento;
     private String local_evento;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dt_evento;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dt_cadastro_evento;
     private boolean status;
     private String caminhoImagem;
     private String caminhoImagemBack;
     private String descricao;
-    private ArrayList<Setor> setores;
+    @OneToMany(mappedBy = "usuario_evento")
+    private List<Setor> setores;
 
     public Evento() {
         setores = new ArrayList<>();
@@ -39,7 +44,7 @@ public class Evento implements Serializable {
         this.setores = setores;
     }
 
-    public ArrayList<Setor> getSetores() {
+    public List<Setor> getSetores() {
         return setores;
     }
 
