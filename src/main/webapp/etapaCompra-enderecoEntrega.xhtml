@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>GambsTickets - Eventos</title>
         <meta charset="utf-8"/>
@@ -11,6 +12,8 @@
         <link href="css/bootstrap.css" rel="stylesheet"/> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script language="JavaScript" type="text/javascript" src="js/MascaraValidacao.js"></script>
+        <script language="JavaScript" type="text/javascript" src="js/MascaraValidacao.js"></script>
         <link href="css/carrinhoCompras.css" rel="stylesheet"/> 
     </h:head>
     <h:body>
@@ -48,6 +51,113 @@
                                  ajax="false" />
             </h:panelGrid>
         </h:form>
+
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h:form class="form-horizontal" role="form">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend style="text-align: center">Endereço de Entrega</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="textinput">Rua</label>
+                            <div class="col-sm-10">
+                                <input type="text" maxlength="35" placeholder="Digite nome de sua rua" class="form-control"/>
+                            </div>
+                        </div>
+
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="textinput">Número</label>
+                            <div class="col-sm-4">
+                                <input type="text" maxlength="6" onkeypress='return SomenteNumero(event)' placeholder="Número Residência" class="form-control"/>
+                            </div>
+
+                            <label class="col-sm-2 control-label" for="textinput">Complemento</label>
+                            <div class="col-sm-4">
+                                <input type="text" maxlength="15" placeholder="Complemento" class="form-control"/>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="textinput">Cidade</label>
+                            <div class="col-sm-10">
+                                <input type="text" maxlength="20" placeholder="Nome de sua cidade" class="form-control"/>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="textinput">Estado</label>
+                            <div class="col-sm-4">
+                                <h:selectOneMenu value = "#" class="form-control">
+                                    <f:selectItem itemValue = "" itemLabel = "Estado" />
+                                    <f:selectItem itemValue = "AC" itemLabel = "Acre" />
+                                    <f:selectItem itemValue = "AL" itemLabel = "Alagoas" />
+                                    <f:selectItem itemValue = "AP" itemLabel = "Amapá" />
+                                    <f:selectItem itemValue = "AM" itemLabel = "Amazonas" />
+                                    <f:selectItem itemValue = "BA" itemLabel = "Bahia" />
+                                    <f:selectItem itemValue = "CE" itemLabel = "Ceará" />
+                                    <f:selectItem itemValue = "DF" itemLabel = "Distrito Federal" />
+                                    <f:selectItem itemValue = "ES" itemLabel = "Espírito Santo" />
+                                    <f:selectItem itemValue = "GO" itemLabel = "Goiás" />
+                                    <f:selectItem itemValue = "MA" itemLabel = "Maranhão" />
+                                    <f:selectItem itemValue = "MT" itemLabel = "Mato Grosso" />
+                                    <f:selectItem itemValue = "MS" itemLabel = "Mato Grosso do Sul" />
+                                    <f:selectItem itemValue = "MG" itemLabel = "Minas Gerais" />
+                                    <f:selectItem itemValue = "PA" itemLabel = "Pará" />
+                                    <f:selectItem itemValue = "PB" itemLabel = "Paraíba" />
+                                    <f:selectItem itemValue = "PR" itemLabel = "Paraná" />
+                                    <f:selectItem itemValue = "PE" itemLabel = "Pernambuco" />
+                                    <f:selectItem itemValue = "PI" itemLabel = "Piauí" />
+                                    <f:selectItem itemValue = "RJ" itemLabel = "Rio de Janeiro" />
+                                    <f:selectItem itemValue = "RN" itemLabel = "Rio Grande do Norte" />
+                                    <f:selectItem itemValue = "RS" itemLabel = "Rio Grande do Sul" />
+                                    <f:selectItem itemValue = "RO" itemLabel = "Rondônia" />
+                                    <f:selectItem itemValue = "RR" itemLabel = "Roraima" />
+                                    <f:selectItem itemValue = "SC" itemLabel = "Santa Catarina" />
+                                    <f:selectItem itemValue = "SP" itemLabel = "São Paulo" />
+                                    <f:selectItem itemValue = "SE" itemLabel = "Sergipe" />
+                                    <f:selectItem itemValue = "TO" itemLabel = "Tocantins" />
+                                </h:selectOneMenu>
+                            </div>
+
+                            <label class="col-sm-2 control-label" for="textinput">CEP</label>
+                            <div class="col-sm-4">
+                                <input type="text" name="cep" onkeypress='return SomenteNumero(event)'   maxlength="8" placeholder="Digite seu CEP" class="form-control" />
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="pull-right">
+                                    <p:commandButton class="btn btn-default" ajax="false" value="Voltar" action="#{CarrinhoManagedBean.voltarEtapa(2)}"/>
+
+                                    <p:commandButton class="btn btn-primary" value="Avançar" action="#{CarrinhoManagedBean.proximaEtapa(2)}"
+                                                     ajax="false" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </h:form>
+            </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+
+
+
+
+
+
+
 
         <hr style="align: center"/>
         <footer>

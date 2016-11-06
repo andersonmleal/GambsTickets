@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>GambsTickets - Eventos</title>
         <meta charset="utf-8"/>
@@ -12,27 +13,105 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="css/carrinhoCompras.css" rel="stylesheet"/> 
+
+        <script type="text/javascript" src="js/Pagamento.js"></script>
+
     </h:head>
+
+
     <h:body>
 
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h:form class="form-horizontal span6">
+                        <fieldset>
+                            <legend>Payment</legend>
 
-        <input type="hidden" id="etapaCompra" name="formaPagamento" value="formaPagamento"></input>
-        <h:form>
-            <h:panelGrid columns="2">
-                <h:outputLabel value="CEP:"/>
-                <p:inputText value="#{enderecoManagedBean.endereco.cep}"/>
+                            <div class="control-group">
+                                <label class="control-label">Nome do Titular</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control" pattern="\w+ \w+.*" title="Informe o nome do cartão" required="true"/>
+                                </div>
+                            </div>
 
-                <h:outputLabel value="Rua:"/>
-                <p:inputText value="#{enderecoManagedBean.endereco.logradouro}"/>
+                            <div class="control-group">
+                                <label class="control-label">Número do Cartão</label>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Primeiro grupo" required="true"/>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Segundo grupo" required="true"/>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Terceiro grupo" required="true"/>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Quarto Grupo" required="true"/>
+                                    </div>
+                                </div>
 
-                <h:outputLabel value="Nº:"/>
-                <p:inputText value="#{enderecoManagedBean.endereco.numero}"/>
+                            </div>
 
-                <p:commandButton ajax="false" value="Voltar" action="#{CarrinhoManagedBean.voltarEtapa(3)}"/>
-                <p:commandButton styleClass="avancar" value="Avançar" action="#{CarrinhoManagedBean.proximaEtapa(3)}"
-                                 ajax="false" />
-            </h:panelGrid>
-        </h:form>
+                                <div class="control-group">
+                                    <label class="control-label">Data de Validade</label>
+                                    <div class="form-group">
+                                        <div class="col-sm-6">
+                                            <h:selectOneMenu value = "#" class="form-control">
+                                                <f:selectItem itemValue = "Janeiro" itemLabel = "Janeiro" />
+                                                <f:selectItem itemValue = "Fevereiro" itemLabel = "Fevereiro" />
+                                                <f:selectItem itemValue = "Março" itemLabel = "Março" />
+                                                <f:selectItem itemValue = "Abril" itemLabel = "Abril" />
+                                                <f:selectItem itemValue = "Junho" itemLabel = "Junho" />
+                                                <f:selectItem itemValue = "Julho" itemLabel = "Julho" />
+                                                <f:selectItem itemValue = "Agosto" itemLabel = "Agosto" />
+                                                <f:selectItem itemValue = "Setembro" itemLabel = "Setembro" />
+                                                <f:selectItem itemValue = "Outubro" itemLabel = "Outubro" />
+                                                <f:selectItem itemValue = "Novembro" itemLabel = "Novembro" />
+                                                <f:selectItem itemValue = "Dezembro" itemLabel = "Dezembro" />
+                                            </h:selectOneMenu>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h:selectOneMenu value = "#" class="form-control">
+                                                <f:selectItem itemValue = "2016" itemLabel = "2016" />
+                                                <f:selectItem itemValue = "2017" itemLabel = "2017" />
+                                                <f:selectItem itemValue = "2018" itemLabel = "2018" />
+                                                <f:selectItem itemValue = "2019" itemLabel = "2019" />
+                                                <f:selectItem itemValue = "2020" itemLabel = "2020" />
+                                                <f:selectItem itemValue = "2021" itemLabel = "2021" />
+                                                <f:selectItem itemValue = "2022" itemLabel = "2022" />
+                                                <f:selectItem itemValue = "2023" itemLabel = "2023" />
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">Código de Segurança</label>
+                                        <div class="form-group">
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Código de verificação atrás do cartão" required="true"/>
+                                            </div>
+                                            <div class="span8">
+                                                <!-- screenshot may be here -->
+                                            </div>
+                                        </div>
+                                    
+                                </div>
+
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn">Cancel</button>
+                            </div>
+                        </fieldset>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
 
         <hr style="align: center"/>
         <footer>
