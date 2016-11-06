@@ -13,13 +13,14 @@ import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.enterprise.context.SessionScoped;
 
 /**
  *
  * @author Leal
  */
 @Named(value = "detalheManagedBean")
-@ViewScoped
+@SessionScoped
 public class DetalheManagedBean implements Serializable {
 
     /**
@@ -28,11 +29,11 @@ public class DetalheManagedBean implements Serializable {
     private Evento evento;
     private String ingressoIntSelecionado;
     private String ingressoMeiaSelecionado;
+    private List<String> ingressosMeia;
+    private List<String> ingressosInteira;
     private List<EventoIngressos> evIngressos;
 
     public DetalheManagedBean() {
-        evIngressos = null;
-        evIngressos = new ArrayList<>();
 
     }
 
@@ -40,8 +41,21 @@ public class DetalheManagedBean implements Serializable {
         return ingressoIntSelecionado;
     }
 
+    public List<String> getIngressosMeia() {
+        return ingressosMeia;
+    }
+
+    public List<String> getIngressosInteira() {
+        return ingressosInteira;
+    }
+
     public void setIngressoIntSelecionado(String ingressoIntSelecionado) {
         this.ingressoIntSelecionado = ingressoIntSelecionado;
+        
+        if (!ingressoIntSelecionado.contains("0")) {
+            this.ingressosInteira.add(this.ingressoIntSelecionado);
+        }
+
     }
 
     public String getIngressoMeiaSelecionado() {
@@ -50,15 +64,24 @@ public class DetalheManagedBean implements Serializable {
 
     public void setIngressoMeiaSelecionado(String ingressoMeiaSelecionado) {
         this.ingressoMeiaSelecionado = ingressoMeiaSelecionado;
+
+        if (!ingressoMeiaSelecionado.contains("0")) {
+            this.ingressosMeia.add(ingressoMeiaSelecionado);
+        }
     }
 
     public Evento getEvento() {
-        return evento;  
+        return evento;
     }
 
     public void setEvento(Evento evento) {
-        this.evento = null;
+        this.ingressoIntSelecionado = null;
+        this.ingressoMeiaSelecionado = null;
+        this.evento = new Evento();
         this.evento = evento;
+        this.ingressosMeia = new ArrayList<>();
+        this.ingressosInteira = new ArrayList<>();
+        this.evIngressos = new ArrayList<>();
 
         for (int i = 0; i < evento.getSetores().size(); i++) {
 
