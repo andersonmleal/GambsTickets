@@ -5,18 +5,23 @@
  */
 package entidade;
 
+import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author anderson.leal
  */
-public class Setor {
+@Entity
+@Table(name = "Setor")
+public class Setor implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idSetor;
@@ -67,12 +72,9 @@ public class Setor {
         this.quantidadeSelecionada = quantidadeSelecionada;
     }
 
-    
-    
-    public List<String> ingressos(){
+    public List<String> ingressos() {
         return null;
-    
-    
+
     }
 
 }

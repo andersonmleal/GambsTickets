@@ -29,7 +29,7 @@ public class Evento implements Serializable {
     private String caminhoImagem;
     private String caminhoImagemBack;
     private String descricao;
-    @OneToMany(mappedBy = "usuario_evento")
+    @OneToMany(mappedBy = "id_evento")
     private List<Setor> setores;
 
     public Evento() {

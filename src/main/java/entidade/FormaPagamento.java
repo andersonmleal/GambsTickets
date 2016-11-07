@@ -19,7 +19,6 @@ public class FormaPagamento implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @OneToOne
     private long id_formaP;
     private String bandeira;
     private int parcela;

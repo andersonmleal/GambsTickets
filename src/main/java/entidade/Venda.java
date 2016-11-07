@@ -24,7 +24,6 @@ public class Venda implements Serializable {
     private Usuario usuario;
     @ManyToOne
     private Endereco id_endereco;
-    @OneToOne(mappedBy = "id_formaP")
     private long id_formaPagamento;
     private int quantidade;
     @Temporal(javax.persistence.TemporalType.DATE)

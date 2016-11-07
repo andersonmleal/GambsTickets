@@ -8,6 +8,8 @@
     <class>entidade.Tipo_Setor</class>
     <class>entidade.Usuario</class>
     <class>entidade.Venda</class>
+    <class>entidade.Setor</class>
+    <class>entidade.FormaPagamento</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DataTicket"/>
       <property name="javax.persistence.jdbc.user" value="app"/>

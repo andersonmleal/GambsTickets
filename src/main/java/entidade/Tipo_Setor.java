@@ -1,5 +1,6 @@
 package entidade;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,10 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "Tipo_Setor")
-public class Tipo_Setor {
+public class Tipo_Setor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,6 +23,7 @@ public class Tipo_Setor {
     private int capacidade;
     private int vendidos;
     private double preco;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dt_cadastro;
     private boolean status;
 
