@@ -20,7 +20,7 @@ public class FormaPagamentoJPA {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("DataTicket");
 
-    public void persist(FormaPagamento formaPagamento) {
+    public void incluir(FormaPagamento formaPagamento) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();

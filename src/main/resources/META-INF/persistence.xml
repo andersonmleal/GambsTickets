@@ -5,7 +5,6 @@
     <class>entidade.Endereco</class>
     <class>entidade.Evento</class>
     <class>entidade.Telefone</class>
-    <class>entidade.Tipo_Setor</class>
     <class>entidade.Usuario</class>
     <class>entidade.Venda</class>
     <class>entidade.Setor</class>

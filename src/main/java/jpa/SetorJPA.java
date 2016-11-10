@@ -20,7 +20,7 @@ public class SetorJPA {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("DataTicket");
 
-    public void addSetor(Setor setor) {
+    public void incluir(Setor setor) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();

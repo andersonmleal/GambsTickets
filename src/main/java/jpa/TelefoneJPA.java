@@ -20,7 +20,7 @@ public class TelefoneJPA {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("DataTicket");
 
-    public void addTelefone(Telefone telefone) {
+    public void incluir(Telefone telefone) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();

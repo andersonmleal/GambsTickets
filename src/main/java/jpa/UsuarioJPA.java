@@ -20,7 +20,7 @@ public class UsuarioJPA {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("DataTicket");
 
-    public void addUsuario(Usuario usuario) {
+    public void incluir(Usuario usuario) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();

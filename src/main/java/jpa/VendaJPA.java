@@ -20,7 +20,7 @@ public class VendaJPA {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("DataTicket");
 
-    public void addVenda(Venda venda) {
+    public void incluir(Venda venda) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();

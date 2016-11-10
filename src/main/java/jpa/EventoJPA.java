@@ -20,7 +20,7 @@ public class EventoJPA {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("DataTicket");
 
-    public void addEvento(Evento evento) {
+    public void incluir(Evento evento) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();

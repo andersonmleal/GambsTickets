@@ -20,6 +20,8 @@ public class FormaPagamento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id_formaP;
+    @OneToOne(mappedBy = "formaPagamento")
+    private Venda id_venda;
     private String bandeira;
     private int parcela;
     private long numCartao;
@@ -34,6 +36,22 @@ public class FormaPagamento implements Serializable {
 
     public void setBandeira(String bandeira) {
         this.bandeira = bandeira;
+    }
+
+    public long getId_formaP() {
+        return id_formaP;
+    }
+
+    public void setId_formaP(long id_formaP) {
+        this.id_formaP = id_formaP;
+    }
+
+    public Venda getId_venda() {
+        return id_venda;
+    }
+
+    public void setId_venda(Venda id_venda) {
+        this.id_venda = id_venda;
     }
 
     public int getParcela() {

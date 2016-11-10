@@ -6,6 +6,7 @@
 package entidade;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -32,6 +34,9 @@ public class Setor implements Serializable {
     private int quantidade;
     private int quantidadeDisponivel;
     private int quantidadeSelecionada;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dt_cadastro;
+    private boolean status;
 
     public Setor(int id, String nomeSetor, double preco, int quantidade) {
         this.nomeSetor = nomeSetor;
@@ -75,6 +80,30 @@ public class Setor implements Serializable {
     public List<String> ingressos() {
         return null;
 
+    }
+
+    public Evento getId_evento() {
+        return id_evento;
+    }
+
+    public void setId_evento(Evento id_evento) {
+        this.id_evento = id_evento;
+    }
+
+    public Date getDt_cadastro() {
+        return dt_cadastro;
+    }
+
+    public void setDt_cadastro(Date dt_cadastro) {
+        this.dt_cadastro = dt_cadastro;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
 }

@@ -64,4 +64,12 @@ public class Telefone implements Serializable {
         this.status = status;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
 }

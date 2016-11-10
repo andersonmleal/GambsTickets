@@ -24,7 +24,8 @@ public class Venda implements Serializable {
     private Usuario usuario;
     @ManyToOne
     private Endereco id_endereco;
-    private long id_formaPagamento;
+    @OneToOne
+    private FormaPagamento formaPagamento;
     private int quantidade;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dt_cadastro;
@@ -62,14 +63,6 @@ public class Venda implements Serializable {
         this.id_endereco = id_endereco;
     }
 
-    public long getId_formaPagamento() {
-        return id_formaPagamento;
-    }
-
-    public void setId_formaPagamento(long id_formaPagamento) {
-        this.id_formaPagamento = id_formaPagamento;
-    }
-
     public int getQuantidade() {
         return quantidade;
     }
@@ -92,6 +85,14 @@ public class Venda implements Serializable {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public FormaPagamento getFormaPagamento() {
+        return formaPagamento;
+    }
+
+    public void setFormaPagamento(FormaPagamento formaPagamento) {
+        this.formaPagamento = formaPagamento;
     }
 
 }
