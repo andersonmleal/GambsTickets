@@ -17,10 +17,8 @@
         <script type="text/javascript" src="js/Pagamento.js"></script>
 
     </h:head>
-
-
     <h:body>
-
+        <input type="hidden" id="etapaCompra" name="formaPagamento" value="formaPagamento"></input>
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
@@ -103,9 +101,9 @@
 
 
                             <div class="form-actions">
+                                <p:commandButton action="#{CarrinhoManagedBean.voltarEtapa(2)}" value="Voltar" class="btn"/>
                                 <p:commandButton class="btn btn-primary" value="Avançar" action="#{CarrinhoManagedBean.proximaEtapa(3)}"
                                                      ajax="false" />
-                                <button type="button" class="btn">Cancel</button>
                             </div>
                         </fieldset>
                     </h:form>
