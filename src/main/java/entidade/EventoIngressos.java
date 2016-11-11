@@ -16,19 +16,36 @@ import java.util.List;
 public class EventoIngressos{
 
     private Setor setor;
-    private int inteira;
-    private int meia;
     private List<Setor> setores = new ArrayList<>();
+    private Evento evento;
+    private int quantidadeSelecionada;
 
     public EventoIngressos() {
     }
+
+    public EventoIngressos(Setor setor, Evento evento, int quantidadeSelecionada) {
+        
+        this.setor = setor;
+        this.evento = evento;
+        this.quantidadeSelecionada = quantidadeSelecionada;
+    }
+    
+    public Evento getEvento() {
+        return evento;
+    }
+
+    public void setEvento(Evento evento) {
+        this.evento = evento;
+    }
+    
+    
 
     public EventoIngressos(Setor setor) {
         this.setor = setor;
 
         for (int i = 1; i < 7; i++) {
 
-            Setor set = new Setor(setor.getIdSetor(), setor.getNomeSetor(), setor.getPreco(), setor.getQuantidade());
+            Setor set = new Setor(setor.getNomeSetor(), setor.getPreco(), setor.getQuantidade());
             set.setQuantidadeSelecionada(i);
             setores.add(set);
 

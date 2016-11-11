@@ -38,12 +38,11 @@ public class Setor implements Serializable {
     private Date dt_cadastro;
     private boolean status;
 
-    public Setor(int id, String nomeSetor, double preco, int quantidade) {
+    public Setor(String nomeSetor, double preco, int quantidade) {
         this.nomeSetor = nomeSetor;
         this.preco = preco;
         this.quantidade = quantidade;
         this.quantidade = quantidadeDisponivel;
-        this.idSetor = id;
     }
 
     public Setor() {

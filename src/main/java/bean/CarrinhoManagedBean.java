@@ -6,11 +6,13 @@
 package bean;
 
 import entidade.Evento;
+import entidade.EventoIngressos;
 import entidade.Setor;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,7 +22,7 @@ import java.util.ArrayList;
 @SessionScoped
 public class CarrinhoManagedBean implements Serializable {
 
-    private ArrayList<Evento> eventos;
+    private List<EventoIngressos> eventos;
     private String etapaCompra;
 
     public CarrinhoManagedBean() {
@@ -29,7 +31,17 @@ public class CarrinhoManagedBean implements Serializable {
 
     }
 
-    public boolean addCarrinho(Evento ev) {
+    public List<EventoIngressos> getEventos() {
+        return eventos;
+    }
+
+    public void setEventos(List<EventoIngressos> eventos) {
+        this.eventos = eventos;
+    }
+
+    
+    
+    public boolean addCarrinho(EventoIngressos ev) {
 
         try {
             eventos.add(ev);
@@ -39,20 +51,6 @@ public class CarrinhoManagedBean implements Serializable {
             return false;
         }
 
-    }
-
-    /**
-     * @return the eventos
-     */
-    public ArrayList<Evento> getEventos() {
-        return eventos;
-    }
-
-    /**
-     * @param eventos the eventos to set
-     */
-    public void setEventos(ArrayList<Evento> eventos) {
-        this.eventos = eventos;
     }
 
     public int getTamanhoArray() {

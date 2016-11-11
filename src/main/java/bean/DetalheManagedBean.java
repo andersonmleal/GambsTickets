@@ -9,10 +9,10 @@ import entidade.Evento;
 import entidade.EventoIngressos;
 import entidade.Setor;
 import javax.inject.Named;
-import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 import javax.enterprise.context.SessionScoped;
 
 /**
@@ -51,7 +51,7 @@ public class DetalheManagedBean implements Serializable {
 
     public void setIngressoIntSelecionado(String ingressoIntSelecionado) {
         this.ingressoIntSelecionado = ingressoIntSelecionado;
-        
+
         if (!ingressoIntSelecionado.contains("0")) {
             this.ingressosInteira.add(this.ingressoIntSelecionado);
         }
@@ -99,6 +99,44 @@ public class DetalheManagedBean implements Serializable {
 
     public void setEvIngressos(List<EventoIngressos> evIngressos) {
         this.evIngressos = evIngressos;
+    }
+
+    public String adicionarCarrinho() {
+
+        List<EventoIngressos> ev = new ArrayList<>();
+        
+        //add meia entrada
+        for (String meia : ingressosMeia) {
+
+            // divide string
+            String[] t = meia.split(",");
+            //captura dados            
+            int quantidade = Integer.parseInt(t[0]);
+            int idSetor = Integer.parseInt(t[1]);
+
+             EventoIngressos even = new EventoIngressos(evento.getSetores().get(idSetor - 1), evento, quantidade);
+             System.out.println("");
+            ev.add(even);
+        }
+        
+        //add inteira
+        for (String inteira : ingressosInteira) {
+
+            // divide string
+            String[] t = inteira.split(",");
+            //captura dados
+            int quantidade = Integer.parseInt(t[0]);
+            int idSetor = Integer.parseInt(t[1]);
+
+            EventoIngressos even = new EventoIngressos(evento.getSetores().get(idSetor - 1), evento, quantidade);
+            ev.add(even);
+        }
+        
+        CarrinhoManagedBean carrinho = new CarrinhoManagedBean();
+        carrinho.setEventos(ev);
+        
+        return "carrinhoCompras.xhtml";
+
     }
 
 }
