@@ -3,6 +3,8 @@ package entidade;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -11,6 +13,7 @@ import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "Usuario")
+
 public class Usuario implements Serializable {
 
     @Id

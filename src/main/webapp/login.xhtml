@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:body>
+        <script>
+            $(document).ready(function () {
+                $('#loginModal').modal({
+                    show: true
+                });
+
+            });
+
+        </script>
+
+
+        <div class="modal fade" id="loginModal" role="dialog" aria-labelledby="loginModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content col-xs-12">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" action=""><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" style="text-align: center" id="exampleModalLabel">Efetuar login</h4>
+                    </div>
+                    <h:form>
+                        <div class="modal-body">
+                            <div style="align-items: center" >
+                                <input id="usuario" class="form-control" type="text" placeholder="Digite o seu usuário" required="true"></input>
+                                <br></br>
+                                <input id="senha" class="form-control" type="password" placeholder="Digite a senha" required="true"></input>
+                            </div>
+                            <br></br>
+                            <a href="cadastroUsuario.xhtml">Cadastre-se agora!</a>
+                        </div>
+                        <div class="modal-footer">
+                            <h:commandButton value="ENTRAR" action="login.xhtml" style="width: 100%" class="btn btn-success">
+                            </h:commandButton>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+
+    </h:body>
+</html>
+

@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>GambsTickets</title>
         <meta charset="utf-8"/>
@@ -19,11 +20,11 @@
         <div class="page">
 
             <!--   ACABA AQUI !-->
-            <form id="form_cadastro" action="">
+            <h:form id="form_cadastro">
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="cli_email" class="control-label">E-mail:</label>
-                        <input type="text" id="cli_email" name="cli_email" value="" class="form-control" maxlength="60"/>
+                        <p:inputText type="text" id="cli_email" value="${usuarioBean.usuario.email}" class="form-control" maxlength="60"/>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="cli_confirmaEmail" class="control-label">Confirme o e-mail:</label>
@@ -36,7 +37,7 @@
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="cli_senha" class="control-label">Senha:</label>
-                        <input type="password" id="cli_senha" name="cli_senha" class="form-control" maxlength="15"/>
+                        <p:inputText type="password" id="cli_senha" value="${usuarioBean.usuario.senha}" class="form-control" maxlength="15"/>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="cli_senhaConfirma" class="control-label">Confirmação da senha:</label>
@@ -48,19 +49,19 @@
 
                 <div class="row">
                     <div class="col-md-3 form-group">
+                        <label for="cli_nome" class="control-label">Nome:</label>
+                        <p:inputText type="text" id="cli_nome" value="${usuarioBean.usuario.nome}" class="form-control" maxlength="80"/>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="cli_sobrenome" class="control-label">Sobrenome:</label>
+                        <p:inputText type="text" id="cli_sobrenome" value="${usuarioBean.usuario.sobreNome}" class="form-control" maxlength="80" />
+                    </div>
+                    <div class="col-md-3 form-group">
                         <label for="cli_nacionalidade" class="control-label">Nacionalidade:</label>
                         <select id="cli_nacionalidade" name="cli_nacionalidade" class="form-control" onchange="validaNacionalidade();" >
                             <option selected="selected" value="B">Brasileira</option>
                             <option  value="E">Estrangeira</option>
                         </select>
-                    </div>
-                    <div class="col-md-3 form-group">
-                        <label for="cli_nome" class="control-label">Nome:</label>
-                        <input type="text" id="cli_nome" name="cli_nome" value="" class="form-control" maxlength="80"/>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label for="cli_sobrenome" class="control-label">Sobrenome:</label>
-                        <input type="text" id="cli_sobrenome" name="cli_sobrenome" value="" class="form-control" maxlength="80" />
                     </div>
                 </div>
                 <!--   ACABA AQUI !-->
@@ -68,11 +69,11 @@
                 <div class="row">
                     <div id="labelCPF" class="col-md-3 form-group">
                         <label for="cli_cpfcnpj" class="control-label">CPF:</label>
-                        <input type="text" id="cli_cpfcnpj" name="cli_cpfcnpj" value="" class="form-control" maxlength="14"/>
+                        <p:inputText type="text" id="cli_cpfcnpj" value="${usuarioBean.usuario.cpf}" class="form-control" maxlength="14"/>
                     </div>
                     <div id="labelRG" class="col-md-3 form-group">
                         <label for="cli_rgie" class="control-label">RG:</label>
-                        <input type="text" id="cli_rgie" name="cli_rgie" value="" class="form-control" maxlength="20"/>
+                        <p:inputText type="text" id="cli_rgie" value="${usuarioBean.usuario.rg}" class="form-control" maxlength="20"/>
                     </div>
                 </div>
 
@@ -89,130 +90,116 @@
                             <option value="F" >Feminino</option>
                         </select>
                     </div>
-
-                    <!--   ACABA AQUI !-->
-
-                    <div class="col-md-3 form-group">
-                        <label for="cli_estadoCivil" class="control-label">Estado Civil:</label>
-                        <select id="cli_estadoCivil" name="cli_estadoCivil" class="form-control">
-                            <option value=""></option>
-                            <option  value="CA">Casado</option>
-                            <option  value="SO">Solteiro</option>
-                            <option  value="SE">Separado</option>
-                            <option  value="DE">Desquitado</option>
-                            <option  value="DI">Divorciado</option>
-                            <option  value="VI">Viuvo</option>
-                            <option  value="O">Outros</option>
-                        </select>
-                    </div>
-
-
-                    <!--   ACABA AQUI !-->
-
-                    <div class="row">
-                        <div id="labelTelResidencial" class="col-md-3 form-group">
-                            <label for="cli_telResidencial" class="control-label">Telefone Residencial:</label>
-                            <input type="text" id="cli_telResidencial" name="cli_telResidencial" value="" class="form-control" maxlength="14"/>
-                        </div>
-                        <div id="labelTelComercial" class="col-md-3 form-group">
-                            <label for="cli_telComercial" class="control-label">Telefone Comercial:</label>
-                            <input type="text" id="cli_telComercial" name="cli_telComercial" value="" class="form-control" maxlength="14"/>
-                        </div>
-                        <div id="labelTelCelular" class="col-md-3 form-group">
-                            <label for="cli_celular" class="control-label">Celular:</label>
-                            <input type="text" id="cli_celular" name="cli_celular" value="" class="form-control" maxlength="14"/>
-                        </div>
-                    </div>
-
-                    <fieldset id="field_endereco">
-                        <legend>Endereço</legend>
-
-                        <div class="row">
-                            <div class="col-md-3 form-group">
-                                <label for="cli_endereco_tipo" class="control-label">Tipo:</label>
-                                <select id="cli_endereco_tipo" name="cli_endereco_tipo" class="form-control" >
-                                    <option value=""></option>
-                                    <option  value="R">Residencial</option>
-                                    <option  value="C">Comercial</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-3 form-group">
-                                <label for="cli_endereco_cep" class="control-label">CEP:</label>
-                                <input type="text" id="cli_endereco_cep" name="cli_endereco_cep" value="" class="form-control" maxlength="9" onblur="buscaCEP('cli_endereco_cep', '');" />
-                            </div>
-                            <div class="col-md-7 form-group">
-                                <label for="cli_endereco_endereco">Endereço:</label>
-                                <input type="text" id="cli_endereco_endereco" name="cli_endereco_endereco" value="" class="form-control" maxlength="160" />
-                            </div>
-                            <div class="col-md-2 form-group">
-                                <label for="cli_endereco_numero">Número:</label>
-                                <input type="text" id="cli_endereco_numero" name="cli_endereco_numero" value="" class="form-control" maxlength="20" />
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-3 form-group">
-                                <label for="cli_endereco_complemento">Complemento:</label>
-                                <input type="text" id="cli_endereco_complemento" name="cli_endereco_complemento" value="" class="form-control" maxlength="40" />
-                            </div>
-                            <div class="col-md-3 form-group">
-                                <label for="cli_endereco_bairro">Bairro:</label>
-                                <input type="text" id="cli_endereco_bairro" name="cli_endereco_bairro" value="" class="form-control" maxlength="40" />
-                            </div>
-                            <div class="col-md-4 form-group">
-                                <label for="cli_endereco_cidade">Cidade:</label>
-                                <input type="text" id="cli_endereco_cidade" name="cli_endereco_cidade" value="" maxlength="40" class="form-control" readonly="readonly"/>
-                            </div>
-                            <div class="col-md-2 form-group">
-                                <label for="endereco_uf">Estado:</label>
-                                <input type="hidden" id="cli_endereco_uf" name="cli_endereco_uf" value=""/>
-                                <select id="endereco_uf" name="endereco_uf" class="form-control" disabled="disabled">
-                                    <option value=""></option>
-                                    <option  value="AC">AC</option>
-                                    <option  value="AL">AL</option>
-                                    <option  value="AM">AM</option>
-                                    <option  value="AP">AP</option>
-                                    <option  value="BA">BA</option>
-                                    <option  value="CE">CE</option>
-                                    <option  value="DF">DF</option>
-                                    <option  value="ES">ES</option>
-                                    <option  value="GO">GO</option>
-                                    <option  value="MA">MA</option>
-                                    <option  value="MG">MG</option>
-                                    <option  value="MS">MS</option>
-                                    <option  value="MT">MT</option>
-                                    <option  value="PA">PA</option>
-                                    <option  value="PB">PB</option>
-                                    <option  value="PE">PE</option>
-                                    <option  value="PI">PI</option>
-                                    <option  value="PR">PR</option>
-                                    <option  value="RJ">RJ</option>
-                                    <option  value="RN">RN</option>
-                                    <option  value="RO">RO</option>
-                                    <option  value="RR">RR</option>
-                                    <option  value="RS">RS</option>
-                                    <option  value="SC">SC</option>
-                                    <option  value="SE">SE</option>
-                                    <option  value="SP">SP</option>
-                                    <option  value="TO">TO</option>
-                                </select>
-                            </div>
-                        </div>
-                    </fieldset>
-
-                    <div class="row">
-                        <div class="col-md-12 form-group text-right">
-                            <button type="reset" class="btn btn-default">Limpar</button>
-                            <button type="submit" class="btn btn-default">Salvar</button>
-                        </div>
-                    </div>
-
-
                 </div>
-            </form>
+
+
+                <!--   ACABA AQUI !-->
+
+                <div class="row">
+                    <div id="labelTelResidencial" class="col-md-3 form-group">
+                        <label for="cli_telResidencial" class="control-label">Telefone Residencial:</label>
+                        <input type="text" id="cli_telResidencial" value="" class="form-control" maxlength="14"/>
+                    </div>
+                    <div id="labelTelComercial" class="col-md-3 form-group">
+                        <label for="cli_telComercial" class="control-label">Telefone Comercial:</label>
+                        <input type="text" id="cli_telComercial"  value="" class="form-control" maxlength="14"/>
+                    </div>
+                    <div id="labelTelCelular" class="col-md-3 form-group">
+                        <label for="cli_celular" class="control-label">Celular:</label>
+                        <input type="text" id="cli_celular"  value="" class="form-control" maxlength="14"/>
+                    </div>
+                </div>
+
+                <fieldset id="field_endereco">
+                    <legend>Endereço</legend>
+
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            <label for="cli_endereco_tipo" class="control-label">Tipo:</label>
+                            <select id="cli_endereco_tipo" name="cli_endereco_tipo" class="form-control" >
+                                <option value=""></option>
+                                <option  value="R">Residencial</option>
+                                <option  value="C">Comercial</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            <label for="cli_endereco_cep" class="control-label">CEP:</label>
+                            <input type="text" id="cli_endereco_cep" name="cli_endereco_cep" value="" class="form-control" maxlength="9" onblur="buscaCEP('cli_endereco_cep', '');" />
+                        </div>
+                        <div class="col-md-7 form-group">
+                            <label for="cli_endereco_endereco">Endereço:</label>
+                            <input type="text" id="cli_endereco_endereco" name="cli_endereco_endereco" value="" class="form-control" maxlength="160" />
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label for="cli_endereco_numero">Número:</label>
+                            <input type="text" id="cli_endereco_numero" name="cli_endereco_numero" value="" class="form-control" maxlength="20" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            <label for="cli_endereco_complemento">Complemento:</label>
+                            <input type="text" id="cli_endereco_complemento" name="cli_endereco_complemento" value="" class="form-control" maxlength="40" />
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="cli_endereco_bairro">Bairro:</label>
+                            <input type="text" id="cli_endereco_bairro" name="cli_endereco_bairro" value="" class="form-control" maxlength="40" />
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label for="cli_endereco_cidade">Cidade:</label>
+                            <input type="text" id="cli_endereco_cidade" name="cli_endereco_cidade" value="" maxlength="40" class="form-control" readonly="readonly"/>
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label for="endereco_uf">Estado:</label>
+                            <input type="hidden" id="cli_endereco_uf" name="cli_endereco_uf" value=""/>
+                            <select id="endereco_uf" name="endereco_uf" class="form-control" disabled="disabled">
+                                <option value=""></option>
+                                <option  value="AC">AC</option>
+                                <option  value="AL">AL</option>
+                                <option  value="AM">AM</option>
+                                <option  value="AP">AP</option>
+                                <option  value="BA">BA</option>
+                                <option  value="CE">CE</option>
+                                <option  value="DF">DF</option>
+                                <option  value="ES">ES</option>
+                                <option  value="GO">GO</option>
+                                <option  value="MA">MA</option>
+                                <option  value="MG">MG</option>
+                                <option  value="MS">MS</option>
+                                <option  value="MT">MT</option>
+                                <option  value="PA">PA</option>
+                                <option  value="PB">PB</option>
+                                <option  value="PE">PE</option>
+                                <option  value="PI">PI</option>
+                                <option  value="PR">PR</option>
+                                <option  value="RJ">RJ</option>
+                                <option  value="RN">RN</option>
+                                <option  value="RO">RO</option>
+                                <option  value="RR">RR</option>
+                                <option  value="RS">RS</option>
+                                <option  value="SC">SC</option>
+                                <option  value="SE">SE</option>
+                                <option  value="SP">SP</option>
+                                <option  value="TO">TO</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="row">
+                    <div class="col-md-12 form-group text-right">
+                        <button type="reset" class="btn btn-default">Limpar</button>
+                        <button type="submit" class="btn btn-default">Salvar</button>
+                        <p:commandButton value="Cadastrar" action="#{usuarioBean.adicionarUsuario()}"/>
+                    </div>
+                </div>
+
+
+
+            </h:form>
         </div>
 
 
