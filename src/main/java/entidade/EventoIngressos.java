@@ -19,8 +19,10 @@ public class EventoIngressos{
     private List<Setor> setores = new ArrayList<>();
     private Evento evento;
     private int quantidadeSelecionada;
+    private double precoTotal;
 
     public EventoIngressos() {
+        this.quantidadeSelecionada = 0;
     }
 
     public EventoIngressos(Setor setor, Evento evento, int quantidadeSelecionada) {
@@ -29,6 +31,16 @@ public class EventoIngressos{
         this.evento = evento;
         this.quantidadeSelecionada = quantidadeSelecionada;
     }
+
+    public int getQuantidadeSelecionada() {
+        return quantidadeSelecionada;
+    }
+
+    public double getPrecoTotal() {
+        precoTotal = quantidadeSelecionada * setor.getPreco();
+        return precoTotal;
+    }
+    
     
     public Evento getEvento() {
         return evento;

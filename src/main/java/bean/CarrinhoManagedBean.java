@@ -24,12 +24,23 @@ public class CarrinhoManagedBean implements Serializable {
 
     private List<EventoIngressos> eventos;
     private String etapaCompra;
+    private EventoIngressos removerItem;
 
     public CarrinhoManagedBean() {
 
         eventos = new ArrayList<>();
 
     }
+
+    public EventoIngressos getRemoverItem() {
+        return removerItem;
+    }
+
+    public void setRemoverItem(EventoIngressos removerItem) {
+        this.removerItem = removerItem;
+    }
+    
+    
 
     public List<EventoIngressos> getEventos() {
         return eventos;
@@ -39,8 +50,6 @@ public class CarrinhoManagedBean implements Serializable {
         this.eventos = eventos;
     }
 
-    
-    
     public boolean addCarrinho(EventoIngressos ev) {
 
         try {

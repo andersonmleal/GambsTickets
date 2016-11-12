@@ -45,6 +45,14 @@ public class Setor implements Serializable {
         this.quantidade = quantidadeDisponivel;
     }
 
+    public Setor(int idSetor, String nomeSetor, double preco, int quantidade) {
+        this.nomeSetor = nomeSetor;
+        this.preco = preco;
+        this.quantidade = quantidade;
+        this.quantidade = quantidadeDisponivel;
+        this.idSetor = idSetor;
+    }
+    
     public Setor() {
     }
 
@@ -104,5 +112,10 @@ public class Setor implements Serializable {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
 
 }
