@@ -28,9 +28,11 @@ public class Usuario implements Serializable {
     private int tipo_usuario;
     private boolean status;
     @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dtNascimento;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dtCadastro;
     @OneToMany(mappedBy = "usuario_evento")
-    private List<Endereco> enderecos;
+    private Endereco endereco;
     @OneToMany(mappedBy = "usuario")
     private List<Telefone> telefones;
 
@@ -117,6 +119,14 @@ public class Usuario implements Serializable {
         this.status = status;
     }
 
+    public Date getDtNascimento() {
+        return dtNascimento;
+    }
+
+    public void setDtNascimento(Date dtNascimento) {
+        this.dtNascimento = dtNascimento;
+    }
+
     public Date getDtCadastro() {
         return dtCadastro;
     }
@@ -125,12 +135,12 @@ public class Usuario implements Serializable {
         this.dtCadastro = dtCadastro;
     }
 
-    public List<Endereco> getEnderecos() {
-        return enderecos;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setEnderecos(List<Endereco> enderecos) {
-        this.enderecos = enderecos;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public List<Telefone> getTelefones() {
@@ -140,5 +150,5 @@ public class Usuario implements Serializable {
     public void setTelefones(List<Telefone> telefones) {
         this.telefones = telefones;
     }
-    
+
 }
