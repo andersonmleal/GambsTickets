@@ -123,4 +123,5 @@ public class EventoManagedBean implements Serializable {
         return "menu";
     }
 
+    
 }
