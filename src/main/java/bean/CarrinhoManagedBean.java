@@ -47,14 +47,27 @@ public class CarrinhoManagedBean implements Serializable {
     }
 
     public void setEventos(List<EventoIngressos> eventos) {
-        
-        this.mensagem = "";
 
-        for (EventoIngressos ev : eventos) {
-            if (this.eventos.contains(ev)) {
-                this.mensagem = "Já existem ingressos selecionados para o setor.";
-            } else {
-                this.eventos.add(ev);
+        this.mensagem = "";
+        int cont;
+
+        for (int i = 0; i < eventos.size(); i++) {
+            cont = 0;
+
+            for (int j = 0; j < this.eventos.size(); j++) {
+                if (//verifica se ja existe ingressos com mesmo nome de evento
+                        eventos.get(i).getEvento().getNome_evento().equals(this.eventos.get(j).getEvento().getNome_evento())
+                        //verifica se ja existe ingressos com mesmo nome de setor
+                        && eventos.get(i).getSetor().getNomeSetor().equals(this.eventos.get(j).getSetor().getNomeSetor())
+                        //verifica se ja existe ingressos com mesmo preco
+                        && eventos.get(i).getPrecoUnitario() == this.eventos.get(j).getPrecoUnitario()) {
+
+                    cont++;
+                    this.mensagem = "Já existem ingresso selecionados para um dos setores. Os mesmos não foram adicionados.";
+                }
+            }
+            if (cont == 0) {
+                this.eventos.add(eventos.get(i));
             }
         }
 
@@ -62,18 +75,6 @@ public class CarrinhoManagedBean implements Serializable {
 
     public String getMensagem() {
         return mensagem;
-    }
-    
-    public boolean addCarrinho(EventoIngressos ev) {
-
-        try {
-            eventos.add(ev);
-            return true;
-        } catch (Exception e) {
-
-            return false;
-        }
-
     }
 
     public int getTamanhoArray() {
@@ -124,21 +125,21 @@ public class CarrinhoManagedBean implements Serializable {
 
         }
     }
-    
-    public String verificaIngressos(){
-        
-        if(this.eventos.isEmpty()){
+
+    public String verificaIngressos() {
+
+        if (this.eventos.isEmpty()) {
             return "true";
-        }else{
+        } else {
             return "false";
         }
     }
-    
-    public String verificaIngressosMensagem(){
-        
-        if(this.eventos.isEmpty()){
-            return "O carrinho está vazio. Adicione ingressos para prosseguir";
-        }else{
+
+    public String verificaIngressosMensagem() {
+
+        if (this.eventos.isEmpty()) {
+            return "O carrinho está vazio. Adicione ingressos para prosseguir.";
+        } else {
             return "";
         }
     }
