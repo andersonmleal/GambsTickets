@@ -32,12 +32,16 @@ public class DetalheManagedBean implements Serializable {
     private List<String> ingressosMeia;
     private List<String> ingressosInteira;
     private List<EventoIngressos> evIngressos;
-    //private List<EventoIngressos> ev;
+    private String mensagem;
 
     public DetalheManagedBean() {
 
     }
 
+    public String getMensagem() {
+        return mensagem;
+    }
+    
     public String getIngressoIntSelecionado() {
         return ingressoIntSelecionado;
     }
@@ -80,6 +84,7 @@ public class DetalheManagedBean implements Serializable {
         this.ingressoMeiaSelecionado = null;
         this.evento = new Evento();
         this.evento = evento;
+        this.mensagem = "";
         this.ingressosMeia = new ArrayList<>();
         this.ingressosInteira = new ArrayList<>();
         this.evIngressos = new ArrayList<>();
@@ -117,6 +122,7 @@ public class DetalheManagedBean implements Serializable {
             int idSetorInteira = Integer.parseInt(tInteira[1]);
 
             EventoIngressos eventInteira = new EventoIngressos(evento.getSetores().get(idSetorInteira - 1), evento, quantidadeInteira);
+            eventInteira.setPrecoUnitario(eventInteira.getSetor().getPreco());
             ev.add(eventInteira);
         }
 
@@ -130,18 +136,24 @@ public class DetalheManagedBean implements Serializable {
             int idSetorMeia = Integer.parseInt(tMeia[1]);
 
             EventoIngressos eventMeia = new EventoIngressos(evento.getSetores().get(idSetorMeia - 1), evento, quantidadeMeia);
-            eventMeia.getSetor().setPreco(eventMeia.getSetor().getPreco() / 2);
+            eventMeia.setPrecoUnitario(eventMeia.getSetor().getPreco() / 2);
             ev.add(eventMeia);
         }
 
-        
         //CarrinhoManagedBean carrinho = new CarrinhoManagedBean();
         //carrinho.setEventos(ev);
         return ev;
 
     }
 
-    //public List<EventoIngressos> getEv() {
-    //   return ev;
-    // }
+    public String validaSelecao() {
+
+        if (ingressosInteira.isEmpty() && ingressosMeia.isEmpty()) {
+            this.mensagem = "Favor selecionar ingressos";
+            return "";
+        } else {
+            return "carrinhoCompras.xhtml";
+        }
+    }
+
 }

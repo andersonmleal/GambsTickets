@@ -124,5 +124,23 @@ public class CarrinhoManagedBean implements Serializable {
 
         }
     }
+    
+    public String verificaIngressos(){
+        
+        if(this.eventos.isEmpty()){
+            return "true";
+        }else{
+            return "false";
+        }
+    }
+    
+    public String verificaIngressosMensagem(){
+        
+        if(this.eventos.isEmpty()){
+            return "O carrinho está vazio. Adicione ingressos para prosseguir";
+        }else{
+            return "";
+        }
+    }
 
 }

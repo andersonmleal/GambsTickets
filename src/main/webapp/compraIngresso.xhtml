@@ -97,10 +97,10 @@
                         <h:form>
                             <div class="modal-body">
 
+                                <h5 style="color: #FF0000; text-align: center"><h:outputText value="#{detalheManagedBean.mensagem}"/></h5>
 
 
-
-                                <div >
+                                <div>
 
 
                                     <ui:repeat var="setor" value="#{detalheManagedBean.evento.setores}">
@@ -159,7 +159,7 @@
 
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
 
-                                <h:commandButton value="Adicionar ao Carrinho" action="carrinhoCompras.xhtml" class="btn btn-primary">
+                                <h:commandButton value="Adicionar ao Carrinho" action="#{detalheManagedBean.validaSelecao()}" class="btn btn-primary">
                                     <f:setPropertyActionListener target="#{CarrinhoManagedBean.eventos}" value="#{detalheManagedBean.adicionarCarrinho()}"/>
                                 </h:commandButton>
 

@@ -24,15 +24,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                     <h5 style="color: #FF0000; text-align: center"><h:outputText value="#{CarrinhoManagedBean.mensagem}"/></h5>
-                    
+
                     <ui:repeat var="ingresso" value="#{CarrinhoManagedBean.eventos}">
                         <tr>
                             <td><h:outputText value="#{ingresso.evento.nome_evento}"/></td>
                             <td><h:outputText value="#{ingresso.setor.nomeSetor}"/></td>
                             <td><h:outputText value="#{ingresso.quantidadeSelecionada}"/></td>
-                            <td><h:outputText value="#{ingresso.setor.preco}"/></td>
+                            <td><h:outputText value="#{ingresso.precoUnitario}"/></td>
                             <td><h:outputText value="#{ingresso.precoTotal}"/></td>
                             <td>
                                 <h:commandButton value="remover" action="carrinhoCompras.xhtml" class="btn btn-link" style="padding: 0px">
@@ -42,9 +42,12 @@
                             </td>
                         </tr>
                     </ui:repeat>
-                </tbody>
+                </tbody> 
             </table>
-            <p:commandButton styleClass="avancar" value="Avancar" action="#{CarrinhoManagedBean.proximaEtapa(1)}" ajax="false"></p:commandButton>
+
+            <h4 style="color: #FF0000; text-align: center"><h:outputText value="#{CarrinhoManagedBean.verificaIngressosMensagem()}"/></h4>
+
+            <p:commandButton styleClass="avancar" value="Avancar" disabled="#{CarrinhoManagedBean.verificaIngressos()}" action="#{CarrinhoManagedBean.proximaEtapa(1)}" ajax="false"></p:commandButton>
         </h:form>
     </h:body>
 </html>

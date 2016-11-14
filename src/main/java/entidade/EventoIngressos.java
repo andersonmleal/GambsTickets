@@ -19,6 +19,7 @@ public class EventoIngressos{
     private List<Setor> setores = new ArrayList<>();
     private Evento evento;
     private int quantidadeSelecionada;
+    private double precoUnitario;
     private double precoTotal;
 
     public EventoIngressos() {
@@ -32,12 +33,20 @@ public class EventoIngressos{
         this.quantidadeSelecionada = quantidadeSelecionada;
     }
 
+    public double getPrecoUnitario() {
+        return precoUnitario;
+    }
+
+    public void setPrecoUnitario(double precoUnitario) {
+        this.precoUnitario = precoUnitario;
+    }
+    
     public int getQuantidadeSelecionada() {
         return quantidadeSelecionada;
     }
 
     public double getPrecoTotal() {
-        precoTotal = quantidadeSelecionada * setor.getPreco();
+        precoTotal = quantidadeSelecionada * precoUnitario;
         return precoTotal;
     }
     
