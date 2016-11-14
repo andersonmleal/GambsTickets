@@ -35,46 +35,46 @@ public class DetalheManagedBean implements Serializable {
     //private List<EventoIngressos> ev;
 
     public DetalheManagedBean() {
-        
+
     }
-    
+
     public String getIngressoIntSelecionado() {
         return ingressoIntSelecionado;
     }
-    
+
     public List<String> getIngressosMeia() {
         return ingressosMeia;
     }
-    
+
     public List<String> getIngressosInteira() {
         return ingressosInteira;
     }
-    
+
     public void setIngressoIntSelecionado(String ingressoIntSelecionado) {
         this.ingressoIntSelecionado = ingressoIntSelecionado;
-        
+
         if (!ingressoIntSelecionado.contains("0,")) {
             this.ingressosInteira.add(this.ingressoIntSelecionado);
         }
-        
+
     }
-    
+
     public String getIngressoMeiaSelecionado() {
         return ingressoMeiaSelecionado;
     }
-    
+
     public void setIngressoMeiaSelecionado(String ingressoMeiaSelecionado) {
         this.ingressoMeiaSelecionado = ingressoMeiaSelecionado;
-        
+
         if (!ingressoMeiaSelecionado.contains("0,")) {
             this.ingressosMeia.add(ingressoMeiaSelecionado);
         }
     }
-    
+
     public Evento getEvento() {
         return evento;
     }
-    
+
     public void setEvento(Evento evento) {
         this.ingressoIntSelecionado = null;
         this.ingressoMeiaSelecionado = null;
@@ -86,58 +86,59 @@ public class DetalheManagedBean implements Serializable {
         //this.ev = new ArrayList<>();
 
         for (int i = 0; i < evento.getSetores().size(); i++) {
-            
+
             Setor setor;
             setor = evento.getSetores().get(i);
             EventoIngressos ev = new EventoIngressos(setor);
             evIngressos.add(ev);
         }
-        
+
     }
-    
+
     public List<EventoIngressos> getEvIngressos() {
         return evIngressos;
     }
-    
+
     public void setEvIngressos(List<EventoIngressos> evIngressos) {
         this.evIngressos = evIngressos;
     }
-    
+
     public List<EventoIngressos> adicionarCarrinho() {
-        
+
         List<EventoIngressos> ev = new ArrayList<>();
-
-        //add meia entrada
-        for (String meia : ingressosMeia) {
-
-            // divide string
-            String[] t = meia.split(",");
-            //captura dados            
-            int quantidade = Integer.parseInt(t[0]);
-            int idSetor = Integer.parseInt(t[1]);
-            
-            EventoIngressos even = new EventoIngressos(evento.getSetores().get(idSetor - 1), evento, quantidade);
-            //even.getSetor().setPreco(even.getSetor().getPreco() / 2);
-            ev.add(even);
-        }
 
         //add inteira
         for (String inteira : ingressosInteira) {
 
             // divide string
-            String[] t = inteira.split(",");
+            String[] tInteira = inteira.split(",");
             //captura dados
-            int quantidade = Integer.parseInt(t[0]);
-            int idSetor = Integer.parseInt(t[1]);
-            
-            EventoIngressos event = new EventoIngressos(evento.getSetores().get(idSetor - 1), evento, quantidade);
-            ev.add(event);
+            int quantidadeInteira = Integer.parseInt(tInteira[0]);
+            int idSetorInteira = Integer.parseInt(tInteira[1]);
+
+            EventoIngressos eventInteira = new EventoIngressos(evento.getSetores().get(idSetorInteira - 1), evento, quantidadeInteira);
+            ev.add(eventInteira);
         }
 
+        //add meia entrada
+        for (String meia : ingressosMeia) {
+
+            // divide string
+            String[] tMeia = meia.split(",");
+            //captura dados            
+            int quantidadeMeia = Integer.parseInt(tMeia[0]);
+            int idSetorMeia = Integer.parseInt(tMeia[1]);
+
+            EventoIngressos eventMeia = new EventoIngressos(evento.getSetores().get(idSetorMeia - 1), evento, quantidadeMeia);
+            eventMeia.getSetor().setPreco(eventMeia.getSetor().getPreco() / 2);
+            ev.add(eventMeia);
+        }
+
+        
         //CarrinhoManagedBean carrinho = new CarrinhoManagedBean();
         //carrinho.setEventos(ev);
         return ev;
-        
+
     }
 
     //public List<EventoIngressos> getEv() {

@@ -24,6 +24,7 @@ public class CarrinhoManagedBean implements Serializable {
 
     private List<EventoIngressos> eventos;
     private String etapaCompra;
+    private String mensagem;
     private EventoIngressos removerItem;
 
     public CarrinhoManagedBean() {
@@ -37,19 +38,32 @@ public class CarrinhoManagedBean implements Serializable {
     }
 
     public void setRemoverItem(EventoIngressos removerItem) {
-        this.removerItem = removerItem;
+        this.eventos.remove(removerItem);
+        this.mensagem = "Ingressos removidos";
     }
-    
-    
 
     public List<EventoIngressos> getEventos() {
         return eventos;
     }
 
     public void setEventos(List<EventoIngressos> eventos) {
-        this.eventos = eventos;
+        
+        this.mensagem = "";
+
+        for (EventoIngressos ev : eventos) {
+            if (this.eventos.contains(ev)) {
+                this.mensagem = "Já existem ingressos selecionados para o setor.";
+            } else {
+                this.eventos.add(ev);
+            }
+        }
+
     }
 
+    public String getMensagem() {
+        return mensagem;
+    }
+    
     public boolean addCarrinho(EventoIngressos ev) {
 
         try {

@@ -24,6 +24,9 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
+                    <h5 style="color: #FF0000; text-align: center"><h:outputText value="#{CarrinhoManagedBean.mensagem}"/></h5>
+                    
                     <ui:repeat var="ingresso" value="#{CarrinhoManagedBean.eventos}">
                         <tr>
                             <td><h:outputText value="#{ingresso.evento.nome_evento}"/></td>
