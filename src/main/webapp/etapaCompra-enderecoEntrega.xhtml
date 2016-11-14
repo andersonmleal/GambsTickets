@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="textinput">Rua</label>
                             <div class="col-sm-10">
-                                <input value="#{enderecoManagedBean.endereco.logradouro}" type="text" maxlength="35" placeholder="Digite nome de sua rua" class="form-control"/>
+                                 <input value="#{enderecoManagedBean.endereco.logradouro}" required="true" type="text" maxlength="35" placeholder="Digite nome de sua rua" class="form-control"/>
                             </div>
                         </div>
 
@@ -40,7 +40,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="textinput">Número</label>
                             <div class="col-sm-4">
-                                <input value="#{enderecoManagedBean.endereco.numero}" type="text" maxlength="6" onkeypress='return SomenteNumero(event)' placeholder="Número Residência" class="form-control"/>
+                                <input value="#{enderecoManagedBean.endereco.numero}" required="true" type="text" maxlength="6" onkeypress='return SomenteNumero(event)' placeholder="Número Residência" class="form-control"/>
                             </div>
 
                             <label class="col-sm-2 control-label" for="textinput">Complemento</label>
@@ -53,12 +53,12 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="textinput">Cidade</label>
                             <div class="col-sm-4">
-                                <input value="#{enderecoManagedBean.endereco.cidade}" type="text" maxlength="20" placeholder="Nome de sua cidade" class="form-control"/>
+                                <input value="#{enderecoManagedBean.endereco.cidade}" required="true" type="text" maxlength="20" placeholder="Nome de sua cidade" class="form-control"/>
                             </div>
 
                             <label class="col-sm-2 control-label" for="textinput">Bairro</label>
                             <div class="col-sm-4">
-                                <input value="#{enderecoManagedBean.endereco.bairro}" type="text" maxlength="15" placeholder="Bairro" class="form-control"/>
+                                <input value="#{enderecoManagedBean.endereco.bairro}" required="true" type="text" maxlength="15" placeholder="Bairro" class="form-control"/>
                             </div>
                         </div>
 
@@ -100,7 +100,7 @@
 
                             <label class="col-sm-2 control-label" for="textinput">CEP</label>
                             <div class="col-sm-4">
-                                <input value="#{enderecoManagedBean.endereco.cep}" type="text" name="cep" onkeypress='return SomenteNumero(event)'   maxlength="8" placeholder="Digite seu CEP" class="form-control" />
+                                <input value="#{enderecoManagedBean.endereco.cep}" required="true" type="text" name="cep" onkeypress='return SomenteNumero(event)'   maxlength="8" placeholder="Digite seu CEP" class="form-control" />
                             </div>
                         </div>
 
