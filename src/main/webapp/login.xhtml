@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:body>
         <script>
             $(document).ready(function () {
@@ -24,15 +25,15 @@
                     <h:form>
                         <div class="modal-body">
                             <div style="align-items: center" >
-                                <input id="usuario" class="form-control" type="text" placeholder="Digite o seu usuário" required="true"></input>
+                                <p:inputText id="usuario" class="form-control" value="${loginBean.usuario}" type="text" placeholder="Digite o seu usuário" required="true"/>
                                 <br></br>
-                                <input id="senha" class="form-control" type="password" placeholder="Digite a senha" required="true"></input>
+                                <p:inputText id="senha" class="form-control" value="${loginBean.senha}" type="password" placeholder="Digite a senha" required="true"/>
                             </div>
                             <br></br>
                             <a href="cadastroUsuario.xhtml">Cadastre-se agora!</a>
                         </div>
                         <div class="modal-footer">
-                            <h:commandButton value="ENTRAR" action="login.xhtml" style="width: 100%" class="btn btn-success">
+                            <h:commandButton value="ENTRAR" action="${loginBean.realizarLogin()}" style="width: 100%" class="btn btn-success">
                             </h:commandButton>
                         </div>
                     </h:form>
