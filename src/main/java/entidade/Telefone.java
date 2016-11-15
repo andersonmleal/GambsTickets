@@ -17,6 +17,7 @@ public class Telefone implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id_telefone;
+    private long numero;
     private String descricao;
     @ManyToOne
     private Usuario usuario;
@@ -28,8 +29,12 @@ public class Telefone implements Serializable {
         return id_telefone;
     }
 
-    public void setId_telefone(long id_telefone) {
-        this.id_telefone = id_telefone;
+    public long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(long numero) {
+        this.numero = numero;
     }
 
     public String getDescricao() {
@@ -38,14 +43,6 @@ public class Telefone implements Serializable {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public Usuario getUsuario_evento() {
-        return usuario;
-    }
-
-    public void setUsuario_evento(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public Date getDt_cadastro() {
