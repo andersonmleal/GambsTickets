@@ -8,12 +8,19 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "Usuario")
+@NamedQueries(
+        @NamedQuery(name = "Usuario.buscaCadastro", 
+                query = "select usuario from Usuario usuario "
+                        + "where usuario.cpf = :cpf")
+)
 public class Usuario implements Serializable {
 
     @Id

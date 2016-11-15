@@ -5,7 +5,9 @@
  */
 package bean;
 
+import entidade.Usuario;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -14,6 +16,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
+import jpa.UsuarioJPA;
 
 /**
  *
@@ -50,14 +53,19 @@ public class LoginBean implements Serializable {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpSession session = (HttpSession) request.getSession();
         String UsuarioSession = session.getAttribute("usuario").toString();
-        
+
         JOptionPane.showInputDialog(UsuarioSession);
 
         return UsuarioSession;
     }
 
     public boolean validarUsuario(String usuario, String senha) {
-        if (usuario.equals("teste") && senha.equals("1234")) {
+        UsuarioJPA usuarioJPA = new UsuarioJPA();
+        long usuarioLng = Long.parseLong(usuario);
+        List<Usuario> user = usuarioJPA.verificaCadastro(usuarioLng);
+        if (user.isEmpty()) {
+            return false;
+        } else if (usuarioLng == user.get(0).getCpf() && senha.equals(user.get(0).getSenha())) {
             return true;
         } else {
             return false;
