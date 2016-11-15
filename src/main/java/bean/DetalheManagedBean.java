@@ -37,6 +37,7 @@ public class DetalheManagedBean implements Serializable {
     public DetalheManagedBean() {
 
     }
+ 
 
     public String getMensagem() {
         return mensagem;
@@ -155,5 +156,7 @@ public class DetalheManagedBean implements Serializable {
             return "carrinhoCompras.xhtml";
         }
     }
+    
+  
 
 }
