@@ -31,11 +31,6 @@ public class FormaPagamento implements Serializable {
     private double juros;
     private int mesValidade;
     private int anoValidade;
-    //combo cartao
-    private int comb1;
-    private int comb2;
-    private int comb3;
-    private int comb4;
 
     public FormaPagamento() {
     }
@@ -55,37 +50,6 @@ public class FormaPagamento implements Serializable {
         return mesValidade;
     }
 
-    public int getComb1() {
-        return comb1;
-    }
-
-    public void setComb1(int comb1) {
-        this.comb1 = comb1;
-    }
-
-    public int getComb2() {
-        return comb2;
-    }
-
-    public void setComb2(int comb2) {
-        this.comb2 = comb2;
-    }
-
-    public int getComb3() {
-        return comb3;
-    }
-
-    public void setComb3(int comb3) {
-        this.comb3 = comb3;
-    }
-
-    public int getComb4() {
-        return comb4;
-    }
-
-    public void setComb4(int comb4) {
-        this.comb4 = comb4;
-    }
 
     public void setMesValidade(int mesValidade) {
         this.mesValidade = mesValidade;
@@ -132,9 +96,6 @@ public class FormaPagamento implements Serializable {
     }
 
     public long getNumCartao() {
-        String aux;
-        aux = Integer.toString(this.comb1) + Integer.toString(this.comb2) + Integer.toString(this.comb3) + Integer.toString(this.comb4);
-        this.numCartao = Long.parseLong(aux);
         return numCartao;
     }
 

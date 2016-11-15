@@ -15,6 +15,7 @@
         <script language="JavaScript" type="text/javascript" src="js/MascaraValidacao.js"></script>
         <script language="JavaScript" type="text/javascript" src="js/MascaraValidacao.js"></script>
         <link href="css/carrinhoCompras.css" rel="stylesheet"/> 
+   
     </h:head>
     <h:body>
 
@@ -23,99 +24,105 @@
             <div class="col-md-8 col-md-offset-2">
                 <h:form class="form-horizontal" role="form">
 
-                        <!-- Form Name -->
-                        <legend style="text-align: center">Endereço de Entrega</legend>
+                    <!-- Form Name -->
+                    <legend style="text-align: center">Endereço de Entrega</legend>
 
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="textinput">Rua</label>
-                            <div class="col-sm-10">
-                                <p:inputText value="#{endereco.logradouro}" required="true" type="text" maxlength="35" placeholder="Digite nome de sua rua" class="form-control"/>
-                            </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="textinput">Rua</label>
+                        <div class="col-sm-10">
+                            <p:inputText value="#{endereco.logradouro}" id="rua" required="true" requiredMessage="Nome Obrigatório" type="text" maxlength="35" placeholder="Digite nome de sua rua" class="form-control"/>
+
+                            <h:message for="rua" id="msg1" styleClass="erros" style="color: red"/>
+                        </div>
+                    </div>
+
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="textinput">Número</label>
+                        <div class="col-sm-4">
+                            <p:inputText value="#{endereco.numero}" id="num" required="true" requiredMessage="Número Obrigatório"  type="text" maxlength="6" onkeypress='return SomenteNumero(event)' placeholder="Número Residência" class="form-control"/>
+                            <h:message for="num" id="msg2" styleClass="erros" style="color: red"/>
                         </div>
 
+                        <label class="col-sm-2 control-label" for="textinput">Complemento</label>
+                        <div class="col-sm-4">
+                            <p:inputText value="#{endereco.endereco.complemento}" type="text" maxlength="15" placeholder="Complemento" class="form-control"/>
+                        </div>
+                    </div>
 
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="textinput">Número</label>
-                            <div class="col-sm-4">
-                                <p:inputText value="#{endereco.numero}" required="true" type="text" maxlength="6" onkeypress='return SomenteNumero(event)' placeholder="Número Residência" class="form-control"/>
-                            </div>
-
-                            <label class="col-sm-2 control-label" for="textinput">Complemento</label>
-                            <div class="col-sm-4">
-                                <p:inputText value="#{endereco.endereco.complemento}" type="text" maxlength="15" placeholder="Complemento" class="form-control"/>
-                            </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="textinput">Cidade</label>
+                        <div class="col-sm-4">
+                            <p:inputText value="#{endereco.cidade}" id="cid" required="true" requiredMessage="Cidade Obrigatória"  type="text" maxlength="20" placeholder="Nome de sua cidade" class="form-control"/>
+                            <h:message for="cid" id="msg3" styleClass="erros" style="color: red"/>
                         </div>
 
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="textinput">Cidade</label>
-                            <div class="col-sm-4">
-                                <p:inputText value="#{endereco.cidade}" required="true" type="text" maxlength="20" placeholder="Nome de sua cidade" class="form-control"/>
-                            </div>
+                        <label class="col-sm-2 control-label" for="textinput">Bairro</label>
+                        <div class="col-sm-4">
+                            <p:inputText value="#{endereco.bairro}" id="bai" required="true" requiredMessage="Bairro Obrigatório" type="text" maxlength="15" placeholder="Bairro" class="form-control"/>
+                            <h:message for="bai" id="msg4" styleClass="erros" style="color: red"/>
+                        </div>
+                    </div>
 
-                            <label class="col-sm-2 control-label" for="textinput">Bairro</label>
-                            <div class="col-sm-4">
-                                <p:inputText value="#{endereco.bairro}" required="true" type="text" maxlength="15" placeholder="Bairro" class="form-control"/>
-                            </div>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="textinput">Estado</label>
+                        <div class="col-sm-4">
+                            <h:selectOneMenu value="#{endereco.estado}" class="form-control" id="est" required="true" requiredMessage="Selecione um estado">
+                                <f:selectItem itemValue = "" itemLabel = "Estado" />
+                                <f:selectItem itemValue = "AC" itemLabel = "Acre" />
+                                <f:selectItem itemValue = "AL" itemLabel = "Alagoas" />
+                                <f:selectItem itemValue = "AP" itemLabel = "Amapá" />
+                                <f:selectItem itemValue = "AM" itemLabel = "Amazonas" />
+                                <f:selectItem itemValue = "BA" itemLabel = "Bahia" />
+                                <f:selectItem itemValue = "CE" itemLabel = "Ceará" />
+                                <f:selectItem itemValue = "DF" itemLabel = "Distrito Federal" />
+                                <f:selectItem itemValue = "ES" itemLabel = "Espírito Santo" />
+                                <f:selectItem itemValue = "GO" itemLabel = "Goiás" />
+                                <f:selectItem itemValue = "MA" itemLabel = "Maranhão" />
+                                <f:selectItem itemValue = "MT" itemLabel = "Mato Grosso" />
+                                <f:selectItem itemValue = "MS" itemLabel = "Mato Grosso do Sul" />
+                                <f:selectItem itemValue = "MG" itemLabel = "Minas Gerais" />
+                                <f:selectItem itemValue = "PA" itemLabel = "Pará" />
+                                <f:selectItem itemValue = "PB" itemLabel = "Paraíba" />
+                                <f:selectItem itemValue = "PR" itemLabel = "Paraná" />
+                                <f:selectItem itemValue = "PE" itemLabel = "Pernambuco" />
+                                <f:selectItem itemValue = "PI" itemLabel = "Piauí" />
+                                <f:selectItem itemValue = "RJ" itemLabel = "Rio de Janeiro" />
+                                <f:selectItem itemValue = "RN" itemLabel = "Rio Grande do Norte" />
+                                <f:selectItem itemValue = "RS" itemLabel = "Rio Grande do Sul" />
+                                <f:selectItem itemValue = "RO" itemLabel = "Rondônia" />
+                                <f:selectItem itemValue = "RR" itemLabel = "Roraima" />
+                                <f:selectItem itemValue = "SC" itemLabel = "Santa Catarina" />
+                                <f:selectItem itemValue = "SP" itemLabel = "São Paulo" />
+                                <f:selectItem itemValue = "SE" itemLabel = "Sergipe" />
+                                <f:selectItem itemValue = "TO" itemLabel = "Tocantins" />
+                            </h:selectOneMenu>
+                            <h:message for="est" id="msg5" styleClass="erros" style="color: red"/>
                         </div>
 
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label" for="textinput">Estado</label>
-                            <div class="col-sm-4">
-                                <h:selectOneMenu value="#{endereco.estado}" class="form-control">
-                                    <f:selectItem itemValue = "" itemLabel = "Estado" />
-                                    <f:selectItem itemValue = "AC" itemLabel = "Acre" />
-                                    <f:selectItem itemValue = "AL" itemLabel = "Alagoas" />
-                                    <f:selectItem itemValue = "AP" itemLabel = "Amapá" />
-                                    <f:selectItem itemValue = "AM" itemLabel = "Amazonas" />
-                                    <f:selectItem itemValue = "BA" itemLabel = "Bahia" />
-                                    <f:selectItem itemValue = "CE" itemLabel = "Ceará" />
-                                    <f:selectItem itemValue = "DF" itemLabel = "Distrito Federal" />
-                                    <f:selectItem itemValue = "ES" itemLabel = "Espírito Santo" />
-                                    <f:selectItem itemValue = "GO" itemLabel = "Goiás" />
-                                    <f:selectItem itemValue = "MA" itemLabel = "Maranhão" />
-                                    <f:selectItem itemValue = "MT" itemLabel = "Mato Grosso" />
-                                    <f:selectItem itemValue = "MS" itemLabel = "Mato Grosso do Sul" />
-                                    <f:selectItem itemValue = "MG" itemLabel = "Minas Gerais" />
-                                    <f:selectItem itemValue = "PA" itemLabel = "Pará" />
-                                    <f:selectItem itemValue = "PB" itemLabel = "Paraíba" />
-                                    <f:selectItem itemValue = "PR" itemLabel = "Paraná" />
-                                    <f:selectItem itemValue = "PE" itemLabel = "Pernambuco" />
-                                    <f:selectItem itemValue = "PI" itemLabel = "Piauí" />
-                                    <f:selectItem itemValue = "RJ" itemLabel = "Rio de Janeiro" />
-                                    <f:selectItem itemValue = "RN" itemLabel = "Rio Grande do Norte" />
-                                    <f:selectItem itemValue = "RS" itemLabel = "Rio Grande do Sul" />
-                                    <f:selectItem itemValue = "RO" itemLabel = "Rondônia" />
-                                    <f:selectItem itemValue = "RR" itemLabel = "Roraima" />
-                                    <f:selectItem itemValue = "SC" itemLabel = "Santa Catarina" />
-                                    <f:selectItem itemValue = "SP" itemLabel = "São Paulo" />
-                                    <f:selectItem itemValue = "SE" itemLabel = "Sergipe" />
-                                    <f:selectItem itemValue = "TO" itemLabel = "Tocantins" />
-                                </h:selectOneMenu>
-                            </div>
+                        <label class="col-sm-2 control-label" for="textinput">CEP</label>
+                        <div class="col-sm-4">
+                            <p:inputText value="#{endereco.cep}" id="cep" required="true" type="text" onkeypress='return SomenteNumero(event)' size="8"  maxlength="8" placeholder="Digite seu CEP" class="form-control" />
+                        </div>
+                    </div>
 
-                            <label class="col-sm-2 control-label" for="textinput">CEP</label>
-                            <div class="col-sm-4">
-                                <p:inputText value="#{endereco.cep}" required="true" type="text" onkeypress='return SomenteNumero(event)'   maxlength="8" placeholder="Digite seu CEP" class="form-control" />
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="pull-right">
+                                <p:commandButton class="btn btn-default" ajax="false" value="Voltar" action="#{CarrinhoManagedBean.voltarEtapa(2)}"/>
+
+                                <p:commandButton class="btn btn-primary" value="Avançar" action="#{CarrinhoManagedBean.proximaEtapa(2)}"
+                                                 ajax="false">
+                                    <f:setPropertyActionListener target="#{conclusaoCompraManagedBean.endereco}" value="#{endereco.endereco}"/>
+                                </p:commandButton>
                             </div>
                         </div>
-
-
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <div class="pull-right">
-                                    <p:commandButton class="btn btn-default" ajax="false" value="Voltar" action="#{CarrinhoManagedBean.voltarEtapa(2)}"/>
-
-                                    <p:commandButton class="btn btn-primary" value="Avançar" action="#{CarrinhoManagedBean.proximaEtapa(2)}"
-                                                     ajax="false">
-                                        <f:setPropertyActionListener target="#{conclusaoCompraManagedBean.endereco}" value="#{endereco.endereco}"/>
-                                    </p:commandButton>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
 
                 </h:form>
             </div><!-- /.col-lg-12 -->

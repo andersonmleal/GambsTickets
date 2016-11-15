@@ -95,16 +95,31 @@ public class CarrinhoManagedBean implements Serializable {
     public void proximaEtapa(int etapaAtual) {
         switch (etapaAtual) {
             case 1:
-                etapaCompra = "etapaCompra-enderecoEntrega.xhtml";
-                break;
+                if (etapaCompra.contains("enderecoEntrega")) {
+                    etapaCompra = "etapaCompra-itensCarrinho.xhtml";
+                    break;
+                } else {
+                    etapaCompra = "etapaCompra-enderecoEntrega.xhtml";
+                    break;
+                }
 
             case 2:
-                etapaCompra = "etapaCompra-formaPagamento.xhtml";
-                break;
+                if (etapaCompra.contains("formaPagamento")) {
+                    etapaCompra = "etapaCompra-itensCarrinho.xhtml";
+                    break;
+                } else {
+                    etapaCompra = "etapaCompra-formaPagamento.xhtml";
+                    break;
+                }
 
             case 3:
-                etapaCompra = "etapaCompra-resumoCompra.xhtml";
-                break;
+                if (etapaCompra.contains("resumoCompra")) {
+                    etapaCompra = "etapaCompra-itensCarrinho.xhtml";
+                    break;
+                } else {
+                    etapaCompra = "etapaCompra-resumoCompra.xhtml";
+                    break;
+                }
 
         }
     }
@@ -143,9 +158,9 @@ public class CarrinhoManagedBean implements Serializable {
             return "";
         }
     }
-    
-    public Object retornaClasse() throws CloneNotSupportedException{
-    return this.clone();
+
+    public Object retornaClasse() throws CloneNotSupportedException {
+        return this.clone();
     }
 
 }

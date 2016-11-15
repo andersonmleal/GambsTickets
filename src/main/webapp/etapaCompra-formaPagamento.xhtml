@@ -15,6 +15,13 @@
         <link href="css/carrinhoCompras.css" rel="stylesheet"/> 
 
         <script type="text/javascript" src="js/Pagamento.js"></script>
+        <script>
+            jQuery(function ($) {
+                $("#campoData").mask("99/99/9999");
+                $("#campoTelefone").mask("(999) 999-9999");
+                $("#campoSenha").mask("***-****");
+            });
+        </script>
 
     </h:head>
     <h:body>
@@ -29,24 +36,17 @@
                             <div class="control-group">
                                 <label class="control-label">Nome do Titular</label>
                                 <div class="col-sm-12">
-                                    <p:inputText value="#{pagamentoManagedBean.nomePro}" type="text" maxlength="20" class="form-control"  title="Informe o nome do cartão" required="true"/>
+                                    <p:inputText value="#{pagamentoManagedBean.nomePro}" id="nome" type="text" maxlength="20" class="form-control"  title="Informe o nome do cartão" required="true" requiredMessage="Titular Obrigatório" style="text-transform:uppercase"/>
+                                    <h:message for="nome" id="msg1" styleClass="erros" style="color: red"/>
                                 </div>
                             </div>
 
                             <div class="control-group">
                                 <label class="control-label">Número do Cartão</label>
                                 <div class="row">
-                                    <div class="col-sm-3">
-                                        <p:inputText value="#{pagamentoManagedBean.comb1}" type="text" class="form-control" autocomplete="off" maxlength="4" title="Primeiro grupo" required="true"/>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <p:inputText value="#{pagamentoManagedBean.comb2}" type="text" class="form-control" autocomplete="off" maxlength="4" title="Segundo grupo" required="true"/>
-                                    </div>
-                                    <div class="col-sm-3">
-                                            <p:inputText value="#{pagamentoManagedBean.comb3}" type="text" class="form-control" autocomplete="off" maxlength="4" title="Segundo grupo" required="true"/>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <p:inputText value="#{pagamentoManagedBean.comb4}" type="text" class="form-control" autocomplete="off" maxlength="4" title="Quarto Grupo" required="true"/>
+                                    <div class="col-sm-12">
+                                        <p:inputText value="#{pagamentoManagedBean.numCartao}" id="num" type="text" class="form-control" autocomplete="off" maxlength="16" title="cartao" required="true" requiredMessage="Número inválido" onkeypress='return SomenteNumero(event)'/>
+                                        <h:message for="num" id="msg2" styleClass="erros" style="color: red"/>
                                     </div>
                                 </div>
 
@@ -93,7 +93,8 @@
                                 <label class="control-label">Código de Segurança</label>
                                 <div class="form-group">
                                     <div class="col-sm-6">
-                                        <p:inputText value="#{pagamentoManagedBean.codVerificador}" type="text" class="form-control" autocomplete="off" maxlength="3" title="Código de verificação atrás do cartão" required="true"/>
+                                        <p:inputText value="#{pagamentoManagedBean.codVerificador}" id="cod" type="text" class="form-control" autocomplete="off" maxlength="3" title="Código de verificação atrás do cartão" required="true" requiredMessage="Código invalido" />
+                                        <h:message for="cod" id="msg3" styleClass="erros" style="color: red"/>
                                     </div>
                                     <div class="span8">
                                         <!-- screenshot may be here -->
@@ -108,7 +109,7 @@
                                 <p:commandButton class="btn btn-primary" value="Avançar" action="#{CarrinhoManagedBean.proximaEtapa(3)}"
                                                  ajax="false">
                                     <f:setPropertyActionListener target="#{conclusaoCompraManagedBean.pagamento}" value="#{pagamentoManagedBean.pagamento}"/>
-                                    
+
                                 </p:commandButton>
                             </div>
                         </fieldset>

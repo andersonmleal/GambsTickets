@@ -24,18 +24,13 @@ public class PagamentoManagedBean implements Serializable {
     private String numCartao;
     private String nomePro;
     private long codVerificador;
-    //combo cartao
-    private String comb1;
-    private String comb2;
-    private String comb3;
-    private String comb4;
 
     public PagamentoManagedBean() {
 
     }
 
     public FormaPagamento getPagamento() {
-        pagamento = new FormaPagamento(getNumCartao(), nomePro, codVerificador, mesCartao, anoCartao);
+        pagamento = new FormaPagamento(numCartao, nomePro.toUpperCase(), codVerificador, mesCartao, anoCartao);
             return pagamento;
     }
 
@@ -74,7 +69,6 @@ public class PagamentoManagedBean implements Serializable {
     }
 
     public String getNumCartao() {
-        this.numCartao = comb1 + comb2 + comb3 +comb4;
         return numCartao;
     }
 
@@ -85,42 +79,6 @@ public class PagamentoManagedBean implements Serializable {
     public long getCodVerificador() {
         return codVerificador;
     }
-
-    public String getComb1() {
-        return comb1;
-    }
-
-    public void setComb1(String comb1) {
-        this.comb1 = comb1;
-    }
-
-    public String getComb2() {
-        return comb2;
-    }
-
-    public void setComb2(String comb2) {
-        this.comb2 = comb2;
-    }
-
-    public String getComb3() {
-        return comb3;
-    }
-
-    public void setComb3(String comb3) {
-        this.comb3 = comb3;
-    }
-
-    public String getComb4() {
-        return comb4;
-    }
-
-    public void setComb4(String comb4) {
-        this.comb4 = comb4;
-    }
-
-
-    
-    
-    
+ 
 
 }
