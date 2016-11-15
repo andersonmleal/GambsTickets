@@ -35,7 +35,7 @@
                             <td><h:outputText value="#{ingresso.precoUnitario}"/></td>
                             <td><h:outputText value="#{ingresso.precoTotal}"/></td>
                             <td>
-                                <h:commandButton value="remover" action="carrinhoCompras.xhtml" class="btn btn-link" style="padding: 0px">
+                                <h:commandButton value="remover" action="carrinhoCompras.xhtml" class="btn btn-link" style="padding: 0px; color: tomato">
                                     <f:setPropertyActionListener target="#{CarrinhoManagedBean.removerItem}" value="#{ingresso}"/>
                                 </h:commandButton>
 
