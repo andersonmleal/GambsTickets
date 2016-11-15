@@ -6,12 +6,16 @@
 package jpa;
 
 import entidade.Usuario;
+import java.sql.ResultSet;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -35,5 +39,19 @@ public class UsuarioJPA {
             em.close();
         }
     }
-    
+
+    public List<Usuario> verificaCadastro(long usuario) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            // Query JPQL
+            Query query = em.createQuery("select usuario from Usuario usuario where usuario.cpf = :cpf")
+                    .setParameter("cpf", usuario);  
+
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+
+    }
+
 }
