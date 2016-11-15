@@ -1,6 +1,7 @@
 package entidade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -13,7 +14,6 @@ import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "Usuario")
-
 public class Usuario implements Serializable {
 
     @Id
@@ -31,13 +31,13 @@ public class Usuario implements Serializable {
     private Date dtNascimento;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dtCadastro;
-    @OneToMany(mappedBy = "usuario_evento")
-    private Endereco endereco;
     @OneToMany(mappedBy = "usuario")
     private List<Telefone> telefones;
+    @OneToMany(mappedBy = "usuario_evento")
+    private List<Endereco> enderecos;
 
     public Usuario() {
-        endereco = new Endereco();
+        enderecos = new ArrayList<>();
     }
 
     public long getCpf() {
@@ -136,13 +136,15 @@ public class Usuario implements Serializable {
         this.dtCadastro = dtCadastro;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public List<Endereco> getEnderecos() {
+        return enderecos;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
     }
+
+
 
     public List<Telefone> getTelefones() {
         return telefones;

@@ -31,6 +31,9 @@ public class Endereco implements Serializable {
     private Date dt_cadastro;
     private boolean status;
 
+    public Endereco() {
+    }
+
     public long getId_endereco() {
         return id_endereco;
     }

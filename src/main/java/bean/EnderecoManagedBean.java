@@ -6,9 +6,12 @@
 package bean;
 
 import entidade.Endereco;
+import entidade.Usuario;
+import java.io.Serializable;
 import java.util.Calendar;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import jpa.EnderecoJPA;
 
@@ -17,9 +20,9 @@ import jpa.EnderecoJPA;
  * @author silvana
  */
 @ManagedBean
-@Named(value = "enderecoManagedBean")
-@RequestScoped
-public class EnderecoManagedBean {
+@Named(value = "endereco")
+@SessionScoped
+public class EnderecoManagedBean implements Serializable{
     
     private Endereco endereco;
     private EnderecoJPA enderecoJPA;
@@ -37,10 +40,11 @@ public class EnderecoManagedBean {
         this.endereco = endereco;
     }
 
-    public String cadastrar() {
+    public String cadastrar(Usuario user) {
         Calendar c = Calendar.getInstance();
         endereco.setDt_cadastro(c.getTime());
-
+        endereco.setUsuario_evento(user);
+        
         enderecoJPA = new EnderecoJPA();
         enderecoJPA.incluir(endereco);
         return "menu";
