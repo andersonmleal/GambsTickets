@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import jpa.EnderecoJPA;
 import jpa.UsuarioJPA;
 
 @ManagedBean
@@ -46,9 +47,11 @@ public class UsuarioBean implements Serializable{
         
         usuarioJPA = new UsuarioJPA();
         usuarioJPA.incluir(usuario);
-        
-        EnderecoManagedBean ender = new EnderecoManagedBean();
-        ender.cadastrar(usuario);
+
+        endereco.setDt_cadastro(c.getTime());
+        endereco.setUsuario_evento(usuario);
+        EnderecoJPA enderecoJPA = new EnderecoJPA();
+        enderecoJPA.incluir(endereco);
         
         System.out.print("teste");
         return "sucesso";
