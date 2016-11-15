@@ -37,6 +37,7 @@ public class Usuario implements Serializable {
     private List<Telefone> telefones;
 
     public Usuario() {
+        endereco = new Endereco();
     }
 
     public long getCpf() {
