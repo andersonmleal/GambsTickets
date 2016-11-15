@@ -40,13 +40,12 @@ public class EnderecoManagedBean implements Serializable{
         this.endereco = endereco;
     }
 
-    public String cadastrar(Usuario user) {
+    public void cadastrar(Usuario user) {
         Calendar c = Calendar.getInstance();
         endereco.setDt_cadastro(c.getTime());
         endereco.setUsuario_evento(user);
         
         enderecoJPA = new EnderecoJPA();
         enderecoJPA.incluir(endereco);
-        return "menu";
     }
 }
