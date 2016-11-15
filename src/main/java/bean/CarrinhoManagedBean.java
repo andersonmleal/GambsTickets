@@ -143,5 +143,9 @@ public class CarrinhoManagedBean implements Serializable {
             return "";
         }
     }
+    
+    public Object retornaClasse() throws CloneNotSupportedException{
+    return this.clone();
+    }
 
 }

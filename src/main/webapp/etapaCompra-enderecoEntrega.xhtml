@@ -22,7 +22,6 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h:form class="form-horizontal" role="form">
-                    <fieldset>
 
                         <!-- Form Name -->
                         <legend style="text-align: center">Endereço de Entrega</legend>
@@ -111,12 +110,13 @@
                                     <p:commandButton class="btn btn-default" ajax="false" value="Voltar" action="#{CarrinhoManagedBean.voltarEtapa(2)}"/>
 
                                     <p:commandButton class="btn btn-primary" value="Avançar" action="#{CarrinhoManagedBean.proximaEtapa(2)}"
-                                                     ajax="false" />
+                                                     ajax="false">
+                                        <f:setPropertyActionListener target="#{conclusaoCompraManagedBean.endereco}" value="#{enderecoManagedBean.endereco}"/>
+                                    </p:commandButton>
                                 </div>
                             </div>
                         </div>
 
-                    </fieldset>
                 </h:form>
             </div><!-- /.col-lg-12 -->
         </div><!-- /.row -->

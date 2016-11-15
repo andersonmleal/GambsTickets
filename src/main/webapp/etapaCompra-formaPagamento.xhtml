@@ -29,7 +29,7 @@
                             <div class="control-group">
                                 <label class="control-label">Nome do Titular</label>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" pattern="\w+ \w+.*" title="Informe o nome do cartão" required="true"/>
+                                    <input value="#{pagamentoManagedBean.pagamento.nomePro}" type="text" maxlength="20" class="form-control" pattern="\w+ \w+.*" title="Informe o nome do cartão" required="true"/>
                                 </div>
                             </div>
 
@@ -37,75 +37,84 @@
                                 <label class="control-label">Número do Cartão</label>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Primeiro grupo" required="true"/>
+                                        <input value="#{pagamentoManagedBean.pagamento.comb1}" type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Primeiro grupo" required="true"/>
                                     </div>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Segundo grupo" required="true"/>
+                                        <input value="#{pagamentoManagedBean.pagamento.comb2}" type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Segundo grupo" required="true"/>
                                     </div>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Terceiro grupo" required="true"/>
+                                        <input value="#{pagamentoManagedBean.pagamento.comb3}" type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Terceiro grupo" required="true"/>
                                     </div>
                                     <div class="col-sm-3">
-                                        <input type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Quarto Grupo" required="true"/>
+                                        <input value="#{pagamentoManagedBean.pagamento.comb4}" type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Quarto Grupo" required="true"/>
                                     </div>
                                 </div>
 
                             </div>
 
-                                <div class="control-group">
-                                    <label class="control-label">Data de Validade</label>
-                                    <div class="form-group">
-                                        <div class="col-sm-6">
-                                            <h:selectOneMenu value = "#" class="form-control">
-                                                <f:selectItem itemValue = "Janeiro" itemLabel = "Janeiro" />
-                                                <f:selectItem itemValue = "Fevereiro" itemLabel = "Fevereiro" />
-                                                <f:selectItem itemValue = "Março" itemLabel = "Março" />
-                                                <f:selectItem itemValue = "Abril" itemLabel = "Abril" />
-                                                <f:selectItem itemValue = "Junho" itemLabel = "Junho" />
-                                                <f:selectItem itemValue = "Julho" itemLabel = "Julho" />
-                                                <f:selectItem itemValue = "Agosto" itemLabel = "Agosto" />
-                                                <f:selectItem itemValue = "Setembro" itemLabel = "Setembro" />
-                                                <f:selectItem itemValue = "Outubro" itemLabel = "Outubro" />
-                                                <f:selectItem itemValue = "Novembro" itemLabel = "Novembro" />
-                                                <f:selectItem itemValue = "Dezembro" itemLabel = "Dezembro" />
-                                            </h:selectOneMenu>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <h:selectOneMenu value = "#" class="form-control">
-                                                <f:selectItem itemValue = "2016" itemLabel = "2016" />
-                                                <f:selectItem itemValue = "2017" itemLabel = "2017" />
-                                                <f:selectItem itemValue = "2018" itemLabel = "2018" />
-                                                <f:selectItem itemValue = "2019" itemLabel = "2019" />
-                                                <f:selectItem itemValue = "2020" itemLabel = "2020" />
-                                                <f:selectItem itemValue = "2021" itemLabel = "2021" />
-                                                <f:selectItem itemValue = "2022" itemLabel = "2022" />
-                                                <f:selectItem itemValue = "2023" itemLabel = "2023" />
-                                            </h:selectOneMenu>
-                                        </div>
+                            <div class="control-group">
+                                <label class="control-label">Data de Validade</label>
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <h:selectOneMenu value = "#{pagamentoManagedBean.mesCartao}" class="form-control">
+                                            <f:selectItem itemValue = "01" itemLabel = "Janeiro" />
+                                            <f:selectItem itemValue = "02" itemLabel = "Fevereiro" />
+                                            <f:selectItem itemValue = "03" itemLabel = "Março" />
+                                            <f:selectItem itemValue = "04" itemLabel = "Abril" />
+                                            <f:selectItem itemValue = "05" itemLabel = "Maio" />
+                                            <f:selectItem itemValue = "06" itemLabel = "Junho" />
+                                            <f:selectItem itemValue = "07" itemLabel = "Julho" />
+                                            <f:selectItem itemValue = "08" itemLabel = "Agosto" />
+                                            <f:selectItem itemValue = "09" itemLabel = "Setembro" />
+                                            <f:selectItem itemValue = "10" itemLabel = "Outubro" />
+                                            <f:selectItem itemValue = "11" itemLabel = "Novembro" />
+                                            <f:selectItem itemValue = "12" itemLabel = "Dezembro" />
+                                        </h:selectOneMenu>
                                     </div>
-
+                                    <div class="col-sm-6">
+                                        <h:selectOneMenu value = "#{pagamentoManagedBean.anoCartao}" class="form-control">
+                                            <f:selectItem itemValue = "2016" itemLabel = "2016" />
+                                            <f:selectItem itemValue = "2017" itemLabel = "2017" />
+                                            <f:selectItem itemValue = "2018" itemLabel = "2018" />
+                                            <f:selectItem itemValue = "2019" itemLabel = "2019" />
+                                            <f:selectItem itemValue = "2020" itemLabel = "2020" />
+                                            <f:selectItem itemValue = "2021" itemLabel = "2021" />
+                                            <f:selectItem itemValue = "2022" itemLabel = "2022" />
+                                            <f:selectItem itemValue = "2023" itemLabel = "2023" />
+                                            <f:selectItem itemValue = "2024" itemLabel = "2024" />
+                                            <f:selectItem itemValue = "2025" itemLabel = "2025" />
+                                        </h:selectOneMenu>
+                                    </div>
                                 </div>
 
-                                <div class="control-group">
-                                    <label class="control-label">Código de Segurança</label>
-                                        <div class="form-group">
-                                            <div class="col-sm-6">
-                                                <input type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Código de verificação atrás do cartão" required="true"/>
-                                            </div>
-                                            <div class="span8">
-                                                <!-- screenshot may be here -->
-                                            </div>
-                                        </div>
-                                    
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label">Código de Segurança</label>
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <input value="#{pagamentoManagedBean.pagamento.codVerificador}" type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Código de verificação atrás do cartão" required="true"/>
+                                    </div>
+                                    <div class="span8">
+                                        <!-- screenshot may be here -->
+                                    </div>
                                 </div>
+
+                            </div>
 
 
                             <div class="form-actions">
                                 <p:commandButton action="#{CarrinhoManagedBean.voltarEtapa(2)}" value="Voltar" class="btn"/>
                                 <p:commandButton class="btn btn-primary" value="Avançar" action="#{CarrinhoManagedBean.proximaEtapa(3)}"
-                                                     ajax="false" />
+                                                 ajax="false">
+                                    <f:setPropertyActionListener target="#{conclusaoCompraManagedBean.pagamento}" value="#{pagamentoManagedBean.pagamento}"/>
+                                    
+                                </p:commandButton>
                             </div>
                         </fieldset>
+
+                        <h:outputText value="#{enderecoManagedBean.endereco.bairro}"></h:outputText>
+                        <h:outputText value="#{endereco.endereco.bairro}"></h:outputText>
                     </h:form>
                 </div>
             </div>
