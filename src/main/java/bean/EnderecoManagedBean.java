@@ -25,19 +25,24 @@ public class EnderecoManagedBean implements Serializable {
 
     private Endereco endereco;
     private EnderecoJPA enderecoJPA;
+    private String logradouro;
+    private int numero;
+    private String complemento;
+    private String cidade;
+    private String bairro;
+    private String estado;
+    private long cep;
 
     public EnderecoManagedBean() {
-        endereco = new Endereco();
+        
 
     }
 
     public Endereco getEndereco() {
+        endereco = new Endereco(logradouro, numero, complemento, bairro, cidade, estado, cep);
         return endereco;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
 
     public void cadastrar(Usuario user) {
         Calendar c = Calendar.getInstance();
@@ -57,4 +62,72 @@ public class EnderecoManagedBean implements Serializable {
         this.enderecoJPA = enderecoJPA;
     }
 
-   }
+    
+    
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+        endereco.setLogradouro(logradouro);
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+        endereco.setNumero(numero);
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
+        endereco.setComplemento(complemento);
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+        endereco.setCidade(cidade);
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+        endereco.setBairro(bairro);
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+        endereco.setEstado(estado);
+    }
+
+    public void setCep(long cep) {
+        this.cep = cep;
+        endereco.setCep(cep);
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public long getCep() {
+        return cep;
+    }
+    
+    
+    
+
+}

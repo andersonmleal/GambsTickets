@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>GambsTickets - Eventos</title>
         <meta charset="utf-8"/>
@@ -23,93 +24,74 @@
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <address>
-                                <strong><h:outputText value="#{conclusaoCompraManagedBean.endereco.estado}"></h:outputText></strong>
+                                <strong>Endereço</strong>
                                 <br></br>
-                                2135 Sunset Blvd
+                                Rua<h:outputText value="#{conclusaoCompraManagedBean.endereco.logradouro}"></h:outputText>, 
+                                <h:outputText value="#{conclusaoCompraManagedBean.endereco.numero}"></h:outputText>
                                 <br></br>
-                                Los Angeles, CA 90026
-                                <br></br>
-                                <abbr title="Phone">P:</abbr> (213) 484-6829
+                                <h:outputText value="#{conclusaoCompraManagedBean.endereco.cidade}"></h:outputText>, 
+                                <h:outputText value="#{conclusaoCompraManagedBean.endereco.estado}"></h:outputText> - 
+                                <h:outputText value="#{conclusaoCompraManagedBean.endereco.cep}"></h:outputText>
                             </address>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 text-right">
-                            <p>
-                                <em>Date: 1st November, 2013</em>
-                            </p>
-                            <p>
-                                <em>Receipt #: 34522677W</em>
-                            </p>
+                            <address>
+                                <strong>Cartão</strong>
+                                <br></br>
+                                <h:outputText value="#{conclusaoCompraManagedBean.pagamento.nomePro}"></h:outputText> 
+                                <br></br>
+                                <h:outputText value="#{conclusaoCompraManagedBean.pagamento.mesValidade}"></h:outputText>/
+                                <h:outputText value="#{conclusaoCompraManagedBean.pagamento.anoValidade}"></h:outputText>
+                            </address>
                         </div>
                     </div>
                     <div class="row">
                         <div class="text-center">
-                            <h1>Receipt</h1>
+                            <h1>Carrinho</h1>
                         </div>
                         <span></span>
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Product</th>
-                                    <th>#</th>
-                                    <th class="text-center">Price</th>
+                                    <th>Produto</th>
+                                    <th>Quant.</th>
+                                    <th class="text-center">Preço</th>
                                     <th class="text-center">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="col-md-9"><h4><em>Baked Rodopa Sheep Feta</em></h4></td>
-                                    <td class="col-md-1" style="text-align: center"> 2 </td>
-                                    <td class="col-md-1 text-center">$13</td>
-                                    <td class="col-md-1 text-center">$26</td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-9"><h4><em>Lebanese Cabbage Salad</em></h4></td>
-                                    <td class="col-md-1" style="text-align: center"> 1 </td>
-                                    <td class="col-md-1 text-center">$8</td>
-                                    <td class="col-md-1 text-center">$8</td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-9"><h4><em>Baked Tart with Thyme and Garlic</em></h4></td>
-                                    <td class="col-md-1" style="text-align: center"> 3 </td>
-                                    <td class="col-md-1 text-center">$16</td>
-                                    <td class="col-md-1 text-center">$48</td>
-                                </tr>
-                                <tr>
-                                    <td>   </td>
-                                    <td>   </td>
-                                    <td class="text-right">
-                                        <p>
-                                            <strong>Subtotal: </strong>
-                                        </p>
-                                        <p>
-                                            <strong>Tax: </strong>
-                                        </p></td>
-                                    <td class="text-center">
-                                        <p>
-                                            <strong>$6.94</strong>
-                                        </p>
-                                        <p>
-                                            <strong>$6.94</strong>
-                                        </p></td>
-                                </tr>
+                                <ui:repeat var="ingresso" value="#{conclusaoCompraManagedBean.eventosSelecionados}">
+                                    <tr>
+                                        <td class="col-md-9"><h4><em>
+                                                    <h:outputText value="#{ingresso.evento.nome_evento}"/> - 
+                                                    <h:outputText value="#{ingresso.setor.nomeSetor}"/>
+                                                </em></h4></td>
+                                        <td class="col-md-1" style="text-align: center"><h:outputText value="#{ingresso.quantidadeSelecionada}"/></td>
+                                        <td class="col-md-1 text-center">$<h:outputText value="#{ingresso.setor.preco}"/></td>
+                                        <td class="col-md-1 text-center">$<h:outputText value="#{ingresso.precoTotal}"/></td>
+                                    </tr>
+                                </ui:repeat>
+                                
+
+
                                 <tr>
                                     <td>   </td>
                                     <td>   </td>
                                     <td class="text-right"><h4><strong>Total: </strong></h4></td>
-                                    <td class="text-center text-danger"><h4><strong>$31.53</strong></h4></td>
+                                    <td class="text-center text-danger"><h4><strong>$<h:outputText value="#{conclusaoCompraManagedBean.valorTotal}"/></strong></h4></td>
                                 </tr>
                             </tbody>
                         </table>
                         <button type="button" class="btn btn-success btn-lg btn-block">
-                            Pay Now
+                            Confirmar Compra
                         </button>
                     </div>
                 </div>
 
             </div>
-            </div>
+        </div>
 
-            
+
 
 
 

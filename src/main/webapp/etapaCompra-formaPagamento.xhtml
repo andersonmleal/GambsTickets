@@ -29,7 +29,7 @@
                             <div class="control-group">
                                 <label class="control-label">Nome do Titular</label>
                                 <div class="col-sm-12">
-                                    <input value="#{pagamentoManagedBean.pagamento.nomePro}" type="text" maxlength="20" class="form-control" pattern="\w+ \w+.*" title="Informe o nome do cartão" required="true"/>
+                                    <p:inputText value="#{pagamentoManagedBean.nomePro}" type="text" maxlength="20" class="form-control"  title="Informe o nome do cartão" required="true"/>
                                 </div>
                             </div>
 
@@ -37,16 +37,16 @@
                                 <label class="control-label">Número do Cartão</label>
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <input value="#{pagamentoManagedBean.pagamento.comb1}" type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Primeiro grupo" required="true"/>
+                                        <p:inputText value="#{pagamentoManagedBean.comb1}" type="text" class="form-control" autocomplete="off" maxlength="4" title="Primeiro grupo" required="true"/>
                                     </div>
                                     <div class="col-sm-3">
-                                        <input value="#{pagamentoManagedBean.pagamento.comb2}" type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Segundo grupo" required="true"/>
+                                        <p:inputText value="#{pagamentoManagedBean.comb2}" type="text" class="form-control" autocomplete="off" maxlength="4" title="Segundo grupo" required="true"/>
                                     </div>
                                     <div class="col-sm-3">
-                                        <input value="#{pagamentoManagedBean.pagamento.comb3}" type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Terceiro grupo" required="true"/>
+                                            <p:inputText value="#{pagamentoManagedBean.comb3}" type="text" class="form-control" autocomplete="off" maxlength="4" title="Segundo grupo" required="true"/>
                                     </div>
                                     <div class="col-sm-3">
-                                        <input value="#{pagamentoManagedBean.pagamento.comb4}" type="text" class="form-control" autocomplete="off" maxlength="4" pattern="\d{4}" title="Quarto Grupo" required="true"/>
+                                        <p:inputText value="#{pagamentoManagedBean.comb4}" type="text" class="form-control" autocomplete="off" maxlength="4" title="Quarto Grupo" required="true"/>
                                     </div>
                                 </div>
 
@@ -93,7 +93,7 @@
                                 <label class="control-label">Código de Segurança</label>
                                 <div class="form-group">
                                     <div class="col-sm-6">
-                                        <input value="#{pagamentoManagedBean.pagamento.codVerificador}" type="text" class="form-control" autocomplete="off" maxlength="3" pattern="\d{3}" title="Código de verificação atrás do cartão" required="true"/>
+                                        <p:inputText value="#{pagamentoManagedBean.codVerificador}" type="text" class="form-control" autocomplete="off" maxlength="3" title="Código de verificação atrás do cartão" required="true"/>
                                     </div>
                                     <div class="span8">
                                         <!-- screenshot may be here -->

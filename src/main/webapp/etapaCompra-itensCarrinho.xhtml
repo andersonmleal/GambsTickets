@@ -48,7 +48,7 @@
             <h4 style="color: #FF0000; text-align: center"><h:outputText value="#{CarrinhoManagedBean.verificaIngressosMensagem()}"/></h4>
 
             <p:commandButton styleClass="avancar" value="Avancar" disabled="#{CarrinhoManagedBean.verificaIngressos()}" action="#{CarrinhoManagedBean.proximaEtapa(1)}" ajax="false">
-                <f:setPropertyActionListener target="#{conclusaoCompraManagedBean.eventosSelecionados}" value="#{ingresso}"/>
+                <f:setPropertyActionListener target="#{conclusaoCompraManagedBean.eventosSelecionados}" value="#{CarrinhoManagedBean.eventos}"/>
             </p:commandButton>
         </h:form>
     </h:body>

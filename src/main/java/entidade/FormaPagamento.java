@@ -37,6 +37,20 @@ public class FormaPagamento implements Serializable {
     private int comb3;
     private int comb4;
 
+    public FormaPagamento() {
+    }
+
+    public FormaPagamento(String numCartao, String nomePro, long codVerificador, int mesValidade, int anoValidade) {
+        this.numCartao = Long.parseLong(numCartao);
+        this.nomePro = nomePro;
+        this.codVerificador = codVerificador;
+        this.mesValidade = mesValidade;
+        this.anoValidade = anoValidade;
+    }
+
+    
+    
+    
     public int getMesValidade() {
         return mesValidade;
     }

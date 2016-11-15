@@ -30,7 +30,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="textinput">Rua</label>
                             <div class="col-sm-10">
-                                 <input value="#{enderecoManagedBean.endereco.logradouro}" required="true" type="text" maxlength="35" placeholder="Digite nome de sua rua" class="form-control"/>
+                                <p:inputText value="#{endereco.logradouro}" required="true" type="text" maxlength="35" placeholder="Digite nome de sua rua" class="form-control"/>
                             </div>
                         </div>
 
@@ -39,12 +39,12 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="textinput">Número</label>
                             <div class="col-sm-4">
-                                <input value="#{enderecoManagedBean.endereco.numero}" required="true" type="text" maxlength="6" onkeypress='return SomenteNumero(event)' placeholder="Número Residência" class="form-control"/>
+                                <p:inputText value="#{endereco.numero}" required="true" type="text" maxlength="6" onkeypress='return SomenteNumero(event)' placeholder="Número Residência" class="form-control"/>
                             </div>
 
                             <label class="col-sm-2 control-label" for="textinput">Complemento</label>
                             <div class="col-sm-4">
-                                <input value="#{enderecoManagedBean.endereco.complemento}" type="text" maxlength="15" placeholder="Complemento" class="form-control"/>
+                                <p:inputText value="#{endereco.endereco.complemento}" type="text" maxlength="15" placeholder="Complemento" class="form-control"/>
                             </div>
                         </div>
 
@@ -52,12 +52,12 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="textinput">Cidade</label>
                             <div class="col-sm-4">
-                                <input value="#{enderecoManagedBean.endereco.cidade}" required="true" type="text" maxlength="20" placeholder="Nome de sua cidade" class="form-control"/>
+                                <p:inputText value="#{endereco.cidade}" required="true" type="text" maxlength="20" placeholder="Nome de sua cidade" class="form-control"/>
                             </div>
 
                             <label class="col-sm-2 control-label" for="textinput">Bairro</label>
                             <div class="col-sm-4">
-                                <input value="#{enderecoManagedBean.endereco.bairro}" required="true" type="text" maxlength="15" placeholder="Bairro" class="form-control"/>
+                                <p:inputText value="#{endereco.bairro}" required="true" type="text" maxlength="15" placeholder="Bairro" class="form-control"/>
                             </div>
                         </div>
 
@@ -65,7 +65,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="textinput">Estado</label>
                             <div class="col-sm-4">
-                                <h:selectOneMenu value="#{enderecoManagedBean.endereco.estado}" class="form-control">
+                                <h:selectOneMenu value="#{endereco.estado}" class="form-control">
                                     <f:selectItem itemValue = "" itemLabel = "Estado" />
                                     <f:selectItem itemValue = "AC" itemLabel = "Acre" />
                                     <f:selectItem itemValue = "AL" itemLabel = "Alagoas" />
@@ -99,7 +99,7 @@
 
                             <label class="col-sm-2 control-label" for="textinput">CEP</label>
                             <div class="col-sm-4">
-                                <input value="#{enderecoManagedBean.endereco.cep}" required="true" type="text" name="cep" onkeypress='return SomenteNumero(event)'   maxlength="8" placeholder="Digite seu CEP" class="form-control" />
+                                <p:inputText value="#{endereco.cep}" required="true" type="text" onkeypress='return SomenteNumero(event)'   maxlength="8" placeholder="Digite seu CEP" class="form-control" />
                             </div>
                         </div>
 
@@ -111,7 +111,7 @@
 
                                     <p:commandButton class="btn btn-primary" value="Avançar" action="#{CarrinhoManagedBean.proximaEtapa(2)}"
                                                      ajax="false">
-                                        <f:setPropertyActionListener target="#{conclusaoCompraManagedBean.endereco}" value="#{enderecoManagedBean.endereco}"/>
+                                        <f:setPropertyActionListener target="#{conclusaoCompraManagedBean.endereco}" value="#{endereco.endereco}"/>
                                     </p:commandButton>
                                 </div>
                             </div>
