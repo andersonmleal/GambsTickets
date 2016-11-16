@@ -61,12 +61,12 @@
 
 
                         <c:choose>
-                            <c:when test="${loginBean.recuperaUsuario() == ''}">
+                            <c:when test="${loginBean.recuperaUsuario() == null}">
                                 <li><a onclick="abreModalLogin()">Login</a></li> 
                             </c:when>
-                           <c:when test="${loginBean.recuperaUsuario() != ''}">
+                           <c:when test="${loginBean.recuperaUsuario() != null}">
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><p:outputLabel value="${loginBean.nome}" /> <b class="caret"></b></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><p:outputLabel value="${loginBean.usuario.nome}" /> <b class="caret"></b></a>
 
 
                                     <ul class="dropdown-menu">

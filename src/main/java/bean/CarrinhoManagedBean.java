@@ -8,11 +8,16 @@ package bean;
 import entidade.Evento;
 import entidade.EventoIngressos;
 import entidade.Setor;
+import entidade.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+import jpa.UsuarioJPA;
 
 /**
  *
@@ -26,6 +31,9 @@ public class CarrinhoManagedBean implements Serializable {
     private String etapaCompra;
     private String mensagem;
     private EventoIngressos removerItem;
+    private Usuario usuario = null;
+    private String cpf;
+    private String senha;
 
     public CarrinhoManagedBean() {
 
@@ -73,6 +81,20 @@ public class CarrinhoManagedBean implements Serializable {
 
     }
 
+    public Usuario recuperaUsuario() {
+        //ServletRequest req = null;
+        //HttpServletRequest request = (HttpServletRequest) req;
+        //HttpSession session = (HttpSession) request.getSession();
+
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+
+        usuario = (Usuario) session.getAttribute("usuario");
+
+        //JOptionPane.showInputDialog(UsuarioSession);
+        return usuario;
+    }
+
     public String getMensagem() {
         return mensagem;
     }
@@ -92,21 +114,87 @@ public class CarrinhoManagedBean implements Serializable {
         this.etapaCompra = etapaCompra;
     }
 
+    public Usuario validarUsuario(String cpf, String senha) {
+        UsuarioJPA usuarioJPA = new UsuarioJPA();
+        long usuarioLng = Long.parseLong(cpf);
+        List<Usuario> user = usuarioJPA.verificaCadastro(usuarioLng);
+        if (user.isEmpty()) {
+            return null;
+        } else {
+
+            return user.get(0);
+            //return usuarioLng == user.get(0).getCpf() && senha.equals(user.get(0).getSenha());
+        }
+        //ConclusaoCompraManagedBean userBean = new ConclusaoCompraManagedBean();
+        //userBean.setUsuario(user.get(0));
+
+    }
+
+    public String realizarLogin() {
+        usuario = validarUsuario(cpf, senha);
+
+        if (usuario != null) {
+            FacesContext fc = FacesContext.getCurrentInstance();
+            HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+            session.setAttribute("usuario", usuario);
+            etapaCompra = "etapaCompra-itensCarrinho.xhtml";
+            return "index";
+
+        }
+
+        FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                "Erro de Login", "Usuario/Senha inválidos");
+        FacesContext.getCurrentInstance().addMessage(null, fm);
+        return "loginErro";
+    }
+
     public void proximaEtapa(int etapaAtual) {
         switch (etapaAtual) {
             case 1:
-                    etapaCompra = "etapaCompra-enderecoEntrega.xhtml";
+                if (recuperaUsuario() != null || etapaCompra.contains("erroLogin")) {
+
+                    if (etapaCompra.contains("resumoCompra")) {
+                        etapaCompra = "etapaCompra-itensCarrinho.xhtml";
+                        break;
+                    } else {
+                        etapaCompra = "etapaCompra-enderecoEntrega.xhtml";
+                        break;
+                    }
+                } else {
+                    etapaCompra = "etapaCompra-erroLogin.xhtml";
                     break;
-                
+                }
 
             case 2:
-                    etapaCompra = "etapaCompra-formaPagamento.xhtml";
+                if (recuperaUsuario() != null || etapaCompra.contains("erroLogin")) {
+
+                    if (etapaCompra.contains("resumoCompra")) {
+                        etapaCompra = "etapaCompra-itensCarrinho.xhtml";
+                        break;
+                    } else {
+
+                        etapaCompra = "etapaCompra-formaPagamento.xhtml";
+                        break;
+                    }
+
+                } else {
+                    etapaCompra = "etapaCompra-erroLogin.xhtml";
                     break;
+                }
 
             case 3:
-                    etapaCompra = "etapaCompra-resumoCompra.xhtml";
+                if (recuperaUsuario() != null || etapaCompra.contains("erroLogin")) {
+                    if (etapaCompra.contains("resumoCompra")) {
+                        etapaCompra = "etapaCompra-itensCarrinho.xhtml";
+                        break;
+                    } else {
+                        etapaCompra = "etapaCompra-resumoCompra.xhtml";
+                        break;
+                    }
+                } else {
+                    etapaCompra = "etapaCompra-erroLogin.xhtml";
                     break;
-                
+                }
 
         }
     }
@@ -148,6 +236,30 @@ public class CarrinhoManagedBean implements Serializable {
 
     public Object retornaClasse() throws CloneNotSupportedException {
         return this.clone();
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
 }

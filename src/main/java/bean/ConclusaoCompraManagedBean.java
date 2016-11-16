@@ -99,7 +99,7 @@ public class ConclusaoCompraManagedBean implements Serializable {
     public String concluirCompra() {
         Venda venda = new Venda();
         LoginBean login = new LoginBean();
-        String user = login.recuperaUsuario();
+        String user = login.recuperaUsuario().getNome();
         UsuarioJPA usuarioJPA = new UsuarioJPA();
         long usuarioLng = Long.parseLong(user);
         List<Usuario> userList = usuarioJPA.verificaCadastro(usuarioLng);

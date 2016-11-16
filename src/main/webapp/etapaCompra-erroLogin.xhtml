@@ -3,7 +3,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>GambsTickets - Login Erro</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link href="css/full-slider.css" rel="stylesheet"/>
+        <link href="css/bootstrap.css" rel="stylesheet"/> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script language="JavaScript" type="text/javascript" src="js/MascaraValidacao.js"></script>
+        <script language="JavaScript" type="text/javascript" src="js/MascaraValidacao.js"></script>
+        <link href="css/carrinhoCompras.css" rel="stylesheet"/> 
+
+
+    </h:head>
     <h:body>
+
         <script>
             $(document).ready(function () {
                 $('#loginModal').modal({
@@ -14,33 +29,33 @@
 
         </script>
 
-
+        <input type="hidden" id="etapaCompra" name="erroLogin" value="erroLogin"></input>
         <div class="modal fade" id="loginModal" role="dialog" aria-labelledby="loginModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content col-xs-12">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" action=""><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" style="text-align: center" id="exampleModalLabel">Efetuar login</h4>
+                        <h1 style="color: #FF0000; text-align: center">FAVOR REALIZAR LOGIN</h1>
                     </div>
                     <h:form>
                         <div class="modal-body">
                             <div style="align-items: center" >
-                                <p:inputText id="usuario" class="form-control" value="${loginBean.cpf}" type="text" placeholder="Digite o seu usuário" required="true"/>
+                                <p:inputText id="usuario" class="form-control" value="${CarrinhoManagedBean.cpf}" type="text" placeholder="Digite o seu usuário" required="true"/>
                                 <br></br>
-                                <p:inputText id="senha" class="form-control" value="${loginBean.senha}" type="password" placeholder="Digite a senha" required="true"/>
+                                <p:inputText id="senha" class="form-control" value="${CarrinhoManagedBean.senha}" type="password" placeholder="Digite a senha" required="true"/>
                             </div>
                             <br></br>
                             <a href="cadastroUsuario.xhtml">Cadastre-se agora!</a>
                         </div>
                         <div class="modal-footer">
-                            <h:commandButton value="ENTRAR" action="${loginBean.realizarLogin()}" style="width: 100%" class="btn btn-success">
+                            <h:commandButton value="ENTRAR" action="${CarrinhoManagedBean.realizarLogin()}" style="width: 100%" class="btn btn-success">
                             </h:commandButton>
                         </div>
                     </h:form>
                 </div>
             </div>
         </div>
-
 
     </h:body>
 </html>
