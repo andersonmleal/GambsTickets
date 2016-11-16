@@ -95,31 +95,18 @@ public class CarrinhoManagedBean implements Serializable {
     public void proximaEtapa(int etapaAtual) {
         switch (etapaAtual) {
             case 1:
-                if (etapaCompra.contains("enderecoEntrega")) {
-                    etapaCompra = "etapaCompra-itensCarrinho.xhtml";
-                    break;
-                } else {
                     etapaCompra = "etapaCompra-enderecoEntrega.xhtml";
                     break;
-                }
+                
 
             case 2:
-                if (etapaCompra.contains("formaPagamento")) {
-                    etapaCompra = "etapaCompra-itensCarrinho.xhtml";
-                    break;
-                } else {
                     etapaCompra = "etapaCompra-formaPagamento.xhtml";
                     break;
-                }
 
             case 3:
-                if (etapaCompra.contains("resumoCompra")) {
-                    etapaCompra = "etapaCompra-itensCarrinho.xhtml";
-                    break;
-                } else {
                     etapaCompra = "etapaCompra-resumoCompra.xhtml";
                     break;
-                }
+                
 
         }
     }

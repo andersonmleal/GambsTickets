@@ -93,7 +93,7 @@
                                 <label class="control-label">Código de Segurança</label>
                                 <div class="form-group">
                                     <div class="col-sm-6">
-                                        <p:inputText value="#{pagamentoManagedBean.codVerificador}" id="cod" type="text" class="form-control" autocomplete="off" maxlength="3" title="Código de verificação atrás do cartão" required="true" requiredMessage="Código invalido" />
+                                        <p:inputText value="#{pagamentoManagedBean.codVerificador}" id="cod" type="text" class="form-control" autocomplete="off" maxlength="3" title="Código de verificação atrás do cartão" required="true" requiredMessage="Código invalido" onkeypress='return SomenteNumero(event)'/>
                                         <h:message for="cod" id="msg3" styleClass="erros" style="color: red"/>
                                     </div>
                                     <div class="span8">

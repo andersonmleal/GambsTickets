@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>GambsTickets - Eventos</title>
         <meta charset="utf-8"/>
@@ -51,7 +52,7 @@
                         <div class="text-center">
                             <h1>Carrinho</h1>
                         </div>
-                        <span></span>
+                        <span></span>   
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -83,12 +84,13 @@
                                     <td class="text-center text-danger"><h4><strong>$<h:outputText value="#{conclusaoCompraManagedBean.valorTotal}"/></strong></h4></td>
                                 </tr>
                             </tbody>
-                        </table>
-                        <!--<button onclick="${conclusaoCompraManagedBean.concluirCompra()}" type="button" class="btn btn-success btn-lg btn-block">
-                            Confirmar Compra
-                        </button>-->
-                        <p:commandButton class="btn btn-primary" value="Avançar" action="#{conclusaoCompraManagedBean.concluirCompra()}"
-                                         ajax="false"></p:commandButton>
+                        </table>    
+                        <h:form>
+                            <p:commandButton style="font-family: Georgia" class="btn btn-success btn-lg btn-block" value="Avançar" action="#{conclusaoCompraManagedBean.concluirCompra()}"
+                                         ajax="false">
+
+                            </p:commandButton>
+                        </h:form>
                     </div>
                 </div>
 
