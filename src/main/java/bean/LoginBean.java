@@ -28,14 +28,16 @@ public class LoginBean implements Serializable {
 
     private String usuario;
     private String senha;
+    private String nome = "";
+    private String UsuarioSession = null;
 
     public LoginBean() {
 
     }
 
     public String realizarLogin() {
-        boolean ok = validarUsuario(usuario, senha);
-        if (ok) {
+
+        if (validarUsuario(usuario, senha)) {
             FacesContext fc = FacesContext.getCurrentInstance();
             HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
             session.setAttribute("usuario", this.usuario);
@@ -48,13 +50,26 @@ public class LoginBean implements Serializable {
         return "loginErro";
     }
 
+    public void realizarLogout() {
+
+      UsuarioSession = null;
+      nome = "";
+  
+    }
+
     public String recuperaUsuario() {
         //ServletRequest req = null;
         //HttpServletRequest request = (HttpServletRequest) req;
         //HttpSession session = (HttpSession) request.getSession();
+
         FacesContext fc = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
-        String UsuarioSession = session.getAttribute("usuario").toString();
+        if (UsuarioSession != null) {
+            UsuarioSession = session.getAttribute("usuario").toString();
+
+        } else {
+            UsuarioSession = "";
+        }
 
         //JOptionPane.showInputDialog(UsuarioSession);
         return UsuarioSession;
@@ -68,6 +83,8 @@ public class LoginBean implements Serializable {
             return false;
         } else {
             //Já retorna se é true ou false
+            this.nome = user.get(0).getNome();
+
             return usuarioLng == user.get(0).getCpf() && senha.equals(user.get(0).getSenha());
         }
         //ConclusaoCompraManagedBean userBean = new ConclusaoCompraManagedBean();
@@ -89,6 +106,14 @@ public class LoginBean implements Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
 }

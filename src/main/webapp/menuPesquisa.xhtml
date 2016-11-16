@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>GambsTickets - Eventos</title>
         <meta charset="utf-8"/>
@@ -54,18 +55,30 @@
                             </div>
                         </form>
                     </div>
+
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a onclick="abreModalLogin()">Login</a></li>
-                        
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Meu Nome <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="carrinhoCompras.xhtml">Carrinho</a></li>
-                                <li><a href="#">Meus Dados</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Sair</a></li>
-                            </ul>
-                        </li>
+
+
+
+                        <c:choose>
+                            <c:when test="${loginBean.recuperaUsuario() == ''}">
+                                <li><a onclick="abreModalLogin()">Login</a></li> 
+                            </c:when>
+                           <c:when test="${loginBean.recuperaUsuario() != ''}">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><p:outputLabel value="${loginBean.nome}" /> <b class="caret"></b></a>
+
+
+                                    <ul class="dropdown-menu">
+                                        <li><a href="carrinhoCompras.xhtml">Carrinho</a></li>
+                                        <li><a href="#">Meus Dados</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Sair</a></li>
+                                    </ul>
+                                </li>
+                            </c:when>
+                        </c:choose>
+
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav>
