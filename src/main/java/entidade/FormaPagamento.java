@@ -43,6 +43,10 @@ public class FormaPagamento implements Serializable {
         this.anoValidade = anoValidade;
     }
 
+    public void setNumCartao(long numCartao) {
+        this.numCartao = numCartao;
+    }
+
     
     
     

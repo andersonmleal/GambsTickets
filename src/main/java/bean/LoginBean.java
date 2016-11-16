@@ -57,7 +57,6 @@ public class LoginBean implements Serializable {
         String UsuarioSession = session.getAttribute("usuario").toString();
 
         //JOptionPane.showInputDialog(UsuarioSession);
-
         return UsuarioSession;
     }
 
@@ -67,13 +66,13 @@ public class LoginBean implements Serializable {
         List<Usuario> user = usuarioJPA.verificaCadastro(usuarioLng);
         if (user.isEmpty()) {
             return false;
-        } else if (usuarioLng == user.get(0).getCpf() && senha.equals(user.get(0).getSenha())) {
-            //ConclusaoCompraManagedBean userBean = new ConclusaoCompraManagedBean();
-            //userBean.setUsuario(user.get(0));
-            return true;
         } else {
-            return false;
+            //Já retorna se é true ou false
+            return usuarioLng == user.get(0).getCpf() && senha.equals(user.get(0).getSenha());
         }
+        //ConclusaoCompraManagedBean userBean = new ConclusaoCompraManagedBean();
+        //userBean.setUsuario(user.get(0));
+
     }
 
     public String getUsuario() {

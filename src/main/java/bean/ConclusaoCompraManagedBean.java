@@ -114,6 +114,7 @@ public class ConclusaoCompraManagedBean implements Serializable {
             //EnderecoManagedBean enderecoBean = new EnderecoManagedBean();
             //enderecoBean.cadastrar(userList.get(0));
             pagamento.setId_venda(venda);
+            pagamento.setBandeira("masterCard");
             FormaPagamentoJPA formaPagamentoJPA = new FormaPagamentoJPA();
             formaPagamentoJPA.incluir(pagamento);
             cadastrarVenda(c, contador, userList.get(0), venda);
