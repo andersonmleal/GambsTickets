@@ -49,12 +49,14 @@ public class LoginBean implements Serializable {
     }
 
     public String recuperaUsuario() {
-        ServletRequest req = null;
-        HttpServletRequest request = (HttpServletRequest) req;
-        HttpSession session = (HttpSession) request.getSession();
+        //ServletRequest req = null;
+        //HttpServletRequest request = (HttpServletRequest) req;
+        //HttpSession session = (HttpSession) request.getSession();
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
         String UsuarioSession = session.getAttribute("usuario").toString();
 
-        JOptionPane.showInputDialog(UsuarioSession);
+        //JOptionPane.showInputDialog(UsuarioSession);
 
         return UsuarioSession;
     }
@@ -66,6 +68,8 @@ public class LoginBean implements Serializable {
         if (user.isEmpty()) {
             return false;
         } else if (usuarioLng == user.get(0).getCpf() && senha.equals(user.get(0).getSenha())) {
+            ConclusaoCompraManagedBean userBean = new ConclusaoCompraManagedBean();
+            userBean.setUsuario(user.get(0));
             return true;
         } else {
             return false;

@@ -17,7 +17,7 @@
 
 
         <input type="hidden" id="etapaCompra" name="resumoCompra" value="resumoCompra"></input>
-
+        <input type="hidden" value="${usuarioBean.usuario}"></input>
         <div class="container">
             <div class="row">
                 <div class="well">
@@ -73,7 +73,7 @@
                                         <td class="col-md-1 text-center">$<h:outputText value="#{ingresso.precoTotal}"/></td>
                                     </tr>
                                 </ui:repeat>
-                                
+
 
 
                                 <tr>
@@ -84,9 +84,11 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <button type="button" class="btn btn-success btn-lg btn-block">
+                        <!--<button onclick="${conclusaoCompraManagedBean.concluirCompra()}" type="button" class="btn btn-success btn-lg btn-block">
                             Confirmar Compra
-                        </button>
+                        </button>-->
+                        <p:commandButton class="btn btn-primary" value="Avançar" action="#{conclusaoCompraManagedBean.concluirCompra()}"
+                                         ajax="false"></p:commandButton>
                     </div>
                 </div>
 
