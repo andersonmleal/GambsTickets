@@ -28,6 +28,7 @@ public class VendaJPA {
             em.getTransaction().commit();
         } catch (Exception e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
+            em.getTransaction().rollback();
         } finally {
             em.close();
         }

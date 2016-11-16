@@ -28,7 +28,6 @@ public class EnderecoJPA {
         EntityTransaction transacao = em.getTransaction();
         try {
             transacao.begin();
-
             em.persist(endereco);
             transacao.commit();
         } catch (Exception e) {

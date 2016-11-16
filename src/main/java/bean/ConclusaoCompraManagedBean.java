@@ -16,6 +16,7 @@ import java.util.Calendar;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import jpa.EnderecoJPA;
 import jpa.FormaPagamentoJPA;
 import jpa.UsuarioJPA;
 import jpa.VendaJPA;
@@ -96,6 +97,7 @@ public class ConclusaoCompraManagedBean implements Serializable {
     }
 
     public boolean concluirCompra() {
+        Venda venda = new Venda();
         LoginBean login = new LoginBean();
         String user = login.recuperaUsuario();
         UsuarioJPA usuarioJPA = new UsuarioJPA();
@@ -105,18 +107,22 @@ public class ConclusaoCompraManagedBean implements Serializable {
         Calendar c = Calendar.getInstance();
         int contador = 0;
         for (EventoIngressos ev : eventosSelecionados) {
-            cadastrarVenda(c, contador, userList.get(0));
-            EnderecoManagedBean enderecoBean = new EnderecoManagedBean();
-            enderecoBean.cadastrar(userList.get(0));
+            endereco.setDt_cadastro(c.getTime());
+            endereco.setUsuario_evento(userList.get(0));
+            EnderecoJPA enderecoJPA = new EnderecoJPA();
+            enderecoJPA.incluir(endereco);
+            //EnderecoManagedBean enderecoBean = new EnderecoManagedBean();
+            //enderecoBean.cadastrar(userList.get(0));
+            pagamento.setId_venda(venda);
             FormaPagamentoJPA formaPagamentoJPA = new FormaPagamentoJPA();
             formaPagamentoJPA.incluir(pagamento);
+            cadastrarVenda(c, contador, userList.get(0), venda);
             contador++;
         }
         return false;
     }
 
-    private void cadastrarVenda(Calendar c, int contador, Usuario user) {
-        Venda venda = new Venda();
+    private void cadastrarVenda(Calendar c, int contador, Usuario user, Venda venda) {
         VendaJPA vendaJPA = new VendaJPA();
         venda.setId_setor(eventosSelecionados.get(contador).getSetor());
         venda.setUsuario(user);
