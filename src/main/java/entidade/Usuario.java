@@ -29,15 +29,12 @@ public class Usuario implements Serializable {
     private Date dtNascimento;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dtCadastro;
-    @OneToMany(mappedBy = "usuario")
-   // private List<Telefone> telefones;
-   // @OneToMany(mappedBy = "usuario_evento")
-   // private List<Endereco> enderecos;
-    private Endereco endereco;
-    
+    // private List<Telefone> telefones;
+    @OneToMany(mappedBy = "usuario_evento")
+    private List<Endereco> enderecos;
+
     public Usuario() {
-        //enderecos = new ArrayList<>();
-        endereco = new Endereco();
+        enderecos = new ArrayList<>();
     }
 
     public long getCpf() {
@@ -136,22 +133,18 @@ public class Usuario implements Serializable {
         this.dtCadastro = dtCadastro;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    // public List<Telefone> getTelefones() {
+    // return telefones;
+    // }
+    // public void setTelefones(List<Telefone> telefones) {
+    // this.telefones = telefones;
+    // }
+    public List<Endereco> getEnderecos() {
+        return enderecos;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
     }
-
-
-
-   // public List<Telefone> getTelefones() {
-       // return telefones;
-   // }
-
-   // public void setTelefones(List<Telefone> telefones) {
-       // this.telefones = telefones;
-   // }
 
 }

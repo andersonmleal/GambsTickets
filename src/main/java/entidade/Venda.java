@@ -27,8 +27,7 @@ public class Venda implements Serializable {
     private Usuario usuario;
     @ManyToOne
     private Endereco id_endereco;
-    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER, orphanRemoval = true)
-    @PrimaryKeyJoinColumn
+    @OneToOne
     private FormaPagamento formaPagamento;
     private int quantidade;
     @Temporal(javax.persistence.TemporalType.DATE)
