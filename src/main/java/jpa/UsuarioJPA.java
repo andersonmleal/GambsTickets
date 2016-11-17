@@ -32,8 +32,7 @@ public class UsuarioJPA {
             et.begin();
             em.persist(usuario);
             et.commit();
-        } catch (Exception e) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
+        } catch (Exception e) {            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
             em.getTransaction().rollback();
         } finally {
             em.close();

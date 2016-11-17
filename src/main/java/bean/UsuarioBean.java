@@ -66,6 +66,7 @@ public class UsuarioBean implements Serializable {
 
         endereco.setDt_cadastro(c.getTime());
         endereco.setUsuario_evento(usuario);
+     
         EnderecoJPA enderecoJPA = new EnderecoJPA();
         enderecoJPA.incluir(endereco);
 

@@ -67,8 +67,7 @@
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="email" class="control-label">E-mail:</label>
-                        <p:inputText type="text" id="email" value="${usuarioBean.usuario.email}" required="true" requiredMessage="Digite o seu e-mail" class="form-control" maxlength="60"/>
-                        <h:message for="email" id="msg1" styleClass="erros" style="color: red"/>
+                        <p:inputText type="text" id="email" value="${usuarioBean.usuario.email}" class="form-control" maxlength="60"/>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="cli_confirmaEmail" class="control-label">Confirme o e-mail:</label>
@@ -81,8 +80,7 @@
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="cli_senha" class="control-label">Senha:</label>
-                        <p:inputText type="password" id="cli_senha" value="${usuarioBean.usuario.senha}" required="true" requiredMessage="Digite a sua senha" class="form-control" maxlength="15"/>
-                        <h:message for="cli_email" id="cli_senha" styleClass="erros" style="color: red"/>
+                        <p:inputText type="password" id="cli_senha" value="${usuarioBean.usuario.senha}" class="form-control" maxlength="15"/>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="cli_senhaConfirma" class="control-label">Confirmação da senha:</label>
@@ -163,35 +161,35 @@
                     <div class="row">
                         <div class="col-md-3 form-group">
                             <label for="cli_endereco_cep" class="control-label">CEP:</label>
-                            <p:inputText type="text" id="cli_endereco_cep" value="${usuarioBean.endereco.cep}" class="form-control" maxlength="9" />
+                            <p:inputText type="text" id="cli_endereco_cep" value="${usuarioBean.usuario.endereco.cep}" class="form-control" maxlength="9" />
                         </div>
                         <div class="col-md-7 form-group">
                             <label for="cli_logradouro">Logradouro:</label>
-                            <p:inputText type="text" id="cli_logradouro" value="${usuarioBean.endereco.logradouro}" class="form-control" maxlength="160" />
+                            <p:inputText type="text" id="cli_logradouro" value="${usuarioBean.usuario.endereco.logradouro}" class="form-control" maxlength="160" />
                         </div>
                         <div class="col-md-2 form-group">
                             <label for="cli_endereco_numero">Número:</label>
-                            <p:inputText type="text" id="cli_endereco_numero"  value="${usuarioBean.endereco.numero}" class="form-control" maxlength="20" />
+                            <p:inputText type="text" id="cli_endereco_numero"  value="${usuarioBean.usuario.endereco.numero}" class="form-control" maxlength="20" />
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-3 form-group">
                             <label for="cli_endereco_complemento">Complemento:</label>
-                            <p:inputText type="text" id="cli_endereco_complemento"  value="${usuarioBean.endereco.complemento}" class="form-control" maxlength="40" />
+                            <p:inputText type="text" id="cli_endereco_complemento"  value="${usuarioBean.usuario.endereco.complemento}" class="form-control" maxlength="40" />
                         </div>
                         <div class="col-md-3 form-group">
                             <label for="cli_endereco_bairro">Bairro:</label>
-                            <p:inputText type="text" id="cli_endereco_bairro" value="${usuarioBean.endereco.bairro}" class="form-control" maxlength="40" />
+                            <p:inputText type="text" id="cli_endereco_bairro" value="${usuarioBean.usuario.endereco.bairro}" class="form-control" maxlength="40" />
                         </div>
                         <div class="col-md-4 form-group">
                             <label for="cli_endereco_cidade">Cidade:</label>
-                            <p:inputText type="text" id="cli_endereco_cidade"  value="${usuarioBean.endereco.cidade}" maxlength="40" class="form-control" />
+                            <p:inputText type="text" id="cli_endereco_cidade"  value="${usuarioBean.usuario.endereco.cidade}" maxlength="40" class="form-control" />
                         </div>
                         <div class="col-md-2 form-group">
                             <label for="endereco_uf">Estado:</label>
                             <input type="hidden" id="cli_endereco_uf" name="cli_endereco_uf" value=""/>
-                            <h:selectOneMenu id="endereco_uf" value="${usuarioBean.endereco.estado}" class="form-control" >
+                            <h:selectOneMenu id="endereco_uf" value="${usuarioBean.usuario.endereco.estado}" class="form-control" >
                                 <f:selectItem  itemValue=""/>
                                 <f:selectItem   itemValue="AC" itemLabel="AC"/>
                                 <f:selectItem   itemValue="AL" itemLabel="AL"/>
@@ -227,7 +225,7 @@
                 <div class="row">
                     <div class="col-md-12 form-group text-right">
                         <button type="reset" class="btn btn-default">Limpar</button>
-                        <p:commandButton immediate="true" ajax="false" value="Cadastrar" action="#{usuarioBean.adicionarUsuario()}"></p:commandButton>
+                        <p:commandButton  ajax="false" value="Cadastrar" action="#{usuarioBean.adicionarUsuario()}"></p:commandButton>
                     </div>
                 </div>
             </h:form>
