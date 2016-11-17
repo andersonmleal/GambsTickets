@@ -6,6 +6,7 @@
 package bean;
 
 import entidade.Endereco;
+import entidade.Evento;
 import entidade.EventoIngressos;
 import entidade.FormaPagamento;
 import entidade.Usuario;
@@ -17,7 +18,9 @@ import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import jpa.EnderecoJPA;
+import jpa.EventoJPA;
 import jpa.FormaPagamentoJPA;
+import jpa.SetorJPA;
 import jpa.UsuarioJPA;
 import jpa.VendaJPA;
 
@@ -96,31 +99,38 @@ public class ConclusaoCompraManagedBean implements Serializable {
         return valorTotal;
     }
 
-    public String concluirCompra() {
+    public boolean concluirCompra() {
         Venda venda = new Venda();
+        //long usuarioLng;
         LoginBean login = new LoginBean();
-        String user = login.recuperaUsuario().getNome();
-        UsuarioJPA usuarioJPA = new UsuarioJPA();
-        long usuarioLng = Long.parseLong(user);
-        List<Usuario> userList = usuarioJPA.verificaCadastro(usuarioLng);
+        Usuario user = login.recuperaUsuario();
+        //UsuarioJPA usuarioJPA = new UsuarioJPA();
+        //if (user.equals("")) {
+        //    usuarioLng = 76;
+        //} else {
+        //    usuarioLng = Long.parseLong(user);
+        //}
+        //List<Usuario> userList = usuarioJPA.verificaCadastro(usuarioLng);
 
         Calendar c = Calendar.getInstance();
         int contador = 0;
         for (EventoIngressos ev : eventosSelecionados) {
+
+            cadastrarEvento(c, ev.getEvento());
             endereco.setDt_cadastro(c.getTime());
-            endereco.setUsuario_evento(userList.get(0));
+            endereco.setUsuario_evento(user);
             EnderecoJPA enderecoJPA = new EnderecoJPA();
             enderecoJPA.incluir(endereco);
             //EnderecoManagedBean enderecoBean = new EnderecoManagedBean();
             //enderecoBean.cadastrar(userList.get(0));
-            pagamento.setId_venda(venda);
+            //pagamento.setId_venda(venda);
             pagamento.setBandeira("masterCard");
             FormaPagamentoJPA formaPagamentoJPA = new FormaPagamentoJPA();
             formaPagamentoJPA.incluir(pagamento);
-            cadastrarVenda(c, contador, userList.get(0), venda);
+            cadastrarVenda(c, contador, user, venda);
             contador++;
         }
-        return "index.xhtml";
+        return false;
     }
 
     private void cadastrarVenda(Calendar c, int contador, Usuario user, Venda venda) {
@@ -132,6 +142,22 @@ public class ConclusaoCompraManagedBean implements Serializable {
         venda.setQuantidade(eventosSelecionados.get(contador).getQuantidadeSelecionada());
         venda.setDt_cadastro(c.getTime());
         vendaJPA.incluir(venda);
+
+    }
+
+    private void cadastrarEvento(Calendar c, Evento ev) {
+        EventoJPA eventoJPA = new EventoJPA();
+        SetorJPA setorJPA = new SetorJPA();
+        for (int i = 0; i < ev.getSetores().size(); i++) {
+            //ev.getSetores().get(i).setId_evento(ev);
+            ev.getSetores().get(i).setDt_cadastro(c.getTime());
+            setorJPA.incluir(ev.getSetores().get(i));
+        }
+        ev.setDt_cadastro_evento(c.getTime());
+        ev.setLocal_evento("teste");
+        ev.setDt_evento(c.getTime());
+        ev.setDescricao("Show Muito loko");
+        eventoJPA.incluir(ev);
 
     }
 }

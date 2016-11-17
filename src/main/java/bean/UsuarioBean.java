@@ -9,12 +9,14 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
+import javax.inject.Named;
 import jpa.EnderecoJPA;
 import jpa.TelefoneJPA;
 import jpa.UsuarioJPA;
 import util.Mensagem;
 
 @ManagedBean
+@Named(value = "usuarioBean")
 @SessionScoped
 public class UsuarioBean implements Serializable {
 

@@ -5,9 +5,7 @@
  */
 package bean;
 
-import entidade.Evento;
 import entidade.EventoIngressos;
-import entidade.Setor;
 import entidade.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
