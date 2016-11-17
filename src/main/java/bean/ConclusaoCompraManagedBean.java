@@ -99,7 +99,7 @@ public class ConclusaoCompraManagedBean implements Serializable {
         return valorTotal;
     }
 
-    public boolean concluirCompra() {
+    public String concluirCompra() {
         Venda venda = new Venda();
         //long usuarioLng;
         LoginBean login = new LoginBean();
@@ -130,7 +130,7 @@ public class ConclusaoCompraManagedBean implements Serializable {
             cadastrarVenda(c, contador, user, venda);
             contador++;
         }
-        return false;
+        return "conclusao.xhtml";
     }
 
     private void cadastrarVenda(Calendar c, int contador, Usuario user, Venda venda) {

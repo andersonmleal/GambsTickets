@@ -36,7 +36,7 @@ public class CarrinhoManagedBean implements Serializable {
     public CarrinhoManagedBean() {
 
         eventos = new ArrayList<>();
-
+        etapaCompra = "etapaCompra-itensCarrinho.xhtml";
     }
 
     public EventoIngressos getRemoverItem() {
@@ -182,7 +182,7 @@ public class CarrinhoManagedBean implements Serializable {
 
             case 3:
                 if (recuperaUsuario() != null || etapaCompra.contains("erroLogin")) {
-                    if (etapaCompra.contains("resumoCompra")) {
+                    if (etapaCompra.contains("resumoCompra") || etapaCompra.equals("etapaCompra-resumoCompra.xhtml")) {
                         etapaCompra = "etapaCompra-itensCarrinho.xhtml";
                         break;
                     } else {
