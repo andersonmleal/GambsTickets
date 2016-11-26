@@ -27,7 +27,8 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="nomeEvento">Nome do Evento</label>  
                     <div class="col-md-5">
-                        <input id="nomeEvento" name="nomeEvento" type="text" placeholder="Insira o nome" class="form-control input-md" required="true"/>
+                        <p:inputText value="#{cadastroEventoManagedBean.evento.nome_evento}" id="nomeEvento" type="text" title="Informe o nome do evento" placeholder="Insira o nome" class="form-control input-md" required="true" requiredMessage="Nome Obrigatório"/>
+                        <h:message for="nomeEvento" id="msg1" styleClass="erros" style="color: red"/>
                         <span class="help-block">Digite o nome do evento</span>  
                     </div>
                 </div>
@@ -36,7 +37,8 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="localEvento">Local do Evento</label>  
                     <div class="col-md-5">
-                        <input id="localEvento" name="localEvento" type="text" placeholder="Local" class="form-control input-md" required="true"/>
+                        <p:inputText value="#{cadastroEventoManagedBean.evento.local_evento}" id="localEvento" type="text" title="Informe o local do evento" placeholder="Insira o local" class="form-control input-md" required="true" requiredMessage="Local Obrigatório"/>
+                        <h:message for="localEvento" id="msg2" styleClass="erros" style="color: red"/>
                         <span class="help-block">Insira o nome do local do evento</span>  
                     </div>
                 </div>
@@ -45,7 +47,8 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="dataEvento">Data</label>  
                     <div class="col-md-5">
-                        <input id="dataEvento" name="dataEvento" type="date" placeholder="Data do evento" class="form-control input-md" required="true"/>
+                        <p:inputText value="#{cadastroEventoManagedBean.evento.dt_evento}" id="dataEvento" type="date" title="Informe a data do evento" placeholder="Insira a data" class="form-control input-md" required="true" requiredMessage="Data Obrigatória"/>
+                        <h:message for="dataEvento" id="msg3" styleClass="erros" style="color: red"/>
                         <span class="help-block">Insira a data do Evento</span>  
                     </div>
                 </div>
@@ -54,7 +57,8 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="dataEvento">Hora</label>  
                     <div class="col-md-5">
-                        <input id="dataEvento" name="horaEvento" type="time" placeholder="Hora do evento" maxlength="5" class="form-control input-md" required="true"/>
+                        <p:inputText value="#{cadastroEventoManagedBean.evento.horaEvento}" id="horaEvento" type="time" title="Informe a hora do evento" placeholder="Insira a hora" class="form-control input-md" required="true" requiredMessage="Hora Obrigatória"/>
+                        <h:message for="horaEvento" id="msg3" styleClass="erros" style="color: red"/>
                         <span class="help-block">Insira a hora do Evento</span>  
                     </div>
                 </div>
@@ -63,7 +67,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="descricaoEvento">Descrição</label>
                     <div class="col-md-4">                     
-                        <textarea class="form-control" id="descricaoEvento" name="descricaoEvento"></textarea>
+                        <p:inputTextarea class="form-control" id="descricaoEvento" maxlength="200" value="#{cadastroEventoManagedBean.evento.descricao}"></p:inputTextarea>
                     </div>
                 </div>
 
@@ -89,7 +93,7 @@
             <fieldset>
 
                 <!-- Form Name -->
-                <legend style="text-align: center; padding-top: 1%">Setor   </legend>
+                <legend style="text-align: center; padding-top: 1%">Setor</legend>
 
                 <!-- Text input-->
                 <div class="form-group">
