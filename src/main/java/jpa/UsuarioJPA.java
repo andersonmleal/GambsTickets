@@ -32,7 +32,8 @@ public class UsuarioJPA {
             et.begin();
             em.persist(usuario);
             et.commit();
-        } catch (Exception e) {            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
+        } catch (Exception e) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
             em.getTransaction().rollback();
         } finally {
             em.close();
@@ -44,13 +45,28 @@ public class UsuarioJPA {
         try {
             // Query JPQL
             Query query = em.createQuery("select usuario from Usuario usuario where usuario.cpf = :cpf")
-                    .setParameter("cpf", usuario);  
+                    .setParameter("cpf", usuario);
 
             return query.getResultList();
         } finally {
             em.close();
         }
 
+    }
+
+    public void alterar(Usuario usuario) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction et = em.getTransaction();
+        try {
+            et.begin();
+            em.merge(usuario);
+            et.commit();
+        } catch (Exception e) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
     }
 
 }

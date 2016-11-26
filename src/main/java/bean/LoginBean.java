@@ -22,7 +22,7 @@ import jpa.UsuarioJPA;
 @ManagedBean
 @SessionScoped
 public class LoginBean implements Serializable {
-
+    
     private String cpf;
     private String senha;
     private String nome = "";
@@ -30,9 +30,9 @@ public class LoginBean implements Serializable {
     //private String UsuarioSession = null;
 
     public LoginBean() {
-
+        
     }
-
+    
     public String realizarLogin() {
         usuario = validarUsuario(cpf, senha);
         
@@ -42,14 +42,14 @@ public class LoginBean implements Serializable {
             session.setAttribute("usuario", usuario);
             return "index";
         }
-
+        
         FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                 "Erro de Login", "Usuario/Senha inválidos");
         FacesContext.getCurrentInstance().addMessage(null, fm);
         return "loginErro";
     }
     
-     public String realizarLoginErro() {
+    public String realizarLoginErro() {
         usuario = validarUsuario(cpf, senha);
         
         if (usuario != null) {
@@ -58,19 +58,17 @@ public class LoginBean implements Serializable {
             session.setAttribute("usuario", usuario);
             return "etapaCompra-itensCarrinho";
         }
-
+        
         FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                 "Erro de Login", "Usuario/Senha inválidos");
         FacesContext.getCurrentInstance().addMessage(null, fm);
         return "loginErro";
     }
     
-
     public void realizarLogout() {
-
-  
+        
     }
-
+    
     public Usuario recuperaUsuario() {
         //ServletRequest req = null;
         //HttpServletRequest request = (HttpServletRequest) req;
@@ -81,16 +79,17 @@ public class LoginBean implements Serializable {
         
         usuario = (Usuario) session.getAttribute("usuario");
 
- 
         //JOptionPane.showInputDialog(UsuarioSession);
         return usuario;
     }
-
+    
     public Usuario validarUsuario(String cpf, String senha) {
         UsuarioJPA usuarioJPA = new UsuarioJPA();
         long usuarioLng = Long.parseLong(cpf);
         List<Usuario> user = usuarioJPA.verificaCadastro(usuarioLng);
         if (user.isEmpty()) {
+            return null;
+        } else if (!user.get(0).getSenha().equals(senha)) {
             return null;
         } else {
             
@@ -101,37 +100,37 @@ public class LoginBean implements Serializable {
         //userBean.setUsuario(user.get(0));
 
     }
-
+    
     public String getCpf() {
         return cpf;
     }
-
+    
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
+    
     public String getSenha() {
         return senha;
     }
-
+    
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
+    
     public String getNome() {
         return nome;
     }
-
+    
     public void setNome(String nome) {
         this.nome = nome;
     }
-
+    
     public Usuario getUsuario() {
         return usuario;
     }
-
+    
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
+    
 }
