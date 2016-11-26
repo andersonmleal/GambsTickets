@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 import jpa.EnderecoJPA;
 import jpa.TelefoneJPA;
 import jpa.UsuarioJPA;
@@ -61,6 +62,7 @@ public class UsuarioBean implements Serializable {
 
     public String salvar() {
         long usuarioLng = usuario.getCpf();
+        usuarioJPA = new UsuarioJPA();
         List<Usuario> user = usuarioJPA.verificaCadastro(usuarioLng);
         if (user.isEmpty()) {
             adicionarUsuario();
@@ -91,7 +93,14 @@ public class UsuarioBean implements Serializable {
         //Flash mensagem = FacesContext.getCurrentInstance().getExternalContext().getFlash();
         //mensagem.put("mensagem", new Mensagem("Cadastro realizado com sucesso", "success"));
     }
-
+    public void carregaUsuario(){
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);        
+        usuario = (Usuario) session.getAttribute("usuario");
+        if (usuario != null){
+        endereco = usuario.getEnderecos().get(0);
+        }
+    }
     public void cadastrarTelefone(Calendar c) {
         Telefone regTelefone = new Telefone();
         TelefoneJPA telefoneJPA = new TelefoneJPA();

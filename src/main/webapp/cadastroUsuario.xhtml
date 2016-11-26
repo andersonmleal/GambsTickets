@@ -64,6 +64,7 @@
 
             <!--   ACABA AQUI !-->
             <h:form id="form_cadastro">
+                <p value="${usuarioBean.carregaUsuario()}"></p>
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="email" class="control-label">E-mail:</label>
@@ -225,7 +226,7 @@
                 <div class="row">
                     <div class="col-md-12 form-group text-right">
                         <button type="reset" class="btn btn-default">Limpar</button>
-                        <p:commandButton  ajax="false" value="Salvar" action="#{usuarioBean.adicionarUsuario()}"></p:commandButton>
+                        <p:commandButton  ajax="false" value="Salvar" action="#{usuarioBean.salvar()}"></p:commandButton>
                     </div>
                 </div>
             </h:form>
