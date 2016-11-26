@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>GambsTickets - Eventos</title>
         <meta charset="utf-8"/>
@@ -52,13 +53,13 @@
                         <span class="help-block">Insira a data do Evento</span>  
                     </div>
                 </div>
-                
+
                 <!-- Text input-->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="dataEvento">Hora</label>  
                     <div class="col-md-5">
                         <p:inputText value="#{cadastroEventoManagedBean.evento.horaEvento}" id="horaEvento" type="time" title="Informe a hora do evento" placeholder="Insira a hora" class="form-control input-md" required="true" requiredMessage="Hora Obrigatória"/>
-                        <h:message for="horaEvento" id="msg3" styleClass="erros" style="color: red"/>
+                        <h:message for="horaEvento" id="msg4" styleClass="erros" style="color: red"/>
                         <span class="help-block">Insira a hora do Evento</span>  
                     </div>
                 </div>
@@ -75,7 +76,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="imgPrincipal">Imagem Principal</label>
                     <div class="col-md-4">
-                        <input id="imgPrincipal" name="imgPrincipal" class="input-file" type="file"/>
+                        <h:inputFile value="#{cadastroEventoManagedBean.imagem}" id="imgPrincipal" class="input-file"/>
                     </div>
                 </div>
 
@@ -83,7 +84,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="imgBack">Imagem de Background</label>
                     <div class="col-md-4">
-                        <input id="imgBack" name="imgBack" class="input-file" type="file"/>
+                        <h:inputFile value="#{cadastroEventoManagedBean.imagemBack}" id="imgBack" class="input-file"/>
                     </div>
                 </div>
 
@@ -100,7 +101,7 @@
                     <label class="col-md-4 control-label" for="setorNome">Nome do Setor</label>  
                     <div class="col-md-5">
                         <input id="setorNome" name="setorNome" type="text" placeholder="Setor" class="form-control input-md" required="true"/>
-                            <span class="help-block">Digite o nome do setor</span>  
+                        <span class="help-block">Digite o nome do setor</span>  
                     </div>
                 </div>
 
@@ -109,7 +110,7 @@
                     <label class="col-md-4 control-label" for="valorSetor">Valor</label>  
                     <div class="col-md-5">
                         <input id="valorSetor" name="valorSetor" type="text" placeholder="Valor do ingresso" class="form-control input-md" required="true"/>
-                            <span class="help-block">Digite o valor do ingresso</span>  
+                        <span class="help-block">Digite o valor do ingresso</span>  
                     </div>
                 </div>
 
@@ -117,49 +118,28 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="quantidadeSetor">Quantidade Máxima</label>  
                     <div class="col-md-5">
-                        <input id="quantidadeSetor" name="quantidadeSetor" type="text" placeholder="Quantidade do setor" class="form-control input-md" required="true"/>
-                            <span class="help-block">Quantidade máxima do setor</span>  
+                        <input id="quantidadeSetor" name="quantidadeSetor" type="number" placeholder="Quantidade do setor" class="form-control input-md" required="true"/>
+                        <span class="help-block">Quantidade máxima do setor</span>  
                     </div>
                 </div>
 
             </fieldset>
 
 
+
         </h:form>
 
 
 
+        <ui:fragment rendered="#{cadastroEventoManagedBean.uploadRealizado}">
+            <h:graphicImage url="#{cadastroEventoManagedBean.urlImagem}" />
+        </ui:fragment>
 
+        <ui:fragment rendered="#{cadastroEventoManagedBean.uploadRealizadoBack}">
+            <h:graphicImage url="#{cadastroEventoManagedBean.urlImagemBack}" />
+        </ui:fragment>
 
-
-
-
-        <h:form>
-            <h:panelGrid columns="2">
-                <h:outputLabel value="Nome do evento:"/>
-                <p:inputText value="#{EventoManagedBean.evento.nome_evento}"/>
-
-                <h:outputLabel value="Local do evento:"/>
-                <p:inputText value="#{EventoManagedBean.evento.local_evento}"/>
-
-                <h:outputLabel value="Data do Evento:"/>
-                <p:calendar value="#{EventoManagedBean.evento.dt_evento}"
-                            navigator="true" yearRange="c-100:c+10"/>
-
-                <h:outputLabel value="Selecione a imagem do evento:"/>
-                <p:inputText value="#{EventoManagedBean.evento.caminhoImagem}"/>
-
-                <h:outputLabel value="Imagem de fundo do evento:"/>
-                <p:inputText value="#{EventoManagedBean.evento.caminhoImagemBack}"/>
-
-                <h:outputLabel value="Descrição:"/>
-                <p:inputText value="#{EventoManagedBean.evento.descricao}"/>
-
-
-                <p:commandButton ajax="false" value="Cadastrar" action="#{EventoManagedBean.cadastrar()}"/>
-            </h:panelGrid>
-        </h:form>
-
+        
         <hr style="align: center"/>
         <footer>
             <div class="row">
