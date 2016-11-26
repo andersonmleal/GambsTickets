@@ -30,6 +30,7 @@ public class Venda implements Serializable {
     @OneToOne
     private FormaPagamento formaPagamento;
     private int quantidade;
+    private double valor;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dt_cadastro;
     private boolean status;
@@ -56,6 +57,14 @@ public class Venda implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
     public Endereco getId_endereco() {
