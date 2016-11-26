@@ -5,6 +5,7 @@ import entidade.Telefone;
 import entidade.Usuario;
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -58,23 +59,37 @@ public class UsuarioBean implements Serializable {
         telefone = new String[3];
     }
 
-    public String adicionarUsuario() {
+    public String salvar() {
+        long usuarioLng = usuario.getCpf();
+        List<Usuario> user = usuarioJPA.verificaCadastro(usuarioLng);
+        if (user.isEmpty()) {
+            adicionarUsuario();
+        } else {
+            usuarioJPA.alterar(usuario);
+        }
+        return "cadastroUsuario.xhtml";
+    }
+
+    public void alterarUsuario() {
+
+    }
+
+    public void adicionarUsuario() {
         Calendar c = Calendar.getInstance();
         usuario.setDtCadastro(c.getTime());
         usuarioJPA = new UsuarioJPA();
         usuarioJPA.incluir(usuario);
 
         endereco.setDt_cadastro(c.getTime());
-        endereco.setUsuario_evento(usuario);    
+        endereco.setUsuario_evento(usuario);
         EnderecoJPA enderecoJPA = new EnderecoJPA();
         enderecoJPA.incluir(endereco);
 
         cadastrarTelefone(c);
 
         // Montar mensagem a ser apresentada para usuario
-        Flash mensagem = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-        mensagem.put("mensagem", new Mensagem("Cadastro realizado com sucesso", "success"));
-        return "cadastroUsuario.xhtml";
+        //Flash mensagem = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+        //mensagem.put("mensagem", new Mensagem("Cadastro realizado com sucesso", "success"));
     }
 
     public void cadastrarTelefone(Calendar c) {
