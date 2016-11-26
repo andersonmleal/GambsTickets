@@ -9,10 +9,124 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link href="css/full-slider.css" rel="stylesheet"/>
         <link href="css/bootstrap.css" rel="stylesheet"/> 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.1/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     </h:head>
     <h:body>
+
+
+
+        <h:form class="form-horizontal">
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend style="text-align: center; padding-top: 1%">Cadastro de Evento</legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="nomeEvento">Nome do Evento</label>  
+                    <div class="col-md-5">
+                        <input id="nomeEvento" name="nomeEvento" type="text" placeholder="Insira o nome" class="form-control input-md" required="true"/>
+                        <span class="help-block">Digite o nome do evento</span>  
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="localEvento">Local do Evento</label>  
+                    <div class="col-md-5">
+                        <input id="localEvento" name="localEvento" type="text" placeholder="Local" class="form-control input-md" required="true"/>
+                        <span class="help-block">Insira o nome do local do evento</span>  
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="dataEvento">Data</label>  
+                    <div class="col-md-5">
+                        <input id="dataEvento" name="dataEvento" type="date" placeholder="Data do evento" class="form-control input-md" required="true"/>
+                        <span class="help-block">Insira a data do Evento</span>  
+                    </div>
+                </div>
+                
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="dataEvento">Hora</label>  
+                    <div class="col-md-5">
+                        <input id="dataEvento" name="horaEvento" type="time" placeholder="Hora do evento" maxlength="5" class="form-control input-md" required="true"/>
+                        <span class="help-block">Insira a hora do Evento</span>  
+                    </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="descricaoEvento">Descrição</label>
+                    <div class="col-md-4">                     
+                        <textarea class="form-control" id="descricaoEvento" name="descricaoEvento"></textarea>
+                    </div>
+                </div>
+
+                <!-- File Button --> 
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="imgPrincipal">Imagem Principal</label>
+                    <div class="col-md-4">
+                        <input id="imgPrincipal" name="imgPrincipal" class="input-file" type="file"/>
+                    </div>
+                </div>
+
+                <!-- File Button --> 
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="imgBack">Imagem de Background</label>
+                    <div class="col-md-4">
+                        <input id="imgBack" name="imgBack" class="input-file" type="file"/>
+                    </div>
+                </div>
+
+            </fieldset>
+
+
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend style="text-align: center; padding-top: 1%">Setor   </legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="setorNome">Nome do Setor</label>  
+                    <div class="col-md-5">
+                        <input id="setorNome" name="setorNome" type="text" placeholder="Setor" class="form-control input-md" required="true"/>
+                            <span class="help-block">Digite o nome do setor</span>  
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="valorSetor">Valor</label>  
+                    <div class="col-md-5">
+                        <input id="valorSetor" name="valorSetor" type="text" placeholder="Valor do ingresso" class="form-control input-md" required="true"/>
+                            <span class="help-block">Digite o valor do ingresso</span>  
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="quantidadeSetor">Quantidade Máxima</label>  
+                    <div class="col-md-5">
+                        <input id="quantidadeSetor" name="quantidadeSetor" type="text" placeholder="Quantidade do setor" class="form-control input-md" required="true"/>
+                            <span class="help-block">Quantidade máxima do setor</span>  
+                    </div>
+                </div>
+
+            </fieldset>
+
+
+        </h:form>
+
+
+
+
+
 
 
 

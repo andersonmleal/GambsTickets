@@ -23,6 +23,7 @@ public class Evento implements Serializable {
     private String local_evento;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dt_evento;
+    private String horaEvento;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dt_cadastro_evento;
     private boolean status;
@@ -96,6 +97,15 @@ public class Evento implements Serializable {
         this.local_evento = local_evento;
     }
 
+    public String getHoraEvento() {
+        return horaEvento;
+    }
+
+    public void setHoraEvento(String horaEvento) {
+        this.horaEvento = horaEvento;
+    }
+
+    
     public Date getDt_evento() {
         return dt_evento;
     }
