@@ -16,118 +16,125 @@
     </h:head>
     <h:body>
 
+        <div class="container">
 
+            <h:form class="form-horizontal">
+                <fieldset>
 
-        <h:form class="form-horizontal">
-            <fieldset>
+                    <!-- Form Name -->
+                    <legend style="text-align: center; padding-top: 1%">Cadastro de Evento</legend>
 
-                <!-- Form Name -->
-                <legend style="text-align: center; padding-top: 1%">Cadastro de Evento</legend>
+                    <h3 style="color: #FF0000; text-align: center"><h:outputText value="#{cadastroEventoManagedBean.mensagem}"/></h3>
 
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="nomeEvento">Nome do Evento</label>  
-                    <div class="col-md-5">
-                        <p:inputText value="#{cadastroEventoManagedBean.evento.nome_evento}" id="nomeEvento" type="text" title="Informe o nome do evento" placeholder="Insira o nome" class="form-control input-md" required="true" requiredMessage="Nome Obrigatório"/>
-                        <h:message for="nomeEvento" id="msg1" styleClass="erros" style="color: red"/>
-                        <span class="help-block">Digite o nome do evento</span>  
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="nomeEvento">Nome do Evento</label>  
+                        <div class="col-md-5">
+                            <p:inputText value="#{cadastroEventoManagedBean.evento.nome_evento}" id="nomeEvento" type="text" title="Informe o nome do evento" placeholder="Insira o nome" class="form-control input-md" required="true" requiredMessage="Nome Obrigatório"/>
+                            <h:message for="nomeEvento" id="msg1" styleClass="erros" style="color: red"/>
+                            <span class="help-block">Digite o nome do evento</span>  
+                        </div>
                     </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="localEvento">Local do Evento</label>  
+                        <div class="col-md-5">
+                            <p:inputText value="#{cadastroEventoManagedBean.evento.local_evento}" id="localEvento" type="text" title="Informe o local do evento" placeholder="Insira o local" class="form-control input-md" required="true" requiredMessage="Local Obrigatório"/>
+                            <h:message for="localEvento" id="msg2" styleClass="erros" style="color: red"/>
+                            <span class="help-block">Insira o nome do local do evento</span>  
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="dataEvento">Data</label>  
+                        <div class="col-md-5">
+                            <p:inputText value="#{cadastroEventoManagedBean.evento.dt_evento}" id="dataEvento" type="date" title="Informe a data do evento" placeholder="Insira a data" class="form-control input-md" required="true" requiredMessage="Data Obrigatória"/>
+                            <h:message for="dataEvento" id="msg3" styleClass="erros" style="color: red"/>
+                            <span class="help-block">Insira a data do Evento</span>  
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="dataEvento">Hora</label>  
+                        <div class="col-md-5">
+                            <p:inputText value="#{cadastroEventoManagedBean.evento.horaEvento}" id="horaEvento" type="time" title="Informe a hora do evento" placeholder="Insira a hora" class="form-control input-md" required="true" requiredMessage="Hora Obrigatória"/>
+                            <h:message for="horaEvento" id="msg4" styleClass="erros" style="color: red"/>
+                            <span class="help-block">Insira a hora do Evento</span>  
+                        </div>
+                    </div>
+
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="descricaoEvento">Descrição</label>
+                        <div class="col-md-4">                     
+                            <p:inputTextarea class="form-control" id="descricaoEvento" maxlength="200" value="#{cadastroEventoManagedBean.evento.descricao}"></p:inputTextarea>
+                        </div>
+                    </div>
+
+                    <!-- File Button --> 
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="imgPrincipal">Imagem Principal</label>
+                        <div class="col-md-4">
+                            <h:inputFile value="#{cadastroEventoManagedBean.imagem}" id="imgPrincipal" class="input-file"/>
+                        </div>
+                    </div>
+
+                    <!-- File Button --> 
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="imgBack">Imagem de Background</label>
+                        <div class="col-md-4">
+                            <h:inputFile value="#{cadastroEventoManagedBean.imagemBack}" id="imgBack" class="input-file"/>
+                        </div>
+                    </div>
+
+                </fieldset>
+
+
+                <fieldset>
+
+                    <!-- Form Name -->
+                    <legend style="text-align: center; padding-top: 1%">Setor</legend>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="setorNome">Nome do Setor</label>  
+                        <div class="col-md-5">
+                            <input id="setorNome" name="setorNome" type="text" placeholder="Setor" class="form-control input-md" required="true"/>
+                            <span class="help-block">Digite o nome do setor</span>  
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="valorSetor">Valor</label>  
+                        <div class="col-md-5">
+                            <input id="valorSetor" name="valorSetor" type="text" placeholder="Valor do ingresso" class="form-control input-md" required="true"/>
+                            <span class="help-block">Digite o valor do ingresso</span>  
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="quantidadeSetor">Quantidade Máxima</label>  
+                        <div class="col-md-5">
+                            <input id="quantidadeSetor" name="quantidadeSetor" type="number" placeholder="Quantidade do setor" class="form-control input-md" required="true"/>
+                            <span class="help-block">Quantidade máxima do setor</span>  
+                        </div>
+                    </div>
+
+                </fieldset>
+                <div class="form-actions">
+                    <p:commandButton class="btn btn-primary" value="Salvar" 
+                                     action="#{cadastroEventoManagedBean.salvarNoBanco}"
+                                     ajax="false"
+                                     style="width: 100%"/>
                 </div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="localEvento">Local do Evento</label>  
-                    <div class="col-md-5">
-                        <p:inputText value="#{cadastroEventoManagedBean.evento.local_evento}" id="localEvento" type="text" title="Informe o local do evento" placeholder="Insira o local" class="form-control input-md" required="true" requiredMessage="Local Obrigatório"/>
-                        <h:message for="localEvento" id="msg2" styleClass="erros" style="color: red"/>
-                        <span class="help-block">Insira o nome do local do evento</span>  
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="dataEvento">Data</label>  
-                    <div class="col-md-5">
-                        <p:inputText value="#{cadastroEventoManagedBean.evento.dt_evento}" id="dataEvento" type="date" title="Informe a data do evento" placeholder="Insira a data" class="form-control input-md" required="true" requiredMessage="Data Obrigatória"/>
-                        <h:message for="dataEvento" id="msg3" styleClass="erros" style="color: red"/>
-                        <span class="help-block">Insira a data do Evento</span>  
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="dataEvento">Hora</label>  
-                    <div class="col-md-5">
-                        <p:inputText value="#{cadastroEventoManagedBean.evento.horaEvento}" id="horaEvento" type="time" title="Informe a hora do evento" placeholder="Insira a hora" class="form-control input-md" required="true" requiredMessage="Hora Obrigatória"/>
-                        <h:message for="horaEvento" id="msg4" styleClass="erros" style="color: red"/>
-                        <span class="help-block">Insira a hora do Evento</span>  
-                    </div>
-                </div>
-
-                <!-- Textarea -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="descricaoEvento">Descrição</label>
-                    <div class="col-md-4">                     
-                        <p:inputTextarea class="form-control" id="descricaoEvento" maxlength="200" value="#{cadastroEventoManagedBean.evento.descricao}"></p:inputTextarea>
-                    </div>
-                </div>
-
-                <!-- File Button --> 
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="imgPrincipal">Imagem Principal</label>
-                    <div class="col-md-4">
-                        <h:inputFile value="#{cadastroEventoManagedBean.imagem}" id="imgPrincipal" class="input-file"/>
-                    </div>
-                </div>
-
-                <!-- File Button --> 
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="imgBack">Imagem de Background</label>
-                    <div class="col-md-4">
-                        <h:inputFile value="#{cadastroEventoManagedBean.imagemBack}" id="imgBack" class="input-file"/>
-                    </div>
-                </div>
-
-            </fieldset>
-
-
-            <fieldset>
-
-                <!-- Form Name -->
-                <legend style="text-align: center; padding-top: 1%">Setor</legend>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="setorNome">Nome do Setor</label>  
-                    <div class="col-md-5">
-                        <input id="setorNome" name="setorNome" type="text" placeholder="Setor" class="form-control input-md" required="true"/>
-                        <span class="help-block">Digite o nome do setor</span>  
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="valorSetor">Valor</label>  
-                    <div class="col-md-5">
-                        <input id="valorSetor" name="valorSetor" type="text" placeholder="Valor do ingresso" class="form-control input-md" required="true"/>
-                        <span class="help-block">Digite o valor do ingresso</span>  
-                    </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="quantidadeSetor">Quantidade Máxima</label>  
-                    <div class="col-md-5">
-                        <input id="quantidadeSetor" name="quantidadeSetor" type="number" placeholder="Quantidade do setor" class="form-control input-md" required="true"/>
-                        <span class="help-block">Quantidade máxima do setor</span>  
-                    </div>
-                </div>
-
-            </fieldset>
-
-
-
-        </h:form>
+            </h:form>
+        </div>
 
 
 
@@ -139,7 +146,7 @@
             <h:graphicImage url="#{cadastroEventoManagedBean.urlImagemBack}" />
         </ui:fragment>
 
-        
+
         <hr style="align: center"/>
         <footer>
             <div class="row">

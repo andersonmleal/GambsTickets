@@ -25,13 +25,14 @@ import javax.servlet.http.Part;
 public class CadastroEventoManagedBean implements Serializable {
 
     private Evento evento;
+    private String mensagem;
     // dados img backbround
     private Part imagemBack;
     private String nomeArquivoBack;
     // dados img principal  
     private Part imagem;
     private String nomeArquivo;
-
+    
     public CadastroEventoManagedBean() {
 
         evento = new Evento();
@@ -129,6 +130,24 @@ public class CadastroEventoManagedBean implements Serializable {
         return nomeArquivoBack;
     }
 
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
+
+    public String getNomeArquivo() {
+        return nomeArquivo;
+    }
+
+    public void setNomeArquivo(String nomeArquivo) {
+        this.nomeArquivo = nomeArquivo;
+    }
+    
+    
+
     public void setNomeArquivoBack(String nomeArquivoBack) {
         this.nomeArquivoBack = nomeArquivoBack;
     }
@@ -211,6 +230,22 @@ public class CadastroEventoManagedBean implements Serializable {
 
     public String getUrlImagem() {
         return "http://localhost:8080/imagens/" + nomeArquivo;
+    }
+
+    public void salvarNoBanco() {
+
+        try {
+            // salva imagens no serividor
+            salvarImagem();
+            salvarImagemBack();
+            // LOGICA DE SALVAR OS DADOS NO BANCO
+            
+            
+            mensagem = "Evento cadastrado com Sucesso!";
+        } catch (Exception e) {
+            mensagem = "Ocorreu um erro, tente novamente.";
+        }
+
     }
 
 }
