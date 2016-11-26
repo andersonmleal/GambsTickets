@@ -5,9 +5,13 @@
  */
 package bean;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
+import jpa.GraficoJPA;
 
 /**
  *
@@ -32,55 +36,63 @@ public class GraficosManagedBean {
 
     public GraficosManagedBean() {
     }
-    //0, 5000, 5000, 8000, 8000, 7000, 8000, 9000, 8000, 11000, 13000, 13000, 12000, 14000, 15000, 15000, 17000, 18000, , , 
+    
+    public float calculaFaturamento(int mes) {
+        Calendar c = Calendar.getInstance();
+        GraficoJPA jpa = new GraficoJPA();
+        //captura ano atual do relatorio
+        int ano = c.get(c.YEAR);
+        //busca no banco o total do mes
+        float fat = jpa.faturamento(mes, ano);
+        return fat;
+    }
 
     public float getFatJaneiro() {
-        return fatJaneiro;
+        return calculaFaturamento(1);
     }
 
     public float getFatFevereiro() {
-        return fatFevereiro;
+        return calculaFaturamento(2);
     }
 
     public float getFatMarço() {
-        return fatMarço;
+        return calculaFaturamento(3);
     }
 
     public float getFatAbril() {
-        return fatAbril;
+        return calculaFaturamento(4);
     }
 
     public float getFatMaio() {
-        return fatMaio;
+        return calculaFaturamento(5);
     }
 
     public float getFatJunho() {
-        return fatJunho;
+        return calculaFaturamento(6);
     }
 
     public float getFatJulho() {
-        return fatJulho;
+        return calculaFaturamento(7);
     }
 
     public float getFatAgosto() {
-        return fatAgosto;
+        return calculaFaturamento(8);
     }
 
     public float getFatSetembro() {
-        return fatSetembro;
+        return calculaFaturamento(9);
     }
 
     public float getFatOutubro() {
-        return fatOutubro;
+        return calculaFaturamento(10);
     }
 
     public float getFatNovembro() {
-        return fatNovembro;
+        return calculaFaturamento(11);
     }
 
     public float getFatDezembro() {
-        return fatDezembro;
+        return calculaFaturamento(12);
     }
 
-  
 }
