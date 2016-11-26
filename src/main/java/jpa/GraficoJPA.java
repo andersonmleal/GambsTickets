@@ -24,13 +24,11 @@ public class GraficoJPA {
     }
 
     public float faturamento(int mes, int ano) {
-        float total;
         //Monta query da consulta
         String query = "SELECT sum(QUANTIDADE) FROM APP.VENDA WHERE DT_CADASTRO between '2016-11-01' and '2016-11-31';";
         Query qr = em.createQuery(query);
-        total = (float) qr.getSingleResult();
-
-        return total;
+       
+        return (float) qr.getSingleResult();
     }
 
 }
