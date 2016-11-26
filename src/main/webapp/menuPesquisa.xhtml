@@ -25,6 +25,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
+
                     </button>
                     <a class="navbar-brand" href="index.xhtml">GambsTickets</a>
                 </div>
@@ -35,15 +36,15 @@
                         <li><a href="eventos.xhtml">Eventos</a></li>
                         <li><a href="#">Sobre</a></li>
                         <li><a href="#">Parceiros</a></li>
-                        <li class="dropdown">
+                        <p:panelGrid class="dropdown" rendered="#{loginBean.logado}">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administração <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu" >
                                 <li><a href="eventosCadastro.xhtml">Novo Evento</a></li>
                                 <li><a href="#">Alterar Evento</a></li>
                                 <li class="divider"></li>
                                 <li><a href="graficos.xhtml">Gráficos e Estatísticas</a></li>
                             </ul>
-                        </li>
+                        </p:panelGrid>
                     </ul>
                     <div class="col-sm-3 col-md-3">
                         <form class="navbar-form" role="search">
@@ -64,14 +65,14 @@
                             <c:when test="${loginBean.recuperaUsuario() == null}">
                                 <li><a onclick="abreModalLogin()">Login</a></li> 
                             </c:when>
-                           <c:when test="${loginBean.recuperaUsuario() != null}">
+                            <c:when test="${loginBean.recuperaUsuario() != null}">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><p:outputLabel value="${loginBean.usuario.nome}" /> <b class="caret"></b></a>
 
 
                                     <ul class="dropdown-menu">
                                         <li><a href="carrinhoCompras.xhtml">Carrinho</a></li>
-                                        <li><a href="cadastroUsuario.xhtml">Meus Dados</a></li>
+                                        <li><a href="#">Meus Dados</a></li>
                                         <li class="divider"></li>
                                         <li><a href="#">Sair</a></li>
                                     </ul>
