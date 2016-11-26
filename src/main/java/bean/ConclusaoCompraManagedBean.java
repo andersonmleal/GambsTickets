@@ -141,6 +141,7 @@ public class ConclusaoCompraManagedBean implements Serializable {
         venda.setFormaPagamento(pagamento);
         venda.setQuantidade(eventosSelecionados.get(contador).getQuantidadeSelecionada());
         venda.setDt_cadastro(c.getTime());
+        venda.setValor(valorTotal);
         vendaJPA.incluir(venda);
 
     }
