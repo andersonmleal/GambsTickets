@@ -15,9 +15,15 @@ import java.io.OutputStream;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.http.Part;
+import jpa.EventoJPA;
+import jpa.SetorJPA;
 
 /**
  *
@@ -33,9 +39,10 @@ public class CadastroEventoManagedBean implements Serializable {
     //setores
     private List<Setor> setores;
     private Setor removerSetor;
-    private String nomeSetor;
-    private double precoSetor;
-    private int quantidadeTotal;
+    private Setor setor;
+    //private String nomeSetor;
+    //private double precoSetor;
+    //private int quantidadeTotal;
     // dados img backbround
     private Part imagemBack;
     private String nomeArquivoBack;
@@ -46,6 +53,7 @@ public class CadastroEventoManagedBean implements Serializable {
     public CadastroEventoManagedBean() {
 
         evento = new Evento();
+        setor = new Setor();
         setores = new ArrayList<>();
     }
 
@@ -57,24 +65,20 @@ public class CadastroEventoManagedBean implements Serializable {
         this.setores = setores;
     }
 
+    public Setor getSetor() {
+        return setor;
+    }
+
+    public void setSetor(Setor setor) {
+        this.setor = setor;
+    }
+
     public String getData() {
         return data;
     }
 
     public void setData(String data) {
         this.data = data;
-    }
-
-        public String getNomeSetor() {
-        return nomeSetor;
-    }
-
-    public void setNomeSetor(String nomeSetor) {
-        this.nomeSetor = nomeSetor;
-    }
-
-    public double getPrecoSetor() {
-        return precoSetor;
     }
 
     public Setor getRemoverSetor() {
@@ -85,18 +89,6 @@ public class CadastroEventoManagedBean implements Serializable {
 
         this.setores.remove(removerSetor);
         this.mensagem = "Setor removido";
-    }
-
-    public void setPrecoSetor(double precoSetor) {
-        this.precoSetor = precoSetor;
-    }
-
-    public int getQuantidadeTotal() {
-        return quantidadeTotal;
-    }
-
-    public void setQuantidadeTotal(int quantidadeTotal) {
-        this.quantidadeTotal = quantidadeTotal;
     }
 
     public Evento getEvento() {
@@ -317,17 +309,29 @@ public class CadastroEventoManagedBean implements Serializable {
     }
 
     public String cadastrarSetor() {
-
-        Setor set = new Setor(nomeSetor, precoSetor, quantidadeTotal);
-        this.setores.add(set);
-        nomeSetor = null;
-        precoSetor = 0;
-        quantidadeTotal = 0;
+        Calendar c = Calendar.getInstance();
+        SetorJPA setorJPA = new SetorJPA();
+        setor.setDt_cadastro(c.getTime());
+        setor.setQuantidadeDisponivel(setor.getQuantidade());
+        setor.setId_evento(evento);
+        setorJPA.incluir(setor);
+        this.setores.add(setor);
+        setor = new Setor();
         return "setoresCadastro.xhtml";
     }
 
     public String pgSetor() {
 
+        Calendar c = Calendar.getInstance();
+        evento.setDt_cadastro_evento(c.getTime());
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        //Date data1 =(Date)sdf.parse(data);
+        //c.setTime(data1);
+        evento.setDt_evento(c.getTime());
+        evento.setCaminhoImagem(obterNomeArquivo());
+        evento.setCaminhoImagemBack(obterNomeArquivoBack());
+        EventoJPA eventoJPA = new EventoJPA();
+        eventoJPA.incluir(evento);
         return "setoresCadastro.xhtml";
     }
 

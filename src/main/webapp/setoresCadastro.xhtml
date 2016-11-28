@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="setorNome">Nome do Setor</label>  
                     <div class="col-md-5">
-                        <p:inputText value="#{cadastroEventoManagedBean.nomeSetor}" id="nomeSetor" maxlength="10" type="text" title="Informe o nome do setor" placeholder="Insira o nome" class="form-control input-md" required="true" requiredMessage="Nome Obrigatório"/>
+                        <p:inputText value="#{cadastroEventoManagedBean.setor.nomeSetor}" id="nomeSetor" maxlength="10" type="text" title="Informe o nome do setor" placeholder="Insira o nome" class="form-control input-md" required="true" requiredMessage="Nome Obrigatório"/>
                         <h:message for="nomeSetor" id="msg1" styleClass="erros" style="color: red"/>
                         <span class="help-block">Digite o nome do setor</span>  
                     </div>
@@ -73,7 +73,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="valorSetor">Valor</label>  
                     <div class="col-md-5">
-                        <p:inputText value="#{cadastroEventoManagedBean.precoSetor}" id="valorSetor" type="text" maxlength="7" title="Informe o valor do setor" placeholder="Insira o valor" class="form-control input-md" required="true" requiredMessage="Valor Obrigatório"/>
+                        <p:inputText value="#{cadastroEventoManagedBean.setor.preco}" id="valorSetor" type="text" maxlength="7" title="Informe o valor do setor" placeholder="Insira o valor" class="form-control input-md" required="true" requiredMessage="Valor Obrigatório"/>
                         <h:message for="valorSetor" id="msg2" styleClass="erros" style="color: red"/>
                         <span class="help-block">Digite o valor do ingresso</span>  
                     </div>
@@ -83,7 +83,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="quantidadeSetor">Quantidade Máxima</label>  
                     <div class="col-md-5">
-                        <p:inputText value="#{cadastroEventoManagedBean.quantidadeTotal}" id="quantSetor" type="number" title="Informe a quantidade do setor" placeholder="Insira a quantidade" class="form-control input-md" required="true" requiredMessage="Quantidade Obrigatório"/>
+                        <p:inputText value="#{cadastroEventoManagedBean.setor.quantidade}" id="quantSetor" type="number" title="Informe a quantidade do setor" placeholder="Insira a quantidade" class="form-control input-md" required="true" requiredMessage="Quantidade Obrigatório"/>
                         <h:message for="quantSetor" id="msg3" styleClass="erros" style="color: red"/>
                         <span class="help-block">Quantidade máxima do setor</span>  
                     </div>

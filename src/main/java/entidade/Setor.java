@@ -64,6 +64,22 @@ public class Setor implements Serializable {
         return nomeSetor;
     }
 
+    public void setIdSetor(int idSetor) {
+        this.idSetor = idSetor;
+    }
+
+    public void setNomeSetor(String nomeSetor) {
+        this.nomeSetor = nomeSetor;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public void setQuantidadeDisponivel(int quantidadeDisponivel) {
+        this.quantidadeDisponivel = quantidadeDisponivel;
+    }
+
     public double getPreco() {
         return preco;
     }
