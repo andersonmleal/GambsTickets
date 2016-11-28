@@ -121,7 +121,6 @@ public class DetalheManagedBean implements Serializable {
             //captura dados
             int quantidadeInteira = Integer.parseInt(tInteira[0]);
             int idSetorInteira = Integer.parseInt(tInteira[1]);
-
             EventoIngressos eventInteira = new EventoIngressos(evento.getSetores().get(idSetorInteira - 1), evento, quantidadeInteira);
             eventInteira.setPrecoUnitario(eventInteira.getSetor().getPreco());
             ev.add(eventInteira);
