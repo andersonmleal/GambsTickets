@@ -25,7 +25,7 @@ public class GraficoJPA {
 
     public float faturamento(int mes, int ano) {
         //Monta query da consulta
-        String query = "SELECT sum(QUANTIDADE) FROM APP.VENDA WHERE DT_CADASTRO between '2016-11-01' and '2016-11-31';";
+        String query = "SELECT sum(v.QUANTIDADE) FROM VENDA v WHERE v.DT_CADASTRO between '2016-11-01' and '2016-11-31'";
         Query qr = em.createQuery(query);
        
         return (float) qr.getSingleResult();

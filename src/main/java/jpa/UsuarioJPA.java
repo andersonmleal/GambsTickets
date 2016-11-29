@@ -47,11 +47,21 @@ public class UsuarioJPA {
             Query query = em.createQuery("select usuario from Usuario usuario where usuario.cpf = :cpf")
                     .setParameter("cpf", usuario);
 
-            return query.getResultList();
+                       return query.getResultList();
         } finally {
             em.close();
         }
 
+    }
+    
+    public int verificaNivel(long usuario){
+        EntityManager em = emf.createEntityManager();
+        try{
+           Query query = em.createQuery("select usuario FROM USUARIO WHERE CPF = :cpf").setParameter("cpf", usuario);
+           return (int)query.getParameterValue("TIPO_USUARIO");
+        }finally{
+            em.close();
+        }
     }
 
     public void alterar(Usuario usuario) {

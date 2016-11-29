@@ -21,7 +21,7 @@ import jpa.GraficoJPA;
 @RequestScoped
 public class GraficosManagedBean {
 
-    float fatJaneiro = 1000;
+    float fatJaneiro;
     float fatFevereiro = 5000;
     float fatMarço = 5000;
     float fatAbril = 8000;
@@ -35,6 +35,19 @@ public class GraficosManagedBean {
     float fatDezembro;
 
     public GraficosManagedBean() {
+        this.fatJaneiro = calculaFaturamento(1);
+        this.fatFevereiro = calculaFaturamento(2);
+        this.fatMarço = calculaFaturamento(3);
+        this.fatAbril = calculaFaturamento(4);
+        this.fatMaio = calculaFaturamento(5);
+        this.fatJunho = calculaFaturamento(6);
+        this.fatJulho = calculaFaturamento(7);
+        this.fatAgosto = calculaFaturamento(8);
+        this.fatSetembro = calculaFaturamento(9);
+        this.fatOutubro = calculaFaturamento(10);
+        this.fatNovembro = calculaFaturamento(11);
+        this.fatDezembro = calculaFaturamento(12);
+        
     }
     
     public float calculaFaturamento(int mes) {
@@ -48,51 +61,52 @@ public class GraficosManagedBean {
     }
 
     public float getFatJaneiro() {
-        return calculaFaturamento(1);
+        return fatJaneiro;
     }
 
     public float getFatFevereiro() {
-        return calculaFaturamento(2);
+        return fatFevereiro;
     }
 
     public float getFatMarço() {
-        return calculaFaturamento(3);
+        return fatMarço;
     }
 
     public float getFatAbril() {
-        return calculaFaturamento(4);
+        return fatAbril;
     }
 
     public float getFatMaio() {
-        return calculaFaturamento(5);
+        return fatMaio;
     }
 
     public float getFatJunho() {
-        return calculaFaturamento(6);
+        return fatJunho;
     }
 
     public float getFatJulho() {
-        return calculaFaturamento(7);
+        return fatJulho;
     }
 
     public float getFatAgosto() {
-        return calculaFaturamento(8);
+        return fatAgosto;
     }
 
     public float getFatSetembro() {
-        return calculaFaturamento(9);
+        return fatSetembro;
     }
 
     public float getFatOutubro() {
-        return calculaFaturamento(10);
+        return fatOutubro;
     }
 
     public float getFatNovembro() {
-        return calculaFaturamento(11);
+        return fatNovembro;
     }
 
     public float getFatDezembro() {
-        return calculaFaturamento(12);
+        return fatDezembro;
     }
+
 
 }
