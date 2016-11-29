@@ -86,21 +86,24 @@ public class UsuarioBean implements Serializable {
         endereco.setUsuario_evento(usuario);
         EnderecoJPA enderecoJPA = new EnderecoJPA();
         enderecoJPA.incluir(endereco);
-
         cadastrarTelefone(c);
 
         // Montar mensagem a ser apresentada para usuario
         //Flash mensagem = FacesContext.getCurrentInstance().getExternalContext().getFlash();
         //mensagem.put("mensagem", new Mensagem("Cadastro realizado com sucesso", "success"));
     }
-    public void carregaUsuario(){
+
+    public void carregaUsuario() {
         FacesContext fc = FacesContext.getCurrentInstance();
-        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);        
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
         usuario = (Usuario) session.getAttribute("usuario");
-        if (usuario != null){
-        endereco = usuario.getEnderecos().get(0);
+        if (usuario != null) {
+            endereco = usuario.getEnderecos().get(0);
+        } else {
+            usuario = new Usuario();
         }
     }
+
     public void cadastrarTelefone(Calendar c) {
         Telefone regTelefone = new Telefone();
         TelefoneJPA telefoneJPA = new TelefoneJPA();
