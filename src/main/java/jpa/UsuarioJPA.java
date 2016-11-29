@@ -53,16 +53,8 @@ public class UsuarioJPA {
         }
 
     }
-    
-    public int verificaNivel(long usuario){
-        EntityManager em = emf.createEntityManager();
-        try{
-           Query query = em.createQuery("select usuario FROM USUARIO WHERE CPF = :cpf").setParameter("cpf", usuario);
-           return (int)query.getParameterValue("TIPO_USUARIO");
-        }finally{
-            em.close();
-        }
-    }
+   
+  
 
     public void alterar(Usuario usuario) {
         EntityManager em = emf.createEntityManager();

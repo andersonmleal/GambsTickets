@@ -27,7 +27,7 @@ public class LoginBean implements Serializable {
     private String senha;
     private String nome = "";
     private Usuario usuario = null;
-    private  boolean logado = false;
+    private boolean logado = false;
     //private String UsuarioSession = null;
 
     public LoginBean() {
@@ -36,12 +36,19 @@ public class LoginBean implements Serializable {
 
     public String realizarLogin() {
         usuario = validarUsuario(cpf, senha);
-        
+
         if (usuario != null) {
             FacesContext fc = FacesContext.getCurrentInstance();
             HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
             session.setAttribute("usuario", usuario);
-            logado = true;
+            //Logica para validar nivel de administração, onde 1 é administrador
+           UsuarioJPA jpa = new UsuarioJPA();
+           long cpfLong = Long.parseLong(cpf);
+           List<Usuario> user = jpa.verificaCadastro(cpfLong);
+           int nivel = user.get(0).getTipo_usuario();
+           if(nivel == 1){
+               logado = true;
+           }
             return "index";
         }
 
@@ -50,10 +57,10 @@ public class LoginBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, fm);
         return "loginErro";
     }
-    
-     public String realizarLoginErro() {
+
+    public String realizarLoginErro() {
         usuario = validarUsuario(cpf, senha);
-        
+
         if (usuario != null) {
             FacesContext fc = FacesContext.getCurrentInstance();
             HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
@@ -66,11 +73,9 @@ public class LoginBean implements Serializable {
         FacesContext.getCurrentInstance().addMessage(null, fm);
         return "loginErro";
     }
-    
 
     public void realizarLogout() {
 
-  
     }
 
     public Usuario recuperaUsuario() {
@@ -80,10 +85,9 @@ public class LoginBean implements Serializable {
 
         FacesContext fc = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
-        
+
         usuario = (Usuario) session.getAttribute("usuario");
 
- 
         //JOptionPane.showInputDialog(UsuarioSession);
         return usuario;
     }
@@ -92,10 +96,11 @@ public class LoginBean implements Serializable {
         UsuarioJPA usuarioJPA = new UsuarioJPA();
         long usuarioLng = Long.parseLong(cpf);
         List<Usuario> user = usuarioJPA.verificaCadastro(usuarioLng);
+        
         if (user.isEmpty()) {
             return null;
         } else {
-            
+
             return user.get(0);
             //return usuarioLng == user.get(0).getCpf() && senha.equals(user.get(0).getSenha());
         }
@@ -136,7 +141,7 @@ public class LoginBean implements Serializable {
         this.usuario = usuario;
     }
 
-    public  boolean isLogado() {
+    public boolean isLogado() {
         return logado;
     }
 
