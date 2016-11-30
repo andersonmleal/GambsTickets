@@ -26,7 +26,6 @@ public class GraficoJPA {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("DataTicket");
 
     public GraficoJPA() {
-
     }
 
     public float faturamento(int mes, int ano) {
@@ -53,6 +52,7 @@ public class GraficoJPA {
             query.setParameter("dataFinal", dataFin);
 
             List<Venda> vendas = query.getResultList();
+            //SOMA O RESULTADO PERCORRENDO JÁ QUE O SUM DANDO ERRADO.
             if (vendas.size() > 0) {
                 for (int i = 0; i < query.getResultList().size(); i++) {
                     resultado = resultado + vendas.get(i).getQuantidade();
