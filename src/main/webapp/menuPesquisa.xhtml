@@ -10,6 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link href="css/full-slider.css" rel="stylesheet"/>
         <link href="css/bootstrap.css" rel="stylesheet"/> 
+        <link href="css/menu.css" rel="stylesheet"/> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </h:head>
@@ -60,7 +61,7 @@
                     <ul class="nav navbar-nav navbar-right">
 
 
-
+                        <li><a class="glyphicon glyphicon-shopping-cart" href="carrinhoCompras.xhtml"></a></li>
                         <c:choose>
                             <c:when test="${loginBean.recuperaUsuario() == null}">
                                 <li><a onclick="abreModalLogin()">Login</a></li> 
@@ -71,7 +72,6 @@
 
 
                                     <ul class="dropdown-menu">
-                                        <li><a href="carrinhoCompras.xhtml">Carrinho</a></li>
                                         <li><a href="#">Meus Dados</a></li>
                                         <li class="divider"></li>
                                         <li><a href="#">Sair</a></li>
