@@ -283,9 +283,19 @@ public class CadastroEventoManagedBean implements Serializable {
         return "http://localhost:8080/imagens/" + nomeArquivo;
     }
 
-    public void salvarNoBanco() {
+    public String cadastrarEvento() {
 
         try {
+            Calendar c = Calendar.getInstance();
+            evento.setDt_cadastro_evento(c.getTime());
+            //SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+            //Date data1 =(Date)sdf.parse(data);
+            //c.setTime(data1);
+            evento.setDt_evento(c.getTime());
+            evento.setCaminhoImagem(obterNomeArquivo());
+            evento.setCaminhoImagemBack(obterNomeArquivoBack());
+            EventoJPA eventoJPA = new EventoJPA();
+            eventoJPA.incluir(evento);
             // salva imagens no serividor
             salvarImagem();
             salvarImagemBack();
@@ -295,6 +305,7 @@ public class CadastroEventoManagedBean implements Serializable {
         } catch (Exception e) {
             mensagem = "Ocorreu um erro, tente novamente.";
         }
+        return "setoresCadastro.xhtml";
 
     }
 
@@ -317,21 +328,6 @@ public class CadastroEventoManagedBean implements Serializable {
         setorJPA.incluir(setor);
         this.setores.add(setor);
         setor = new Setor();
-        return "setoresCadastro.xhtml";
-    }
-
-    public String pgSetor() {
-
-        Calendar c = Calendar.getInstance();
-        evento.setDt_cadastro_evento(c.getTime());
-        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-        //Date data1 =(Date)sdf.parse(data);
-        //c.setTime(data1);
-        evento.setDt_evento(c.getTime());
-        evento.setCaminhoImagem(obterNomeArquivo());
-        evento.setCaminhoImagemBack(obterNomeArquivoBack());
-        EventoJPA eventoJPA = new EventoJPA();
-        eventoJPA.incluir(evento);
         return "setoresCadastro.xhtml";
     }
 
