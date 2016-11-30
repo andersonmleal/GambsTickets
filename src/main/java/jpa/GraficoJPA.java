@@ -33,8 +33,8 @@ public class GraficoJPA {
         EntityManager em = emf.createEntityManager();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         //DATAS HARDCODE
-        String dtInicial = "01/11/2016";
-        String dtFinal = "30/11/2016";
+        String dtInicial = "01/" + mes + "/" + ano + "";
+        String dtFinal = "31/" + mes + "/" + ano + "";
         //CONVERTE STRING NO FORMATO dd/MM/yyyy PARA SQL DATA.
         java.sql.Date dataIni = null;
         java.sql.Date dataFin = null;
@@ -55,8 +55,8 @@ public class GraficoJPA {
             //SOMA O RESULTADO PERCORRENDO JÁ QUE O SUM DANDO ERRADO.
             if (vendas.size() > 0) {
                 for (int i = 0; i < query.getResultList().size(); i++) {
-                    resultado = resultado + vendas.get(i).getQuantidade();
-
+                    resultado = (float) (resultado + vendas.get(i).getValor());
+                    System.out.println(resultado);
                 }
             }
             return resultado;

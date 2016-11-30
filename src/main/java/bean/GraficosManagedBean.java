@@ -21,33 +21,21 @@ import jpa.GraficoJPA;
 @RequestScoped
 public class GraficosManagedBean {
 
-    float fatJaneiro;
-    float fatFevereiro = 5000;
-    float fatMarço = 5000;
-    float fatAbril = 8000;
-    float fatMaio = 8000;
-    float fatJunho = 7000;
-    float fatJulho = 9000;
-    float fatAgosto = 11000;
-    float fatSetembro = 13000;
-    float fatOutubro = 12000;
-    float fatNovembro = 14000;
-    float fatDezembro;
+    float fatJaneiro = calculaFaturamento(1);
+    float fatFevereiro = calculaFaturamento(2);
+    float fatMarço = calculaFaturamento(3);
+    float fatAbril = calculaFaturamento(4);
+    float fatMaio = calculaFaturamento(5);
+    float fatJunho = calculaFaturamento(6);
+    float fatJulho  = calculaFaturamento(7);
+    float fatAgosto = calculaFaturamento(8);
+    float fatSetembro = calculaFaturamento(9);
+    float fatOutubro = calculaFaturamento(10);
+    float fatNovembro  = calculaFaturamento(11);
+    float fatDezembro = calculaFaturamento(12);
 
     public GraficosManagedBean() {
-        this.fatJaneiro = calculaFaturamento(1);
-        this.fatFevereiro = calculaFaturamento(2);
-        this.fatMarço = calculaFaturamento(3);
-        this.fatAbril = calculaFaturamento(4);
-        this.fatMaio = calculaFaturamento(5);
-        this.fatJunho = calculaFaturamento(6);
-        this.fatJulho = calculaFaturamento(7);
-        this.fatAgosto = calculaFaturamento(8);
-        this.fatSetembro = calculaFaturamento(9);
-        this.fatOutubro = calculaFaturamento(10);
-        this.fatNovembro = calculaFaturamento(11);
-        this.fatDezembro = calculaFaturamento(12);
-        
+          
     }
     
     public float calculaFaturamento(int mes) {
