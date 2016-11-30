@@ -37,12 +37,11 @@ public class DetalheManagedBean implements Serializable {
     public DetalheManagedBean() {
 
     }
- 
 
     public String getMensagem() {
         return mensagem;
     }
-    
+
     public String getIngressoIntSelecionado() {
         return ingressoIntSelecionado;
     }
@@ -121,9 +120,15 @@ public class DetalheManagedBean implements Serializable {
             //captura dados
             int quantidadeInteira = Integer.parseInt(tInteira[0]);
             int idSetorInteira = Integer.parseInt(tInteira[1]);
-            EventoIngressos eventInteira = new EventoIngressos(evento.getSetores().get(idSetorInteira - 1), evento, quantidadeInteira);
-            eventInteira.setPrecoUnitario(eventInteira.getSetor().getPreco());
-            ev.add(eventInteira);
+
+            for (int i = 0; i < evento.getSetores().size(); i++) {
+                if (evento.getSetores().get(i).getIdSetor() == idSetorInteira) {
+                    EventoIngressos eventInteira = new EventoIngressos(evento.getSetores().get(i), evento, quantidadeInteira);
+                    eventInteira.setPrecoUnitario(eventInteira.getSetor().getPreco());
+                    ev.add(eventInteira);
+                }
+            }
+
         }
 
         //add meia entrada
@@ -135,9 +140,14 @@ public class DetalheManagedBean implements Serializable {
             int quantidadeMeia = Integer.parseInt(tMeia[0]);
             int idSetorMeia = Integer.parseInt(tMeia[1]);
 
-            EventoIngressos eventMeia = new EventoIngressos(evento.getSetores().get(idSetorMeia - 1), evento, quantidadeMeia);
-            eventMeia.setPrecoUnitario(eventMeia.getSetor().getPreco() / 2);
-            ev.add(eventMeia);
+            for (int i = 0; i < evento.getSetores().size(); i++) {
+                if (evento.getSetores().get(i).getIdSetor() == idSetorMeia) {
+                    EventoIngressos eventMeia = new EventoIngressos(evento.getSetores().get(i), evento, quantidadeMeia);
+                    eventMeia.setPrecoUnitario(eventMeia.getSetor().getPreco() / 2);
+                    ev.add(eventMeia);
+                }
+            }
+
         }
 
         //CarrinhoManagedBean carrinho = new CarrinhoManagedBean();
@@ -155,7 +165,5 @@ public class DetalheManagedBean implements Serializable {
             return "carrinhoCompras.xhtml";
         }
     }
-    
-  
 
 }

@@ -229,10 +229,12 @@ public class CadastroEventoManagedBean implements Serializable {
         }
         return null;
     }
-
     private void salvarArquivo(String nomeArquivo) {
-        String diretorioDestino = "C:" + File.separator + "desenv"
-                + File.separator + "imagens" + File.separator;
+        String diretorioDestino = 
+                 File.separator+ "GambsTickets"
+                + File.separator+ "src" 
+                + File.separator + "main"
+                + File.separator + "webapp" + File.separator + "img" + File.separator;
         File arquivo = new File(diretorioDestino + nomeArquivo);
 
         InputStream inputStream = null;
@@ -280,7 +282,7 @@ public class CadastroEventoManagedBean implements Serializable {
     }
 
     public String getUrlImagem() {
-        return "http://localhost:8080/imagens/" + nomeArquivo;
+            return "http://localhost:8080/imagens/" + nomeArquivo;
     }
 
     public String cadastrarEvento() {
