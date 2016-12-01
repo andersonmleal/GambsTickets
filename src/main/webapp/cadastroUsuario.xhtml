@@ -24,11 +24,16 @@
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="email" class="control-label">E-mail:</label>
-                        <p:inputText type="text" id="email" value="${usuarioBean.usuario.email}" class="form-control" maxlength="60"/>
+                        <p:inputText type="email" id="email" value="${usuarioBean.usuario.email}" class="form-control" maxlength="60"
+                                     title="Informe seu e-mail" required="true" requiredMessage="E-mail Obrigatório"/>
+                        <h:message for="email" id="msg1" styleClass="erros" style="color: red"/>
+
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="cli_confirmaEmail" class="control-label">Confirme o e-mail:</label>
-                        <input type="text" id="cli_confirmaEmail" name="cli_confirmaEmail" class="form-control" maxlength="60"/>
+                        <input type="email" id="cli_confirmaEmail" name="cli_confirmaEmail" class="form-control" maxlength="60"
+                               title="Confirme seu e-mail" required="true" requiredMessage="Confirmação E-mail Obrigatório"/>
+                        <h:message for="cli_confirmaEmail" id="msg2" styleClass="erros" style="color: red"/>
                     </div>
                 </div>
 
@@ -37,11 +42,15 @@
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="cli_senha" class="control-label">Senha:</label>
-                        <p:inputText type="password" id="cli_senha" value="${usuarioBean.usuario.senha}" class="form-control" maxlength="15"/>
+                        <p:inputText type="password" id="cli_senha" value="${usuarioBean.usuario.senha}" class="form-control" maxlength="15"
+                                     title="Senha" required="true" requiredMessage="Senha Obrigatória"/>
+                        <h:message for="cli_senha" id="msg3" styleClass="erros" style="color: red"/>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="cli_senhaConfirma" class="control-label">Confirmação da senha:</label>
-                        <input type="password" id="cli_senhaConfirma" name="cli_senhaConfirma" class="form-control" maxlength="15"/>
+                        <input type="password" id="cli_senhaConfirma" name="cli_senhaConfirma" class="form-control" maxlength="15"
+                               title="Conformação Senha" required="true" requiredMessage="Obrigatório Confirmar Senha"/>
+                        <h:message for="cli_senhaConfirma" id="msg4" styleClass="erros" style="color: red"/>
                     </div>
                 </div>
 
@@ -50,18 +59,23 @@
                 <div class="row">
                     <div class="col-md-3 form-group">
                         <label for="cli_nome" class="control-label">Nome:</label>
-                        <p:inputText type="text" id="cli_nome" value="${usuarioBean.usuario.nome}" class="form-control" maxlength="80"/>
+                        <p:inputText type="text" id="cli_nome" value="${usuarioBean.usuario.nome}" class="form-control" maxlength="80"
+                                     title="Nome" required="true" requiredMessage="Obrigatório nome"/>
+                        <h:message for="cli_nome" id="msg5" styleClass="erros" style="color: red"/>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="cli_sobrenome" class="control-label">Sobrenome:</label>
-                        <p:inputText type="text" id="cli_sobrenome" value="${usuarioBean.usuario.sobreNome}" class="form-control" maxlength="80" />
+                        <p:inputText type="text" id="cli_sobrenome" value="${usuarioBean.usuario.sobreNome}" class="form-control" maxlength="80" 
+                                     title="Sobrenome" required="true" requiredMessage="Obrigatório informar Sobrenome"/>
+                        <h:message for="cli_sobrenome" id="msg6" styleClass="erros" style="color: red"/>
                     </div>
                     <div class="col-md-3 form-group">
                         <label for="cli_nacionalidade" class="control-label">Nacionalidade:</label>
-                        <h:selectOneMenu id="cli_nacionalidade" value="${usuarioBean.usuario.nacionalidade}" class="form-control">                          
+                        <h:selectOneMenu id="cli_nacionalidade" value="${usuarioBean.usuario.nacionalidade}" class="form-control" required="true" requiredMessage="Obrigatório Nacionalidade">                          
                             <f:selectItem itemValue = "B" itemLabel = "Brasileira" /> 
                             <f:selectItem itemValue = "E" itemLabel = "Estrangeira" /> 
                         </h:selectOneMenu>
+                        <h:message for="cli_nacionalidade" id="msg7" styleClass="erros" style="color: red"/>
                     </div>
                 </div>
                 <!--   ACABA AQUI !-->
@@ -69,11 +83,15 @@
                 <div class="row">
                     <div id="labelCPF" class="col-md-3 form-group">
                         <label for="cli_cpfcnpj" class="control-label">CPF:</label>
-                        <p:inputText type="text" id="cli_cpfcnpj" value="${usuarioBean.usuario.cpf}" class="form-control" maxlength="14"/>
+                        <p:inputText type="text" id="cli_cpfcnpj" value="${usuarioBean.usuario.cpf}" class="form-control" maxlength="14"
+                                     title="CPF" required="true" requiredMessage="Obrigatório informar CPF"/>
+                        <h:message for="cli_cpfcnpj" id="msg8" styleClass="erros" style="color: red"/>
                     </div>
                     <div id="labelRG" class="col-md-3 form-group">
                         <label for="cli_rgie" class="control-label">RG:</label>
-                        <p:inputText type="text" id="cli_rgie" value="${usuarioBean.usuario.rg}" class="form-control" maxlength="20"/>
+                        <p:inputText type="text" id="cli_rgie" value="${usuarioBean.usuario.rg}" class="form-control" maxlength="20"
+                                     title="RG" required="true" requiredMessage="Obrigatório informar RG"/>
+                        <h:message for="cli_rgie" id="msg9" styleClass="erros" style="color: red"/>
                     </div>
                 </div>
 
@@ -81,8 +99,10 @@
                 <div class="row">
                     <div class="col-md-3 form-group">
                         <label for="cli_nascimento" class="control-label">Data de Nascimento:</label>
-                       <!--   <p:calendar  value="${usuarioBean.usuario.dtNascimento}" class="form-control"
-                                     navigator="true" yearRange="c-100:c+10"/>    !-->
+                        <p:inputText value="#{usuarioBean.usuario.dtNascimento}" id="dataNasc" type="date" 
+                                     title="Informe a data de nascimento" placeholder="Insira a data" class="form-control input-md" 
+                                     required="true" requiredMessage="Data Obrigatória"/>
+                        <h:message for="dataNasc" id="msg10" styleClass="erros" style="color: red"/>
 
                     </div>
                     <div class="col-md-3 form-group">                
@@ -100,15 +120,17 @@
                 <div class="row">
                     <div id="labelTelResidencial" class="col-md-3 form-group">
                         <label for="cli_telResidencial" class="control-label">Telefone Residencial:</label>
-                        <input type="text" id="cli_telResidencial" value="${usuarioBean.telefone[0]}" class="form-control" maxlength="14"/>
+                        <input type="tel" id="cli_telResidencial" value="${usuarioBean.telefone[0]}" class="form-control" maxlength="14"
+                               title="Telefone Residencial" required="true" requiredMessage="Obrigatório Telefone Residencial"/>
+                        <h:message for="cli_telResidencial" id="msg11" styleClass="erros" style="color: red"/>
                     </div>
                     <div id="labelTelComercial" class="col-md-3 form-group">
                         <label for="cli_telComercial" class="control-label">Telefone Comercial:</label>
-                        <input type="text" id="cli_telComercial"  value="${usuarioBean.telefone[1]}" class="form-control" maxlength="14"/>
+                        <input type="tel" id="cli_telComercial"  value="${usuarioBean.telefone[1]}" class="form-control" maxlength="14"/>
                     </div>
                     <div id="labelTelCelular" class="col-md-3 form-group">
                         <label for="cli_celular" class="control-label">Celular:</label>
-                        <input type="text" id="cli_celular"  value="${usuarioBean.telefone[2]}" class="form-control" maxlength="14"/>
+                        <input type="tel" id="cli_celular"  value="${usuarioBean.telefone[2]}" class="form-control" maxlength="14"/>
                     </div>
                 </div>
 
@@ -118,35 +140,48 @@
                     <div class="row">
                         <div class="col-md-3 form-group">
                             <label for="cli_endereco_cep" class="control-label">CEP:</label>
-                            <p:inputText type="text" id="cli_endereco_cep" value="${usuarioBean.endereco.cep}" class="form-control" maxlength="9" />
+                            <p:inputText type="text" id="cli_endereco_cep" value="${usuarioBean.endereco.cep}" class="form-control" maxlength="9" 
+                                         title="CEP" required="true" requiredMessage="CEP Obrigatório"/>
+                            <h:message for="cli_endereco_cep" id="msg12" styleClass="erros" style="color: red"/>
                         </div>
                         <div class="col-md-7 form-group">
                             <label for="cli_logradouro">Logradouro:</label>
-                            <p:inputText type="text" id="cli_logradouro" value="${usuarioBean.endereco.logradouro}" class="form-control" maxlength="160" />
+                            <p:inputText type="text" id="cli_logradouro" value="${usuarioBean.endereco.logradouro}" class="form-control" maxlength="160" 
+                                         title="Logradouro" required="true" requiredMessage="Logradouro Obrigatório"/>
+                            <h:message for="cli_logradouro" id="msg13" styleClass="erros" style="color: red"/>
                         </div>
                         <div class="col-md-2 form-group">
                             <label for="cli_endereco_numero">Número:</label>
-                            <p:inputText type="text" id="cli_endereco_numero"  value="${usuarioBean.endereco.numero}" class="form-control" maxlength="20" />
+                            <p:inputText type="text" id="cli_endereco_numero"  value="${usuarioBean.endereco.numero}" class="form-control" maxlength="20" 
+                                         title="Número" required="true" requiredMessage="Número Obrigatório"/>
+                            <h:message for="cli_endereco_numero" id="msg14" styleClass="erros" style="color: red"/>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-3 form-group">
                             <label for="cli_endereco_complemento">Complemento:</label>
-                            <p:inputText type="text" id="cli_endereco_complemento"  value="${usuarioBean.endereco.complemento}" class="form-control" maxlength="40" />
+                            <p:inputText type="text" id="cli_endereco_complemento"  value="${usuarioBean.endereco.complemento}" class="form-control" maxlength="40" 
+                                         title="Complemento"/>
+
                         </div>
                         <div class="col-md-3 form-group">
                             <label for="cli_endereco_bairro">Bairro:</label>
-                            <p:inputText type="text" id="cli_endereco_bairro" value="${usuarioBean.endereco.bairro}" class="form-control" maxlength="40" />
+                            <p:inputText type="text" id="cli_endereco_bairro" value="${usuarioBean.endereco.bairro}" class="form-control" maxlength="25" 
+                                         title="Bairro" required="true" requiredMessage="Bairro Obrigatório"/>
+                            <h:message for="cli_endereco_bairro" id="msg15" styleClass="erros" style="color: red"/>
                         </div>
                         <div class="col-md-4 form-group">
                             <label for="cli_endereco_cidade">Cidade:</label>
-                            <p:inputText type="text" id="cli_endereco_cidade"  value="${usuarioBean.endereco.cidade}" maxlength="40" class="form-control" />
+                            <p:inputText type="text" id="cli_endereco_cidade"  value="${usuarioBean.endereco.cidade}" maxlength="25" class="form-control" 
+                                         title="Cidade" required="true" requiredMessage="Cidade Obrigatória"/>
+                            <h:message for="cli_endereco_cidade" id="msg16" styleClass="erros" style="color: red"/>
                         </div>
                         <div class="col-md-2 form-group">
                             <label for="endereco_uf">Estado:</label>
                             <input type="hidden" id="cli_endereco_uf" name="cli_endereco_uf" value=""/>
-                            <h:selectOneMenu id="endereco_uf" value="${usuarioBean.endereco.estado}" class="form-control" >
+                            <h:selectOneMenu id="endereco_uf" value="${usuarioBean.endereco.estado}" class="form-control" 
+                                             required="true" requiredMessage="Estado Obrigatório">
                                 <f:selectItem  itemValue=""/>
                                 <f:selectItem   itemValue="AC" itemLabel="AC"/>
                                 <f:selectItem   itemValue="AL" itemLabel="AL"/>
@@ -176,6 +211,7 @@
                                 <f:selectItem   itemValue="SP" itemLabel="SP"/>
                                 <f:selectItem   itemValue="TO" itemLabel="TO"/>
                             </h:selectOneMenu>
+                            <h:message for="endereco_uf" id="msg17" styleClass="erros" style="color: red"/>
                         </div>
                     </div>
                 </fieldset> 
