@@ -6,11 +6,11 @@
 package bean;
 
 import entidade.Endereco;
-import entidade.Evento;
 import entidade.EventoIngressos;
 import entidade.FormaPagamento;
 import entidade.Usuario;
 import entidade.Venda;
+import bean.CarrinhoManagedBean;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -92,7 +92,6 @@ public class ConclusaoCompraManagedBean implements Serializable {
     public double getValorTotal() {
 
         for (EventoIngressos ev : eventosSelecionados) {
-
             valorTotal = valorTotal + ev.getPrecoTotal();
         }
 
@@ -101,35 +100,25 @@ public class ConclusaoCompraManagedBean implements Serializable {
 
     public String concluirCompra() {
         Venda venda = new Venda();
-        //long usuarioLng;
+        
         LoginBean login = new LoginBean();
         Usuario user = login.recuperaUsuario();
-        //UsuarioJPA usuarioJPA = new UsuarioJPA();
-        //if (user.equals("")) {
-        //    usuarioLng = 76;
-        //} else {
-        //    usuarioLng = Long.parseLong(user);
-        //}
-        //List<Usuario> userList = usuarioJPA.verificaCadastro(usuarioLng);
 
         Calendar c = Calendar.getInstance();
         int contador = 0;
         for (EventoIngressos ev : eventosSelecionados) {
-
-            cadastrarEvento(c, ev.getEvento());
             endereco.setDt_cadastro(c.getTime());
             endereco.setUsuario_evento(user);
             EnderecoJPA enderecoJPA = new EnderecoJPA();
             enderecoJPA.incluir(endereco);
-            //EnderecoManagedBean enderecoBean = new EnderecoManagedBean();
-            //enderecoBean.cadastrar(userList.get(0));
-            //pagamento.setId_venda(venda);
             pagamento.setBandeira("masterCard");
             FormaPagamentoJPA formaPagamentoJPA = new FormaPagamentoJPA();
             formaPagamentoJPA.incluir(pagamento);
             cadastrarVenda(c, contador, user, venda);
             contador++;
         }
+        CarrinhoManagedBean carrinho = new CarrinhoManagedBean();
+        carrinho.setCompraConcluida(true);
         return "conclusao.xhtml";
     }
 
@@ -146,19 +135,4 @@ public class ConclusaoCompraManagedBean implements Serializable {
 
     }
 
-    private void cadastrarEvento(Calendar c, Evento ev) {
-        EventoJPA eventoJPA = new EventoJPA();
-        SetorJPA setorJPA = new SetorJPA();
-        for (int i = 0; i < ev.getSetores().size(); i++) {
-            //ev.getSetores().get(i).setId_evento(ev);
-            ev.getSetores().get(i).setDt_cadastro(c.getTime());
-            setorJPA.incluir(ev.getSetores().get(i));
-        }
-        ev.setDt_cadastro_evento(c.getTime());
-        ev.setLocal_evento("teste");
-        ev.setDt_evento(c.getTime());
-        ev.setDescricao("Show Muito loko");
-        eventoJPA.incluir(ev);
-
-    }
 }

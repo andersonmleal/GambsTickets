@@ -32,6 +32,7 @@ public class CarrinhoManagedBean implements Serializable {
     private Usuario usuario = null;
     private String cpf;
     private String senha;
+    private boolean compraConcluida;
 
     public CarrinhoManagedBean() {
 
@@ -102,7 +103,8 @@ public class CarrinhoManagedBean implements Serializable {
     }
 
     public String getEtapaCompra() {
-        if (etapaCompra == null) {
+        if (etapaCompra == null || compraConcluida) {
+            compraConcluida = false;
             etapaCompra = "etapaCompra-itensCarrinho.xhtml";
         }
         return etapaCompra;
@@ -136,7 +138,7 @@ public class CarrinhoManagedBean implements Serializable {
             HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
             session.setAttribute("usuario", usuario);
             etapaCompra = "etapaCompra-itensCarrinho.xhtml";
-            return "index";
+            return "carrinhoCompras";
 
         }
 
@@ -260,4 +262,12 @@ public class CarrinhoManagedBean implements Serializable {
         this.senha = senha;
     }
 
+    public boolean isCompraConcluida() {
+        return compraConcluida;
+    }
+
+    public void setCompraConcluida(boolean compraConcluida) {
+        this.compraConcluida = compraConcluida;
+    }
+    
 }
