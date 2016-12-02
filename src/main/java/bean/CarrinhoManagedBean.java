@@ -101,7 +101,13 @@ public class CarrinhoManagedBean implements Serializable {
     public int getTamanhoArray() {
         return eventos.size();
     }
-
+    public String concluir(){
+        String retorno;
+        ConclusaoCompraManagedBean conclui = new ConclusaoCompraManagedBean();
+        retorno = conclui.concluirCompra();
+        compraConcluida = true;
+        return retorno;
+    }
     public String getEtapaCompra() {
         if (etapaCompra == null || compraConcluida) {
             compraConcluida = false;
@@ -172,7 +178,6 @@ public class CarrinhoManagedBean implements Serializable {
                         etapaCompra = "etapaCompra-itensCarrinho.xhtml";
                         break;
                     } else {
-
                         etapaCompra = "etapaCompra-formaPagamento.xhtml";
                         break;
                     }

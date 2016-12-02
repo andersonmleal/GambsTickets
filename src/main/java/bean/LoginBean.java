@@ -42,13 +42,13 @@ public class LoginBean implements Serializable {
             HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
             session.setAttribute("usuario", usuario);
             //Logica para validar nivel de administração, onde 1 é administrador
-           UsuarioJPA jpa = new UsuarioJPA();
-           long cpfLong = Long.parseLong(cpf);
-           List<Usuario> user = jpa.verificaCadastro(cpfLong);
-           int nivel = user.get(0).getTipo_usuario();
-           if(nivel == 1){
-               logado = true;
-           }
+            //UsuarioJPA jpa = new UsuarioJPA();
+            //long cpfLong = Long.parseLong(cpf);
+            //List<Usuario> user = jpa.verificaCadastro(cpfLong);
+            int nivel = usuario.getTipo_usuario();
+            if (nivel == 1) {
+                logado = true;
+            }
             return "index";
         }
 
@@ -79,9 +79,6 @@ public class LoginBean implements Serializable {
     }
 
     public Usuario recuperaUsuario() {
-        //ServletRequest req = null;
-        //HttpServletRequest request = (HttpServletRequest) req;
-        //HttpSession session = (HttpSession) request.getSession();
 
         FacesContext fc = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
@@ -96,8 +93,10 @@ public class LoginBean implements Serializable {
         UsuarioJPA usuarioJPA = new UsuarioJPA();
         long usuarioLng = Long.parseLong(cpf);
         List<Usuario> user = usuarioJPA.verificaCadastro(usuarioLng);
-        
+
         if (user.isEmpty()) {
+            return null;
+        } else if (user.get(0).getSenha().equals(senha)) {
             return null;
         } else {
 

@@ -118,7 +118,6 @@ public class ConclusaoCompraManagedBean implements Serializable {
             contador++;
         }
         CarrinhoManagedBean carrinho = new CarrinhoManagedBean();
-        carrinho.setCompraConcluida(true);
         return "conclusao.xhtml";
     }
 
