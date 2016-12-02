@@ -6,11 +6,13 @@
 package jpa;
 
 import entidade.Setor;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -32,6 +34,20 @@ public class SetorJPA {
         } finally {
             em.close();
         }
+    }
+    
+        public List<Setor> carregaSetores() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            // Query JPQL
+            String className = Setor.class.getName();
+            Query query = em.createQuery("select c from " + className + " c");
+
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+
     }
 
 }

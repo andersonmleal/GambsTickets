@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="setorNome">Nome do Setor</label>  
                     <div class="col-md-5">
-                        <p:inputText value="#{cadastroEventoManagedBean.setor.nomeSetor}" id="nomeSetor" maxlength="10" type="text" title="Informe o nome do setor" placeholder="Insira o nome" class="form-control input-md" required="true" requiredMessage="Nome Obrigatório"/>
+                        <p:inputText value="#{cadastroEventoManagedBean.setor.nomeSetor}" id="nomeSetor" maxlength="20" type="text" title="Informe o nome do setor" placeholder="Insira o nome" class="form-control input-md" required="true" requiredMessage="Nome Obrigatório"/>
                         <h:message for="nomeSetor" id="msg1" styleClass="erros" style="color: red"/>
                         <span class="help-block">Digite o nome do setor</span>  
                     </div>
@@ -91,7 +91,7 @@
 
 
                 <p:commandButton styleClass="avancar" value="Cadastrar Setor" action="#{cadastroEventoManagedBean.cadastrarSetor()}" ajax="false"/>
-                <p:commandButton styleClass="avancar" value="Concluir" disabled="#{cadastroEventoManagedBean.verificaSetores()}" action="#{cadastroEventoManagedBean.salvarNoBanco()}" ajax="false"/>
+                <p:commandButton styleClass="avancar" value="Concluir" disabled="#{cadastroEventoManagedBean.verificaSetores()}" action="#{cadastroEventoManagedBean.cadastrarSetor()}" ajax="false"/>
 
             </h:form>
             <ui:include src="rodape.xhtml"></ui:include>

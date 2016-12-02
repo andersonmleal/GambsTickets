@@ -41,10 +41,6 @@ public class LoginBean implements Serializable {
             FacesContext fc = FacesContext.getCurrentInstance();
             HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
             session.setAttribute("usuario", usuario);
-            //Logica para validar nivel de administração, onde 1 é administrador
-            //UsuarioJPA jpa = new UsuarioJPA();
-            //long cpfLong = Long.parseLong(cpf);
-            //List<Usuario> user = jpa.verificaCadastro(cpfLong);
             int nivel = usuario.getTipo_usuario();
             if (nivel == 1) {
                 logado = true;
@@ -96,7 +92,7 @@ public class LoginBean implements Serializable {
 
         if (user.isEmpty()) {
             return null;
-        } else if (user.get(0).getSenha().equals(senha)) {
+        } else if (!user.get(0).getSenha().equals(senha)) {
             return null;
         } else {
 

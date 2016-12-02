@@ -127,8 +127,17 @@ public class CadastroEventoManagedBean implements Serializable {
     }
 
     private void salvarArquivoBack(String nomeArquivo) {
-        String diretorioDestino = "C:" + File.separator + "desenv"
-                + File.separator + "imagens" + File.separator;
+        String diretorioDestino = "C:" + File.separator
+                + "Users" + File.separator
+                + "gustavo.soliveir16" + File.separator
+                + "Documents" + File.separator
+                + "NetBeansProjects" + File.separator
+                + "GambsTickets" + File.separator
+                + "src" + File.separator
+                + "main" + File.separator
+                + "webapp" + File.separator
+                + "img" + File.separator
+                + File.separator;
         File arquivo = new File(diretorioDestino + nomeArquivo);
 
         InputStream inputStream = null;
@@ -229,10 +238,11 @@ public class CadastroEventoManagedBean implements Serializable {
         }
         return null;
     }
+
     private void salvarArquivo(String nomeArquivo) {
-        String diretorioDestino = 
-                 File.separator+ "GambsTickets"
-                + File.separator+ "src" 
+        String diretorioDestino
+                = File.separator + "GambsTickets"
+                + File.separator + "src"
                 + File.separator + "main"
                 + File.separator + "webapp" + File.separator + "img" + File.separator;
         File arquivo = new File(diretorioDestino + nomeArquivo);
@@ -282,7 +292,7 @@ public class CadastroEventoManagedBean implements Serializable {
     }
 
     public String getUrlImagem() {
-            return "http://localhost:8080/imagens/" + nomeArquivo;
+        return "http://localhost:8080/imagens/" + nomeArquivo;
     }
 
     public String cadastrarEvento() {
@@ -322,15 +332,22 @@ public class CadastroEventoManagedBean implements Serializable {
     }
 
     public String cadastrarSetor() {
-        Calendar c = Calendar.getInstance();
-        SetorJPA setorJPA = new SetorJPA();
-        setor.setDt_cadastro(c.getTime());
-        setor.setQuantidadeDisponivel(setor.getQuantidade());
-        setor.setId_evento(evento);
-        setorJPA.incluir(setor);
-        this.setores.add(setor);
-        setor = new Setor();
-        return "setoresCadastro.xhtml";
+        try {
+            Calendar c = Calendar.getInstance();
+            SetorJPA setorJPA = new SetorJPA();
+            setor.setDt_cadastro(c.getTime());
+            setor.setQuantidadeDisponivel(setor.getQuantidade());
+            setor.setId_evento(evento);
+            setorJPA.incluir(setor);
+            this.setores.add(setor);
+            setor = new Setor();
+            return "setoresCadastro.xhtml";
+        } catch (Exception e) {
+
+            mensagem = "Ocorreu um erro ao cadastrar Setor, tente novamente.";
+            return "setoresCadastro.xhtml";
+        }
+
     }
 
 }
