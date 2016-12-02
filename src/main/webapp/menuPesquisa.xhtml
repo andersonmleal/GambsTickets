@@ -15,7 +15,6 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </h:head>
     <h:body>
-        <body>
 
             <!-- Menu -->
             <nav class="navbar navbar-default" margin-bottom="0" role="navigation">
@@ -64,7 +63,7 @@
                         <li><a class="glyphicon glyphicon-shopping-cart" href="carrinhoCompras.xhtml"></a></li>
                         <c:choose>
                             <c:when test="${loginBean.recuperaUsuario() == null}">
-                                <li><a onclick="abreModalLogin()">Login</a></li> 
+                                <li><a href="#" onclick="abreModalLogin()">Login</a></li> 
                             </c:when>
                             <c:when test="${loginBean.recuperaUsuario() != null}">
                                 <li class="dropdown">
@@ -85,7 +84,6 @@
             <div id="divModalLogin"></div>
 
 
-        </body>
         <script>
             function abreModalLogin() {
                 $.ajax({
