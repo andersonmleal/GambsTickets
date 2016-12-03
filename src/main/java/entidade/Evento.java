@@ -1,6 +1,7 @@
 package entidade;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -58,11 +59,11 @@ public class Evento implements Serializable {
     }
 
     public void setCaminhoImagemBack(String caminhoImagemBack) {
-        this.caminhoImagemBack = caminhoImagemBack;
+        this.caminhoImagemBack = "img/" + caminhoImagemBack;
     }
 
     public void setCaminhoImagem(String caminhoImagem) {
-        this.caminhoImagem = caminhoImagem;
+        this.caminhoImagem = "img/" + caminhoImagem;
     }
 
     public String getDescricao() {
@@ -105,9 +106,16 @@ public class Evento implements Serializable {
         this.horaEvento = horaEvento;
     }
 
-    
     public Date getDt_evento() {
         return dt_evento;
+    }
+
+    public String getDt_eventoEditado() {
+
+        String dataFormatada
+                = new SimpleDateFormat("dd/MM/yyyy").format(dt_evento);
+
+        return  dataFormatada + " às ";
     }
 
     public void setDt_evento(Date dt_evento) {
@@ -130,6 +138,4 @@ public class Evento implements Serializable {
         this.status = status;
     }
 
-    
-    
 }

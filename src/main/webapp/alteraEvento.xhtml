@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>GambsTickets - Altera Evento</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link href="css/full-slider.css" rel="stylesheet"/>
+        <link href="css/bootstrap.css" rel="stylesheet"/> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.1/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    </h:head>
+    <h:body>
+
+        <ui:include src="menuPesquisa.xhtml"></ui:include>
+
+        <div class="container">
+
+            <legend style="text-align: center; padding-top: 1%">Alterar Evento</legend>
+
+            <h:form>
+                <div class="row">
+                    <h:selectOneMenu value = "#{cadastroEventoManagedBean.idEvento}" class="form-control col-lg-8">
+                        <f:selectItem itemValue = "" itemLabel = "Selecione um Evento" />
+                        <f:selectItems value = "#{cadastroEventoManagedBean.listarEventos()}"
+                                       var="eventos"
+                                       itemValue="#{eventos.id_evento}"
+                                       itemLabel="#{eventos.nome_evento}"/>
+                    </h:selectOneMenu>
+
+                    <p:commandButton class="btn btn-primary col-lg-offset-1" style="width: 80%"
+                                     value="Carregar" action="#{cadastroEventoManagedBean.carregarEvento()}" 
+                                     ajax="false"/>
+                </div>
+            </h:form>
+            <p></p>
+
+
+            <h:form class="form-horizontal" prependId="false" enctype="multipart/form-data">
+
+                <!-- Form Name -->
+                <legend style="text-align: center; padding-top: 1%"></legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="nomeEvento">Nome do Evento</label>  
+                    <div class="col-md-5">
+                        <p:inputText value="#{cadastroEventoManagedBean.evento.nome_evento}" id="nomeEvento" type="text" title="Informe o nome do evento" placeholder="Insira o nome" class="form-control input-md" required="true" requiredMessage="Nome Obrigatório"/>
+                        <h:message for="nomeEvento" id="msg1" styleClass="erros" style="color: red"/>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="localEvento">Local do Evento</label>  
+                    <div class="col-md-5">
+                        <p:inputText value="#{cadastroEventoManagedBean.evento.local_evento}" id="localEvento" type="text" title="Informe o local do evento" placeholder="Insira o local" class="form-control input-md" required="true" requiredMessage="Local Obrigatório"/>
+                        <h:message for="localEvento" id="msg2" styleClass="erros" style="color: red"/>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="dataEvento">Data</label>  
+                    <div class="col-md-5">
+                        <p:inputText value="#{cadastroEventoManagedBean.data}" id="dataEvento" type="date" title="Informe a data do evento" placeholder="Insira a data" class="form-control input-md" required="true" requiredMessage="Data Obrigatória"/>
+                        <h:message for="dataEvento" id="msg3" styleClass="erros" style="color: red"/>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="dataEvento">Hora</label>  
+                    <div class="col-md-5">
+                        <p:inputText value="#{cadastroEventoManagedBean.evento.horaEvento}" id="horaEvento" type="time" title="Informe a hora do evento" placeholder="Insira a hora" class="form-control input-md" required="true" requiredMessage="Hora Obrigatória"/>
+                        <h:message for="horaEvento" id="msg4" styleClass="erros" style="color: red"/>
+                    </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="descricaoEvento">Descrição</label>
+                    <div class="col-md-4">                     
+                        <p:inputTextarea class="form-control" id="descricaoEvento" required="true" requiredMessage="Descrição Obrigatória" maxlength="200" value="#{cadastroEventoManagedBean.evento.descricao}"></p:inputTextarea>
+                        <h:message for="descricaoEvento" id="msg5" styleClass="erros" style="color: red"/>
+                    </div>
+                </div>
+
+                <!-- File Button --> 
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="imgPrincipal">Imagem Principal</label>
+                    <div class="col-md-4">
+                        <h:inputFile value="#{cadastroEventoManagedBean.imagem}" required="true" requiredMessage="Arquivo Obrigatório" id="imgPrincipal" class="input-file"/>
+                        <h:message for="imgPrincipal" id="msg6" styleClass="erros" style="color: red"/>
+                    </div>
+                </div>
+
+                <!-- File Button --> 
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="imgBack">Imagem de Background</label>
+                    <div class="col-md-4">
+                        <h:inputFile value="#{cadastroEventoManagedBean.imagemBack}" required="true" requiredMessage="Arquivo Obrigatório" id="imgBack" class="input-file"/>
+                        <h:message for="imgBack" id="msg7" styleClass="erros" style="color: red"/>
+                    </div>
+                </div>
+
+
+                <p:commandButton class="btn btn-primary" style="width: 100%"
+                                 value="Avançar!" action="#{cadastroEventoManagedBean.cadastrarEvento()}" 
+                                 ajax="false"/>
+
+            </h:form>
+        </div>
+
+        <hr style="align: center"/>
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <ui:include src="rodape.xhtml"></ui:include>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </h:body>
+</html>
+

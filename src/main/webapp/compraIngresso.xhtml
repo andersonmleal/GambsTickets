@@ -30,8 +30,16 @@
 
 
             <div class="row">
-                <p style="color: #fff; padding: 2%">
 
+                <h3 style="color: #fff; text-align: center"><b>Local </b></h3>
+                <h3 style="color: #fff; text-align: center; margin-top: 0px">
+                    <h:outputText value="#{detalheManagedBean.evento.local_evento}"/></h3>
+
+                <h3 style="color: #fff; text-align: center"><b>Data </b></h3>
+                <h3 style="color: #fff; text-align: center; margin-top: 0px">
+                    <h:outputText value="#{detalheManagedBean.evento.dt_eventoEditado}"/> 
+                    <h:outputText value="#{detalheManagedBean.evento.horaEvento}"/></h3>
+                <p style="color: #fff; padding: 2%">
                     <h:outputText value="#{detalheManagedBean.evento.descricao}"/>
 
                 </p>

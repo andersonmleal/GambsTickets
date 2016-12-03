@@ -15,12 +15,11 @@ import java.io.OutputStream;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
+import javax.faces.model.SelectItem;
 import javax.servlet.http.Part;
 import jpa.EventoJPA;
 import jpa.SetorJPA;
@@ -49,12 +48,23 @@ public class CadastroEventoManagedBean implements Serializable {
     // dados img principal  
     private Part imagem;
     private String nomeArquivo;
+    private List<SelectItem> eventoSelect;
+    private long idEvento;
 
     public CadastroEventoManagedBean() {
 
         evento = new Evento();
         setor = new Setor();
         setores = new ArrayList<>();
+    }
+
+    public long getIdEvento() {
+
+        return idEvento;
+    }
+
+    public void setIdEvento(long idEvento) {
+        this.idEvento = idEvento;
     }
 
     public List<Setor> getSetores() {
@@ -126,18 +136,18 @@ public class CadastroEventoManagedBean implements Serializable {
         return null;
     }
 
+    //C:\Users\Leal\Documents\PI\GambsTickets\src\main\webapp\img
     private void salvarArquivoBack(String nomeArquivo) {
         String diretorioDestino = "C:" + File.separator
                 + "Users" + File.separator
-                + "gustavo.soliveir16" + File.separator
+                + "Leal" + File.separator
                 + "Documents" + File.separator
-                + "NetBeansProjects" + File.separator
+                + "PI" + File.separator
                 + "GambsTickets" + File.separator
                 + "src" + File.separator
                 + "main" + File.separator
                 + "webapp" + File.separator
-                + "img" + File.separator
-                + File.separator;
+                + "img" + File.separator;
         File arquivo = new File(diretorioDestino + nomeArquivo);
 
         InputStream inputStream = null;
@@ -177,7 +187,7 @@ public class CadastroEventoManagedBean implements Serializable {
     }
 
     public String getUrlImagemBack() {
-        return "http://localhost:8080/imagens/" + nomeArquivoBack;
+        return "http://localhost:8080/img/" + nomeArquivoBack;
     }
 
     public Part getImagemBack() {
@@ -239,12 +249,18 @@ public class CadastroEventoManagedBean implements Serializable {
         return null;
     }
 
+    //C:\Users\Leal\Documents\PI\GambsTickets\src\main\webapp\img
     private void salvarArquivo(String nomeArquivo) {
-        String diretorioDestino
-                = File.separator + "GambsTickets"
-                + File.separator + "src"
-                + File.separator + "main"
-                + File.separator + "webapp" + File.separator + "img" + File.separator;
+        String diretorioDestino = "C:" + File.separator
+                + "Users" + File.separator
+                + "Leal" + File.separator
+                + "Documents" + File.separator
+                + "PI" + File.separator
+                + "GambsTickets" + File.separator
+                + "src" + File.separator
+                + "main" + File.separator
+                + "webapp" + File.separator
+                + "img" + File.separator;
         File arquivo = new File(diretorioDestino + nomeArquivo);
 
         InputStream inputStream = null;
@@ -292,7 +308,7 @@ public class CadastroEventoManagedBean implements Serializable {
     }
 
     public String getUrlImagem() {
-        return "http://localhost:8080/imagens/" + nomeArquivo;
+        return "http://localhost:8080/img/" + nomeArquivo;
     }
 
     public String cadastrarEvento() {
@@ -341,6 +357,7 @@ public class CadastroEventoManagedBean implements Serializable {
             setorJPA.incluir(setor);
             this.setores.add(setor);
             setor = new Setor();
+
             return "setoresCadastro.xhtml";
         } catch (Exception e) {
 
@@ -348,6 +365,103 @@ public class CadastroEventoManagedBean implements Serializable {
             return "setoresCadastro.xhtml";
         }
 
+    }
+
+    public String destroy() {
+
+        evento = null;
+        mensagem = null;
+        data = null;
+        setores = null;
+        removerSetor = null;
+        setor = null;
+        imagemBack = null;
+        nomeArquivoBack = null;
+        imagem = null;
+        nomeArquivo = null;
+
+        return "index.xhtml";
+    }
+
+    public List<Evento> listarEventos() {
+
+        List<Evento> eventos = new ArrayList<>();
+
+        EventoJPA eventoJPA = new EventoJPA();
+        SetorJPA setorJPA = new SetorJPA();
+
+        List<Evento> evs = eventoJPA.carregaEventos();
+        List<Setor> setoress = setorJPA.carregaSetores();
+
+        for (int i = 0; i < evs.size(); i++) {
+            eventos.add(evs.get(i));
+
+            for (Setor setore : setoress) {
+                if (setore.getId_evento().getId_evento() == eventos.get(i).getId_evento()) {
+                    eventos.get(i).addSetores(setore);
+                }
+            }
+
+        }
+
+        return eventos;
+    }
+
+    public List<SelectItem> getEventoSelect() {
+
+        if (eventoSelect == null) {
+
+            eventoSelect = new ArrayList<>();
+            List<Evento> eventos = new ArrayList<>();
+
+            EventoJPA eventoJPA = new EventoJPA();
+            SetorJPA setorJPA = new SetorJPA();
+
+            List<Evento> evs = eventoJPA.carregaEventos();
+            List<Setor> setoress = setorJPA.carregaSetores();
+
+            for (int i = 0; i < evs.size(); i++) {
+                eventos.add(evs.get(i));
+
+                for (Setor setore : setoress) {
+                    if (setore.getId_evento().getId_evento() == eventos.get(i).getId_evento()) {
+                        eventos.get(i).addSetores(setore);
+                    }
+                }
+
+            }
+
+            if (eventos != null && !eventos.isEmpty()) {
+                SelectItem item;
+
+                for (Evento eventolista : eventos) {
+
+                    item = new SelectItem(eventolista, eventolista.getNome_evento());
+                    eventoSelect.add(item);
+                }
+
+            }
+
+        }
+        return eventoSelect;
+    }
+
+    public String carregarEvento() {
+
+        List<Evento> eventos;
+
+        eventos = listarEventos();
+        for (Evento evento1 : eventos) {
+            if (evento1.getId_evento() == this.idEvento) {
+                this.evento = evento1;
+
+                SimpleDateFormat formataData = new SimpleDateFormat("dd/MM/yyyy");
+                String date = formataData.format(evento1.getDt_evento());
+                this.data = date;
+            }
+        }
+
+        return "alteraEvento.xhtml";
     }
 
 }
