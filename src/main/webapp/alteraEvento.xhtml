@@ -109,12 +109,18 @@
                     </div>
                 </div>
 
-
-                <p:commandButton class="btn btn-primary" style="width: 100%"
-                                 value="Avançar!" action="#{cadastroEventoManagedBean.cadastrarEvento()}" 
+                <p:commandButton class="col-lg-offset-8 btn btn-primary" 
+                                 value="Gravar Alteração" action="#{cadastroEventoManagedBean.cadastrarEvento()}" 
                                  ajax="false"/>
 
             </h:form>
+            <h:form style="margin-top: 0.5%">
+
+                <p:commandButton class="col-lg-offset-8 btn btn-primary"
+                                 value="Setores" action="setoresCadastro.xhtml" 
+                                 ajax="false"/>
+            </h:form>
+
         </div>
 
         <hr style="align: center"/>

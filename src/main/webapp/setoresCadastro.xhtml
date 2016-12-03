@@ -90,11 +90,13 @@
                 </div>
 
 
-                <p:commandButton styleClass="avancar" value="Cadastrar Setor" action="#{cadastroEventoManagedBean.cadastrarSetor()}" ajax="false"/>
+                <p:commandButton class="col-lg-offset-8 btn btn-primary" 
+                                 value="Cadastrar Setor" action="#{cadastroEventoManagedBean.cadastrarSetor()}" ajax="false"/>
 
             </h:form>
             <h:form>
-                <p:commandButton styleClass="avancar" value="Concluir" action="#{cadastroEventoManagedBean.destroy()}" ajax="false"/>
+                <p:commandButton class="col-lg-offset-8 btn btn-primary" 
+                                 value="Concluir" action="#{cadastroEventoManagedBean.destroy()}" ajax="false"/>
             </h:form>
             <ui:include src="rodape.xhtml"></ui:include>
         </div>

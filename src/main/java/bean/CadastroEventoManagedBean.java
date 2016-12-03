@@ -407,45 +407,6 @@ public class CadastroEventoManagedBean implements Serializable {
         return eventos;
     }
 
-    public List<SelectItem> getEventoSelect() {
-
-        if (eventoSelect == null) {
-
-            eventoSelect = new ArrayList<>();
-            List<Evento> eventos = new ArrayList<>();
-
-            EventoJPA eventoJPA = new EventoJPA();
-            SetorJPA setorJPA = new SetorJPA();
-
-            List<Evento> evs = eventoJPA.carregaEventos();
-            List<Setor> setoress = setorJPA.carregaSetores();
-
-            for (int i = 0; i < evs.size(); i++) {
-                eventos.add(evs.get(i));
-
-                for (Setor setore : setoress) {
-                    if (setore.getId_evento().getId_evento() == eventos.get(i).getId_evento()) {
-                        eventos.get(i).addSetores(setore);
-                    }
-                }
-
-            }
-
-            if (eventos != null && !eventos.isEmpty()) {
-                SelectItem item;
-
-                for (Evento eventolista : eventos) {
-
-                    item = new SelectItem(eventolista, eventolista.getNome_evento());
-                    eventoSelect.add(item);
-                }
-
-            }
-
-        }
-        return eventoSelect;
-    }
-
     public String carregarEvento() {
 
         List<Evento> eventos;
@@ -454,6 +415,7 @@ public class CadastroEventoManagedBean implements Serializable {
         for (Evento evento1 : eventos) {
             if (evento1.getId_evento() == this.idEvento) {
                 this.evento = evento1;
+                this.setores = evento1.getSetores();
 
                 SimpleDateFormat formataData = new SimpleDateFormat("dd/MM/yyyy");
                 String date = formataData.format(evento1.getDt_evento());
