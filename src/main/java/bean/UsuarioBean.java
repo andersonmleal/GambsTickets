@@ -4,8 +4,12 @@ import entidade.Endereco;
 import entidade.Telefone;
 import entidade.Usuario;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -29,6 +33,7 @@ public class UsuarioBean implements Serializable {
     private Endereco endereco;
     private UsuarioJPA usuarioJPA;
     private String telefone[];
+    private String dtNasc;
 
     public Usuario getUsuario() {
         return usuario;
@@ -36,6 +41,14 @@ public class UsuarioBean implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getDtNasc() {
+        return dtNasc;
+    }
+
+    public void setDtNasc(String dtNasc) {
+        this.dtNasc = dtNasc;
     }
 
     public Endereco getEndereco() {
@@ -78,6 +91,12 @@ public class UsuarioBean implements Serializable {
 
     public void adicionarUsuario() {
         Calendar c = Calendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            usuario.setDtNascimento(new java.sql.Date(format.parse(dtNasc).getTime()));
+        } catch (ParseException ex) {
+            Logger.getLogger(UsuarioBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
         usuario.setDtCadastro(c.getTime());
         usuarioJPA = new UsuarioJPA();
         usuarioJPA.incluir(usuario);
