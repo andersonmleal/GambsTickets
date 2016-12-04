@@ -36,6 +36,8 @@ public class UsuarioBean implements Serializable {
     private String telefoneComercial;
     private String telefoneCelular;
     private String dtNasc;
+    private String cnfEmail;
+    private String cnfSenha;
 
     public Usuario getUsuario() {
         return usuario;
@@ -105,13 +107,24 @@ public class UsuarioBean implements Serializable {
         if (user.isEmpty()) {
             adicionarUsuario();
         } else {
-            usuarioJPA.alterar(usuario);
+
+            //MENSAGEM DE QUE JÁ EXISTE CPF CADASTRADO.
         }
         return "cadastroUsuario.xhtml";
     }
 
-    public void alterarUsuario() {
+    public void limpar() {
+        usuario = new Usuario();
+        endereco = new Endereco();
+        dtNasc = null;
+        telefone = "";
+        telefoneCelular = "";
+        telefoneComercial = "";
+    }
 
+    public void alterarUsuario() {
+        usuarioJPA = new UsuarioJPA();
+        usuarioJPA.alterar(usuario);
     }
 
     public void adicionarUsuario() {
@@ -130,15 +143,20 @@ public class UsuarioBean implements Serializable {
         endereco.setUsuario_evento(usuario);
         EnderecoJPA enderecoJPA = new EnderecoJPA();
         enderecoJPA.incluir(endereco);
-        if (telefone != null || !telefone.equals("")) {
+        if (!telefone.equals("")) {
             cadastrarTelefone(c, telefone, "Telefone Residencial");
         }
-        if (telefoneComercial != null || !telefoneComercial.equals("")) {
-            cadastrarTelefone(c, telefoneComercial, "Telefone Comercial");
+        if (telefoneComercial != null) {
+            if (!telefoneComercial.equals("")) {
+                cadastrarTelefone(c, telefoneComercial, "Telefone Comercial");
+            }
         }
-        if (telefoneCelular != null || !telefoneCelular.equals("")) {
-            cadastrarTelefone(c, telefoneCelular, "Telefone Celular");
+        if (telefoneCelular != null) {
+            if (!telefoneCelular.equals("")) {
+                cadastrarTelefone(c, telefoneCelular, "Telefone Celular");
+            }
         }
+        limpar();
         // Montar mensagem a ser apresentada para usuario
         //Flash mensagem = FacesContext.getCurrentInstance().getExternalContext().getFlash();
         //mensagem.put("mensagem", new Mensagem("Cadastro realizado com sucesso", "success"));
@@ -152,6 +170,7 @@ public class UsuarioBean implements Serializable {
             endereco = usuario.getEnderecos().get(0);
         } else {
             usuario = new Usuario();
+            endereco = new Endereco();
         }
     }
 
