@@ -120,17 +120,17 @@
                 <div class="row">
                     <div id="labelTelResidencial" class="col-md-3 form-group">
                         <label for="cli_telResidencial" class="control-label">Telefone Residencial:</label>
-                        <input type="tel" id="cli_telResidencial" value="${usuarioBean.telefone[0]}" class="form-control" maxlength="14"
-                               title="Telefone Residencial" required="true" requiredMessage="Obrigatório Telefone Residencial"/>
+                        <p:inputText type="text" id="cli_telResidencial" value="${usuarioBean.telefone}" class="form-control" maxlength="14"
+                                     title="Telefone Residencial" required="true" requiredMessage="Obrigatório informar Telefone Residencial"/>
                         <h:message for="cli_telResidencial" id="msg11" styleClass="erros" style="color: red"/>
                     </div>
                     <div id="labelTelComercial" class="col-md-3 form-group">
                         <label for="cli_telComercial" class="control-label">Telefone Comercial:</label>
-                        <input type="tel" id="cli_telComercial"  value="${usuarioBean.telefone[1]}" class="form-control" maxlength="14"/>
+                        <p:inputText type="text" id="cli_telComercial"  value="${usuarioBean.telefoneComercial}" class="form-control" maxlength="14"/>
                     </div>
                     <div id="labelTelCelular" class="col-md-3 form-group">
                         <label for="cli_celular" class="control-label">Celular:</label>
-                        <input type="tel" id="cli_celular"  value="${usuarioBean.telefone[2]}" class="form-control" maxlength="14"/>
+                        <p:inputText type="text" id="cli_celular"  value="${usuarioBean.telefoneCelular}" class="form-control" maxlength="14"/>
                     </div>
                 </div>
 
