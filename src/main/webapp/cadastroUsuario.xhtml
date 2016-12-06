@@ -18,6 +18,11 @@
     <h:body>
         <!-- Menu -->
         <ui:include src="menuPesquisa.xhtml"></ui:include>
+        <ui:fragment rendered="#{usuarioBean.mensagem != null}">
+            <div class="alert" role="alert">
+                <p>#{usuarioBean.mensagem}</p>
+            </div>
+        </ui:fragment>
         <div class="page">
             <h:form id="form_cadastro">
                 <div class="row">
@@ -30,8 +35,8 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="cli_confirmaEmail" class="control-label">Confirme o e-mail:</label>
-                        <input type="email" id="cli_confirmaEmail" name="cli_confirmaEmail" class="form-control" maxlength="60"
-                               title="Confirme seu e-mail" required="true" requiredMessage="Confirmação E-mail Obrigatório"/>
+                        <p:inputText type="email" id="cli_confirmaEmail" value="${usuarioBean.cnfEmail}" class="form-control" maxlength="60"
+                                     title="Confirme seu e-mail" required="true" requiredMessage="Confirmação E-mail Obrigatório"/>
                         <h:message for="cli_confirmaEmail" id="msg2" styleClass="erros" style="color: red"/>
                     </div>
                 </div>
@@ -47,8 +52,8 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="cli_senhaConfirma" class="control-label">Confirmação da senha:</label>
-                        <input type="password" id="cli_senhaConfirma" name="cli_senhaConfirma" class="form-control" maxlength="15"
-                               title="Conformação Senha" required="true" requiredMessage="Obrigatório Confirmar Senha"/>
+                        <p:inputText type="password" id="cli_senhaConfirma" value="${usuarioBean.cnfSenha}" class="form-control" maxlength="15"
+                                     title="Conformação Senha" required="true" requiredMessage="Obrigatório Confirmar Senha"/>
                         <h:message for="cli_senhaConfirma" id="msg4" styleClass="erros" style="color: red"/>
                     </div>
                 </div>

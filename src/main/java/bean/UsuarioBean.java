@@ -38,6 +38,7 @@ public class UsuarioBean implements Serializable {
     private String dtNasc;
     private String cnfEmail;
     private String cnfSenha;
+    private String mensagem;
 
     public Usuario getUsuario() {
         return usuario;
@@ -49,6 +50,30 @@ public class UsuarioBean implements Serializable {
 
     public UsuarioJPA getUsuarioJPA() {
         return usuarioJPA;
+    }
+
+    public String getCnfEmail() {
+        return cnfEmail;
+    }
+
+    public void setCnfEmail(String cnfEmail) {
+        this.cnfEmail = cnfEmail;
+    }
+
+    public String getCnfSenha() {
+        return cnfSenha;
+    }
+
+    public void setCnfSenha(String cnfSenha) {
+        this.cnfSenha = cnfSenha;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
     }
 
     public void setUsuarioJPA(UsuarioJPA usuarioJPA) {
@@ -104,11 +129,17 @@ public class UsuarioBean implements Serializable {
         long usuarioLng = usuario.getCpf();
         usuarioJPA = new UsuarioJPA();
         List<Usuario> user = usuarioJPA.verificaCadastro(usuarioLng);
-        if (user.isEmpty()) {
-            adicionarUsuario();
+        if (!user.isEmpty()) {
+            mensagem = "CPF já cadastrado no sistema!";
+        } else if (!validarCPF(Long.toString(usuarioLng))) {
+            mensagem = "CPF inválido!";
+        } else if (!usuario.getEmail().equals(cnfEmail)) {
+            mensagem = "E-mail difere da confirmação!";
+        } else if (!usuario.getSenha().equals(cnfSenha)) {
+            mensagem = "Senha difere da confirmação!";
         } else {
+            adicionarUsuario();
 
-            //MENSAGEM DE QUE JÁ EXISTE CPF CADASTRADO.
         }
         return "cadastroUsuario.xhtml";
     }
@@ -120,6 +151,8 @@ public class UsuarioBean implements Serializable {
         telefone = "";
         telefoneCelular = "";
         telefoneComercial = "";
+        cnfEmail = "";
+        cnfSenha = "";
     }
 
     public void alterarUsuario() {
@@ -129,7 +162,8 @@ public class UsuarioBean implements Serializable {
 
     public void adicionarUsuario() {
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        dtNasc = dtNasc.replace('-', '/');
         try {
             usuario.setDtNascimento(new java.sql.Date(format.parse(dtNasc).getTime()));
         } catch (ParseException ex) {
@@ -158,16 +192,22 @@ public class UsuarioBean implements Serializable {
         }
         limpar();
         // Montar mensagem a ser apresentada para usuario
-        //Flash mensagem = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-        //mensagem.put("mensagem", new Mensagem("Cadastro realizado com sucesso", "success"));
+        mensagem = "Cadastro realizado com sucesso!!!";
     }
 
     public void carregaUsuario() {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         FacesContext fc = FacesContext.getCurrentInstance();
         HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
         usuario = (Usuario) session.getAttribute("usuario");
         if (usuario != null) {
+            if (usuario.getDtNascimento() != null) {
+                dtNasc = format.format(usuario.getDtNascimento());
+                dtNasc = dtNasc.replace('/', '-');
+            }
             endereco = usuario.getEnderecos().get(0);
+            telefone = Long.toString(usuario.getTelefones().get(0).getNumero());
+            
         } else {
             usuario = new Usuario();
             endereco = new Endereco();
@@ -190,5 +230,39 @@ public class UsuarioBean implements Serializable {
         //usuarioDao.removeUsuario(usuario);
         return "sucesso";
 
+    }
+
+    public Boolean validarCPF(String cpf) {
+        int soma = 0, indice = 8, contador = 10;
+        Integer vetor[] = new Integer[11];
+        Character vetorChar[] = new Character[11];
+
+        if (cpf.length() < 11) {
+            return false;
+        }
+        for (int i = 0; i < cpf.length(); i++) {
+            vetorChar[i] = cpf.charAt(i);
+            vetor[i] = Character.getNumericValue(vetorChar[i]);
+        }
+        for (int i = 0; i < cpf.length() - 2; i++) {
+            soma = soma + (vetor[i] * contador);
+            contador--;
+        }
+        int pDigito = 11 - (soma % 11);
+        if (pDigito == 10 || pDigito == 11) {
+            pDigito = 0;
+        }
+
+        contador = 11;
+        soma = 0;
+        for (int i = 0; i < cpf.length() - 1; i++) {
+            soma = soma + (vetor[i] * contador);
+            contador--;
+        }
+        int sDigito = 11 - (soma % 11);
+        if (sDigito == 10 || sDigito == 11) {
+            sDigito = 0;
+        }
+        return pDigito == vetor[9] && sDigito == vetor[10];
     }
 }

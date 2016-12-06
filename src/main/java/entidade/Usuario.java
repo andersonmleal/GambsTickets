@@ -29,7 +29,8 @@ public class Usuario implements Serializable {
     private Date dtNascimento;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dtCadastro;
-    // private List<Telefone> telefones;
+    @OneToMany(mappedBy = "usuario")
+    private List<Telefone> telefones;
     @OneToMany(mappedBy = "usuario_evento")
     private List<Endereco> enderecos;
 
@@ -145,6 +146,14 @@ public class Usuario implements Serializable {
 
     public void setEnderecos(List<Endereco> enderecos) {
         this.enderecos = enderecos;
+    }
+
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
     }
 
 }
