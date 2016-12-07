@@ -35,8 +35,8 @@ public class SetorJPA {
             em.close();
         }
     }
-    
-        public List<Setor> carregaSetores() {
+
+    public List<Setor> carregaSetores() {
         EntityManager em = emf.createEntityManager();
         try {
             // Query JPQL

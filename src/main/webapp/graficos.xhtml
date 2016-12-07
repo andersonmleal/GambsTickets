@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>GambsTickets - Eventos</title>
+        <title>GambsTickets - Graficos</title>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link href="css/full-slider.css" rel="stylesheet"/>
@@ -23,57 +23,57 @@
         <ui:include src="menuPesquisa.xhtml"></ui:include>
 
         <div class="container">
-                          
-               <h3>Relação de Vendas</h3>
-               <canvas id="cvs" width="950" height="350"></canvas>
-        
+
+            <h3>Relação de Vendas</h3>
+            <canvas id="cvs" width="950" height="350"></canvas>
+
         </div>
 
-
+        <ui:include src="rodape.xhtml"></ui:include>
 
         <script>
             window.onload = function ()
             {
                 var jan = #{GraficosManagedBean.fatJaneiro};
-                if(jan == 0)
+                if (jan == 0)
                     jan = null;
-                 var fev = #{GraficosManagedBean.fatFevereiro};
-                if(fev == 0)
+                var fev = #{GraficosManagedBean.fatFevereiro};
+                if (fev == 0)
                     fev = null;
-                 var mar = #{GraficosManagedBean.fatMarço};
-                if(mar == 0)
+                var mar = #{GraficosManagedBean.fatMarço};
+                if (mar == 0)
                     mar = null;
-                 var abr = #{GraficosManagedBean.fatAbril};
-                if(abr == 0)
+                var abr = #{GraficosManagedBean.fatAbril};
+                if (abr == 0)
                     abr = null;
-                 var mai = #{GraficosManagedBean.fatMaio};
-                if(mai == 0)
+                var mai = #{GraficosManagedBean.fatMaio};
+                if (mai == 0)
                     mai = null;
-                 var jun = #{GraficosManagedBean.fatJunho};
-                if(jun == 0)
+                var jun = #{GraficosManagedBean.fatJunho};
+                if (jun == 0)
                     jun = null;
-                 var jul = #{GraficosManagedBean.fatJulho};
-                if(jul == 0)
+                var jul = #{GraficosManagedBean.fatJulho};
+                if (jul == 0)
                     jul = null;
-                 var ago = #{GraficosManagedBean.fatAgosto};
-                if(ago == 0)
+                var ago = #{GraficosManagedBean.fatAgosto};
+                if (ago == 0)
                     ago = null;
                 var set = #{GraficosManagedBean.fatSetembro};
-                if(set == 0)
+                if (set == 0)
                     set = null;
                 var out = #{GraficosManagedBean.fatOutubro};
-                if(out == 0)
+                if (out == 0)
                     out = null;
                 var nov = #{GraficosManagedBean.fatNovembro};
-                if(nov == 0)
+                if (nov == 0)
                     nov = null;
                 var dez = #{GraficosManagedBean.fatDezembro};
-                if(dez == 0)
+                if (dez == 0)
                     dez = null;
-                
+
                 var line = new RGraph.Line({
                     id: 'cvs',
-                    data: [jan,fev,mar,abr,mai,jun,jul,ago,set,out,nov,dez],
+                    data: [jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez],
                     options: {
                         tooltips: function () {
                             return "\0";

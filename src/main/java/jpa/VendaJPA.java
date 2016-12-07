@@ -36,6 +36,20 @@ public class VendaJPA {
         }
     }
 
+    public List<Venda> carregaVendas() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            // Query JPQL
+            String className = Venda.class.getName();
+            Query query = em.createQuery("select c from " + className + " c");
+
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+
+    }
+
     public List<Venda> buscaVendasCadastro(long usuario) {
         EntityManager em = emf.createEntityManager();
         try {
