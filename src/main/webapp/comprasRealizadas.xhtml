@@ -17,40 +17,32 @@
 
         <ui:include src="menu.xhtml"></ui:include>
 
-        <table class="table">
-            <thead class="thead-inverse">
-                <tr>
-                    <th>Código Compra</th>
-                    <th>Usuário</th>
-                    <th>Data</th>
-                    <th>Valor</th> 
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>346</td>
-                    <td>Anderson Leal</td>
-                    <td>@22/10/2016</td>
-                    <td>@250.00</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>1520</td>
-                    <td>Anderson Leal</td>
-                    <td>@22/10/2016</td>
-                    <td>@250.00</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>346</td>
-                    <td>Anderson Leal</td>
-                    <td>@22/10/2016</td>
-                    <td>@250.00</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="container">
 
+            <h2 style="text-align: center">Compras Realizadas</h2>
+            <br></br> 
+
+            <table class="table">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Código Compra</th>
+                        <th>Usuário</th>
+                        <th>Data</th>
+                        <th>Valor</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    <ui:repeat var="venda" value="#{comprasManagedBean.recuperaVenda}">
+                        <tr>
+                            <td><h:outputText value="#{venda.id_setor}"/></td>
+                            <td><h:outputText value="#{venda.usuario.nome}"/></td>
+                            <td><h:outputText value="#{venda.dt_cadastro}"/></td>
+                            <td><h:outputText value="#{venda.valor}"/></td>
+                        </tr>
+                    </ui:repeat>
+                </tbody>
+            </table>
+        </div>
 
         <ui:include src="rodape.xhtml"></ui:include>
 

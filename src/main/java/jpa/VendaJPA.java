@@ -6,11 +6,13 @@
 package jpa;
 
 import entidade.Venda;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -33,5 +35,19 @@ public class VendaJPA {
             em.close();
         }
     }
-    
+
+    public List<Venda> buscaVendasCadastro(long usuario) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            // Query JPQL
+            Query query = em.createQuery("select * from Venda venda where venda.usuario_cpf = :cpf")
+                    .setParameter("cpf", usuario);
+
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+
+    }
+
 }

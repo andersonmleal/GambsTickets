@@ -16,58 +16,62 @@
     </h:head>
     <h:body>
 
-            <!-- Menu -->
-            <nav class="navbar navbar-default" margin-bottom="0" role="navigation">
+        <!-- Menu -->
+        <nav class="navbar navbar-default" margin-bottom="0" role="navigation">
 
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Menu</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
 
-                    </button>
-                    <a class="navbar-brand" href="index.xhtml">GambsTickets</a>
-                </div>
+                </button>
+                <a class="navbar-brand" href="index.xhtml">GambsTickets</a>
+            </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li><a href="eventos.xhtml">Eventos</a></li>
-                        <h:panelGrid class="dropdown" rendered="#{loginBean.logado}">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administração <b class="caret"></b></a>
-                            <ul class="dropdown-menu" >
-                                <li><a href="eventosCadastro.xhtml">Novo Evento</a></li>
-                                <li><a href="alteraEvento.xhtml">Alterar Evento</a></li>
-                                <li class="divider"></li>
-                                <li><a href="graficos.xhtml">Gráficos e Estatísticas</a></li>
-                            </ul>
-                        </h:panelGrid>
-                    </ul>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="eventos.xhtml">Eventos</a></li>
+                    <c:choose>
+                        <c:when test="${loginBean.logado == true}">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administração <b class="caret"></b></a>
+                                <ul class="dropdown-menu" >
+                                    <li><a href="eventosCadastro.xhtml">Novo Evento</a></li>
+                                    <li><a href="alteraEvento.xhtml">Alterar Evento</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="graficos.xhtml">Gráficos e Estatísticas</a></li>
+                                </ul>
+                            </li>
+                        </c:when>
+                    </c:choose>
+                </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <c:choose>
-                            <c:when test="${loginBean.recuperaUsuario() == null}">
-                                <li><a href="#" onclick="abreModalLogin()">Login</a></li> 
-                            </c:when>
-                            <c:when test="${loginBean.recuperaUsuario() != null}">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><p:outputLabel value="${loginBean.usuario.nome}" /> <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="alteraUsuario.xhtml">Meus Dados</a></li>
-                                        <li><a href="comprasRealizadas.xhtml">Compras Realizadas</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Sair</a></li>
-                                    </ul>
-                                </li>
-                            </c:when>
-                        </c:choose>
+                <ul class="nav navbar-nav navbar-right">
+                    <c:choose>
+                        <c:when test="${loginBean.recuperaUsuario() == null}">
+                            <li><a href="#" onclick="abreModalLogin()">Login</a></li> 
+                        </c:when>
+                        <c:when test="${loginBean.recuperaUsuario() != null}">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><p:outputLabel value="${loginBean.usuario.nome}" /> <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="alteraUsuario.xhtml">Meus Dados</a></li>
+                                    <li><a href="comprasRealizadas.xhtml">Compras Realizadas</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Sair</a></li>
+                                </ul>
+                            </li>
+                        </c:when>
+                    </c:choose>
 
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </nav>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
 
-            <div id="divModalLogin"></div>
+        <div id="divModalLogin"></div>
 
 
         <script>
