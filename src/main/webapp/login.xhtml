@@ -3,6 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
+
+    <title>GambsTickets - Login</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="css/bootstrap.css" rel="stylesheet"/> 
+    <link href="css/full-slider.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <h:body>
         <script>
             $(document).ready(function () {
@@ -19,15 +28,18 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content col-xs-12">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" action=""><span aria-hidden="true">&times;</span></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" action="index.xhtml" ><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" style="text-align: center" id="exampleModalLabel">Efetuar login</h4>
                     </div>
                     <h:form>
                         <div class="modal-body">
                             <div style="align-items: center" >
-                                <p:inputText id="usuario" class="form-control" value="${loginBean.cpf}" type="text" placeholder="Digite o seu usuário" required="true"/>
+                                <p:inputText id="usuario" class="form-control" value="${loginBean.cpf}" type="number" placeholder="Digite o seu usuário" 
+                                             />
+
                                 <br></br>
-                                <p:inputText id="senha" class="form-control" value="${loginBean.senha}" type="password" placeholder="Digite a senha" required="true"/>
+                                <p:inputText id="senha" class="form-control" value="${loginBean.senha}" type="password" placeholder="Digite a senha" 
+                                             />
                             </div>
                             <br></br>
                             <a href="cadastroUsuario.xhtml">Cadastre-se agora!</a>

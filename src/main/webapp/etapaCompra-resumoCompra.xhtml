@@ -87,9 +87,10 @@
                             </tbody>
                         </table>    
                         <h:form>
-                            <p:commandButton style="font-family: Georgia" class="btn btn-success btn-lg btn-block" value="Concluir" action="#{CarrinhoManagedBean.concluir()}"
+                            <p:commandButton style="font-family: Georgia" class="btn btn-success btn-lg btn-block" value="Concluir" action="#{conclusaoCompraManagedBean.concluirCompra()}"
                                              ajax="false">
-
+                                <f:setPropertyActionListener target="#{CarrinhoManagedBean.limpaDados()}" value=""/>
+                                
                             </p:commandButton>
                         </h:form>
                     </div>

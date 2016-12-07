@@ -106,7 +106,7 @@ public class ConclusaoCompraManagedBean implements Serializable {
 
         Calendar c = Calendar.getInstance();
         int contador = 0;
-        for (EventoIngressos ev : eventosSelecionados) {
+        for (EventoIngressos ev : getEventosSelecionados()) {
             endereco.setDt_cadastro(c.getTime());
             endereco.setUsuario_evento(user);
             EnderecoJPA enderecoJPA = new EnderecoJPA();

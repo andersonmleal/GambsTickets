@@ -35,23 +35,32 @@ public class LoginBean implements Serializable {
     }
 
     public String realizarLogin() {
-        usuario = validarUsuario(cpf, senha);
 
-        if (usuario != null) {
-            FacesContext fc = FacesContext.getCurrentInstance();
-            HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
-            session.setAttribute("usuario", usuario);
-            int nivel = usuario.getTipo_usuario();
-            if (nivel == 1) {
-                logado = true;
+        if (cpf.isEmpty() || cpf == null
+                || senha.isEmpty() || senha == null) {
+
+            return "loginErro.xhtml";
+
+        } else {
+            usuario = validarUsuario(cpf, senha);
+
+            if (usuario != null) {
+                FacesContext fc = FacesContext.getCurrentInstance();
+                HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+                session.setAttribute("usuario", usuario);
+                int nivel = usuario.getTipo_usuario();
+                if (nivel == 1) {
+                    logado = true;
+                }
+                return "index";
             }
-            return "index";
+
+            FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Erro de Login", "Usuario/Senha inválidos");
+            FacesContext.getCurrentInstance().addMessage(null, fm);
+            return "loginErro";
         }
 
-        FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                "Erro de Login", "Usuario/Senha inválidos");
-        FacesContext.getCurrentInstance().addMessage(null, fm);
-        return "loginErro";
     }
 
     public String realizarLoginErro() {

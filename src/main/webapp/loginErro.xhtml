@@ -21,11 +21,12 @@
         <div class="container">
             
             <h2 style="text-align: center">Login</h2>
+            <h4 style="text-align: center; color: red">Cadastro Inválido</h4>
             <h:form>
                 <div class="modal-body">
                     <div style="align-items: center" >
                         <p:inputText id="usuario" class="form-control" value="${loginBean.cpf}" 
-                                     type="text" placeholder="Digite o seu usuário" required="true"
+                                     type="number" placeholder="Digite o seu usuário" required="true"
                                      requiredMessage="CPF obrigatório"/>
                         <h:message for="usuario" id="msg1" styleClass="erros" style="color: red"/>
                         <br></br>
