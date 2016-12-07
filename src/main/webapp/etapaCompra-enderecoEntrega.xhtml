@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="textinput">Rua</label>
                         <div class="col-sm-10">
-                            <p:inputText value="#{endereco.logradouro}" id="rua" required="true" requiredMessage="Nome Obrigatório" type="text" maxlength="35" placeholder="Digite nome de sua rua" class="form-control"/>
+                            <p:inputText value="#{endereco.endereco.logradouro}" id="rua" required="true" requiredMessage="Nome Obrigatório" type="text" maxlength="35" placeholder="Digite nome de sua rua" class="form-control"/>
 
                             <h:message for="rua" id="msg1" styleClass="erros" style="color: red" showDetail="true"/>
                         </div>
@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="textinput">Número</label>
                         <div class="col-sm-4">
-                            <p:inputText value="#{endereco.numero}" id="num" required="true" requiredMessage="Número Obrigatório"  type="text" maxlength="6" onkeypress='return SomenteNumero(event)' placeholder="Número Residência" class="form-control"/>
+                            <p:inputText value="#{endereco.endereco.numero}" id="num" required="true" requiredMessage="Número Obrigatório"  type="text" maxlength="6" onkeypress='return SomenteNumero(event)' placeholder="Número Residência" class="form-control"/>
                             <h:message for="num" id="msg2" styleClass="erros" style="color: red"/>
                         </div>
 
@@ -57,13 +57,13 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="textinput">Cidade</label>
                         <div class="col-sm-4">
-                            <p:inputText value="#{endereco.cidade}" id="cid" required="true" requiredMessage="Cidade Obrigatória"  type="text" maxlength="20" placeholder="Nome de sua cidade" class="form-control"/>
+                            <p:inputText value="#{endereco.endereco.cidade}" id="cid" required="true" requiredMessage="Cidade Obrigatória"  type="text" maxlength="20" placeholder="Nome de sua cidade" class="form-control"/>
                             <h:message for="cid" id="msg3" styleClass="erros" style="color: red"/>
                         </div>
 
                         <label class="col-sm-2 control-label" for="textinput">Bairro</label>
                         <div class="col-sm-4">
-                            <p:inputText value="#{endereco.bairro}" id="bai" required="true" requiredMessage="Bairro Obrigatório" type="text" maxlength="15" placeholder="Bairro" class="form-control"/>
+                            <p:inputText value="#{endereco.endereco.bairro}" id="bai" required="true" requiredMessage="Bairro Obrigatório" type="text" maxlength="15" placeholder="Bairro" class="form-control"/>
                             <h:message for="bai" id="msg4" styleClass="erros" style="color: red"/>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="textinput">Estado</label>
                         <div class="col-sm-4">
-                            <h:selectOneMenu value="#{endereco.estado}" class="form-control" id="est" required="true" requiredMessage="Selecione um estado">
+                            <h:selectOneMenu value="#{endereco.endereco.estado}" class="form-control" id="est" required="true" requiredMessage="Selecione um estado">
                                 <f:selectItem itemValue = "" itemLabel = "Estado" />
                                 <f:selectItem itemValue = "AC" itemLabel = "Acre" />
                                 <f:selectItem itemValue = "AL" itemLabel = "Alagoas" />
@@ -107,7 +107,7 @@
 
                         <label class="col-sm-2 control-label" for="textinput">CEP</label>
                         <div class="col-sm-4">
-                            <p:inputText value="#{endereco.cep}" id="cep" required="true" type="text" onkeypress='return SomenteNumero(event)' size="8"  maxlength="8" placeholder="Digite seu CEP" class="form-control" />
+                            <p:inputText value="#{endereco.endereco.cep}" id="cep" required="true" type="text" onkeypress='return SomenteNumero(event)' size="8"  maxlength="8" placeholder="Digite seu CEP" class="form-control" />
                         </div>
                     </div>
 

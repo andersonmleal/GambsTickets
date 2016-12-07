@@ -11,8 +11,11 @@ import java.io.Serializable;
 import java.util.Calendar;
 import javax.faces.bean.ManagedBean;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 import jpa.EnderecoJPA;
+
 
 /**
  *
@@ -32,10 +35,19 @@ public class EnderecoManagedBean implements Serializable {
     private String bairro;
     private String estado;
     private long cep;
-
+    private Usuario usuario = null;
     public EnderecoManagedBean() {
         
-
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        usuario = (Usuario) session.getAttribute("usuario");
+        logradouro = usuario.getEnderecos().get(0).getLogradouro();
+        numero = usuario.getEnderecos().get(0).getNumero();
+        complemento = usuario.getEnderecos().get(0).getComplemento();
+        cidade = usuario.getEnderecos().get(0).getCidade();
+        bairro = usuario.getEnderecos().get(0).getBairro();
+        estado = usuario.getEnderecos().get(0).getEstado();
+        cep = usuario.getEnderecos().get(0).getCep();
     }
 
     public Endereco getEndereco() {
