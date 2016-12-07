@@ -70,8 +70,11 @@ public class LoginBean implements Serializable {
         return "loginErro";
     }
 
-    public void realizarLogout() {
-
+    public String realizarLogout() {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        session.invalidate();
+        return "index.xhtml";
     }
 
     public Usuario recuperaUsuario() {
