@@ -9,80 +9,88 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link href="css/full-slider.css" rel="stylesheet"/>
-        <link href="css/bootstrap.css" rel="stylesheet"/> 
+        <link href="css/bootstrap.css" rel="stylesheet"/>
+
         <link href="css/menu.css" rel="stylesheet"/> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </h:head>
     <h:body>
 
-            <!-- Menu -->
-            <nav class="navbar navbar-default" margin-bottom="0" role="navigation">
+        <!-- Menu -->
+        <nav class="navbar navbar-default" margin-bottom="0" role="navigation">
 
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Menu</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
 
-                    </button>
-                    <a class="navbar-brand" href="index.xhtml">GambsTickets</a>
+                </button>
+                <a class="navbar-brand" href="index.xhtml">GambsTickets</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="eventos.xhtml">Eventos</a></li>
+                    <c:choose>
+                        <c:when test="${loginBean.logado == true}">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administração <b class="caret"></b></a>
+                                <ul class="dropdown-menu" >
+                                    <li><a href="eventosCadastro.xhtml">Novo Evento</a></li>
+                                    <li><a href="alteraEvento.xhtml">Alterar Evento</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="graficos.xhtml">Gráficos e Estatísticas</a></li>
+                                </ul>
+                            </li>
+                        </c:when>
+                    </c:choose>
+                </ul>
+                <div class="col-sm-3 col-md-3">
+                    <form class="navbar-form" role="search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Pesquisar" name="q"/>
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li><a href="eventos.xhtml">Eventos</a></li>
-                        <c:choose>
-                            <c:when test="${loginBean.logado == true}">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administração <b class="caret"></b></a>
-                                    <ul class="dropdown-menu" >
-                                        <li><a href="eventosCadastro.xhtml">Novo Evento</a></li>
-                                        <li><a href="alteraEvento.xhtml">Alterar Evento</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="graficos.xhtml">Gráficos e Estatísticas</a></li>
-                                    </ul>
-                                </li>
-                            </c:when>
-                        </c:choose>
-                    </ul>
-                    <div class="col-sm-3 col-md-3">
-                        <form class="navbar-form" role="search">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Pesquisar" name="q"/>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="glyphicon glyphicon-shopping-cart" href="carrinhoCompras.xhtml"></a></li>
+                    <c:choose>
+                        <c:when test="${loginBean.recuperaUsuario() == null}">
+                            <li><a href="#" onclick="abreModalLogin()">Login</a></li> 
+                        </c:when>
+                        <c:when test="${loginBean.recuperaUsuario() != null}">
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a class="glyphicon glyphicon-shopping-cart" href="carrinhoCompras.xhtml"></a></li>
-                        <c:choose>
-                            <c:when test="${loginBean.recuperaUsuario() == null}">
-                                <li><a href="#" onclick="abreModalLogin()">Login</a></li> 
-                            </c:when>
-                            <c:when test="${loginBean.recuperaUsuario() != null}">
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><p:outputLabel value="${loginBean.usuario.nome}" /> <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="alteraUsuario.xhtml">Meus Dados</a></li>
-                                        <li><a href="comprasRealizadas.xhtml">Compras Realizadas</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Sair</a></li>
-                                    </ul>
-                                </li>
-                            </c:when>
-                        </c:choose>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><p:outputLabel value="${loginBean.usuario.nome}" /> <b class="caret"></b></a>
 
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </nav>
+                                <ul class="dropdown-menu">
+                                    <li><a href="alteraUsuario.xhtml">Meus Dados</a></li>
+                                    <li><a href="comprasRealizadas.xhtml">Compras Realizadas</a></li>
+                                    <li class="divider"></li>
+                                    <h:form>
+                                        <h:commandButton id="teste" action="#{loginBean.realizarLogout()}" value="Sair" style="margin-left: 120px"> </h:commandButton>
+                                    </h:form>
+                                </ul>
 
-            <div id="divModalLogin"></div>
+                            </li>
+
+                        </c:when>
+
+                    </c:choose>
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="divModalLogin"></div>
 
 
         <script>
@@ -99,6 +107,7 @@
             }
 
         </script>
+        
     </h:body>
 </html>
 
