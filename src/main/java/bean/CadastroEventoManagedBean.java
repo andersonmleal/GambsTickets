@@ -15,10 +15,14 @@ import java.io.OutputStream;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.model.SelectItem;
 import javax.servlet.http.Part;
 import jpa.EventoJPA;
@@ -50,6 +54,7 @@ public class CadastroEventoManagedBean implements Serializable {
     private String nomeArquivo;
     private List<SelectItem> eventoSelect;
     private long idEvento;
+    private Date dataCadastrada;
 
     public CadastroEventoManagedBean() {
 
@@ -315,6 +320,13 @@ public class CadastroEventoManagedBean implements Serializable {
 
         try {
             Calendar c = Calendar.getInstance();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+            data = data.replace('-', '/');
+            try {
+                evento.setDt_evento(new java.sql.Date(format.parse(data).getTime()));
+            } catch (ParseException ex) {
+                Logger.getLogger(UsuarioBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
             evento.setDt_cadastro_evento(c.getTime());
             //SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
             //Date data1 =(Date)sdf.parse(data);
@@ -335,6 +347,30 @@ public class CadastroEventoManagedBean implements Serializable {
         }
         return "setoresCadastro.xhtml";
 
+    }
+
+    public void alterarEvento() {
+        try {
+            EventoJPA eventoJPA = new EventoJPA();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+            data = data.replace('-', '/');
+            try {
+                evento.setDt_evento(new java.sql.Date(format.parse(data).getTime()));
+            } catch (ParseException ex) {
+                Logger.getLogger(UsuarioBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            eventoJPA.alterar(evento);
+            if (imagem != null) {
+                salvarImagem();
+            }
+            if (imagemBack != null) {
+                salvarImagemBack();
+            }
+            carregarEvento();
+            mensagem = "Alterado com sucesso!";
+        } catch (Exception e) {
+            mensagem = "Erro: " + e;
+        }
     }
 
     public String verificaSetores() {
@@ -419,11 +455,22 @@ public class CadastroEventoManagedBean implements Serializable {
 
                 SimpleDateFormat formataData = new SimpleDateFormat("dd/MM/yyyy");
                 String date = formataData.format(evento1.getDt_evento());
-                this.data = date;
+                String d[] = date.split("/");
+                String dateFormatado = d[1] + "-" + d[0] + "-" + d[2];
+                this.data = dateFormatado;
+                dataCadastrada = evento1.getDt_evento();
             }
         }
 
         return "alteraEvento.xhtml";
+    }
+
+    public Date getDataCadastrada() {
+        return dataCadastrada;
+    }
+
+    public void setDataCadastrada(Date dataCadastrada) {
+        this.dataCadastrada = dataCadastrada;
     }
 
 }

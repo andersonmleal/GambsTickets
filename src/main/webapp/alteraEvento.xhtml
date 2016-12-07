@@ -64,15 +64,23 @@
                     </div>
                 </div>
 
-                <!-- Text input-->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="dataEvento">Data</label>  
                     <div class="col-md-5">
-                        <p:inputText value="#{cadastroEventoManagedBean.data}" id="dataEvento" type="date" title="Informe a data do evento" placeholder="Insira a data" class="form-control input-md" required="true" requiredMessage="Data Obrigatória"/>
+                        <h:outputText value="#{cadastroEventoManagedBean.dataCadastrada}">
+                            <f:convertDateTime locale="pt_BR" 
+                                               pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </div>
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="dataEvento">Nova data</label>  
+                    <div class="col-md-5">
+                        <p:inputText value="#{cadastroEventoManagedBean.data}" id="dataEvento" type="date" title="Informe a data do evento" placeholder="Insira a data" class="form-control input-md"/>
                         <h:message for="dataEvento" id="msg3" styleClass="erros" style="color: red"/>
                     </div>
                 </div>
-
                 <!-- Text input-->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="dataEvento">Hora</label>  
@@ -95,7 +103,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="imgPrincipal">Imagem Principal</label>
                     <div class="col-md-4">
-                        <h:inputFile value="#{cadastroEventoManagedBean.imagem}" required="true" requiredMessage="Arquivo Obrigatório" id="imgPrincipal" class="input-file"/>
+                        <h:inputFile value="#{cadastroEventoManagedBean.imagem}" id="imgPrincipal" class="input-file"/>
                         <h:message for="imgPrincipal" id="msg6" styleClass="erros" style="color: red"/>
                     </div>
                 </div>
@@ -104,13 +112,13 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="imgBack">Imagem de Background</label>
                     <div class="col-md-4">
-                        <h:inputFile value="#{cadastroEventoManagedBean.imagemBack}" required="true" requiredMessage="Arquivo Obrigatório" id="imgBack" class="input-file"/>
+                        <h:inputFile value="#{cadastroEventoManagedBean.imagemBack}" id="imgBack" class="input-file"/>
                         <h:message for="imgBack" id="msg7" styleClass="erros" style="color: red"/>
                     </div>
                 </div>
 
                 <p:commandButton class="col-lg-offset-8 btn btn-primary" 
-                                 value="Gravar Alteração" action="#{cadastroEventoManagedBean.cadastrarEvento()}" 
+                                 value="Gravar Alteração" action="#{cadastroEventoManagedBean.alterarEvento()}" 
                                  ajax="false"/>
 
             </h:form>
