@@ -7,19 +7,20 @@ package bean;
 
 import entidade.Usuario;
 import entidade.Venda;
+import jpa.VendaJPA;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.inject.Named;
-import javax.faces.bean.ViewScoped;
-import jpa.VendaJPA;
 
 /**
  *
  * @author gustavo.oliveira
  */
 @Named(value = "comprasManagedBean")
-@ViewScoped
-public class ComprasManagedBean {
+@SessionScoped
+public class ComprasManagedBean implements Serializable {
 
     private List<Venda> vendas;
 
@@ -29,7 +30,7 @@ public class ComprasManagedBean {
 
     }
 
-    public List<Venda> recuperaVenda() {
+    public void recuperaVenda() {
 
         VendaJPA banco = new VendaJPA();
 
@@ -37,10 +38,11 @@ public class ComprasManagedBean {
         Usuario user = login.recuperaUsuario();
         long cpf = user.getCpf();
 
-        return banco.buscaVendasCadastro(cpf);
+        vendas = banco.buscaVendasCadastro(cpf);
     }
 
     public List<Venda> getVendas() {
+        recuperaVenda();
         return vendas;
     }
 
