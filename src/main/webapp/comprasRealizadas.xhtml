@@ -36,8 +36,14 @@
                         <tr>
                             <td><h:outputText value="#{venda.id_venda}"/></td>
                             <td><h:outputText value="#{venda.usuario.nome}"/></td>
-                            <td><h:outputText value="#{venda.dt_cadastro}"/></td>
-                            <td><h:outputText value="#{venda.valor}"/></td>
+                            <td>
+                                <h:outputText value="#{venda.dt_cadastro}">
+                                    <f:convertDateTime parent="dd/MM/yyyy" timeZone="Brazil/East"/>
+                                </h:outputText>
+                            </td>
+                            <td><h:outputText value="#{venda.valor}">
+                                    <f:convertNumber type="currency"/>
+                                </h:outputText></td>
                         </tr>
                     </ui:repeat>
                 </tbody>

@@ -71,8 +71,12 @@
                                                     <h:outputText value="#{ingresso.setor.nomeSetor}"/>
                                                 </em></h4></td>
                                         <td class="col-md-1" style="text-align: center"><h:outputText value="#{ingresso.quantidadeSelecionada}"/></td>
-                                        <td class="col-md-1 text-center">$<h:outputText value="#{ingresso.setor.preco}"/></td>
-                                        <td class="col-md-1 text-center">$<h:outputText value="#{ingresso.precoTotal}"/></td>
+                                        <td class="col-md-1 text-center"><h:outputText value="#{ingresso.setor.preco}">
+                                                <f:convertNumber type="currency"/>
+                                            </h:outputText></td>
+                                        <td class="col-md-1 text-center"><h:outputText value="#{ingresso.precoTotal}">
+                                                <f:convertNumber type="currency"/>
+                                            </h:outputText></td>
                                     </tr>
                                 </ui:repeat>
 
@@ -82,15 +86,19 @@
                                     <td>   </td>
                                     <td>   </td>
                                     <td class="text-right"><h4><strong>Total: </strong></h4></td>
-                                    <td class="text-center text-danger"><h4><strong>$<h:outputText value="#{conclusaoCompraManagedBean.valorTotal}"/></strong></h4></td>
+                                    <td class="text-center text-danger"><h4><strong>
+                                                <h:outputText value="#{conclusaoCompraManagedBean.valorTotal}">
+                                                    <f:convertNumber type="currency"/>
+                                                </h:outputText>
+                                            </strong></h4></td>
                                 </tr>
                             </tbody>
                         </table>    
                         <h:form>
                             <p:commandButton style="font-family: Georgia" class="btn btn-success btn-lg btn-block" value="Concluir" action="#{conclusaoCompraManagedBean.concluirCompra()}"
                                              ajax="false">
-                                
-                                
+
+
                             </p:commandButton>
                         </h:form>
                     </div>

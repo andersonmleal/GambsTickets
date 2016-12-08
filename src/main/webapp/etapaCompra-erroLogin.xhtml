@@ -41,9 +41,13 @@
                     <h:form>
                         <div class="modal-body">
                             <div style="align-items: center" >
-                                <p:inputText id="usuario" class="form-control" value="${CarrinhoManagedBean.cpf}" type="number" placeholder="Digite seu CPF" required="true"/>
+                                <p:inputText id="usuario" class="form-control" value="${CarrinhoManagedBean.cpf}" type="number" 
+                                             placeholder="Digite seu CPF" required="true" requiredMessage="Login Obrigatório"/>
+                                <h:message for="usuario" id="msg1" styleClass="erros" style="color: red"/>
                                 <br></br>
-                                <p:inputText id="senha" class="form-control" value="${CarrinhoManagedBean.senha}" type="password" placeholder="Digite a senha" required="true"/>
+                                <p:inputText id="senha" class="form-control" value="${CarrinhoManagedBean.senha}" type="password" 
+                                             placeholder="Digite a senha" required="true" requiredMessage="Senha Obrigatória"/>
+                                <h:message for="senha" id="msg2" styleClass="erros" style="color: red"/>
                             </div>
                             <br></br>
                             <a href="cadastroUsuario.xhtml">Cadastre-se agora!</a>

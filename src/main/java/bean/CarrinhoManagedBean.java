@@ -123,15 +123,15 @@ public class CarrinhoManagedBean implements Serializable {
         UsuarioJPA usuarioJPA = new UsuarioJPA();
         long usuarioLng = Long.parseLong(cpf);
         List<Usuario> user = usuarioJPA.verificaCadastro(usuarioLng);
+        
         if (user.isEmpty()) {
+            return null;
+        } else if (!user.get(0).getSenha().equals(senha)) {
             return null;
         } else {
 
             return user.get(0);
-            //return usuarioLng == user.get(0).getCpf() && senha.equals(user.get(0).getSenha());
         }
-        //ConclusaoCompraManagedBean userBean = new ConclusaoCompraManagedBean();
-        //userBean.setUsuario(user.get(0));
 
     }
 
@@ -150,7 +150,7 @@ public class CarrinhoManagedBean implements Serializable {
         FacesMessage fm = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                 "Erro de Login", "Usuario/Senha inválidos");
         FacesContext.getCurrentInstance().addMessage(null, fm);
-        return "loginErro";
+        return "etapaCompra-erroLogin.xhtml";
     }
 
     public void proximaEtapa(int etapaAtual) {

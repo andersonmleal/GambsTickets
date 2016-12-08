@@ -23,6 +23,7 @@ import java.util.List;
 public class ComprasManagedBean implements Serializable {
 
     private List<Venda> vendas;
+    
 
     public ComprasManagedBean() {
 
