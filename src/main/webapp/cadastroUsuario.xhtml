@@ -14,6 +14,7 @@
         <link href="css/page.css" rel="stylesheet"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="js/buscaCEP.js"></script>
     </h:head>
     <h:body>
         <!-- Menu -->
@@ -87,13 +88,13 @@
                 <div class="row">
                     <div id="labelCPF" class="col-md-3 form-group">
                         <label for="cli_cpfcnpj" class="control-label">CPF:</label>
-                        <p:inputText type="text" id="cli_cpfcnpj" value="${usuarioBean.usuario.cpf}" class="form-control" maxlength="14"
+                        <p:inputText type="number" id="cli_cpfcnpj" value="${usuarioBean.usuario.cpf}" class="form-control" maxlength="11"
                                      title="CPF" required="true" requiredMessage="Obrigatório informar CPF"/>
                         <h:message for="cli_cpfcnpj" id="msg8" styleClass="erros" style="color: red"/>
                     </div>
                     <div id="labelRG" class="col-md-3 form-group">
                         <label for="cli_rgie" class="control-label">RG:</label>
-                        <p:inputText type="text" id="cli_rgie" value="${usuarioBean.usuario.rg}" class="form-control" maxlength="20"
+                        <p:inputText type="number" id="cli_rgie" value="${usuarioBean.usuario.rg}" class="form-control" maxlength="9"
                                      title="RG" required="true" requiredMessage="Obrigatório informar RG"/>
                         <h:message for="cli_rgie" id="msg9" styleClass="erros" style="color: red"/>
                     </div>
@@ -124,17 +125,17 @@
                 <div class="row">
                     <div id="labelTelResidencial" class="col-md-3 form-group">
                         <label for="cli_telResidencial" class="control-label">Telefone Residencial:</label>
-                        <p:inputText type="text" id="cli_telResidencial" value="${usuarioBean.telefone}" class="form-control" maxlength="14"
+                        <p:inputText type="number" id="cli_telResidencial" value="${usuarioBean.telefone}" class="form-control" maxlength="14"
                                      title="Telefone Residencial" required="true" requiredMessage="Obrigatório informar Telefone Residencial"/>
                         <h:message for="cli_telResidencial" id="msg11" styleClass="erros" style="color: red"/>
                     </div>
                     <div id="labelTelComercial" class="col-md-3 form-group">
                         <label for="cli_telComercial" class="control-label">Telefone Comercial:</label>
-                        <p:inputText type="text" id="cli_telComercial"  value="${usuarioBean.telefoneComercial}" class="form-control" maxlength="14"/>
+                        <p:inputText type="number" id="cli_telComercial"  value="${usuarioBean.telefoneComercial}" class="form-control" maxlength="14"/>
                     </div>
                     <div id="labelTelCelular" class="col-md-3 form-group">
                         <label for="cli_celular" class="control-label">Celular:</label>
-                        <p:inputText type="text" id="cli_celular"  value="${usuarioBean.telefoneCelular}" class="form-control" maxlength="14"/>
+                        <p:inputText type="number" id="cli_celular"  value="${usuarioBean.telefoneCelular}" class="form-control" maxlength="14"/>
                     </div>
                 </div>
 
@@ -144,10 +145,11 @@
                     <div class="row">
                         <div class="col-md-3 form-group">
                             <label for="cli_endereco_cep" class="control-label">CEP:</label>
-                            <p:inputText type="text" id="cli_endereco_cep" value="${usuarioBean.endereco.cep}" class="form-control" maxlength="9" 
+                            <p:inputText type="number" id="cli_endereco_cep" value="${usuarioBean.endereco.cep}" class="form-control" maxlength="8" 
                                          title="CEP" required="true" requiredMessage="CEP Obrigatório"/>
+                            <button type="button" class="btn-block" onclick="buscarCEP()">Buscar CEP</button>
                             <h:message for="cli_endereco_cep" id="msg12" styleClass="erros" style="color: red"/>
-                        </div>
+                            </div>
                         <div class="col-md-7 form-group">
                             <label for="cli_logradouro">Logradouro:</label>
                             <p:inputText type="text" id="cli_logradouro" value="${usuarioBean.endereco.logradouro}" class="form-control" maxlength="160" 
@@ -156,7 +158,7 @@
                         </div>
                         <div class="col-md-2 form-group">
                             <label for="cli_endereco_numero">Número:</label>
-                            <p:inputText type="text" id="cli_endereco_numero"  value="${usuarioBean.endereco.numero}" class="form-control" maxlength="20" 
+                            <p:inputText type="number" id="cli_endereco_numero"  value="${usuarioBean.endereco.numero}" class="form-control" maxlength="20" 
                                          title="Número" required="true" requiredMessage="Número Obrigatório"/>
                             <h:message for="cli_endereco_numero" id="msg14" styleClass="erros" style="color: red"/>
                         </div>
