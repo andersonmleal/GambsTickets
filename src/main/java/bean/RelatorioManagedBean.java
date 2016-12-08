@@ -103,6 +103,14 @@ public class RelatorioManagedBean implements Serializable {
         this.dataFinal = dataFinal;
     }
 
+  public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
+
     public String getConsulta() {
         return consulta;
     }
@@ -110,13 +118,7 @@ public class RelatorioManagedBean implements Serializable {
     public void setConsulta(String consulta) {
         this.consulta = consulta;
     }
-
-    public String getMensagem() {
-        return mensagem;
-    }
-
-    public void setMensagem(String mensagem) {
-        this.mensagem = mensagem;
-    }
+    
+    
 
 }
