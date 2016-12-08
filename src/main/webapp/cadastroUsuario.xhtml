@@ -102,13 +102,21 @@
 
                 <!--   ACABA AQUI !-->
                 <div class="row">
-                    <div class="col-md-3 form-group">
-                        <label for="cli_nascimento" class="control-label">Data de Nascimento:</label>
-                        <p:inputText value="#{usuarioBean.dtNasc}" id="dataNasc" type="date" 
-                                     title="Informe a data de nascimento" placeholder="Insira a data" class="form-control input-md" 
-                                     required="true" requiredMessage="Data Obrigatória"/>
-                        <h:message for="dataNasc" id="msg10" styleClass="erros" style="color: red"/>
-
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="dataEvento">Data de Nascimento:</label>  
+                        <div class="col-md-5">
+                            <h:outputText value="#{usuarioBean.dataCadastrada}">
+                                <f:convertDateTime locale="pt_BR" 
+                                                   pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="dataEvento">Nova data</label>  
+                        <div class="col-md-5">
+                            <p:inputText value="#{usuarioBean.dtNasc}" id="dataEvento" type="date" title="Informe a data do evento" placeholder="Insira a data" class="form-control input-md"/>
+                            <h:message for="dataEvento" id="msg3" styleClass="erros" style="color: red"/>
+                        </div>
                     </div>
                     <div class="col-md-3 form-group">                
                         <label for="cli_sexo" class="control-label">Sexo:</label>
@@ -149,7 +157,7 @@
                                          title="CEP" required="true" requiredMessage="CEP Obrigatório"/>
                             <button type="button" class="btn-block" onclick="buscarCEP()">Buscar CEP</button>
                             <h:message for="cli_endereco_cep" id="msg12" styleClass="erros" style="color: red"/>
-                            </div>
+                        </div>
                         <div class="col-md-7 form-group">
                             <label for="cli_logradouro">Logradouro:</label>
                             <p:inputText type="text" id="cli_logradouro" value="${usuarioBean.endereco.logradouro}" class="form-control" maxlength="160" 

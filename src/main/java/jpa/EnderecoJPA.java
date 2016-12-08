@@ -25,7 +25,6 @@ public class EnderecoJPA {
     private EntityManagerFactory emFactory
             = Persistence.createEntityManagerFactory("DataTicket");
 
-
     public void incluir(Endereco endereco) {
         EntityManager em = emFactory.createEntityManager();
         EntityTransaction transacao = em.getTransaction();
@@ -40,18 +39,33 @@ public class EnderecoJPA {
         }
     }
 
-        public List<Endereco> verificaCadastro(long end) {
+    public void alterar(Endereco endereco) {
+        EntityManager em = emFactory.createEntityManager();
+        EntityTransaction et = em.getTransaction();
+        try {
+            et.begin();
+            em.merge(endereco);
+            et.commit();
+        } catch (Exception e) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "exception caught", e);
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Endereco> verificaCadastro(long end) {
         EntityManager em = emFactory.createEntityManager();
         try {
             // Query JPQL
             Query query = em.createQuery("select ender from Endereco ender where ender.id_endereco = :end")
                     .setParameter("end", end);
 
-                       return query.getResultList();
+            return query.getResultList();
         } finally {
             em.close();
         }
 
     }
-    
+
 }
