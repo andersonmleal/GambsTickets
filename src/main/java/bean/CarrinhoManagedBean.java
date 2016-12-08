@@ -102,12 +102,9 @@ public class CarrinhoManagedBean implements Serializable {
         return eventos.size();
     }
 
-    public String concluir() {
-        String retorno;
-        ConclusaoCompraManagedBean conclui = new ConclusaoCompraManagedBean();
-        retorno = conclui.concluirCompra();
+    public void concluir() {
         compraConcluida = true;
-        return retorno;
+        
     }
 
     public String getEtapaCompra() {
@@ -279,7 +276,7 @@ public class CarrinhoManagedBean implements Serializable {
 
     public void limpaDados() {
 
-        eventos = null;
+        eventos = new ArrayList<>();
         etapaCompra = null;
         mensagem = null;
         removerItem = null;

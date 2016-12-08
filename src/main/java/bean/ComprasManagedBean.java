@@ -38,7 +38,7 @@ public class ComprasManagedBean implements Serializable {
         Usuario user = login.recuperaUsuario();
         long cpf = user.getCpf();
 
-        vendas = banco.buscaVendasCadastro(cpf);
+        vendas = banco.buscaVendasCadastro(user);
     }
 
     public List<Venda> getVendas() {

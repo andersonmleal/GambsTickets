@@ -142,12 +142,13 @@ public class CadastroEventoManagedBean implements Serializable {
     }
 
     //C:\Users\Leal\Documents\PI\GambsTickets\src\main\webapp\img
+    //C:\Users\anderson.mleal\Documents\NetBeansProjects\GambsTickets
     private void salvarArquivoBack(String nomeArquivo) {
         String diretorioDestino = "C:" + File.separator
                 + "Users" + File.separator
-                + "Leal" + File.separator
+                + "anderson.mleal" + File.separator
                 + "Documents" + File.separator
-                + "PI" + File.separator
+                + "NetBeansProjects" + File.separator
                 + "GambsTickets" + File.separator
                 + "src" + File.separator
                 + "main" + File.separator
@@ -258,9 +259,9 @@ public class CadastroEventoManagedBean implements Serializable {
     private void salvarArquivo(String nomeArquivo) {
         String diretorioDestino = "C:" + File.separator
                 + "Users" + File.separator
-                + "Leal" + File.separator
+                + "anderson.mleal" + File.separator
                 + "Documents" + File.separator
-                + "PI" + File.separator
+                + "NetBeansProjects" + File.separator
                 + "GambsTickets" + File.separator
                 + "src" + File.separator
                 + "main" + File.separator

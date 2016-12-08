@@ -15,8 +15,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import javax.el.ELContext;
+import javax.el.ExpressionFactory;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 import jpa.EnderecoJPA;
 import jpa.EventoJPA;
 import jpa.FormaPagamentoJPA;
@@ -98,9 +102,21 @@ public class ConclusaoCompraManagedBean implements Serializable {
         return valorTotal;
     }
 
+    public void finalizaBean() {
+
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ELContext elContext = facesContext.getELContext();
+        ExpressionFactory factory = facesContext.getApplication().getExpressionFactory();
+        CarrinhoManagedBean c = (CarrinhoManagedBean) factory.createValueExpression(elContext, "#{CarrinhoManagedBean}", Object.class).getValue(elContext);
+
+        c.concluir();
+        c.limpaDados();
+
+    }
+
     public String concluirCompra() {
         Venda venda = new Venda();
-        
+
         LoginBean login = new LoginBean();
         Usuario user = login.recuperaUsuario();
 
@@ -117,8 +133,8 @@ public class ConclusaoCompraManagedBean implements Serializable {
             cadastrarVenda(c, contador, user, venda);
             contador++;
         }
-        CarrinhoManagedBean carrinho = new CarrinhoManagedBean();
-        return "conclusao.xhtml";
+        finalizaBean();
+        return "comprasRealizadas.xhtml";
     }
 
     private void cadastrarVenda(Calendar c, int contador, Usuario user, Venda venda) {
