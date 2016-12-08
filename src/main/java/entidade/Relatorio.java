@@ -55,7 +55,6 @@ public class Relatorio {
 
             }
 
-
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             List<Venda> lista = new ArrayList<>();
 
@@ -113,7 +112,7 @@ public class Relatorio {
 
             // lista para criar cabecalho
             String[] cabecalho = {"ID EVENTO", "NOME EVENTO", "LOCAL", "HORÁRIO", "DATA",
-                            "DESCRIÇÃO", "IMAGEM PRINCIPAL", "IMAGEM BACKGROUND", "DATA ALTUALIZAÇÃO"};
+                "DESCRIÇÃO", "IMAGEM PRINCIPAL", "IMAGEM BACKGROUND", "DATA ALTUALIZAÇÃO"};
 
             // popula cabecalho
             for (int i = 0; i < cabecalho.length; i++) {
@@ -125,7 +124,6 @@ public class Relatorio {
 
             }
 
-
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             List<Evento> lista = new ArrayList<>();
 
@@ -136,8 +134,8 @@ public class Relatorio {
 
             for (Evento pro : lista) {
 
-                // se data da venda estiver antes da data fim e depois da data inicio
-
+                // se data do Evento estiver antes da data fim e depois da data inicio
+                if (pro.getDt_evento().before(dtFim) && pro.getDt_evento().after(dtInicio)) {
                     // nova linha na planilha
                     row = firstSheet.createRow(i);
                     // altera data para string
@@ -153,10 +151,9 @@ public class Relatorio {
                     row.createCell(6).setCellValue(pro.getCaminhoImagem());
                     row.createCell(7).setCellValue(pro.getCaminhoImagemBack());
                     row.createCell(8).setCellValue(dataCadastro);
-                    
 
                     i++;
-                
+                }
 
             } // fim do for
 

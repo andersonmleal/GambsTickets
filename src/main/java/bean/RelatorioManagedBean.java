@@ -35,10 +35,6 @@ public class RelatorioManagedBean implements Serializable {
 
     }
 
-    public void relatorioEvento(Date datInicial, Date datFinal) {
-
-    }
-
     public String gerarRelatorio() throws ServletException, ParseException {
 
         mensagem = "";
@@ -87,6 +83,27 @@ public class RelatorioManagedBean implements Serializable {
 
     }
 
+    public void relatorioEvento(Date datInicial, Date datFinal) {
+        try {
+
+            Relatorio relatorio = new Relatorio();
+            HSSFWorkbook wb = relatorio.relatorioEvento(datInicial, datFinal);
+
+            ByteArrayOutputStream outByteStream = new ByteArrayOutputStream();
+            wb.write(outByteStream);
+            byte[] outArray = outByteStream.toByteArray();
+
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            ExternalContext externalContext = facesContext.getExternalContext();
+            externalContext.setResponseContentType("application/vnd.ms-excel");
+            externalContext.setResponseHeader("Content-Disposition", "attachment; filename=\"Eventos.xls\"");
+            wb.write(externalContext.getResponseOutputStream());
+            facesContext.responseComplete();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
     public String getDataInicial() {
         return dataInicial;
     }
@@ -103,7 +120,7 @@ public class RelatorioManagedBean implements Serializable {
         this.dataFinal = dataFinal;
     }
 
-  public String getMensagem() {
+    public String getMensagem() {
         return mensagem;
     }
 
@@ -118,7 +135,5 @@ public class RelatorioManagedBean implements Serializable {
     public void setConsulta(String consulta) {
         this.consulta = consulta;
     }
-    
-    
 
 }
