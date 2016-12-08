@@ -23,7 +23,7 @@
         <input type="hidden" id="etapaCompra" name="enderecoEntrega" value="enderecoEntrega"></input>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h:form class="form-horizontal" role="form">
+                <h:form id="form_cadastro" class="form-horizontal" role="form">
 
                     <!-- Form Name -->
                     <legend style="text-align: center">Endereço de Entrega</legend>
@@ -32,9 +32,9 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="textinput">Logradouro</label>
                         <div class="col-sm-10">
-                            <p:inputText value="#{endereco.endereco.logradouro}" id="rua" required="true" requiredMessage="Nome Obrigatório" type="text" maxlength="35" placeholder="Digite o logradouro" class="form-control"/>
+                            <p:inputText value="#{endereco.endereco.logradouro}" id="cli_logradouro" required="true" requiredMessage="Nome Obrigatório" type="text" maxlength="35" placeholder="Digite o logradouro" class="form-control"/>
 
-                            <h:message for="rua" id="msg1" styleClass="erros" style="color: red" showDetail="true"/>
+                            <h:message for="cli_logradouro" id="msg1" styleClass="erros" style="color: red" showDetail="true"/>
                         </div>
                     </div>
 
@@ -57,14 +57,14 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="textinput">Cidade</label>
                         <div class="col-sm-4">
-                            <p:inputText value="#{endereco.endereco.cidade}" id="cid" required="true" requiredMessage="Cidade Obrigatória"  type="text" maxlength="20" placeholder="Nome de sua cidade" class="form-control"/>
-                            <h:message for="cid" id="msg3" styleClass="erros" style="color: red"/>
+                            <p:inputText value="#{endereco.endereco.cidade}" id="cli_endereco_cidade" required="true" requiredMessage="Cidade Obrigatória"  type="text" maxlength="20" placeholder="Nome de sua cidade" class="form-control"/>
+                            <h:message for="cli_endereco_cidade" id="msg3" styleClass="erros" style="color: red"/>
                         </div>
 
                         <label class="col-sm-2 control-label" for="textinput">Bairro</label>
                         <div class="col-sm-4">
-                            <p:inputText value="#{endereco.endereco.bairro}" id="bai" required="true" requiredMessage="Bairro Obrigatório" type="text" maxlength="15" placeholder="Bairro" class="form-control"/>
-                            <h:message for="bai" id="msg4" styleClass="erros" style="color: red"/>
+                            <p:inputText value="#{endereco.endereco.bairro}" id="cli_endereco_bairro" required="true" requiredMessage="Bairro Obrigatório" type="text" maxlength="15" placeholder="Bairro" class="form-control"/>
+                            <h:message for="cli_endereco_bairro" id="msg4" styleClass="erros" style="color: red"/>
                         </div>
                     </div>
 
@@ -72,7 +72,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="textinput">Estado</label>
                         <div class="col-sm-4">
-                            <h:selectOneMenu value="#{endereco.endereco.estado}" class="form-control" id="est" required="true" requiredMessage="Selecione um estado">
+                            <h:selectOneMenu value="#{endereco.endereco.estado}" class="form-control" id="endereco_uf" required="true" requiredMessage="Selecione um estado">
                                 <f:selectItem itemValue = "" itemLabel = "Estado" />
                                 <f:selectItem itemValue = "AC" itemLabel = "Acre" />
                                 <f:selectItem itemValue = "AL" itemLabel = "Alagoas" />
@@ -102,13 +102,13 @@
                                 <f:selectItem itemValue = "SE" itemLabel = "Sergipe" />
                                 <f:selectItem itemValue = "TO" itemLabel = "Tocantins" />
                             </h:selectOneMenu>
-                            <h:message for="est" id="msg5" styleClass="erros" style="color: red"/>
+                            <h:message for="endereco_uf" id="msg5" styleClass="erros" style="color: red"/>
                         </div>
 
                         <label class="col-sm-2 control-label" for="textinput">CEP</label>
                         <div class="col-sm-4">
-                            <p:inputText value="#{endereco.endereco.cep}" id="cep" required="true" type="text" onkeypress='return SomenteNumero(event)' size="8"  maxlength="8" placeholder="Digite seu CEP" class="form-control" />
-                         <button type="button" class="btn-block" onclick="buscarCEPCompra()">Buscar CEP</button>
+                            <p:inputText value="#{endereco.endereco.cep}" id="cli_endereco_cep" required="true" type="text" onkeypress='return SomenteNumero(event)' size="8"  maxlength="8" placeholder="Digite seu CEP" class="form-control" />
+                         <button type="button" class="btn-block" onclick="buscarCEP()">Buscar CEP</button>
                         </div>
                     </div>
 
