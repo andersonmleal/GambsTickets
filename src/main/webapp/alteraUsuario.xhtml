@@ -14,6 +14,7 @@
         <link href="css/page.css" rel="stylesheet"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="js/buscaCEP.js"></script>
     </h:head>
     <h:body>
         <!-- Menu -->
@@ -142,6 +143,7 @@
                             <label for="cli_endereco_cep" class="control-label">CEP:</label>
                             <p:inputText type="text" id="cli_endereco_cep" value="${usuarioBean.endereco.cep}" class="form-control" maxlength="9" 
                                          title="CEP" required="true" requiredMessage="CEP Obrigatório"/>
+                                                        <button type="button" class="btn-block" onclick="buscarCEP()">Buscar CEP</button>
                             <h:message for="cli_endereco_cep" id="msg12" styleClass="erros" style="color: red"/>
                         </div>
                         <div class="col-md-7 form-group">
