@@ -79,9 +79,17 @@ public class UsuarioBean implements Serializable {
 
     public void alterarUsuario() {
         usuarioJPA = new UsuarioJPA();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        dtNasc = dtNasc.replace('-', '/');
+        try {
+            usuario.setDtNascimento(new java.sql.Date(format.parse(dtNasc).getTime()));
+        } catch (ParseException ex) {
+            Logger.getLogger(UsuarioBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
         EnderecoJPA enderJPA = new EnderecoJPA();
         usuarioJPA.alterar(usuario);
         enderJPA.alterar(endereco);
+        carregaUsuario();
     }
 
     public void adicionarUsuario() {

@@ -33,7 +33,7 @@
                     <div class="col-md-6 form-group">
                         <label for="cli_confirmaEmail" class="control-label">Confirme o e-mail:</label>
                         <input type="email" id="cli_confirmaEmail" name="cli_confirmaEmail" class="form-control" maxlength="60"
-                               title="Confirme seu e-mail" required="true" requiredMessage="Confirmação E-mail Obrigatório"/>
+                               title="Confirme seu e-mail"/>
                         <h:message for="cli_confirmaEmail" id="msg2" styleClass="erros" style="color: red"/>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                     <div class="col-md-6 form-group">
                         <label for="cli_senhaConfirma" class="control-label">Confirmação da senha:</label>
                         <input type="password" id="cli_senhaConfirma" name="cli_senhaConfirma" class="form-control" maxlength="15"
-                               title="Conformação Senha" required="true" requiredMessage="Obrigatório Confirmar Senha"/>
+                               title="Conformação Senha"/>
                         <h:message for="cli_senhaConfirma" id="msg4" styleClass="erros" style="color: red"/>
                     </div>
                 </div>
@@ -98,22 +98,30 @@
 
                 <!--   ACABA AQUI !-->
                 <div class="row">
-                    <div class="col-md-3 form-group">
-                        <label for="cli_nascimento" class="control-label">Data de Nascimento:</label>
-                        <p:inputText value="#{usuarioBean.dtNasc}" id="dataNasc" type="date" 
-                                     title="Informe a data de nascimento" placeholder="Insira a data" class="form-control input-md" 
-                                     required="true" requiredMessage="Data Obrigatória"/>
-                        <h:message for="dataNasc" id="msg10" styleClass="erros" style="color: red"/>
-
-                    </div>
-                    <div class="col-md-3 form-group">                
-                        <label for="cli_sexo" class="control-label">Sexo:</label>
-                        <h:selectOneMenu id="cli_sexo" value="${usuarioBean.usuario.sexo}" class="form-control">                          
-                            <f:selectItem itemValue = "M" itemLabel = "Masculino" /> 
-                            <f:selectItem itemValue = "F" itemLabel = "Feminino" /> 
-                        </h:selectOneMenu>
+                    <div class="form-group col-md-3">
+                        <label class="control-label" for="dataEvento">Data de Nascimento:</label>  
+                            <h:outputText value="#{usuarioBean.dataCadastrada}">
+                                <f:convertDateTime locale="pt_BR" 
+                                                   pattern="dd/MM/yyyy" />
+                            </h:outputText>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="form-group col-md-3" >
+                        <label class="control-label" for="cli_nascimento">Alterar data de nascimento</label>  
+                            <p:inputText value="#{usuarioBean.dtNasc}" id="dataEvento" type="date" title="Informe a data de nascimento" placeholder="Insira a data" class="form-control input-md"/>
+                            <h:message for="dataNasc" id="msg10" styleClass="erros" style="color: red"/>
+                    </div>
+                </div>
+
+                <div class="col-md-3 form-group">                
+                    <label for="cli_sexo" class="control-label">Sexo:</label>
+                    <h:selectOneMenu id="cli_sexo" value="${usuarioBean.usuario.sexo}" class="form-control">                          
+                        <f:selectItem itemValue = "M" itemLabel = "Masculino" /> 
+                        <f:selectItem itemValue = "F" itemLabel = "Feminino" /> 
+                    </h:selectOneMenu>
+                </div>
+
 
 
                 <!--   ACABA AQUI !-->
@@ -143,7 +151,7 @@
                             <label for="cli_endereco_cep" class="control-label">CEP:</label>
                             <p:inputText type="text" id="cli_endereco_cep" value="${usuarioBean.endereco.cep}" class="form-control" maxlength="9" 
                                          title="CEP" required="true" requiredMessage="CEP Obrigatório"/>
-                                                        <button type="button" class="btn-block" onclick="buscarCEP()">Buscar CEP</button>
+                            <button type="button" class="btn-block" onclick="buscarCEP()">Buscar CEP</button>
                             <h:message for="cli_endereco_cep" id="msg12" styleClass="erros" style="color: red"/>
                         </div>
                         <div class="col-md-7 form-group">

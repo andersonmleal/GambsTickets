@@ -40,8 +40,6 @@ public class ControleRestricao implements PhaseListener {
         String pagina = faces.getViewRoot().getViewId();
         if (pagina.equals("/alteraEvento.xhtml") && (tipo != 1)) {
             navigationHandles.handleNavigation(faces, null, "/index.xhtml");
-        } else if (pagina.equals("/alteraUsuario.xhtml") && (tipo != 1)) {
-            navigationHandles.handleNavigation(faces, null, "/index.xhtml");
         } else if (pagina.equals("/graficos.xhtml") && (tipo != 1)) {
             navigationHandles.handleNavigation(faces, null, "/index.xhtml");
         } else if (pagina.equals("/eventosCadastro.xhtml") && (tipo != 1)) {
