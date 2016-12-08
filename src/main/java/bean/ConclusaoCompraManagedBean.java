@@ -95,6 +95,8 @@ public class ConclusaoCompraManagedBean implements Serializable {
 
     public double getValorTotal() {
 
+        valorTotal = 0.0;
+
         for (EventoIngressos ev : eventosSelecionados) {
             valorTotal = valorTotal + ev.getPrecoTotal();
         }
@@ -115,7 +117,7 @@ public class ConclusaoCompraManagedBean implements Serializable {
     }
 
     public String concluirCompra() {
-        Venda venda = new Venda();
+       
 
         LoginBean login = new LoginBean();
         Usuario user = login.recuperaUsuario();
@@ -126,18 +128,25 @@ public class ConclusaoCompraManagedBean implements Serializable {
             endereco.setDt_cadastro(c.getTime());
             endereco.setUsuario_evento(user);
             EnderecoJPA enderecoJPA = new EnderecoJPA();
-            enderecoJPA.incluir(endereco);
+            if (enderecoJPA.verificaCadastro(endereco.getId_endereco()).isEmpty()) {
+                enderecoJPA.incluir(endereco);
+            }
+
             pagamento.setBandeira("masterCard");
             FormaPagamentoJPA formaPagamentoJPA = new FormaPagamentoJPA();
-            formaPagamentoJPA.incluir(pagamento);
-            cadastrarVenda(c, contador, user, venda);
+
+            if (formaPagamentoJPA.verificaCadastro(pagamento.getId_formaP()).isEmpty()) {
+                formaPagamentoJPA.incluir(pagamento);
+            }
+            cadastrarVenda(c, contador, user);
             contador++;
         }
         finalizaBean();
         return "comprasRealizadas.xhtml";
     }
 
-    private void cadastrarVenda(Calendar c, int contador, Usuario user, Venda venda) {
+    private void cadastrarVenda(Calendar c, int contador, Usuario user) {
+         Venda venda = new Venda();
         VendaJPA vendaJPA = new VendaJPA();
         venda.setId_setor(eventosSelecionados.get(contador).getSetor());
         venda.setUsuario(user);
