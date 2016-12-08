@@ -12,6 +12,7 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.context.FacesContext;
 import jpa.EventoJPA;
 import jpa.SetorJPA;
 
@@ -31,6 +32,39 @@ public class EventoManagedBean implements Serializable {
      */
     public EventoManagedBean() {
         evento = new Evento();
+
+    }
+
+    public void recarregarEventos() {
+
+        eventos = new ArrayList<>();
+
+        EventoJPA eventoJPA = new EventoJPA();
+        SetorJPA setorJPA = new SetorJPA();
+
+        List<Evento> evs = eventoJPA.carregaEventos();
+        List<Setor> setores = setorJPA.carregaSetores();
+
+        for (int i = 0; i < evs.size(); i++) {
+            eventos.add(evs.get(i));
+
+            for (int j = 0; j < setores.size(); j++) {
+
+                if (setores.get(j).getId_evento().getId_evento() == eventos.get(i).getId_evento()) {
+
+                    if (!eventos.get(i).getSetores().contains(setores.get(j))) {
+                        eventos.get(i).addSetores(setores.get(j));
+                    }
+
+                }
+                break;
+            }
+        }
+
+    }
+
+    public void removerBean() {
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("eventoManagedBean");
     }
 
     public ArrayList<Evento> getEventos() {

@@ -5,6 +5,7 @@
  */
 package jpa;
 
+import entidade.Usuario;
 import entidade.Venda;
 import java.util.List;
 import java.util.logging.Level;
@@ -50,11 +51,11 @@ public class VendaJPA {
 
     }
 
-    public List<Venda> buscaVendasCadastro(long usuario) {
+    public List<Venda> buscaVendasCadastro(Usuario usuario) {
         EntityManager em = emf.createEntityManager();
         try {
             // Query JPQL
-            Query query = em.createQuery("select * from Venda venda where venda.usuario_cpf = :cpf")
+            Query query = em.createQuery("select v from Venda v where v.usuario = :cpf")
                     .setParameter("cpf", usuario);
 
             return query.getResultList();
