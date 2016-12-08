@@ -23,7 +23,7 @@
 
                 <h1 style="text-align: center">Relatórios</h1>
 
-                <h:selectOneMenu value="" class="form-control" id="consulta" required="true" requiredMessage="Selecione uma Consulta">
+                <h:selectOneMenu value="#{relatorioManagedBean.consulta}" class="form-control" id="consulta" required="true" requiredMessage="Selecione uma Consulta">
 
                     <f:selectItem itemValue = "vendas" itemLabel = "Vendas" />
                     <f:selectItem itemValue = "eventos" itemLabel = "Eventos" />
@@ -37,6 +37,8 @@
                     <p:inputText value="#{relatorioManagedBean.dataInicial}" id="dataInicio" type="date" 
                                  title="Informe a data" placeholder="Insira a data" class="form-control input-md" 
                                  required="true" requiredMessage="Data Obrigatória"/>
+                    <h:message for="dataInicio" id="msg1" styleClass="erros" style="color: red"/>
+                    
                 </div>
 
                 <div class="col-md-6">
@@ -47,11 +49,13 @@
                                  required="true" requiredMessage="Data Obrigatória"/>
                     <h:message for="dataFim" id="msg2" styleClass="erros" style="color: red"/>
                 </div>
+                <h:outputText value="#{relatorioManagedBean.mensagem}" 
+                              styleClass="erros" style="color: red; text-align: center"/>
 
-                
+
                 <div class="row">
                     <div class="col-md-12 form-group text-right" style="margin-top: 3%">
-                        <p:commandButton  ajax="false" value="Gerar Arquivo" action="index.xhtml"></p:commandButton>
+                        <p:commandButton ajax="false" value="Gerar Arquivo" action="#{relatorioManagedBean.gerarRelatorio()}"/>
                     </div>
                 </div>
             </h:form>

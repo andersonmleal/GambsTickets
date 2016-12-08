@@ -9,14 +9,13 @@ import entidade.Relatorio;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 
 /**
@@ -27,57 +26,97 @@ import javax.servlet.ServletException;
 @SessionScoped
 public class RelatorioManagedBean implements Serializable {
 
-    private Date dataInicial;
-    private Date dataFinal;
+    private String dataInicial;
+    private String dataFinal;
+    private String consulta;
+    private String mensagem;
 
     public RelatorioManagedBean() {
 
     }
 
-    public void relatorioVenda() throws ServletException {
-        HttpServletRequest request = null;
-        HttpServletResponse response = null;
+    public void relatorioEvento(Date datInicial, Date datFinal) {
 
-        String dtInicial = request.getParameter("pInicial");
-        String dtFinal = request.getParameter("pFinal");
+    }
 
-        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    public String gerarRelatorio() throws ServletException, ParseException {
+
+        mensagem = "";
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date datInicial = (Date) format.parse(dataInicial);
+        Date datFinal = (Date) format.parse(dataFinal);
+
+        if (!datFinal.before(datInicial)) {
+            switch (consulta) {
+                case "vendas":
+                    relatorioVenda(datInicial, datFinal);
+                    break;
+                case "eventos":
+                    relatorioEvento(datInicial, datFinal);
+                    break;
+            }
+            return "relatorios.xhtml";
+        } else {
+            mensagem = "Data inicial deve ser menor que data Final";
+            return "relatorios.xhtml";
+        }
+
+    }
+
+    public void relatorioVenda(Date datInicial, Date datFinal) throws ServletException, ParseException {
 
         try {
 
-            dataInicial = (Date) formatter.parse(dtInicial);
-            dataFinal = (Date) formatter.parse(dtFinal);
             Relatorio relatorio = new Relatorio();
-            HSSFWorkbook wb = relatorio.relatorioVenda(null, null);
+            HSSFWorkbook wb = relatorio.relatorioVenda(datInicial, datFinal);
 
             ByteArrayOutputStream outByteStream = new ByteArrayOutputStream();
             wb.write(outByteStream);
             byte[] outArray = outByteStream.toByteArray();
-            response.setContentType("application/ms-excel");
-            response.setContentLength(outArray.length);
-            response.setHeader("Expires:", "0");
-            response.setHeader("Content-Disposition", "attachment; filename=vendas.xls");
-            OutputStream outStream = response.getOutputStream();
-            outStream.write(outArray);
-            outStream.flush();
+
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            ExternalContext externalContext = facesContext.getExternalContext();
+            externalContext.setResponseContentType("application/vnd.ms-excel");
+            externalContext.setResponseHeader("Content-Disposition", "attachment; filename=\"Vendas.xls\"");
+            wb.write(externalContext.getResponseOutputStream());
+            facesContext.responseComplete();
         } catch (Exception ex) {
+            System.out.println(ex);
         }
+
     }
 
-    public Date getDataInicial() {
+    public String getDataInicial() {
         return dataInicial;
     }
 
-    public void setDataInicial(Date dataInicial) {
+    public void setDataInicial(String dataInicial) {
         this.dataInicial = dataInicial;
     }
 
-    public Date getDataFinal() {
+    public String getDataFinal() {
         return dataFinal;
     }
 
-    public void setDataFinal(Date dataFinal) {
+    public void setDataFinal(String dataFinal) {
         this.dataFinal = dataFinal;
+    }
+
+    public String getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(String consulta) {
+        this.consulta = consulta;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
     }
 
 }

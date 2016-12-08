@@ -42,7 +42,7 @@ public class Relatorio {
             HSSFRow row = firstSheet.createRow(0);
 
             // lista para criar cabecalho
-            String[] cabecalho = {"ID VENDA", "DATA CADASTRO", "QUANTIDADE", "VALOR",};
+            String[] cabecalho = {"ID VENDA", "DATA CADASTRO", "QUANTIDADE", "VALOR"};
 
             // popula cabecalho
             for (int i = 0; i < cabecalho.length; i++) {
@@ -54,10 +54,7 @@ public class Relatorio {
 
             }
 
-            // Este trecho obtem uma lista de objetos
-            // do banco de dados através de um DAO e itera sobre a lista
-            // criando linhas e colunas em um arquivo Excel com o conteúdo
-            // dos objetos.
+
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             List<Venda> lista = new ArrayList<>();
 
@@ -67,25 +64,31 @@ public class Relatorio {
             int i = 1;
 
             for (Venda pro : lista) {
-                // nova linha na planilha
-                row = firstSheet.createRow(i);
-                // altera data para string
-                String data = sdf.format(pro.getDt_cadastro());
 
-                row.createCell(0).setCellValue(pro.getId_venda());
-                row.createCell(1).setCellValue(data);
-                row.createCell(2).setCellValue(pro.getQuantidade());
-                row.createCell(3).setCellValue(pro.getValor());
+                // se data da venda estiver antes da data fim e depois da data inicio
+                if (pro.getDt_cadastro().before(dtFim) && pro.getDt_cadastro().after(dtInicio)) {
 
-                i++;
+                    // nova linha na planilha
+                    row = firstSheet.createRow(i);
+                    // altera data para string
+                    String data = sdf.format(pro.getDt_cadastro());
+
+                    row.createCell(0).setCellValue(pro.getId_venda());
+                    row.createCell(1).setCellValue(data);
+                    row.createCell(2).setCellValue(pro.getQuantidade());
+                    row.createCell(3).setCellValue(pro.getValor());
+
+                    i++;
+                }
 
             } // fim do for
 
-            firstSheet.setAutoFilter(CellRangeAddress.valueOf("A1:K" + i));
+            firstSheet.setAutoFilter(CellRangeAddress.valueOf("A1:D" + i));
 
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Erro ao exportar arquivo");
+            System.out.println(e);
         }
 
         return workbook;
